@@ -1,6 +1,6 @@
 function NavBar() {
   return (
-    <nav className="fixed top-0 w-full bg-neutral-900 bg-opacity-70 z-10 lg:py-4">
+    <nav className="fixed top-0 w-full bg-neutral-900 bg-opacity-15 backdrop-blur-lg lg:py-4 z-20 border-b border-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-44">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}

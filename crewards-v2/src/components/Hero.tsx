@@ -25,10 +25,16 @@ function Hero() {
           at every step of the way!
         </p>
         <div className="mt-6 flex justify-center space-x-4">
-          <a href="#" className="bg-blue-600 text-white px-6 py-3 rounded-md">
+          <a
+            href="#"
+            className="bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800"
+          >
             AFFILIATES
           </a>
-          <a href="#" className="bg-gray-800 text-white px-6 py-3 rounded-md">
+          <a
+            href="#"
+            className="bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950"
+          >
             LEADERBOARD
           </a>
         </div>
@@ -37,17 +43,17 @@ function Hero() {
       <img
         src="/logo.png"
         alt="Mini 1"
-        className="absolute left-72 bottom-44 w-16 h-16 animate-spin"
+        className="absolute left-[15%] bottom-20 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40 animate-spin-y glow-effect"
       />
       <img
         src="/logo.png"
         alt="Mini 2"
-        className="absolute top-36 left-1/2 transform -translate-x-1/2 w-12 h-12 animate-spin"
+        className="absolute top-16 md:top-20 lg:top-36 left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-18 2xl:h-18 animate-sway glow-effect"
       />
       <img
         src="/logo.png"
         alt="Mini 3"
-        className="absolute right-44 top-1/2 transform -translate-y-1/2 w-16 h-16 animate-spin"
+        className="absolute right-16 md:right-24 lg:right-44 top-1/3 md:top-1/2 transform -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 animate-sway-slow glow-effect"
       />
     </div>
   );

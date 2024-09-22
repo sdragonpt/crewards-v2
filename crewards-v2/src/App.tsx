@@ -2,6 +2,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import  MoneyCounter from "./components/MoneyCounter";
+import CardSection from "./components/CardSection";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <NavBar />
         <Hero />
         <MoneyCounter targetAmount={33500} />
+        <CardSection />
       </div>
     </>
   );
