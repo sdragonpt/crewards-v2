@@ -1,6 +1,6 @@
 function Hero() {
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center">
+    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#171414]">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{

@@ -55,7 +55,7 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
   const formattedAmount = amount.toLocaleString("pt-BR").replace(/\./g, ",");
 
   return (
-    <div className="relative flex items-center justify-center bg-cover bg-center ">
+    <div className="relative flex items-center justify-center bg-cover bg-center bg-[#171414]">
       <div className="absolute inset-0 bg-black opacity-70" />
       <div
         className="flex flex-col items-center justify-center z-10"
