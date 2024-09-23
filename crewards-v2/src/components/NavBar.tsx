@@ -1,7 +1,28 @@
+import { Link, useLocation } from "react-router-dom";
+
 function NavBar() {
+  const location = useLocation();
+
+  const handleHomeClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleAnchorClick = (anchorId: string) => {
+    const element = document.getElementById(anchorId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const isActive = (anchorId: string) => {
+    return location.pathname === "/" && location.hash === `#${anchorId}`;
+  };
+
   return (
-    <nav className="fixed top-0 w-full bg-neutral-900 bg-opacity-15 backdrop-blur-lg lg:py-4 z-20 border-b border-zinc-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-44">
+    <nav className="fixed top-0 w-full bg-neutral-900 bg-opacity-15 backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-28">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -9,37 +30,38 @@ function NavBar() {
           </div>
           {/* Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
-              <a
-                href="#"
-                className="text-white px-3 py-2 rounded-md text-sm font-medium"
+            <div className="ml-10 flex items-baseline space-x-6 text-lg font-extrabold text-zinc-600">
+              <Link
+                to="/"
+                onClick={handleHomeClick}
+                className={`px-3 py-2 rounded-md cursor-pointer ${location.pathname === "/" ? "text-white" : "hover:text-white"}`}
               >
                 Home
-              </a>
+              </Link>
               <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                onClick={() => handleAnchorClick("rewards")}
+                className={`px-3 py-2 rounded-md cursor-pointer ${isActive("rewards") ? "text-white" : "hover:text-white"}`}
               >
                 Rewards
               </a>
               <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                onClick={() => handleAnchorClick("challenges")}
+                className={`px-3 py-2 rounded-md cursor-pointer ${isActive("challenges") ? "text-white" : "hover:text-white"}`}
               >
                 Challenges
               </a>
               <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                onClick={() => handleAnchorClick("video-bar")}
+                className={`px-3 py-2 rounded-md cursor-pointer ${isActive("video-bar") ? "text-white" : "hover:text-white"}`}
               >
                 Videos
               </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              <Link
+                to="/leaderboard"
+                className={`px-3 py-2 rounded-md cursor-pointer ${location.pathname === "/leaderboard" ? "text-white" : "hover:text-white"}`}
               >
                 Leaderboard
-              </a>
+              </Link>
             </div>
           </div>
         </div>

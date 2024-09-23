@@ -2,9 +2,9 @@ import React from "react";
 
 const CardSection: React.FC = () => {
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]">
+    <div id="rewards" className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]">
       <div className="absolute inset-0 bg-black opacity-70" />
-      <h1 className="text-5xl font-bold mb-12 text-white z-10">REWARDS</h1>
+      <h1 className="text-5xl font-bold mb-12 text-white z-20">REWARDS</h1>
       <div className="flex items-center justify-center space-x-8 z-10">
         {/* Card 1 */}
         <div className="relative lg:w-72 2xl:w-[360px]">
