@@ -5,7 +5,7 @@ const VideoBar: React.FC = () => {
   const [videos, setVideos] = useState<any[]>([]);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragging, setDragging] = useState(false); // Nova variável para controlar o arrasto
+  const [dragging, setDragging] = useState(false);
 
   // API from YouTube
   const fetchVideos = async () => {
@@ -27,14 +27,14 @@ const VideoBar: React.FC = () => {
 
   useEffect(() => {
     fetchVideos();
-    const interval = setInterval(fetchVideos, 6 * 60 * 60 * 1000); // Atualiza a cada 6 horas
-    return () => clearInterval(interval); // Limpa o intervalo ao desmontar
+    const interval = setInterval(fetchVideos, 6 * 60 * 60 * 1000); // 6 hours update
+    return () => clearInterval(interval);
   }, []);
 
   const handleMouseDown = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsDragging(true);
-    setDragging(false); // Resetando o estado de arrasto
+    setDragging(false);
     const startX = event.clientX;
     const scrollLeft = videoContainerRef.current?.scrollLeft || 0;
 
@@ -42,7 +42,7 @@ const VideoBar: React.FC = () => {
       const x = e.clientX - startX;
       if (videoContainerRef.current) {
         videoContainerRef.current.scrollLeft = scrollLeft - x;
-        setDragging(true); // Marcando que estamos arrastando
+        setDragging(true);
       }
     };
 
@@ -58,7 +58,7 @@ const VideoBar: React.FC = () => {
 
   const handleClick = (videoId: string, _event: React.MouseEvent) => {
     if (!isDragging && !dragging) {
-      // Só abre o link se não for um arrasto
+      // if not pulled open
       window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
     }
   };
@@ -102,7 +102,7 @@ const VideoBar: React.FC = () => {
               <img
                 src={video.snippet.thumbnails.medium.url}
                 alt={video.snippet.title}
-                className="rounded-lg transition-transform transform hover:scale-110" // Adicionada a classe hover
+                className="rounded-lg transition-transform transform hover:scale-110" 
               />
               <h3 className="text-lg font-semibold text-white text-left mt-2">
                 {video.snippet.title}

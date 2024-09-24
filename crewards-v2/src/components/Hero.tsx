@@ -1,7 +1,4 @@
-// ? motion
 import {motion} from "framer-motion";
-
-// * variants
 import { fadeIn } from "../variants.ts";
 
 function Hero() {

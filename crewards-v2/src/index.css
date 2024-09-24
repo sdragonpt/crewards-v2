@@ -144,26 +144,26 @@ button:focus-visible {
   text-shadow: 0 0 5px rgba(255, 0, 0, 0.9); /* Glow effect for text*/
 }
 
-/* Para Chrome, Safari e outros navegadores baseados em WebKit */
+/* Chrome, Safari and other WebKit navs */
 ::-webkit-scrollbar {
-  width: 8px; /* Largura da scrollbar */
-  background-color: #060505; /* Cor de fundo da scrollbar */
+  width: 8px;
+  background-color: #060505; /* background color */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2c2c2c; /* Cor da parte deslizante da scrollbar */
-  border-radius: 10px; /* Arredondamento das bordas da parte deslizante */
-  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+  background-color: #2c2c2c; /* Slide color */
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #444444; /* Cor da parte deslizante quando o mouse passa em cima */
+  background-color: #444444; /* Hover color */
 }
 
 /* Para Firefox */
 .scrollbar {
-  scrollbar-width: thin; /* Define a largura da scrollbar como fina */
-  scrollbar-color: #2c2c2c #060505; /* Define a cor da parte deslizante e da área de fundo */
+  scrollbar-width: thin;
+  scrollbar-color: #2c2c2c #060505; /* Color on slide and background */
 }
 
 

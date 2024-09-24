@@ -7,7 +7,7 @@ function NavBar() {
   const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
   const [activeLink, setActiveLink] = useState<string>("");
 
-  // Função que lida com o clique no Home
+  // Home click
   const handleHomeClick = () => {
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -16,7 +16,7 @@ function NavBar() {
     }
   };
 
-  // Função para scroll suave até a âncora
+  // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
     if (location.pathname === "/leaderboard") {
       setTargetAnchor(anchorId);
@@ -32,7 +32,6 @@ function NavBar() {
     }
   };
 
-  // Efeito que lida com o scroll até a âncora após a navegação
   useEffect(() => {
     if (location.pathname === "/" && targetAnchor) {
       const element = document.getElementById(targetAnchor);
@@ -43,17 +42,17 @@ function NavBar() {
     }
   }, [location.pathname, targetAnchor]);
 
-  // Atualiza a âncora ativa com base no local
+  // Updates the anchor
   useEffect(() => {
     const path = location.pathname;
     if (path === "/") {
-      setActiveLink(location.hash.slice(1) || ""); // Remove o '#' e atualiza o link ativo
+      setActiveLink(location.hash.slice(1) || ""); // Removes '#' and updated active link
     } else {
-      setActiveLink(path.replace("/", "")); // Atualiza com a rota
+      setActiveLink(path.replace("/", "")); // Updates with route
     }
   }, [location]);
 
-  // Função para verificar se a âncora está ativa
+  // Check if the anchor is active
   const isActive = (anchorId: string) => {
     return location.pathname === "/" && location.hash === `#${anchorId}`;
   };

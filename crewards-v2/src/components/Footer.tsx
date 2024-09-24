@@ -6,21 +6,21 @@ const Footer: React.FC = () => {
   const navigate = useNavigate();
 
   const handleAnchorClick = (anchorId: string) => {
-    // Se já estiver na página inicial, rola para a âncora
+    // If already in the homepage, scrolls to the anchor
     if (location.pathname === "/") {
       const element = document.getElementById(anchorId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // Navega para a página inicial
+      // Goes to homepage
       navigate("/");
       setTimeout(() => {
         const element = document.getElementById(anchorId);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
-      }, 100); // Atraso para garantir que a rolagem ocorra após a navegação
+      }, 100); // Delay
     }
   };
 

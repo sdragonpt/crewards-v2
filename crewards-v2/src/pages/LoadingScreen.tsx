@@ -6,14 +6,14 @@ const LoadingScreen: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
 
   useEffect(() => {
     if (!isLoading) {
-      // Aguarda 1 segundo para permitir que a transição de opacidade aconteça
+      // Waits 1 sec to do the transition
       const timer = setTimeout(() => {
         setOpacity(0);
-      }, 1000); // Tempo de transição da opacidade
+      }, 1000); // 1 sec
 
       return () => clearTimeout(timer);
     } else {
-      // Reseta a opacidade quando está carregando
+      // Reset opacity after load
       setOpacity(1);
     }
   }, [isLoading]);
@@ -21,7 +21,7 @@ const LoadingScreen: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
   return (
     <div
       className="loading-screen"
-      style={{ opacity, pointerEvents: isLoading ? 'auto' : 'none' }} // Impede a interação se estiver carregando
+      style={{ opacity, pointerEvents: isLoading ? 'auto' : 'none' }} // No interaction while still loading
     >
       <img
         className="footer-logo w-32 glow-effect-3"

@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from "react";
-
-// ? motion
 import { motion } from "framer-motion";
-
-// * variants
 import { fadeIn } from "../variants.ts";
 
 const CardSection: React.FC = () => {
-  const [hasAnimated, setHasAnimated] = useState(false); // Estado para controlar a animação
+  const [hasAnimated, setHasAnimated] = useState(false); // State to control the animation
 
   useEffect(() => {
-    // Função para verificar se a seção está visível
+    // Check if the section is visible
     const handleScroll = () => {
       const section = document.getElementById("rewards");
       if (section) {
         const rect = section.getBoundingClientRect();
         if (rect.top <= window.innerHeight && !hasAnimated) {
-          setHasAnimated(true); // Define hasAnimated como true
-          window.removeEventListener("scroll", handleScroll); // Remove o listener após a animação
+          setHasAnimated(true); // Define hasAnimated true
+          window.removeEventListener("scroll", handleScroll); // Remove listener after animation
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Limpa o listener ao desmontar
-  }, [hasAnimated]); // Adiciona hasAnimated como dependência
-
+    return () => window.removeEventListener("scroll", handleScroll); // Cleans the listener
+  }, [hasAnimated]); // Adds hasAnimated
   return (
     <div id="rewards" className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]">
       <div className="absolute inset-0 bg-black opacity-70" />
@@ -33,8 +28,8 @@ const CardSection: React.FC = () => {
       <motion.div
         variants={fadeIn("up", 0.3)}
         initial="hidden"
-        animate={hasAnimated ? "show" : "hidden"} // Usa hasAnimated para controlar a animação
-        transition={{ duration: 0.5 }} // Adiciona duração à animação
+        animate={hasAnimated ? "show" : "hidden"} // Uses hasAnimated to control the animation
+        transition={{ duration: 0.5 }} // Adds duration to the animation
         className="flex items-center justify-center space-x-8 z-10"
       >
         {/* Card 1 */}

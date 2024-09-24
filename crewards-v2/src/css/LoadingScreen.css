@@ -5,7 +5,7 @@
     height: 100vh;
     width: 100%;
     background-color: black;
-    transition: opacity 1s ease; /* Transição suave da opacidade */
+    transition: opacity 1s ease;
     position: fixed;
     bottom: 0;
     left: 0;

@@ -15,18 +15,18 @@ function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false); // Define como false após 1 segundo
-    }, 1000); // 1 segundo de espera
+      setIsLoading(false); // False after 1 sec
+    }, 1000); // 1 sec
 
-    return () => clearTimeout(timer); // Limpa o timer ao desmontar
+    return () => clearTimeout(timer); // Cleans timer
   }, []);
 
   return (
     <Router>
       <ScrollToTop />
-      <LoadingScreen isLoading={isLoading} /> {/* Passa o estado de loading */}
-      <div className={`bg-[#1c1c1c] min-h-screen ${isLoading ? 'hidden' : ''}`}>
-        <NavBar /> {/* Exibe a NavBar somente após o carregamento */}
+      <LoadingScreen isLoading={isLoading} /> {/* Goes to loading */}
+      <div className={`bg-[#1c1c1c] min-h-screen ${isLoading ? "hidden" : ""}`}>
+        <NavBar /> {/* Shows navbar after the loading */}
         <Routes>
           <Route
             path="/"
@@ -35,7 +35,7 @@ function App() {
                 <Hero />
                 <MoneyCounter targetAmount={33500} />
                 <CardSection />
-                <Challenges /> {/* Challenges renderiza aqui */}
+                <Challenges />
                 <VideoBar />
                 <Footer />
               </>
@@ -43,7 +43,7 @@ function App() {
           />
           <Route
             path="/leaderboard"
-            element={<div>{/* Coloque aqui o conteúdo do Leaderboard */}</div>}
+            element={<div>{/* Leaderboard goes here! */}</div>}
           />
         </Routes>
       </div>

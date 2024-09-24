@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 interface Challenges {
   id: string;
   title: string;
@@ -10,9 +8,8 @@ interface Challenges {
 }
 
 const Challenges: React.FC = () => {
-  const [hasAnimated, setHasAnimated] = useState(false); // Estado para controlar a animação
 
-  // Definindo uma lista de vídeos manualmente
+  // List of challenges
   const challenges: Challenges[] = [
     {
       id: "hacksaw-slayers-inc-96",
@@ -52,38 +49,21 @@ const Challenges: React.FC = () => {
     window.open(`https://shuffle.com/games/${gameId}`, "_blank");
   };
 
-  useEffect(() => {
-    // Função para verificar se a seção está visível
-    const handleScroll = () => {
-      const section = document.getElementById("challenges");
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && !hasAnimated) {
-          setHasAnimated(true); // Define hasAnimated como true
-          window.removeEventListener("scroll", handleScroll); // Remove o listener após a animação
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Limpa o listener ao desmontar
-  }, [hasAnimated]); // Adiciona hasAnimated como dependência
-
   return (
     <div
       id="challenges"
       className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-28 xl:pt-28 2xl:pt-40"
     >
-      {/* Imagem de fundo */}
+      {/* Background Image */}
       <div
         className="absolute inset-0 bg-black opacity-20 z-0"
         style={{ backgroundImage: "url('shuffle-banner.png')" }}
       />
 
-      {/* Faixa superior com blur */}
+      {/* Top with blur */}
       <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-black via-transparent to-transparent z-10 filter blur-lg" />
 
-      {/* Faixa inferior com blur */}
+      {/* Bottom with blur */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent z-10 filter blur-lg" />
 
       <h1 className="text-5xl font-bold text-white mb-12 text-center z-10">

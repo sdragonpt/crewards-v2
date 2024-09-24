@@ -1,8 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-// ? motion
 import { motion } from "framer-motion";
-
-// * variants
 import { fadeIn } from "../variants";
 
 interface MoneyCounterProps {
@@ -15,21 +12,21 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
   const counterRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Função para verificar se a seção está visível
+    // Check if the section is on view
     const handleScroll = () => {
       const section = document.getElementById("money");
       if (section) {
         const rect = section.getBoundingClientRect();
         if (rect.top <= window.innerHeight && !hasAnimated) {
-          setHasAnimated(true); // Define hasAnimated como true
-          window.removeEventListener("scroll", handleScroll); // Remove o listener após a animação
+          setHasAnimated(true); // Define hasAnimated true
+          window.removeEventListener("scroll", handleScroll); // Removes listener after animation
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Limpa o listener ao desmontar
-  }, [hasAnimated]); // Adiciona hasAnimated como dependência
+    return () => window.removeEventListener("scroll", handleScroll); // Clean listener
+  }, [hasAnimated]); // Adds hasAnimated
 
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
