@@ -1,3 +1,9 @@
+// ? motion
+import {motion} from "framer-motion";
+
+// * variants
+import { fadeIn } from "../variants.ts";
+
 function Hero() {
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#171414]">
@@ -15,7 +21,13 @@ function Hero() {
         }}
       />
       <div className="absolute inset-0 bg-black opacity-50" />
-      <div className="relative z-10 text-center text-white">
+      <motion.div 
+      variants={fadeIn("up", 0.3)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{once: false, amount: 0.7}}
+      
+      className="relative z-10 text-center text-white">
         <h1 className="text-5xl md:text-6xl font-bold">UNLOCK REWARDS</h1>
         <h2 className="text-3xl md:text-4xl font-semibold mt-2">
           AT EVERY STEP
@@ -38,7 +50,7 @@ function Hero() {
             LEADERBOARD
           </a>
         </div>
-      </div>
+      </motion.div>
       {/* Rotating Mini Images */}
       <img
         src="/logo.png"

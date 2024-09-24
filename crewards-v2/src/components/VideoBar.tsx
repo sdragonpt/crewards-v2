@@ -9,7 +9,7 @@ const VideoBar: React.FC = () => {
 
   // API from YouTube
   const fetchVideos = async () => {
-    const API_KEY = "AIzaSyAksMhZ0jUWruhj2jZsBlrvR_kM177-2Ho"; // Adicione sua API Key aqui
+    const API_KEY = "AIzaSyAFE7xyEwMp_NYdNoFxx9fM4iCdCWiGWGw"; // Adicione sua API Key aqui
     const channelId = "UCq2mL-HDRp-VYTS5Kb2cDJA"; // ID do canal
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=10`
@@ -49,7 +49,7 @@ const VideoBar: React.FC = () => {
     window.addEventListener("mouseup", handleMouseUp);
   };
 
-  const handleClick = (videoId: string, event: React.MouseEvent) => {
+  const handleClick = (videoId: string, _event: React.MouseEvent) => {
     if (!isDragging && !dragging) {
       // Só abre o link se não for um arrasto
       window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
@@ -63,7 +63,10 @@ const VideoBar: React.FC = () => {
   });
 
   return (
-    <div id="video-bar" className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-8">
+    <div
+      id="video-bar"
+      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-8"
+    >
       <div
         className="absolute inset-0 bg-black opacity-70 z-0"
         style={{ backgroundImage: "url('background2.png')" }}

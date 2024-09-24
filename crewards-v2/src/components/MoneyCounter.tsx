@@ -1,4 +1,9 @@
 import { useEffect, useState, useRef } from "react";
+// ? motion
+import { motion } from "framer-motion";
+
+// * variants
+import { fadeIn } from "../variants";
 
 interface MoneyCounterProps {
   targetAmount: number;
@@ -6,13 +11,31 @@ interface MoneyCounterProps {
 
 const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
   const [amount, setAmount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false); // State to track if the animation has already run
   const counterRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    // Função para verificar se a seção está visível
+    const handleScroll = () => {
+      const section = document.getElementById("money");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && !hasAnimated) {
+          setHasAnimated(true); // Define hasAnimated como true
+          window.removeEventListener("scroll", handleScroll); // Remove o listener após a animação
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Limpa o listener ao desmontar
+  }, [hasAnimated]); // Adiciona hasAnimated como dependência
 
   useEffect(() => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Start the animation when the element is in view
+        if (entry.isIntersecting && !hasAnimated) {
+          // Start the animation when the element is in view and has not animated yet
           const duration = 3000;
           const startAmount = 0;
           const endAmount = targetAmount;
@@ -28,6 +51,8 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
 
             if (progress < 1) {
               requestAnimationFrame(animate);
+            } else {
+              setHasAnimated(true); // Set to true after animation completes
             }
           };
 
@@ -50,7 +75,7 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         observer.unobserve(counterRef.current);
       }
     };
-  }, [targetAmount]);
+  }, [targetAmount, hasAnimated]); // Add hasAnimated to dependencies
 
   const formattedAmount = amount.toLocaleString("pt-BR").replace(/\./g, ",");
 
@@ -62,12 +87,19 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         ref={counterRef}
       >
         <h2 className="text-5xl font-bold mb-8 text-white">Money Given Away</h2>
-        <div className="relative inline-block">
+        <motion.div 
+        variants={fadeIn("left", 0.3)}
+        initial="hidden"
+        animate={hasAnimated ? "show" : "hidden"}
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.7 }}
+        
+        className="relative inline-block">
           <div
             className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#161616] to-red-600 z-0 transform -translate-x-[2px] -translate-y-[2px]"
             style={{
               width: "calc(100% + 4px)",
-              height: "calc(100% + 4px)"
+              height: "calc(100% + 4px)",
             }}
           />
           <div className="flex items-center space-x-1 bg-[#171414] rounded-xl px-8 py-4 shadow-lg relative z-10">
@@ -83,7 +115,7 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

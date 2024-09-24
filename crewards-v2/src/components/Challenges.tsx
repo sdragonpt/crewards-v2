@@ -1,55 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-interface challenges {
+interface Challenges {
   id: string;
   title: string;
   thumbnail: string;
-  rewardValue: string; // Adicionando uma propriedade para o valor da recompensa
-  rewardImage: string; // Adicionando uma propriedade para a imagem da recompensa
+  rewardValue: string;
+  rewardImage: string;
   glowColor: string;
 }
 
 const Challenges: React.FC = () => {
+  const [hasAnimated, setHasAnimated] = useState(false); // Estado para controlar a animação
+
   // Definindo uma lista de vídeos manualmente
-  const challenges: challenges[] = [
+  const challenges: Challenges[] = [
     {
       id: "hacksaw-slayers-inc-96",
       title: "First to hit 750x with minimum $0.20 bet",
-      thumbnail: "slayers.png", // Adicione o caminho da imagem
+      thumbnail: "slayers.png",
       rewardValue: "150.00000000",
-      rewardImage: "usd.png", // Adicione o caminho da imagem de recompensa
+      rewardImage: "usd.png",
       glowColor: "rgba(186, 215, 1, 0.5)",
     },
     {
       id: "hacksaw-six-six-six-96",
       title: "First to hit 666x with minimum $0.20 bet",
-      thumbnail: "six.png", // Adicione o caminho da imagem
+      thumbnail: "six.png",
       rewardValue: "125.00000000",
-      rewardImage: "usd.png", // Adicione o caminho da imagem de recompensa
+      rewardImage: "usd.png",
       glowColor: "rgba(254, 1, 33, 0.5)",
     },
     {
       id: "nolimit-apocalypse",
       title: "First to hit 888x with minimum $0.20 bet",
-      thumbnail: "apocalypse.png", // Adicione o caminho da imagem
+      thumbnail: "apocalypse.png",
       rewardValue: "175.00000000",
-      rewardImage: "usd.png", // Adicione o caminho da imagem de recompensa
+      rewardImage: "usd.png",
       glowColor: "rgba(51, 177, 26, 0.5)",
     },
     {
       id: "originals/keno",
       title: "First to hit 500x with minimum $0.20 bet",
-      thumbnail: "keno.png", // Adicione o caminho da imagem
+      thumbnail: "keno.png",
       rewardValue: "100.00000000",
-      rewardImage: "usd.png", // Adicione o caminho da imagem de recompensa
+      rewardImage: "usd.png",
       glowColor: "rgba(252, 142, 1, 0.5)",
     },
-    // ! Add more here
   ];
 
   const handleClick = (gameId: string) => {
     window.open(`https://shuffle.com/games/${gameId}`, "_blank");
   };
+
+  useEffect(() => {
+    // Função para verificar se a seção está visível
+    const handleScroll = () => {
+      const section = document.getElementById("challenges");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && !hasAnimated) {
+          setHasAnimated(true); // Define hasAnimated como true
+          window.removeEventListener("scroll", handleScroll); // Remove o listener após a animação
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Limpa o listener ao desmontar
+  }, [hasAnimated]); // Adiciona hasAnimated como dependência
 
   return (
     <div
