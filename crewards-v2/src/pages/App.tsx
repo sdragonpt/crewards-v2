@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import "../App.css";
+import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import MoneyCounter from "../components/MoneyCounter";

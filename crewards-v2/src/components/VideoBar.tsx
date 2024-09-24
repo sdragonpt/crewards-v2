@@ -9,11 +9,18 @@ const VideoBar: React.FC = () => {
 
   // API from YouTube
   const fetchVideos = async () => {
-    const API_KEY = "AIzaSyAFE7xyEwMp_NYdNoFxx9fM4iCdCWiGWGw"; // Adicione sua API Key aqui
-    const channelId = "UCq2mL-HDRp-VYTS5Kb2cDJA"; // ID do canal
+    const API_KEY = "AIzaSyAga7gyIMRzIWec_aeVUPlSkPwg5NjnJvU";
+    const channelId = "UCq2mL-HDRp-VYTS5Kb2cDJA";
+
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=10`
     );
+
+    if (!response.ok) {
+      console.error("Error fetching videos:", response.statusText);
+      return;
+    }
+
     const data = await response.json();
     setVideos(data.items);
   };
