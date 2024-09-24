@@ -27,13 +27,13 @@ function Hero() {
         <div className="mt-6 flex justify-center space-x-4">
           <a
             href="#"
-            className="bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70"
+            className="font-bold bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70"
           >
             AFFILIATES
           </a>
           <a
             href="#"
-            className="bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70"
+            className="font-bold bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70"
           >
             LEADERBOARD
           </a>

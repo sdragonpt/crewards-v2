@@ -62,18 +62,27 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         ref={counterRef}
       >
         <h2 className="text-5xl font-bold mb-8 text-white">Money Given Away</h2>
-        <div className="flex items-center space-x-1 bg-[#171414] rounded-lg px-8 py-4 shadow-lg">
-          <div className="bg-[#171414] text-red-600 rounded-lg pr-4 py-2 ml-[-8px] shadow-lg glow-effect-text text-5xl font-bold">
-            $
-          </div>
-          {formattedAmount.split("").map((digit, index) => (
-            <div
-              key={index}
-              className="bg-[#2a2a2a] text-red-600 rounded-lg px-4 py-2 shadow-lg glow-effect-text text-5xl font-bold"
-            >
-              {digit}
+        <div className="relative inline-block">
+          <div
+            className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#161616] to-red-600 z-0 transform -translate-x-[2px] -translate-y-[2px]"
+            style={{
+              width: "calc(100% + 4px)",
+              height: "calc(100% + 4px)"
+            }}
+          />
+          <div className="flex items-center space-x-1 bg-[#171414] rounded-xl px-8 py-4 shadow-lg relative z-10">
+            <div className="bg-[#171414] text-red-600 rounded-lg pr-4 py-2 ml-[-8px] shadow-lg glow-effect-text text-5xl font-bold">
+              $
             </div>
-          ))}
+            {formattedAmount.split("").map((digit, index) => (
+              <div
+                key={index}
+                className="bg-[#2a2a2a] text-red-600 rounded-lg px-4 py-2 shadow-lg glow-effect-text text-5xl font-bold"
+              >
+                {digit}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

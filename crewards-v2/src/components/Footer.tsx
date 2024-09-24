@@ -1,8 +1,31 @@
 import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleAnchorClick = (anchorId: string) => {
+    // Se já estiver na página inicial, rola para a âncora
+    if (location.pathname === "/") {
+      const element = document.getElementById(anchorId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navega para a página inicial
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(anchorId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Atraso para garantir que a rolagem ocorra após a navegação
+    }
+  };
+
   return (
-    <footer className="bg-gradient-to-b from-[#0c0c0c] to-[#0a0a0a] text-[#444444] 2xl:px-60  font-bold border-t-2 border-y-[#242424]">
+    <footer className="bg-gradient-to-b from-[#0c0c0c] to-[#0a0a0a] text-[#444444] font-bold border-t-2 border-y-[#242424] xl:px-36 2xl:px-60">
       <div className="container py-8 flex flex-wrap justify-between">
         <div className="footer-section flex flex-col items-start">
           <img
@@ -15,51 +38,78 @@ const Footer: React.FC = () => {
           </p>
         </div>
 
-        <div className="footer-section text-xl mx-2"> {/* Ajuste a margem aqui */}
+        <div className="footer-section text-xl mx-2">
           <h4 className="hover:text-white transition-colors mb-2">
-            <a href="#" className="hover:text-white transition-colors">
+            <a
+              onClick={() => handleAnchorClick("rewards")}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Rewards
             </a>
           </h4>
           <h4 className="hover:text-white transition-colors mb-2">
-            <a href="#" className="hover:text-white transition-colors">
+            <a
+              onClick={() => handleAnchorClick("video-bar")}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
               Videos
             </a>
           </h4>
-          <h4 className="hover:text-white transition-colors">
-            <a href="#" className="hover:text-white transition-colors">
-              Leaderboard
-            </a>
-          </h4>
+          <Link
+            to="/leaderboard"
+            className={`hover:text-white transition-colors mb-2 cursor-pointer ${
+              location.pathname === "/leaderboard" ? "text-white" : ""
+            }`}
+          >
+            Leaderboard
+          </Link>
         </div>
 
         <div className="footer-section text-xl mx-4">
           <h4 className="hover:text-white transition-colors mb-2">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link
+              to="/contact"
+              className="hover:text-white transition-colors"
+            >
               Contact
-            </a>
+            </Link>
           </h4>
           <h4 className="hover:text-white transition-colors mb-2">
-            <a href="#" className="hover:text-white transition-colors mb-2">
-              Private Policy
-            </a>
+            <Link
+              to="/privacy"
+              className="hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </Link>
           </h4>
           <h4 className="hover:text-white transition-colors mb-2">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link
+              to="/terms"
+              className="hover:text-white transition-colors"
+            >
               Terms of Service
-            </a>
+            </Link>
           </h4>
         </div>
 
         <div className="footer-section">
           <div className="social-icons flex justify-end items-center">
-            <a href="#" className="transform transition-transform hover:scale-110"> {/* Aplique a transformação aqui */}
+            <a
+              href="#"
+              className="transform transition-transform hover:scale-110"
+            >
               <img className="w-16" src="X.png" alt="X" />
             </a>
-            <a href="#" className="transform transition-transform hover:scale-110"> {/* Aplique a transformação aqui */}
+            <a
+              href="#"
+              className="transform transition-transform hover:scale-110"
+            >
               <img className="w-16" src="Discord.png" alt="Discord" />
             </a>
-            <a href="#" className="transform transition-transform hover:scale-110"> {/* Aplique a transformação aqui */}
+            <a
+              href="#"
+              className="transform transition-transform hover:scale-110"
+            >
               <img className="w-16" src="Youtube.png" alt="Youtube" />
             </a>
           </div>

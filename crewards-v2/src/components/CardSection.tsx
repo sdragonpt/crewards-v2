@@ -11,9 +11,9 @@ const CardSection: React.FC = () => {
           <div className="absolute inset-0 bg-[#FFD627] opacity-60 rounded-lg blur-[100px]" />
           <div className="bg-[#2a2a2a] rounded-lg p-4 relative z-10">
             <img
-              src="clash.png"
+              src="clash.gif"
               alt="Reward 1"
-              className="rounded-t-lg w-full h-28 2xl:h-32 object-cover"
+              className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
             <p className="text-center text-sm text-neutral-300 mb-6 font-semibold">
               CLASH.GG
@@ -37,7 +37,7 @@ const CardSection: React.FC = () => {
             <img
               src="shuffle.png"
               alt="Reward 2"
-              className="rounded-t-lg w-full h-28 2xl:h-32 object-cover"
+              className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
             <p className="text-center text-sm text-neutral-300 mb-6 font-semibold">
               SHUFFLE.COM
@@ -61,7 +61,7 @@ const CardSection: React.FC = () => {
             <img
               src="csgoempire.png"
               alt="Reward 3"
-              className="rounded-t-lg w-full h-28 2xl:h-32 object-cover"
+              className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
             <p className="text-center text-sm text-neutral-300 mb-6 font-semibold">
               CSGOEMPIRE.COM
