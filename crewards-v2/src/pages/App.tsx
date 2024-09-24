@@ -7,7 +7,7 @@ import CardSection from "../components/CardSection";
 import VideoBar from "../components/VideoBar";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
-import LoadingScreen from "./LoadingScreen"; // Importando o LoadingScreen
+import LoadingScreen from "./LoadingScreen";
 import Challenges from "../components/Challenges";
 
 function App() {

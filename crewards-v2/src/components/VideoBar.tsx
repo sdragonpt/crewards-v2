@@ -9,8 +9,8 @@ const VideoBar: React.FC = () => {
 
   // API from YouTube
   const fetchVideos = async () => {
-    const API_KEY = "AIzaSyAga7gyIMRzIWec_aeVUPlSkPwg5NjnJvU";
-    const channelId = "UCq2mL-HDRp-VYTS5Kb2cDJA";
+    const API_KEY = import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY;
+    const channelId = import.meta.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
 
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=10`
