@@ -103,22 +103,22 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <div className="social-icons flex justify-end items-center">
             <a
-              href="#"
+              href="https://x.com/classybets" target="_blank"
               className="transform transition-transform hover:scale-110"
             >
               <img className="w-16" src="X.png" alt="X" />
             </a>
             <a
-              href="#"
+              href="https://discord.gg/classy" target="_blank"
               className="transform transition-transform hover:scale-110"
             >
               <img className="w-16" src="Discord.png" alt="Discord" />
             </a>
             <a
-              href="#"
+              href="https://www.youtube.com/classy" target="_blank"
               className="transform transition-transform hover:scale-110"
             >
-              <img className="w-16" src="Youtube.png" alt="Youtube" />
+              <img className="w-16" src="Youtube.png" alt="Youtube" /> 
             </a>
           </div>
         </div>

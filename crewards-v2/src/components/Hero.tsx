@@ -56,7 +56,6 @@ function Hero() {
             AT EVERY STEP
           </h2>
         </i>
-
         <p className="2xl:mt-4 text-mg 2xl:text-xl max-w-2xl mx-auto">
           From small wins to big rewards, our program has something for everyone{" "}
           <br />
@@ -90,7 +89,7 @@ function Hero() {
       <img
         src="/logo.png"
         alt="Mini 1"
-        className="absolute left-[15%] bottom-20 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40 animate-spin-y glow-effect"
+        className="absolute left-[15%] bottom-20 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 2xl:w-40 2xl:h-40 animate-sway-slow glow-effect"
       />
       <img
         src="/logo.png"
