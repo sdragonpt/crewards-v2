@@ -61,6 +61,10 @@ const VideoBar: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    fetchVideos();
+  }, []); // Call once when the component mounts
+
   const handleMouseDown = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsDragging(true);
