@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
@@ -7,13 +6,10 @@ import MoneyCounterHero from "./MoneyCounterHero"; // Importe o MoneyCounter
 function Hero() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
-  const [activeLink, setActiveLink] = useState<string>("");
-
+  
   // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
     if (location.pathname === "/leaderboard") {
-      setTargetAnchor(anchorId);
       navigate("/");
     } else if (location.pathname === "/") {
       const element = document.getElementById(anchorId);
@@ -39,7 +35,6 @@ function Hero() {
           backgroundImage: "url(/redglow.png)", // Imagem atrás do texto
         }}
       />
-
       <div className="absolute inset-0 bg-black opacity-50" />
       <motion.div
         variants={fadeIn("up", 0.3)}
@@ -51,11 +46,9 @@ function Hero() {
         <i className="text-8xl 2xl:text-9xl font-bold font-thunder">
           UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
         </i>
-        <i>
-          <h2 className="text-7xl 2xl:text-8xl mt-[-0.7rem] 2xl:mt-[-1.5rem] font-semibold font-thunder">
-            AT EVERY STEP
-          </h2>
-        </i>
+        <h2 className="text-7xl 2xl:text-8xl mt-[-0.7rem] 2xl:mt-[-1.5rem] font-semibold font-thunder">
+          AT EVERY STEP
+        </h2>
         <p className="2xl:mt-4 text-mg 2xl:text-xl max-w-2xl mx-auto">
           From small wins to big rewards, our program has something for everyone{" "}
           <br />
@@ -71,9 +64,7 @@ function Hero() {
           </a>
           <Link
             to="/leaderboard"
-            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer ${
-              location.pathname === "/leaderboard"
-            }`}
+            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer ${location.pathname === "/leaderboard"}`}
           >
             Leaderboard
           </Link>

@@ -5,7 +5,7 @@ function NavBar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
-  const [activeLink, setActiveLink] = useState<string>("");
+  const [, setActiveLink] = useState<string>("");
 
   // Home click
   const handleHomeClick = () => {

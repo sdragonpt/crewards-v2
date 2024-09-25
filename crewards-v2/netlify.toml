@@ -1,0 +1,4 @@
+[build]
+  base = "crewards-v2"
+  publish = "dist"
+  command = "npm run build"
