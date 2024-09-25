@@ -1,6 +1,7 @@
 // functions/fetchVideos.ts
 
 import { Handler } from '@netlify/functions';
+import fetch from 'node-fetch';
 
 const handler: Handler = async (event) => {
   const channelId = process.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
