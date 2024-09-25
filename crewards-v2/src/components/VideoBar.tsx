@@ -6,54 +6,33 @@ const VideoBar: React.FC = () => {
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragging, setDragging] = useState(false);
-
-  // API keys
-  const API_KEYS = [
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY1,
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY2,
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY3,
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY4,
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY5,
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY6,
-    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY7,
-  ];
-
-  const channelId = import.meta.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
+  const [, setLoading] = useState<boolean>(false);
+  const [, setError] = useState<string | null>(null);
 
   const fetchVideos = async () => {
-    let data = null;
+    setLoading(true);
+    setError(null);
 
-    for (let i = 0; i < API_KEYS.length; i++) {
-      const API_KEY = API_KEYS[i];
-
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=20`
-        );
-
-        if (response.ok) {
-          data = await response.json();
-          setVideos(data.items); // Success
-          break; // Stops
-        } else if (response.status === 403) {
-          console.warn(
-            `API key ${i + 1} returns error 403. Try next key...`
-          );
-          continue; // Goes to the next key
-        } else {
-          console.error(`Error getting videos: ${response.statusText}`);
-          return; // Other errors
-        }
-      } catch (error) {
-        console.error(`API key ${i + 1} fail with error:`, error);
-        continue; // Goes to the next key
+    try {
+      const response = await fetch('/.netlify/functions/fetchVideos');
+      if (response.ok) {
+        const data = await response.json();
+        setVideos(data.items);
+      } else {
+        console.error(`Error fetching videos: ${response.statusText}`);
+        setError(`Error fetching videos: ${response.statusText}`);
       }
-    }
-
-    if (!data) {
-      console.error("Every key fail.");
+    } catch (error) {
+      console.error("Error calling function:", error);
+      setError("Error calling function");
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchVideos();
+  }, []);
 
   useEffect(() => {
     fetchVideos();

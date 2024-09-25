@@ -16,7 +16,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Adicione isso */
+    "types": ["@netlify/functions"] // Inclua as definições de tipo do Netlify
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "functions/**/*.ts"] // Inclua também suas funções
 }
