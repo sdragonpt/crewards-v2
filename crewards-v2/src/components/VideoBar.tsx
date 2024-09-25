@@ -6,35 +6,58 @@ const VideoBar: React.FC = () => {
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragging, setDragging] = useState(false);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
 
-  // Função para buscar vídeos usando a função do Netlify
+  // API keys
+  const API_KEYS = [
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY1,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY2,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY3,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY4,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY5,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY6,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY7,
+  ];
+
+  const channelId = import.meta.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
+
   const fetchVideos = async () => {
-    setLoading(true);
-    setError(null); // Reseta o erro
+    let data = null;
 
-    try {
-      const response = await fetch('/.netlify/functions/fetchVideos');
-      if (response.ok) {
-        const data = await response.json();
-        setVideos(data.items);
-      } else {
-        console.error(`Error fetching videos: ${response.statusText}`);
-        setError(`Error fetching videos: ${response.statusText}`);
+    for (let i = 0; i < API_KEYS.length; i++) {
+      const API_KEY = API_KEYS[i];
+
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=20`
+        );
+
+        if (response.ok) {
+          data = await response.json();
+          setVideos(data.items); // Success
+          break; // Stops
+        } else if (response.status === 403) {
+          console.warn(
+            `API key ${i + 1} returns error 403. Try next key...`
+          );
+          continue; // Goes to the next key
+        } else {
+          console.error(`Error getting videos: ${response.statusText}`);
+          return; // Other errors
+        }
+      } catch (error) {
+        console.error(`API key ${i + 1} fail with error:`, error);
+        continue; // Goes to the next key
       }
-    } catch (error) {
-      console.error("Error calling function:", error);
-      setError("Error calling function");
-    } finally {
-      setLoading(false);
+    }
+
+    if (!data) {
+      console.error("Every key fail.");
     }
   };
 
-  // Chama a função fetchVideos ao montar o componente
   useEffect(() => {
     fetchVideos();
-    const interval = setInterval(fetchVideos, 6 * 60 * 60 * 1000); // Atualiza a cada 6 horas
+    const interval = setInterval(fetchVideos, 6 * 60 * 60 * 1000); // Updated every 6 hours
     return () => clearInterval(interval);
   }, []);
 
@@ -65,6 +88,7 @@ const VideoBar: React.FC = () => {
 
   const handleClick = (videoId: string, _event: React.MouseEvent) => {
     if (!isDragging && !dragging) {
+      // if not pulled open
       window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
     }
   };
@@ -87,8 +111,6 @@ const VideoBar: React.FC = () => {
       <h1 className="text-6xl mb-4 font-bold text-white text-center z-10 font-thunder">
         Videos
       </h1>
-      {loading && <p className="text-white text-center">Loading...</p>}
-      {error && <p className="text-red-500 text-center">{error}</p>}
       <div
         {...handlers}
         ref={videoContainerRef}
