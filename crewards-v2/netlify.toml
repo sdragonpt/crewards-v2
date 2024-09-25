@@ -2,3 +2,7 @@
   base = "crewards-v2"
   publish = "dist"
   command = "npm run build"
+  functions = "functions"
+
+[dev]
+  functions = "functions"  # Usado para desenvolvimento local
