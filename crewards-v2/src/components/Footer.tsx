@@ -49,6 +49,14 @@ const Footer: React.FC = () => {
           </h4>
           <h4 className="hover:text-white transition-colors mb-2">
             <a
+              onClick={() => handleAnchorClick("challenges")}
+              className="hover:text-white transition-colors cursor-pointer"
+            >
+              Challenges
+            </a>
+          </h4>
+          <h4 className="hover:text-white transition-colors mb-2">
+            <a
               onClick={() => handleAnchorClick("video-bar")}
               className="hover:text-white transition-colors cursor-pointer"
             >

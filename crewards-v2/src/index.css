@@ -114,6 +114,44 @@ button:focus-visible {
   }
 }
 
+/* Animation of the text */
+@keyframes color-shift {
+  0% {
+    color: #ff0000; 
+  }
+  100% {
+    color: #ff4343; 
+  }
+}
+
+@keyframes color-shift-2 {
+  0% {
+    color: #ff0000; 
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
+  }
+  100% {
+    color: #71717a; 
+    text-shadow: 0 0 8px rgba(230, 222, 222, 0.9);
+  }
+}
+
+/* Aplicar a animação ao texto */
+.glow-effect-text-2 {
+  animation: color-shift 2s infinite alternate;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.9); /* Glow effect for text*/
+}
+
+.glow-effect-text-3 {
+  animation: color-shift-2 3s infinite alternate;
+  font-weight: bold;
+}
+
+.glow-effect-stop {
+  color: #fff;
+  font-weight: bold;
+}
+
 /* mini images */
 .animate-spin-y {
   animation: spin-y 12s linear infinite;
@@ -160,10 +198,57 @@ button:focus-visible {
   background-color: #444444; /* Hover color */
 }
 
-/* Para Firefox */
+/* Firefox */
 .scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #2c2c2c #060505; /* Color on slide and background */
+}
+
+/* Font-Face Definitions */
+@font-face {
+  font-family: "Brutal Type-ExtraBold";
+  src: url("https://anima-uploads.s3.amazonaws.com/5c55563ec806ca000bc459be/BrutalType-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Brutal Type-Bold";
+  src: url("https://anima-uploads.s3.amazonaws.com/5c5463f2a2a48e000abe6f48/BrutalType-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Brutal Type-Medium";
+  src: url("https://anima-uploads.s3.amazonaws.com/5c5463f2a2a48e000abe6f48/BrutalType-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Brutal Type-Black";
+  src: url("https://anima-uploads.s3.amazonaws.com/5c55563ec806ca000bc459be/BrutalType-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Thunder-BoldLC";
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/62501e32ea279961d222b9ea/fonts/thunder-boldlc.otf") format("opentype");
+}
+
+.font-thunder {
+  font-family: "Thunder-BoldLC", sans-serif;
+}
+
+/* Font styles and usage */
+body {
+  font-family: "Brutal Type-Medium", sans-serif; /* Fonte principal */
+}
+
+p, span, li {
+  font-family: "Brutal Type-Medium", sans-serif; /* Texto normal */
+}
+
+.button {
+  font-family: "Brutal Type-Bold", sans-serif; /* Botões com fonte mais ousada */
+}
+
+.hero-title {
+  font-family: "Thunder-BoldLC", sans-serif; /* Destaque para títulos importantes */
 }
 
 

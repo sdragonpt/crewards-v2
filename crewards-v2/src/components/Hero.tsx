@@ -1,7 +1,28 @@
-import {motion} from "framer-motion";
-import { fadeIn } from "../variants.ts";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { fadeIn } from "../variants";
+import MoneyCounterHero from "./MoneyCounterHero"; // Importe o MoneyCounter
 
 function Hero() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
+  const [activeLink, setActiveLink] = useState<string>("");
+
+  // Smooth transition to the anchor
+  const handleAnchorClick = (anchorId: string) => {
+    if (location.pathname === "/leaderboard") {
+      setTargetAnchor(anchorId);
+      navigate("/");
+    } else if (location.pathname === "/") {
+      const element = document.getElementById(anchorId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#171414]">
       <div
@@ -11,44 +32,61 @@ function Hero() {
             "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), url(/background.png)",
         }}
       />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent z-10 filter blur-lg" />
       <div
         className="absolute z-0 bg-cover bg-center h-full w-full brightness-110"
         style={{
-          backgroundImage: "url(/redglow.png)", // Image behind text
+          backgroundImage: "url(/redglow.png)", // Imagem atrás do texto
         }}
       />
+
       <div className="absolute inset-0 bg-black opacity-50" />
-      <motion.div 
-      variants={fadeIn("up", 0.3)}
-      initial="hidden"
-      whileInView={"show"}
-      viewport={{once: false, amount: 0.7}}
-      
-      className="relative z-10 text-center text-white">
-        <h1 className="text-5xl md:text-6xl font-bold">UNLOCK REWARDS</h1>
-        <h2 className="text-3xl md:text-4xl font-semibold mt-2">
-          AT EVERY STEP
-        </h2>
-        <p className="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-          From small wins to big rewards, our program has something for everyone
+      <motion.div
+        variants={fadeIn("up", 0.3)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.7 }}
+        className="relative z-10 text-center text-white 2xl:mt-0 mt-24"
+      >
+        <i className="text-8xl 2xl:text-9xl font-bold font-thunder">
+          UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
+        </i>
+        <i>
+          <h2 className="text-7xl 2xl:text-8xl mt-[-0.7rem] 2xl:mt-[-1.5rem] font-semibold font-thunder">
+            AT EVERY STEP
+          </h2>
+        </i>
+
+        <p className="2xl:mt-4 text-mg 2xl:text-xl max-w-2xl mx-auto">
+          From small wins to big rewards, our program has something for everyone{" "}
+          <br />
           at every step of the way!
         </p>
+
         <div className="mt-6 flex justify-center space-x-4">
           <a
-            href="#"
-            className="font-bold bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70"
+            onClick={() => handleAnchorClick("rewards")}
+            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70"
           >
-            AFFILIATES
+            Affiliates
           </a>
-          <a
-            href="#"
-            className="font-bold bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70"
+          <Link
+            to="/leaderboard"
+            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer ${
+              location.pathname === "/leaderboard"
+            }`}
           >
-            LEADERBOARD
-          </a>
+            Leaderboard
+          </Link>
         </div>
       </motion.div>
-      {/* Rotating Mini Images */}
+
+      {/* Money Counter no canto inferior direito */}
+      <div className="absolute bottom-10 right-10 z-20">
+        <MoneyCounterHero targetAmount={33500} />
+      </div>
+
+      {/* Imagens Mini Rotativas */}
       <img
         src="/logo.png"
         alt="Mini 1"

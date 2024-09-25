@@ -7,27 +7,57 @@ const VideoBar: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragging, setDragging] = useState(false);
 
-  // API from YouTube
+  // API keys
+  const API_KEYS = [
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY1,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY2,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY3,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY4,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY5,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY6,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY7,
+  ];
+
+  const channelId = import.meta.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
+
   const fetchVideos = async () => {
-    const API_KEY = import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY;
-    const channelId = import.meta.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
+    let data = null;
 
-    const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=10`
-    );
+    for (let i = 0; i < API_KEYS.length; i++) {
+      const API_KEY = API_KEYS[i];
 
-    if (!response.ok) {
-      console.error("Error fetching videos:", response.statusText);
-      return;
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=20`
+        );
+
+        if (response.ok) {
+          data = await response.json();
+          setVideos(data.items); // Success
+          break; // Stops
+        } else if (response.status === 403) {
+          console.warn(
+            `API key ${i + 1} returns error 403. Try next key...`
+          );
+          continue; // Goes to the next key
+        } else {
+          console.error(`Error getting videos: ${response.statusText}`);
+          return; // Other errors
+        }
+      } catch (error) {
+        console.error(`API key ${i + 1} fail with error:`, error);
+        continue; // Goes to the next key
+      }
     }
 
-    const data = await response.json();
-    setVideos(data.items);
+    if (!data) {
+      console.error("Every key fail.");
+    }
   };
 
   useEffect(() => {
     fetchVideos();
-    const interval = setInterval(fetchVideos, 6 * 60 * 60 * 1000); // 6 hours update
+    const interval = setInterval(fetchVideos, 6 * 60 * 60 * 1000); // Updated every 6 hours
     return () => clearInterval(interval);
   }, []);
 
@@ -72,14 +102,14 @@ const VideoBar: React.FC = () => {
   return (
     <div
       id="video-bar"
-      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-8"
+      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-16"
     >
       <div
         className="absolute inset-0 bg-black opacity-70 z-0"
         style={{ backgroundImage: "url('background2.png')" }}
       />
-      <h1 className="text-5xl font-bold text-white mb-12 text-center z-10">
-        VIDEOS
+      <h1 className="text-6xl mb-4 font-bold text-white text-center z-10 font-thunder">
+        Videos
       </h1>
       <div
         {...handlers}
@@ -102,9 +132,9 @@ const VideoBar: React.FC = () => {
               <img
                 src={video.snippet.thumbnails.medium.url}
                 alt={video.snippet.title}
-                className="rounded-lg transition-transform transform hover:scale-110" 
+                className="rounded-lg transition-transform transform hover:scale-110"
               />
-              <h3 className="text-lg font-semibold text-white text-left mt-2">
+              <h3 className="text-lg text-white text-left mt-2">
                 {video.snippet.title}
               </h3>
               <div className="flex justify-between items-center mt-2">
@@ -114,7 +144,7 @@ const VideoBar: React.FC = () => {
                     alt={video.snippet.channelTitle}
                     className="w-8 h-8 rounded-full"
                   />
-                  <span className="text-sm text-white ml-2 font-semibold">
+                  <span className="text-sm text-white ml-2">
                     {video.snippet.channelTitle}
                   </span>
                 </div>

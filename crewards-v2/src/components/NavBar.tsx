@@ -21,9 +21,6 @@ function NavBar() {
     if (location.pathname === "/leaderboard") {
       setTargetAnchor(anchorId);
       navigate("/");
-    } else if (location.pathname === "/challenges") {
-      setTargetAnchor(anchorId);
-      navigate("/");
     } else if (location.pathname === "/") {
       const element = document.getElementById(anchorId);
       if (element) {
@@ -67,7 +64,7 @@ function NavBar() {
           </div>
           {/* Navigation Links */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6 text-lg font-extrabold text-zinc-500 relative">
+            <div className="ml-10 flex items-baseline space-x-6 text-lg text-zinc-500 relative">
               <Link
                 to="/"
                 onClick={handleHomeClick}

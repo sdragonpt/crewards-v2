@@ -52,7 +52,7 @@ const Challenges: React.FC = () => {
   return (
     <div
       id="challenges"
-      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-28 xl:pt-28 2xl:pt-40"
+      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-32 xl:pt-36 2xl:pt-40"
     >
       {/* Background Image */}
       <div
@@ -66,8 +66,8 @@ const Challenges: React.FC = () => {
       {/* Bottom with blur */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent z-10 filter blur-lg" />
 
-      <h1 className="text-5xl font-bold text-white mb-12 text-center z-10">
-        CHALLENGES
+      <h1 className="text-6xl font-bold text-white text-center z-10 font-thunder">
+        Challenges
       </h1>
       <div
         className="relative bg-zinc-700 bg-opacity-0 rounded-xl p-8 mx-6 lg:mx-48 2xl:mx-48 z-10"
@@ -91,7 +91,7 @@ const Challenges: React.FC = () => {
                   filter: `drop-shadow(0 0 20px ${challenge.glowColor})`,
                 }}
               />
-              <h3 className="text-lg font-bold text-white text-left mt-6">
+              <h3 className="text-lg text-white text-left mt-6">
                 {challenge.title}
               </h3>
               <div className="mt-1">
@@ -104,7 +104,7 @@ const Challenges: React.FC = () => {
                     alt="Reward"
                     className="w-4 h-4 mr-1"
                   />
-                  <span className="text-base text-white font-semibold ml-1">
+                  <span className="text-base text-white ml-1">
                     {challenge.rewardValue}
                   </span>
                 </div>

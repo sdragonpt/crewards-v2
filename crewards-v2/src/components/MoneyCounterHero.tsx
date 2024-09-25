@@ -6,7 +6,7 @@ interface MoneyCounterProps {
   targetAmount: number;
 }
 
-const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
+const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
   const [amount, setAmount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false); // State to track if the animation has already run
   const counterRef = useRef<HTMLDivElement | null>(null);
@@ -77,21 +77,19 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
   const formattedAmount = amount.toLocaleString("pt-BR").replace(/\./g, ",");
 
   return (
-    <div className="relative flex items-center justify-center bg-cover bg-center bg-[#171414]">
-      <div className="absolute inset-0 bg-black opacity-70" />
-      <div
-        className="flex flex-col items-center justify-center z-10"
-        ref={counterRef}
-      >
-        <h2 className="text-6xl font-bold mb-8 text-white font-thunder">Money Given Away</h2>
-        <motion.div 
+    <div className="">
+      <div className="" />
+      <motion.div
         variants={fadeIn("left", 0.3)}
         initial="hidden"
-        animate={hasAnimated ? "show" : "hidden"}
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        
-        className="relative inline-block">
+
+        className="flex flex-col place-items-end justify-center mr-4 z-10"
+        ref={counterRef}
+      >
+        <h2 className="text-4xl 2xl:text-6xl font-bold mb-4 2xl:mb-8 text-white font-thunder">Money Given Away</h2>
+        <div className="relative inline-block">
           <div
             className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#161616] to-red-600 z-0 transform -translate-x-[2px] -translate-y-[2px]"
             style={{
@@ -100,22 +98,22 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
             }}
           />
           <div className="flex items-center space-x-1 bg-[#171414] rounded-xl px-8 py-4 shadow-lg relative z-10">
-            <div className="bg-[#171414] text-red-600 rounded-lg pr-4 py-2 ml-[-8px] shadow-lg glow-effect-text text-5xl font-bold">
+            <div className="bg-[#171414] text-red-600 rounded-lg pr-4 py-2 ml-[-8px] shadow-lg glow-effect-text text-3xl 2xl:text-5xl font-bold">
               $
             </div>
             {formattedAmount.split("").map((digit, index) => (
               <div
                 key={index}
-                className="bg-[#2a2a2a] text-red-600 rounded-lg px-4 py-2 shadow-lg glow-effect-text text-5xl font-bold"
+                className="bg-[#2a2a2a] text-red-600 rounded-lg px-4 py-2 shadow-lg glow-effect-text text-3xl 2xl:text-5xl font-bold"
               >
                 {digit}
               </div>
             ))}
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 };
 
-export default MoneyCounter;
+export default MoneyCounterHero;

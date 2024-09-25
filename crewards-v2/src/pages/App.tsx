@@ -33,7 +33,7 @@ function App() {
             element={
               <>
                 <Hero />
-                <MoneyCounter targetAmount={33500} />
+                {/* <MoneyCounter targetAmount={33500} /> */}
                 <CardSection />
                 <Challenges />
                 <VideoBar />
