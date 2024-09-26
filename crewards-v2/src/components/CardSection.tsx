@@ -23,10 +23,10 @@ const CardSection: React.FC = () => {
           <div className="absolute inset-0 bg-[#FFD627] opacity-60 rounded-lg blur-[80px]" />
           <motion.div
             ref={ref}
-            variants={fadeIn("up", 0.6)}
+            variants={fadeIn("up", 0.8)}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="bg-[#2a2a2a] rounded-lg p-4 relative z-10"
           >
             <img
@@ -41,10 +41,10 @@ const CardSection: React.FC = () => {
               <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
-                variants={fadeIn("up", 0.8)}
+                variants={fadeIn("up", 1)}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 1 }}
                 className="text-white text-lg"
               >
                 5% DEPOSIT BONUS
@@ -75,10 +75,10 @@ const CardSection: React.FC = () => {
           <div className="absolute inset-0 bg-[#762CFB] opacity-60 rounded-lg blur-[80px]" />
           <motion.div
             ref={ref}
-            variants={fadeIn("up", 0.8)}
+            variants={fadeIn("up", 1.2)}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.2 }}
             className="bg-[#2a2a2a] rounded-lg p-4 relative z-10"
           >
             <img
@@ -93,10 +93,10 @@ const CardSection: React.FC = () => {
               <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
-                variants={fadeIn("up", 1)}
+                variants={fadeIn("up", 1.4)}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
-                transition={{ duration: 1 }}
+                transition={{ duration: 1.4 }}
                 className="text-white text-lg"
               >
                 REDEEM BONUSES
@@ -127,10 +127,10 @@ const CardSection: React.FC = () => {
           <div className="absolute inset-0 bg-[#FFC31A] opacity-60 rounded-lg blur-[80px]" />
           <motion.div
             ref={ref}
-            variants={fadeIn("up", 1)}
+            variants={fadeIn("up", 1.6)}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.6}}
             className="bg-[#2a2a2a] rounded-lg p-4 relative z-10"
           >
             <img
@@ -145,10 +145,10 @@ const CardSection: React.FC = () => {
               <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
-                variants={fadeIn("up", 1.2)}
+                variants={fadeIn("up", 1.8)}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
-                transition={{ duration: 1.2 }}
+                transition={{ duration: 1.8 }}
                 className="text-white"
               >
                 1 FREE CASE
