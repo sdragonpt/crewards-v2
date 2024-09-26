@@ -170,6 +170,10 @@ button:focus-visible {
   filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.9)); /* Red glow */
 }
 
+.glow-effect-blue {
+  filter: drop-shadow(0 0 20px rgba(24, 115, 165, 0.9)); /* Blue glow */
+}
+
 .glow-effect-2 {
   animation: glow 3s infinite alternate;
 }

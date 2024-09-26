@@ -14,7 +14,7 @@ const CardSection: React.FC = () => {
       className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]"
     >
       <div className="absolute inset-0 bg-black opacity-70" />
-      <h1 className="text-6xl font-bold mb-12 text-white z-20 font-thunder">
+      <h1 className="text-6xl xl:mt-8 lg:mt-8 font-bold mb-12 text-white z-20 font-thunder">
         Rewards
       </h1>
       <motion.div className="flex items-center justify-center space-x-8 z-10">
