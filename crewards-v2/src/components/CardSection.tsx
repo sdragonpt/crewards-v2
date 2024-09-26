@@ -14,7 +14,7 @@ const CardSection: React.FC = () => {
       className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]"
     >
       <div className="absolute inset-0 bg-black opacity-70" />
-      <h1 className="text-6xl xl:mt-8 lg:mt-8 font-bold mb-12 text-white z-20 font-thunder">
+      <h1 className="text-6xl xl:mt-24 lg:mt-20 font-bold mb-8 text-white z-20 font-thunder">
         Rewards
       </h1>
       <motion.div className="flex items-center justify-center space-x-8 z-10">
@@ -38,23 +38,35 @@ const CardSection: React.FC = () => {
               CLASH.GG
             </p>
             <div className="bg-[#171414] rounded-lg border-b border-[#FFD627] p-4 mb-4 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
                 variants={fadeIn("up", 0.8)}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
                 transition={{ duration: 0.8 }}
-                className="text-white"
+                className="text-white text-lg"
               >
-                5% Deposit Bonus
+                5% DEPOSIT BONUS
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-6 mb-6 text-center">
-              <span className="text-white"></span>
+            <div className="bg-[#171414] rounded-lg p-3 mb-6 text-center">
+              <p className="text-zinc-500 mb-1 2xl:text-sm text-sm">EXTRA</p>
+              <span className="text-zinc-300 2xl:text-base text-xs">
+                PLAY FOR FREE USING ON-SITE RAIN
+              </span>
             </div>
-            <button className="w-full bg-[#FFD627] text-[#924600] py-2 rounded-lg border-b-4 border-[#EF9C27] hover:opacity-70">
-              Button Text 1
-            </button>
+            <a
+              href="https://clash.gg/r/CLASSY"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pt-3 w-full bg-[#FFD627] text-[#924600] py-2 rounded-lg border-b-4 border-[#EF9C27] hover:opacity-70 text-center block"
+            >
+              CLAIM BONUS
+            </a>
+            <p className="text-center text-sm text-neutral-300 mt-4">
+              CODE CLASSY
+            </p>
           </motion.div>
         </div>
 
@@ -78,23 +90,35 @@ const CardSection: React.FC = () => {
               SHUFFLE.COM
             </p>
             <div className="bg-[#171414] rounded-lg border-b border-[#762CFB] p-4 mb-4 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
                 variants={fadeIn("up", 1)}
                 initial="hidden"
                 animate={inView ? "show" : "hidden"}
                 transition={{ duration: 1 }}
-                className="text-white"
+                className="text-white text-lg"
               >
-                5% Deposit Bonus
+                REDEEM BONUSES
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-6 mb-6 text-center">
-              <span className="text-white"></span>
+            <div className="bg-[#171414] rounded-lg p-3 mb-6 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
+              <span className="text-zinc-300 text-base">
+                WEEKLY $20K RAFFLE
+              </span>
             </div>
-            <button className="w-full bg-[#762CFB] text-white py-2 rounded-lg border-b-4 border-[#621CE0] hover:opacity-70">
-              Button Text 2
-            </button>
+            <a
+              href="https://shuffle.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-lg border-b-4 border-[#621CE0] hover:opacity-70 text-center block"
+            >
+              CLAIM BONUS
+            </a>
+            <p className="text-center text-sm text-neutral-300 mt-4">
+              CODE CLASSY
+            </p>
           </motion.div>
         </div>
 
@@ -118,6 +142,7 @@ const CardSection: React.FC = () => {
               CSGOEMPIRE.COM
             </p>
             <div className="bg-[#171414] rounded-lg border-b border-[#FFC31A] p-4 mb-4 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
                 variants={fadeIn("up", 1.2)}
@@ -126,15 +151,24 @@ const CardSection: React.FC = () => {
                 transition={{ duration: 1.2 }}
                 className="text-white"
               >
-                5% Deposit Bonus
+                1 FREE CASE
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-6 mb-6 text-center">
-              <span className="text-white"></span>
+            <div className="bg-[#171414] rounded-lg p-3 mb-6 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
+              <span className="text-zinc-300">2K MONTHLY LEADERBOARD</span>
             </div>
-            <button className="w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-lg border-b-4 border-[#E3A906] hover:opacity-70">
-              Button Text 3
-            </button>
+            <a
+              href="https://csgoempire.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pt-3 w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-lg border-b-4 border-[#E3A906] hover:opacity-70 text-center block"
+            >
+              CLAIM BONUS
+            </a>
+            <p className="text-center text-sm text-neutral-300 mt-4">
+              CODE CLASSY
+            </p>
           </motion.div>
         </div>
       </motion.div>

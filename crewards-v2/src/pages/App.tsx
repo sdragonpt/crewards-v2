@@ -24,7 +24,11 @@ function App() {
     <Router>
       <ScrollToTop />
       <LoadingScreen isLoading={isLoading} /> {/* Goes to loading */}
-      <div className={`bg-[#1c1c1c] min-h-screen ${isLoading ? "hidden" : ""}`}>
+      <div
+        className={`bg-[#1c1c1c] min-h-screen ${
+          isLoading ? "hidden" : ""
+        } select-none`}
+      >
         <NavBar /> {/* Shows navbar after the loading */}
         <Routes>
           <Route
