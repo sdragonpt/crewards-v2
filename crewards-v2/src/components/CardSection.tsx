@@ -1,11 +1,33 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants.ts";
 import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
 const CardSection: React.FC = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Animation only happens once
-    threshold: 0.3, // How much is visible to do the animation (30% now)
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar se a tela é pequena
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Exemplo de limite para mobile
+    };
+
+    handleResize(); // Checar no início
+    window.addEventListener("resize", handleResize); // Adicionar listener para resize
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Limpar o listener ao desmontar
+    };
+  }, []);
+
+  const { ref: h1Ref, inView: h1InView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1, // Iniciar animação quando o h1 estiver 10% visível
+  });
+
+  const { ref: ref, inView: inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.3, // Iniciar animação dos cards quando 30% do card estiver visível
   });
 
   return (
@@ -14,18 +36,21 @@ const CardSection: React.FC = () => {
       className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]"
     >
       <div className="absolute inset-0 bg-black opacity-70" />
-      <h1 className="text-6xl xl:mt-24 lg:mt-20 font-bold mb-8 text-white z-20 font-thunder">
+      <h1
+        ref={h1Ref}
+        className="text-6xl xl:mt-24 lg:mt-16 font-bold xl:mb-8 mb-2 text-white z-20 font-thunder"
+      >
         Rewards
       </h1>
-      <motion.div className="flex items-center justify-center space-x-8 z-10">
+      <motion.div className="flex flex-wrap items-center justify-center lg:space-x-8 z-10">
         {/* Card 1 */}
-        <div className="relative lg:w-72 2xl:w-[360px]">
+        <div className="relative lg:w-72 2xl:w-[360px] mb-4 lg:mb-0">
           <div className="absolute inset-0 bg-[#FFD627] opacity-60 rounded-lg blur-[80px]" />
           <motion.div
             ref={ref}
             variants={fadeIn("up", 0.8)}
             initial="hidden"
-            animate={inView ? "show" : "hidden"}
+            animate={isMobile ? (h1InView ? "show" : "hidden") : (inView ? "show" : "hidden")}
             transition={{ duration: 0.8 }}
             className="bg-[#2a2a2a] rounded-lg p-4 relative z-10"
           >
@@ -43,7 +68,7 @@ const CardSection: React.FC = () => {
                 ref={ref}
                 variants={fadeIn("up", 1)}
                 initial="hidden"
-                animate={inView ? "show" : "hidden"}
+                animate={isMobile ? (h1InView ? "show" : "hidden") : (inView ? "show" : "hidden")}
                 transition={{ duration: 1 }}
                 className="text-white text-lg"
               >
@@ -71,13 +96,13 @@ const CardSection: React.FC = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="relative lg:w-72 2xl:w-[360px]">
+        <div className="relative lg:w-72 2xl:w-[360px] mb-4 lg:mb-0">
           <div className="absolute inset-0 bg-[#762CFB] opacity-60 rounded-lg blur-[80px]" />
           <motion.div
             ref={ref}
             variants={fadeIn("up", 1.2)}
             initial="hidden"
-            animate={inView ? "show" : "hidden"}
+            animate={isMobile ? (h1InView ? "show" : "hidden") : (inView ? "show" : "hidden")}
             transition={{ duration: 1.2 }}
             className="bg-[#2a2a2a] rounded-lg p-4 relative z-10"
           >
@@ -95,7 +120,7 @@ const CardSection: React.FC = () => {
                 ref={ref}
                 variants={fadeIn("up", 1.4)}
                 initial="hidden"
-                animate={inView ? "show" : "hidden"}
+                animate={isMobile ? (h1InView ? "show" : "hidden") : (inView ? "show" : "hidden")}
                 transition={{ duration: 1.4 }}
                 className="text-white text-lg"
               >
@@ -129,8 +154,8 @@ const CardSection: React.FC = () => {
             ref={ref}
             variants={fadeIn("up", 1.6)}
             initial="hidden"
-            animate={inView ? "show" : "hidden"}
-            transition={{ duration: 1.6}}
+            animate={isMobile ? (h1InView ? "show" : "hidden") : (inView ? "show" : "hidden")}
+            transition={{ duration: 1.6 }}
             className="bg-[#2a2a2a] rounded-lg p-4 relative z-10"
           >
             <img
@@ -147,7 +172,7 @@ const CardSection: React.FC = () => {
                 ref={ref}
                 variants={fadeIn("up", 1.8)}
                 initial="hidden"
-                animate={inView ? "show" : "hidden"}
+                animate={isMobile ? (h1InView ? "show" : "hidden") : (inView ? "show" : "hidden")}
                 transition={{ duration: 1.8 }}
                 className="text-white"
               >
