@@ -73,7 +73,7 @@ function Hero() {
 
       {/* Money Counter no canto inferior direito */}
       <div className="absolute bottom-10 right-10 z-20">
-        <MoneyCounterHero targetAmount={33500} />
+        <MoneyCounterHero targetAmount={35000} />
       </div>
 
       {/* Imagens Mini Rotativas */}

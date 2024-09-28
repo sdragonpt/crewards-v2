@@ -29,7 +29,7 @@ function App() {
           isLoading ? "hidden" : ""
         } select-none`}
       >
-        <NavBar /> {/* Shows navbar after the loading */}
+        <NavBar />
         <Routes>
           <Route
             path="/"
