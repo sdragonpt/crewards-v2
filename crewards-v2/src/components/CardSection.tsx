@@ -134,7 +134,7 @@ const CardSection: React.FC = () => {
               </span>
             </div>
             <a
-              href="https://shuffle.com"
+              href="https://shuffle.com?r=Classy"
               target="_blank"
               rel="noopener noreferrer"
               className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-lg border-b-4 border-[#621CE0] hover:opacity-70 text-center block"
