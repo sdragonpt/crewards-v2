@@ -7,6 +7,7 @@ import VideoBar from "../components/VideoBar";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import LoadingScreen from "./LoadingScreen";
+import Leaderboard from "./Leaderboard";
 import Challenges from "../components/Challenges";
 
 function App() {
@@ -46,7 +47,12 @@ function App() {
           />
           <Route
             path="/leaderboard"
-            element={<div>{/* Leaderboard goes here! */}</div>}
+            element={
+              <div>
+                <Leaderboard />
+                <Footer />
+              </div>
+            }
           />
         </Routes>
       </div>

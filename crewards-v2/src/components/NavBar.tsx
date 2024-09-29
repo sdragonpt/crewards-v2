@@ -16,6 +16,17 @@ function NavBar() {
     }
   };
 
+  const handleLeaderboardClick = () => {
+    if (location.pathname === "/leaderboard") {
+      const element = document.getElementById("leaderboard");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate("/leaderboard");
+    }
+  }
+
   // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
     if (location.pathname === "/leaderboard") {
@@ -100,6 +111,7 @@ function NavBar() {
               </a>
               <Link
                 to="/leaderboard"
+                onClick={() => handleLeaderboardClick()}
                 className={`px-3 py-2 rounded-md cursor-pointer ${
                   location.pathname === "/leaderboard" ? "text-white" : "hover:text-white"
                 }`}

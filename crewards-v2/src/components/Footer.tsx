@@ -65,9 +65,8 @@ const Footer: React.FC = () => {
           </h4>
           <Link
             to="/leaderboard"
-            className={`hover:text-white transition-colors mb-2 cursor-pointer ${
-              location.pathname === "/leaderboard" ? "text-white" : ""
-            }`}
+            onClick={() => handleAnchorClick("leaderboard")}
+            className={`hover:text-white transition-colors mb-2 cursor-pointer`}
           >
             Leaderboard
           </Link>
