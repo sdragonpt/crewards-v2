@@ -1,42 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
-import { useState, useEffect } from "react";
+import Time from "../components/Leaderboard/Time";
+import SideImagesLeft from "../components/Leaderboard/EmpireLeft";
+import SideImagesRight from "../components/Leaderboard/EmpireRight";
 
 function Leaderboard() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  // Temporizador (contador regressivo)
-  const calculateTimeLeft = () => {
-    const targetDate = new Date("2024-12-31T23:59:59"); // Data final
-    const now = new Date();
-    const difference = targetDate.getTime() - now.getTime();
-
-    let timeLeft = {};
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
-  };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#171414]">
+    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#171414] overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -106,49 +76,14 @@ function Leaderboard() {
         </div>
       </motion.div>
 
-      {/* Contador de tempo */}
-      <div className="text-center mt-8 text-white">
-        <p>Leaderboard ends in:</p>
-        <div className="text-4xl font-bold">
-          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
-          {timeLeft.seconds}s
-        </div>
+      {/* Time Component - Posicionado com absolute */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+        <Time />
       </div>
 
-      {/* Componentes laterais com imagem de fundo */}
-      <div
-        className="absolute left-0 top-0 h-full w-1/5 bg-cover"
-        style={{ backgroundImage: "url(/side-image-left.png)" }}
-      >
-        {/* Mini imagens lado esquerdo */}
-        <img
-          src="/mini1.png"
-          alt="Mini Left 1"
-          className="absolute top-20 left-10 w-16 h-16"
-        />
-        <img
-          src="/mini2.png"
-          alt="Mini Left 2"
-          className="absolute top-40 left-5 w-12 h-12"
-        />
-      </div>
-
-      <div
-        className="absolute right-0 top-0 h-full w-1/5 bg-cover"
-        style={{ backgroundImage: "url(/side-image-right.png)" }}
-      >
-        {/* Mini imagens lado direito */}
-        <img
-          src="/mini3.png"
-          alt="Mini Right 1"
-          className="absolute top-20 right-10 w-16 h-16"
-        />
-        <img
-          src="/mini4.png"
-          alt="Mini Right 2"
-          className="absolute top-40 right-5 w-12 h-12"
-        />
-      </div>
+      {/* Componentes laterais */}
+      <SideImagesLeft />
+      <SideImagesRight />
     </div>
   );
 }

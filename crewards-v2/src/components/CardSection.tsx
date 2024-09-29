@@ -33,7 +33,7 @@ const CardSection: React.FC = () => {
   return (
     <div
       id="rewards"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414]"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-[#171414] 2xl:pb-28"
     >
       <div className="absolute inset-0 bg-black opacity-70" />
       <h1
