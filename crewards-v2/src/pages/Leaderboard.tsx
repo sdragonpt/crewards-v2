@@ -57,7 +57,11 @@ function Leaderboard() {
         {/* Segundo Lugar */}
         <div className="bg-gray-800 rounded-lg p-6 text-center relative">
           <div className="bg-gray-900 rounded-full w-24 h-24 mx-auto mb-4">
-            <img src="/avatar2.png" alt="Second Place" className="rounded-full" />
+            <img
+              src="/avatar2.png"
+              alt="Second Place"
+              className="rounded-full"
+            />
           </div>
           <h3 className="text-xl font-bold">Player 2</h3>
           <p className="text-sm text-gray-400">Wagered</p>
@@ -70,7 +74,11 @@ function Leaderboard() {
         {/* Primeiro Lugar (Central) */}
         <div className="bg-red-800 rounded-lg p-8 text-center relative transform scale-110">
           <div className="bg-red-900 rounded-full w-32 h-32 mx-auto mb-4">
-            <img src="/avatar1.png" alt="First Place" className="rounded-full" />
+            <img
+              src="/avatar1.png"
+              alt="First Place"
+              className="rounded-full"
+            />
           </div>
           <h3 className="text-2xl font-bold">Player 1</h3>
           <p className="text-sm text-gray-400">Wagered</p>
@@ -83,7 +91,11 @@ function Leaderboard() {
         {/* Terceiro Lugar */}
         <div className="bg-gray-800 rounded-lg p-6 text-center relative">
           <div className="bg-gray-900 rounded-full w-24 h-24 mx-auto mb-4">
-            <img src="/avatar3.png" alt="Third Place" className="rounded-full" />
+            <img
+              src="/avatar3.png"
+              alt="Third Place"
+              className="rounded-full"
+            />
           </div>
           <h3 className="text-xl font-bold">Player 3</h3>
           <p className="text-sm text-gray-400">Wagered</p>
@@ -98,21 +110,44 @@ function Leaderboard() {
       <div className="text-center mt-8 text-white">
         <p>Leaderboard ends in:</p>
         <div className="text-4xl font-bold">
-          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+          {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+          {timeLeft.seconds}s
         </div>
       </div>
 
       {/* Componentes laterais com imagem de fundo */}
-      <div className="absolute left-0 top-0 h-full w-1/5 bg-cover" style={{ backgroundImage: "url(/side-image-left.png)" }}>
+      <div
+        className="absolute left-0 top-0 h-full w-1/5 bg-cover"
+        style={{ backgroundImage: "url(/side-image-left.png)" }}
+      >
         {/* Mini imagens lado esquerdo */}
-        <img src="/mini1.png" alt="Mini Left 1" className="absolute top-20 left-10 w-16 h-16" />
-        <img src="/mini2.png" alt="Mini Left 2" className="absolute top-40 left-5 w-12 h-12" />
+        <img
+          src="/mini1.png"
+          alt="Mini Left 1"
+          className="absolute top-20 left-10 w-16 h-16"
+        />
+        <img
+          src="/mini2.png"
+          alt="Mini Left 2"
+          className="absolute top-40 left-5 w-12 h-12"
+        />
       </div>
 
-      <div className="absolute right-0 top-0 h-full w-1/5 bg-cover" style={{ backgroundImage: "url(/side-image-right.png)" }}>
+      <div
+        className="absolute right-0 top-0 h-full w-1/5 bg-cover"
+        style={{ backgroundImage: "url(/side-image-right.png)" }}
+      >
         {/* Mini imagens lado direito */}
-        <img src="/mini3.png" alt="Mini Right 1" className="absolute top-20 right-10 w-16 h-16" />
-        <img src="/mini4.png" alt="Mini Right 2" className="absolute top-40 right-5 w-12 h-12" />
+        <img
+          src="/mini3.png"
+          alt="Mini Right 1"
+          className="absolute top-20 right-10 w-16 h-16"
+        />
+        <img
+          src="/mini4.png"
+          alt="Mini Right 2"
+          className="absolute top-40 right-5 w-12 h-12"
+        />
       </div>
     </div>
   );
