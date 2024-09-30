@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-function Time() {
+interface TimeProps {
+  targetDate: string; // Recebe a data alvo como uma propriedade
+}
+
+function Time({ targetDate }: TimeProps) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -10,11 +14,9 @@ function Time() {
 
   // Calcula o tempo restante até uma data alvo
   useEffect(() => {
-    const targetDate = new Date("2024-12-31T23:59:59");
-
     const countdown = setInterval(() => {
       const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
+      const difference = new Date(targetDate).getTime() - now.getTime();
 
       if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -32,28 +34,34 @@ function Time() {
     }, 1000);
 
     return () => clearInterval(countdown);
-  }, []);
+  }, [targetDate]);
 
   return (
     <div>
       {/* Texto e contador de tempo */}
       <div>
-        <p className="text-white text-xl mb-2">Leaderboard ends in:</p>
+        <p className="text-white text-xl mb-2 text-center">
+          Leaderboard ends in:
+        </p>
         <div className="flex space-x-4 text-white">
           <div>
-            <span className="block text-2xl">{timeLeft.days}</span>
+            <span className="block text-2xl text-center">{timeLeft.days}</span>
             <span className="text-sm">Days</span>
           </div>
           <div>
-            <span className="block text-2xl">{timeLeft.hours}</span>
+            <span className="block text-2xl text-center">{timeLeft.hours}</span>
             <span className="text-sm">Hours</span>
           </div>
           <div>
-            <span className="block text-2xl">{timeLeft.minutes}</span>
+            <span className="block text-2xl text-center">
+              {timeLeft.minutes}
+            </span>
             <span className="text-sm">Minutes</span>
           </div>
           <div>
-            <span className="block text-2xl">{timeLeft.seconds}</span>
+            <span className="block text-2xl text-center">
+              {timeLeft.seconds}
+            </span>
             <span className="text-sm">Seconds</span>
           </div>
         </div>

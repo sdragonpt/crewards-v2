@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"; // Importar motion
 
-function EmpireLeft() {
+function ShuffleLeft() {
   return (
     <motion.div
       className="absolute left-0 top-1/2 w-1/5 bg-cover"
@@ -24,4 +24,4 @@ function EmpireLeft() {
   );
 }
 
-export default EmpireLeft;
+export default ShuffleLeft;
