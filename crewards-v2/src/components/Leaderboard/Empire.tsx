@@ -23,21 +23,10 @@ function Empire() {
     const fetchPlayers = async () => {
       try {
         const response = await axios.get(
-          "https://csgoempire.com/api/v2/referrals/referred-users",
-          {
-            headers: {
-              "User-Agent":
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36",
-              Authorization: "Bearer fbc36789370d3e351101c07c2cbcb263",
-            },
-            params: {
-              per_page: 10,
-              page: 1,
-            },
-          }
+          "https://crewards.gg/.netlify/functions/getPlayers"
         );
 
-        const filteredPlayers: Player[] = response.data.data.filter(
+        const filteredPlayers: Player[] = response.data.filter(
           (player: Player) =>
             new Date(player.created_at) >= new Date("2024-09-01")
         );

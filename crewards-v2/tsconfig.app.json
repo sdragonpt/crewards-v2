@@ -23,5 +23,5 @@
     /* Adicione isso */
     "types": ["@netlify/functions"] // Inclua as definições de tipo do Netlify
   },
-  "include": ["src", "functions/**/*.ts"] // Inclua suas funções também
+  "include": ["src", "functions/**/*.ts", ".netlify/functions/getPlayers.ts"] // Inclua suas funções também
 }
