@@ -135,6 +135,28 @@ button:focus-visible {
   }
 }
 
+@keyframes color-shift-3 {
+  0% {
+    color: #8337d8; 
+    text-shadow: 0 0 8px rgba(131, 55, 216, 0.9);
+  }
+  100% {
+    color: #582c8c; 
+    text-shadow: 0 0 8px rgba(88, 44, 140, 0.9);
+  }
+}
+
+@keyframes color-shift-4 {
+  0% {
+    color: #eab30d; 
+    text-shadow: 0 0 8px rgba(234, 179, 13, 0.9);
+  }
+  100% {
+    color: #f4dc84; 
+    text-shadow: 0 0 8px rgba(244, 220, 132, 0.9);
+  }
+}
+
 /* Aplicar a animação ao texto */
 .glow-effect-text-2 {
   animation: color-shift 2s infinite alternate;
@@ -146,6 +168,19 @@ button:focus-visible {
   animation: color-shift-2 3s infinite alternate;
   font-weight: bold;
 }
+
+.glow-effect-text-4 {
+  animation: color-shift-3 2s infinite alternate;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(131, 55, 216, 0.9); /* Glow effect for text*/
+}
+
+.glow-effect-text-5 {
+  animation: color-shift-4 2s infinite alternate;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(234, 179, 13, 0.9); /* Glow effect for text*/
+}
+
 
 .glow-effect-stop {
   color: #fff;
@@ -207,6 +242,19 @@ button:focus-visible {
   scrollbar-width: thin;
   scrollbar-color: #2c2c2c #060505; /* Color on slide and background */
 }
+
+.shadow-1 {
+  box-shadow: 0 0px 20px rgba(216, 156, 33, 0.9); /* Exemplo de sombra marrom-avermelhada */
+}
+
+.shadow-2 {
+  box-shadow: 0 0px 20px rgba(113, 113, 113, 0.9); /* Exemplo de sombra marrom-avermelhada */
+}
+
+.shadow-3 {
+  box-shadow: 0 0px 20px rgba(157, 77, 37, 0.9); /* Exemplo de sombra marrom-avermelhada */
+}
+
 
 /* Font-Face Definitions */
 @font-face {
