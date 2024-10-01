@@ -128,7 +128,7 @@ function Empire() {
 
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
-        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 2xl:pb-0"
+        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 2xl:pb-0 my-[-90px]"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
@@ -148,8 +148,8 @@ function Empire() {
             <span className="text-zinc-500 ml-4">User</span>
           </div>
           <div className="flex items-center">
-            <span className="text-zinc-500 mr-16">Wagered</span>
-            <span className="text-zinc-500">Prize</span>
+            <span className="text-zinc-500 lg:mr-16 mr-12">Wagered</span>
+            <span className="text-zinc-500 lg:mr-0 mr-3">Prize</span>
           </div>
         </div>
 
@@ -183,7 +183,7 @@ function Empire() {
             return (
               <div
                 key={index}
-                className="flex justify-between items-center p-2 pr-6 bg-zinc-900 rounded border-zinc-500"
+                className="flex justify-between items-center p-2 pr-6 bg-zinc-900 rounded lg:mx-0 mx-4 border-zinc-500"
               >
                 <div className="flex items-center">
                   <span className="text-white w-10 ml-6">
