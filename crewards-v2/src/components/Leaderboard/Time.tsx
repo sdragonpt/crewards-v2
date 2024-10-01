@@ -52,12 +52,17 @@ const Time: React.FC<TimeProps> = ({ targetDate, leaderboardType }) => {
           LEADERBOARD ENDS IN:
         </p>
         <div className="flex space-x-4 text-white">
+          <hr className="w-96 mt-9 border-t-zinc-700" />
           <div className="bg-zinc-900 p-2 rounded-md 2xl:w-20 w-16 text-center bg-opacity-40">
-            <span className="block 2xl:text-2xl text-xl text-center">{timeLeft.days}</span>
+            <span className="block 2xl:text-2xl text-xl text-center">
+              {timeLeft.days}
+            </span>
             <span className="text-sm text-zinc-500">DAYS</span>
           </div>
           <div className="bg-zinc-900 p-2 rounded-md 2xl:w-20 w-16 text-center bg-opacity-40">
-            <span className="block 2xl:text-2xl text-xl text-center">{timeLeft.hours}</span>
+            <span className="block 2xl:text-2xl text-xl text-center">
+              {timeLeft.hours}
+            </span>
             <span className="text-sm text-zinc-500">HRS</span>
           </div>
           <div className="bg-zinc-900 p-2 rounded-md 2xl:w-20 w-16 text-center bg-opacity-40">
@@ -72,6 +77,7 @@ const Time: React.FC<TimeProps> = ({ targetDate, leaderboardType }) => {
             </span>
             <span className="text-sm text-zinc-500">SEC</span>
           </div>
+          <hr className="w-96 mt-9 border-t-zinc-700" />
         </div>
       </div>
     </div>
