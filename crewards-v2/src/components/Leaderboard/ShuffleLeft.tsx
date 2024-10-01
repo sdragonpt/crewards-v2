@@ -12,7 +12,7 @@ function ShuffleLeft() {
       }}
       initial={{ x: -100, opacity: 0 }} // Posição inicial
       animate={{ x: 0, opacity: 1 }} // Posição final
-      transition={{ duration: 0.5 }} // Duração da animação
+      transition={{ duration: 0.5, ease: "easeInOut" }} // Duração da animação
     >
       {/* Mini imagens lado esquerdo */}
       <img

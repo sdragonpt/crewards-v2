@@ -8,11 +8,11 @@ function EmpireLeft() {
         backgroundImage: "url(/yellowglow3.png)", // Fundo do componente
         backgroundSize: "200% auto", // Estica a imagem
         backgroundPosition: "right", // Muda a posição da imagem para a esquerda
-        backgroundRepeat: "no-repeat", // Garante que a imagem não repita 
+        backgroundRepeat: "no-repeat", // Garante que a imagem não repita
       }}
       initial={{ x: -100, opacity: 0 }} // Posição inicial
       animate={{ x: 0, opacity: 1 }} // Posição final
-      transition={{ duration: 0.5 }} // Duração da animação
+      transition={{ duration: 0.5, ease: "easeInOut" }} // Duração da animação
     >
       {/* Mini imagens lado esquerdo */}
       <img
