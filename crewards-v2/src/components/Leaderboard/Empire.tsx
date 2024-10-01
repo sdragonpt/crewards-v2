@@ -128,7 +128,7 @@ function Empire() {
 
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
-        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 2xl:pb-0 my-[-90px]"
+        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 2xl:pb-0 my-[-90px] lg:my-0"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
