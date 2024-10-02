@@ -25,7 +25,7 @@ function NavBar() {
     } else {
       navigate("/leaderboard");
     }
-  }
+  };
 
   // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
@@ -71,7 +71,7 @@ function NavBar() {
         <div className="flex justify-between items-center h-16 relative">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img className="h-20 w-auto" src="./logo.png" alt="Logo" />
+            <img className="h-20 w-auto" src="/logo.png" alt="Logo" />
           </div>
           {/* Navigation Links */}
           <div className="hidden md:block">
@@ -113,10 +113,23 @@ function NavBar() {
                 to="/leaderboard"
                 onClick={() => handleLeaderboardClick()}
                 className={`px-3 py-2 rounded-md cursor-pointer ${
-                  location.pathname === "/leaderboard" ? "text-white" : "hover:text-white"
+                  location.pathname === "/leaderboard"
+                    ? "text-white"
+                    : "hover:text-white"
                 }`}
               >
                 Leaderboard
+              </Link>
+              <Link
+                to="/vip/csgoempire"
+                onClick={() => handleLeaderboardClick()}
+                className={`px-3 py-2 rounded-md cursor-pointer ${
+                  location.pathname.startsWith("/vip")
+                    ? "text-white"
+                    : "hover:text-white"
+                }`}
+              >
+                Vip
               </Link>
             </div>
           </div>

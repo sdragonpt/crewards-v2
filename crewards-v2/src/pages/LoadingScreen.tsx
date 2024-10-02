@@ -25,7 +25,7 @@ const LoadingScreen: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
     >
       <img
         className="footer-logo w-32 glow-effect-3"
-        src="logo.png"
+        src="/logo.png"
         alt="Logo"
       />
     </div>

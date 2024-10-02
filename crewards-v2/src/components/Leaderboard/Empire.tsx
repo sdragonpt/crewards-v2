@@ -20,7 +20,7 @@ function Empire() {
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
         <i className="absolute top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
-          <i className="shadow-lg glow-effect-text-5">Leader</i>board
+          <i className="shadow-lg glow-effect-text-5">LEADER</i>BOARD
         </i>
 
         {/* Leaderboard Cards (Primeira View - Detalhes Simples) */}
@@ -28,18 +28,18 @@ function Empire() {
           variants={fadeIn("up", 0.3)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.7 }}
+          viewport={{ once: true, amount: 0.7 }}
           className="relative z-10 flex flex-wrap justify-center space-x-12 mt-28 2xl:mt-28"
         >
           {/* Cards do Empire */}
-          <div className="bg-zinc-800 rounded-lg p-6 text-center relative w-48">
-            <div className="bg-zinc-900 rounded-full 2xl:w-24 2xl:h-24 w-16 mx-auto 2xl:mb-4 mb-3">
+          <div className="bg-zinc-900 rounded-lg p-6 text-center relative w-48">
+            <div className="bg-zinc-950 rounded-full 2xl:w-24 2xl:h-24 w-16 mx-auto 2xl:mb-4 mb-3">
               <img
                 src="/logo2.png"
                 alt="Second Place"
                 className="rounded-full"
               />
-              <div className="absolute 2xl:top-[6.7rem] top-[4.8rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black 2xl:text-sm text-sm font-bold 2xl:px-3 2xl:py-1 px-2 py-0 rounded-full">
+              <div className="absolute 2xl:top-[6.7rem] top-[4.8rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black 2xl:text-sm text-sm font-bold 2xl:px-[0.65rem] 2xl:py-1 px-[0.44rem] py-0 rounded-full">
                 2
               </div>
             </div>
@@ -67,7 +67,7 @@ function Empire() {
                 alt="First Place"
                 className="rounded-full"
               />
-              <div className="absolute 2xl:top-[8.9rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black 2xl:text-base text-sm font-bold 2xl:px-3 2xl:py-1 px-2 py-0 rounded-full">
+              <div className="absolute 2xl:top-[8.9rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black 2xl:text-base text-sm font-bold 2xl:px-[0.85rem] 2xl:py-1 px-[0.51rem] py-0 rounded-full">
                 1
               </div>
             </div>
@@ -88,14 +88,15 @@ function Empire() {
             </div>
           </div>
 
-          <div className="bg-zinc-800 rounded-lg p-6 text-center relative w-48">
-            <div className="bg-zinc-900 rounded-full 2xl:w-24 2xl:h-24 w-16 mx-auto 2xl:mb-4 mb-3">
+          <div className="bg-zinc-900 rounded-lg p-6 text-center relative w-48">
+            <div className="bg-zinc-950 rounded-full 2xl:w-24 2xl:h-24 w-16 mx-auto 2xl:mb-4 mb-3">
               <img
                 src="/logo2.png"
                 alt="Third Place"
                 className="rounded-full"
               />
-              <div className="absolute 2xl:top-[6.7rem] top-[4.8rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black 2xl:text-sm text-sm font-bold 2xl:px-3 2xl:py-1 px-2 py-0 rounded-full">
+              {/* Position */}
+              <div className="absolute 2xl:top-[6.7rem] top-[4.8rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black 2xl:text-sm text-sm font-bold 2xl:px-[0.65rem] 2xl:py-1 px-[0.44rem] py-0 rounded-full">
                 3
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { fadeIn } from "../variants";
+import { fadeIn } from "../../variants";
 
 interface MoneyCounterProps {
   targetAmount: number;
@@ -84,11 +84,12 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-
         className="flex flex-col place-items-end justify-center mr-4 z-10"
         ref={counterRef}
       >
-        <h2 className="text-4xl 2xl:text-6xl font-bold mb-4 2xl:mb-8 text-white font-thunder">Total Given Away</h2>
+        <h2 className="text-4xl 2xl:text-6xl font-bold mb-4 2xl:mb-8 text-white font-thunder">
+          Total Given Away
+        </h2>
         <div className="relative inline-block">
           <div
             className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#161616] to-red-600 z-0 transform -translate-x-[2px] -translate-y-[2px]"

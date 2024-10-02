@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
         <div className="footer-section flex flex-col items-start">
           <img
             className="footer-logo w-32 glow-effect-2"
-            src="logo.png"
+            src="/logo.png"
             alt="Logo"
           />
           <p className="font-extrabold">
@@ -105,19 +105,19 @@ const Footer: React.FC = () => {
               href="https://x.com/classybets" target="_blank"
               className="transform transition-transform hover:scale-110"
             >
-              <img className="w-16" src="X.png" alt="X" />
+              <img className="w-16" src="/X.png" alt="X" />
             </a>
             <a
               href="https://discord.gg/classy" target="_blank"
               className="transform transition-transform hover:scale-110"
             >
-              <img className="w-16" src="Discord.png" alt="Discord" />
+              <img className="w-16" src="/Discord.png" alt="Discord" />
             </a>
             <a
               href="https://www.youtube.com/classy" target="_blank"
               className="transform transition-transform hover:scale-110"
             >
-              <img className="w-16" src="Youtube.png" alt="Youtube" /> 
+              <img className="w-16" src="/Youtube.png" alt="Youtube" /> 
             </a>
           </div>
         </div>

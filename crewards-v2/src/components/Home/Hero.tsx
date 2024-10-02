@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fadeIn } from "../variants";
+import { fadeIn } from "../../variants";
 import MoneyCounterHero from "./MoneyCounterHero"; // Importe o MoneyCounter
 
 function Hero() {
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
     if (location.pathname === "/leaderboard") {
@@ -64,7 +64,9 @@ function Hero() {
           </a>
           <Link
             to="/leaderboard"
-            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer ${location.pathname === "/leaderboard"}`}
+            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer ${
+              location.pathname === "/leaderboard"
+            }`}
           >
             Leaderboard
           </Link>

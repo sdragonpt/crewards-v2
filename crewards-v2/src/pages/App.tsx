@@ -1,14 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
-import Hero from "../components/Hero";
-import CardSection from "../components/CardSection";
-import VideoBar from "../components/VideoBar";
+import Hero from "../components/Home/Hero";
+import CardSection from "../components/Home/CardSection";
+import VideoBar from "../components/Home/VideoBar";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import LoadingScreen from "./LoadingScreen";
 import Leaderboard from "./Leaderboard";
-import Challenges from "../components/Challenges";
+import Vip from "./Vip";
+import Challenges from "../components/Home/Challenges";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,6 +51,15 @@ function App() {
             element={
               <div>
                 <Leaderboard />
+                <Footer />
+              </div>
+            }
+          />
+          <Route
+            path="/vip/*" // Permite sub-rotas para csgoempire e shuffle
+            element={
+              <div>
+                <Vip />
                 <Footer />
               </div>
             }
