@@ -1,4 +1,7 @@
-interface Challenges {
+import React, { useRef, useState } from "react";
+import { useSwipeable } from "react-swipeable";
+
+interface Challenge {
   id: string;
   title: string;
   thumbnail: string;
@@ -8,9 +11,8 @@ interface Challenges {
 }
 
 const Challenges: React.FC = () => {
-
   // List of challenges
-  const challenges: Challenges[] = [
+  const challenges: Challenge[] = [
     {
       id: "hacksaw-slayers-inc-96",
       title: "First to hit 750x with minimum $0.20 bet",
@@ -45,14 +47,75 @@ const Challenges: React.FC = () => {
     },
   ];
 
-  const handleClick = (gameId: string) => {
-    window.open(`https://shuffle.com/games/${gameId}`, "_blank");
+  const challengesContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragging, setDragging] = useState(false);
+
+  const handleMouseDown = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setIsDragging(true);
+    setDragging(false);
+    const startX = event.clientX;
+    const scrollLeft = challengesContainerRef.current?.scrollLeft || 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX - startX;
+      if (challengesContainerRef.current) {
+        challengesContainerRef.current.scrollLeft = scrollLeft - x;
+        setIsDragging(true);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
   };
+
+  // New functions for touch events
+  const handleTouchStart = (event: React.TouchEvent) => {
+    const touch = event.touches[0];
+    const startX = touch.clientX;
+    const scrollLeft = challengesContainerRef.current?.scrollLeft || 0;
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const x = e.touches[0].clientX - startX;
+      if (challengesContainerRef.current) {
+        challengesContainerRef.current.scrollLeft = scrollLeft - x;
+        setDragging(true);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      setIsDragging(false);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+  };
+
+  const handleClick = (gameId: string) => {
+    if (!isDragging && !dragging) {
+      window.open(`https://shuffle.com/games/${gameId}`, "_blank");
+    }
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => console.log("Swiped Left"),
+    onSwipedRight: () => console.log("Swiped Right"),
+    trackMouse: true,
+  });
 
   return (
     <div
       id="challenges"
-      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-8 pt-32 xl:pt-36 2xl:pt-40"
+      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-16 lg:pb-8 lg:pt-32 xl:pt-36 2xl:pt-40"
     >
       {/* Background Image */}
       <div
@@ -70,17 +133,25 @@ const Challenges: React.FC = () => {
         Challenges
       </h1>
       <div
+        {...handlers}
+        ref={challengesContainerRef}
         className="relative bg-zinc-700 bg-opacity-0 rounded-xl p-8 mx-6 lg:mx-48 2xl:mx-48 z-10"
         style={{ height: "auto", overflow: "hidden" }}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart} // Add touch event handler
       >
         <div
           className="flex space-x-4"
-          style={{ cursor: "grab", justifyContent: "flex-start" }}
+          style={{
+            cursor: isDragging ? "grabbing" : "grab",
+            justifyContent: "flex-start",
+          }}
         >
           {challenges.map((challenge) => (
             <div
               key={challenge.id}
               className="max-w-[200px] 2xl:max-w-[320px] flex flex-col rounded-lg p-4"
+              onMouseDown={handleMouseDown}
               onClick={() => handleClick(challenge.id)}
             >
               <img

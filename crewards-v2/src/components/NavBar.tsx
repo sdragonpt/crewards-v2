@@ -45,6 +45,15 @@ function NavBar() {
           element.scrollIntoView({ behavior: "smooth" });
         }
       }, 100); // Atraso para garantir que a navegação esteja concluída
+    } else if (location.pathname.includes("/vip")) {
+      // Se estiver na página do leaderboard, você pode querer navegar de volta para a home
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(anchorId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Atraso para garantir que a navegação esteja concluída
     } else {
       const element = document.getElementById(anchorId);
       if (element) {
@@ -198,12 +207,12 @@ function NavBar() {
                   {
                     path: "/vip/csgoempire",
                     label: "Vip CSGOEmpire",
-                    icon: "empirelogo.png", // Adiciona a imagem correspondente
+                    icon: "/empirelogo.png",
                   },
                   {
                     path: "/vip/shuffle",
                     label: "Vip Shuffle",
-                    icon: "shufflelogo.png", // Adiciona a imagem correspondente
+                    icon: "/shufflelogo.png",
                   },
                 ].map((link, index) => (
                   <Link
@@ -211,21 +220,7 @@ function NavBar() {
                     to={link.path}
                     onClick={() => {
                       setMobileMenuOpen(false);
-
-                      // Se o link for para uma âncora (seção), redireciona para a Home antes de rolar
-                      if (link.path.startsWith("/#")) {
-                        navigate("/"); // Redireciona para a Home
-
-                        setTimeout(() => {
-                          const anchorId = link.label.toLowerCase();
-                          const element = document.getElementById(anchorId);
-                          if (element) {
-                            element.scrollIntoView({ behavior: "smooth" });
-                          }
-                        }, 300);
-                      } else {
-                        navigate(link.path);
-                      }
+                      // Resto do código...
                     }}
                     className={`flex items-center px-3 py-2 rounded-md text-lg mx-6 my-1 ${
                       location.pathname === link.path ||
@@ -240,12 +235,11 @@ function NavBar() {
                         : "hover:text-white"
                     }`}
                   >
-                    {/* Substituir ícone por imagem para links VIP */}
-                    {link.path.includes("/vip") ? (
+                    {link.path.startsWith("/vip/") ? (
                       <img
-                        src={`/${link.icon}`}
+                        src={link.icon}
                         alt={link.label}
-                        className="w-6 h-6 mr-2" // Define o tamanho da imagem
+                        className="w-5 h-5 mr-2"
                       />
                     ) : (
                       <i className={`fas fa-${link.icon} mr-2`}></i>

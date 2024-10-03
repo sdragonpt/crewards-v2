@@ -1,32 +1,53 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSwipeable } from "react-swipeable";
 
-const VideoBar: React.FC = () => {
+const VideoBarLocal: React.FC = () => {
   const [videos, setVideos] = useState<any[]>([]);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragging, setDragging] = useState(false);
-  const [, setLoading] = useState<boolean>(false);
-  const [, setError] = useState<string | null>(null);
+
+  // API keys
+  const API_KEYS = [
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY1,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY2,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY3,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY4,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY5,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY6,
+    import.meta.env.VITE_REACT_APP_YOUTUBE_API_KEY7,
+  ];
+
+  const channelId = import.meta.env.VITE_REACT_APP_YOUTUBE_CHANNEL_ID;
 
   const fetchVideos = async () => {
-    setLoading(true);
-    setError(null);
+    let data = null;
 
-    try {
-      const response = await fetch("/.netlify/functions/fetchVideos");
-      if (response.ok) {
-        const data = await response.json();
-        setVideos(data.items);
-      } else {
-        console.error(`Error fetching videos: ${response.statusText}`);
-        setError(`Error fetching videos: ${response.statusText}`);
+    for (let i = 0; i < API_KEYS.length; i++) {
+      const API_KEY = API_KEYS[i];
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&maxResults=20`
+        );
+        if (response.ok) {
+          data = await response.json();
+          setVideos(data.items); // Success
+          break; // Stops
+        } else if (response.status === 403) {
+          console.warn(`API key ${i + 1} returns error 403. Try next key...`);
+          continue; // Goes to the next key
+        } else {
+          console.error(`Error getting videos: ${response.statusText}`);
+          return; // Other errors
+        }
+      } catch (error) {
+        console.error(`API key ${i + 1} fail with error:`, error);
+        continue; // Goes to the next key
       }
-    } catch (error) {
-      console.error("Error calling function:", error);
-      setError("Error calling function");
-    } finally {
-      setLoading(false);
+    }
+
+    if (!data) {
+      console.error("Every key fail.");
     }
   };
 
@@ -65,21 +86,22 @@ const VideoBar: React.FC = () => {
     window.addEventListener("mouseup", handleMouseUp);
   };
 
-  // New functions for touch events
+  // Handlers para toque
   const handleTouchStart = (event: React.TouchEvent) => {
     const touch = event.touches[0];
     const startX = touch.clientX;
     const scrollLeft = videoContainerRef.current?.scrollLeft || 0;
 
     const handleTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      const x = touch.clientX - startX;
+      const x = e.touches[0].clientX - startX;
       if (videoContainerRef.current) {
         videoContainerRef.current.scrollLeft = scrollLeft - x;
+        setDragging(true);
       }
     };
 
     const handleTouchEnd = () => {
+      setIsDragging(false);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchend", handleTouchEnd);
     };
@@ -119,7 +141,7 @@ const VideoBar: React.FC = () => {
         className="relative bg-zinc-700 bg-opacity-10 rounded-xl p-8 mx-6 lg:mx-24 2xl:mx-48 z-10"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart} // Add touch event handler
+        onTouchStart={handleTouchStart} // Adiciona o handler de toque
       >
         <div
           className="flex space-x-4"
@@ -130,7 +152,6 @@ const VideoBar: React.FC = () => {
               key={index}
               className="min-w-[300px] 2xl:min-w-[400px] flex flex-col rounded-lg p-4"
               onMouseDown={handleMouseDown}
-              onTouchStart={handleTouchStart} // Add touch event handler
               onClick={(event) => handleClick(video.id.videoId, event)}
             >
               <img
@@ -164,4 +185,4 @@ const VideoBar: React.FC = () => {
   );
 };
 
-export default VideoBar;
+export default VideoBarLocal;

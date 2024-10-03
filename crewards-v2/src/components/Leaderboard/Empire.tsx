@@ -3,15 +3,32 @@ import { fadeIn } from "../../variants";
 import Time from "./Time";
 import EmpireLeft from "./EmpireLeft";
 import EmpireRight from "./EmpireRight";
+import { useEffect, useState } from "react";
 
 function Empire() {
   const time = "2024-10-05T23:59:59";
+
+  // Estado para armazenar a altura da tela
+  const [isShortScreen, setIsShortScreen] = useState(window.innerHeight < 1000);
+
+  useEffect(() => {
+    // Função para atualizar o estado da altura da tela
+    const handleResize = () => {
+      setIsShortScreen(window.innerHeight < 1000);
+    };
+
+    // Adiciona o listener ao redimensionar a janela
+    window.addEventListener("resize", handleResize);
+
+    // Limpa o listener ao desmontar o componente
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
       {/* Primeira View - Leaderboard Cards */}
       <div
-        className="relative flex items-center justify-center lg:min-h-[100vh] min-h-[160vh] bg-cover bg-center"
+        className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%), url(/background.png)",
@@ -26,13 +43,14 @@ function Empire() {
         {/* Leaderboard Cards (Primeira View - Detalhes Simples) */}
         <motion.div
           variants={fadeIn("up", 0.3)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.7 }}
+          initial={"hidden"} // Verifica se a tela é pequena
+          animate={isShortScreen ? "show" : "hidden"} // Usar animate para telas pequenas
+          viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
+          transition={{ duration: 0.5 }} // Mantém a velocidade da animação
           className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-28 2xl:mt-36"
         >
           {/* Cards do Empire */}
-          <div className="absolute top-[-170px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
+          <div className="absolute top-[-150px] sm:top-[-170px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
             <div className="bg-zinc-950 rounded-full 2xl:w-24 2xl:h-24 lg:w-16 w-20 mx-auto 2xl:mb-4 lg:mb-3">
               <img
                 src="/logo2.png"
@@ -62,7 +80,7 @@ function Empire() {
             </div>
           </div>
 
-          <div className="absolute top-[-520px] lg:top-0 bg-zinc-900 rounded-lg p-8 pb-20 text-center lg:relative transform scale-110 overflow-visible w-60 lg:ml-24">
+          <div className="absolute top-[-500px] sm:top-[-520px] lg:top-0 bg-zinc-900 rounded-lg p-8 pb-20 text-center lg:relative transform scale-110 overflow-visible w-60 lg:ml-24">
             <div className="bg-zinc-950 rounded-full 2xl:w-32 2xl:h-32 w-20 mx-auto mb-3">
               <img
                 src="/logo2.png"
@@ -90,7 +108,7 @@ function Empire() {
             </div>
           </div>
 
-          <div className="absolute top-[180px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
+          <div className="absolute top-[200px] sm:top-[180px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
             <div className="bg-zinc-950 rounded-full 2xl:w-24 2xl:h-24 lg:w-16 w-20 mx-auto 2xl:mb-4 lg:mb-3">
               <img
                 src="/logo2.png"

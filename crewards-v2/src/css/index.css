@@ -71,6 +71,25 @@ button:focus-visible {
 @tailwind components;
 @tailwind utilities;
 
+@media (max-height: 799px) {
+  .custom-min-h {
+    min-height: 220vh; /* Para telas menores que 670px de altura */
+  }
+}
+
+@media (min-height: 800px) {
+  .custom-min-h {
+    min-height: 180vh; /* Para telas maiores que 900px de altura */
+  }
+}
+
+@media (min-height: 860px) {
+  .custom-min-h {
+    min-height: 160vh; /* Para telas maiores que 900px de altura */
+  }
+}
+
+
 @keyframes spin-y {
   0% {
     transform: rotateY(0deg);

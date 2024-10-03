@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import Hero from "../components/Home/Hero";
 import CardSection from "../components/Home/CardSection";
 import VideoBar from "../components/Home/VideoBar";
+import VideoBarLocal from "../components/Home/VideoBarLocal";
 import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import LoadingScreen from "./LoadingScreen";
@@ -13,6 +14,7 @@ import Challenges from "../components/Home/Challenges";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const isLocalhost = window.location.hostname === "localhost";
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -41,7 +43,7 @@ function App() {
                 {/* <MoneyCounter targetAmount={33500} /> */}
                 <CardSection />
                 <Challenges />
-                <VideoBar />
+                {isLocalhost ? <VideoBarLocal /> : <VideoBar />}
                 <Footer />
               </>
             }
