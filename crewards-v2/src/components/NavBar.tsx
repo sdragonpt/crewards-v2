@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import DropDownProfile from "./DropDownProfile";
 
 function NavBar() {
   const location = useLocation();
@@ -8,6 +9,16 @@ function NavBar() {
   const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
   const [, setActiveLink] = useState<string>("");
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // State for mobile menu
+
+  // LOGIN
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de login
+  const [openProfile, setOpenProfile] = useState(false);
+
+  // Função para alternar o estado de isLoggedIn
+  const toggleLogin = () => {
+    setIsLoggedIn((prev) => !prev); // Alterna o valor de isLoggedIn
+    setOpenProfile(false);
+  };
 
   // Home click
   const handleHomeClick = () => {
@@ -20,12 +31,17 @@ function NavBar() {
 
   const handleLeaderboardClick = () => {
     if (location.pathname === "/leaderboard") {
-      const element = document.getElementById("leaderboard");
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
     } else {
-      navigate("/leaderboard");
+      navigate("/leaderboard"); // Navega para a página do leaderboard
+    }
+  };
+
+  const handleVipClick = () => {
+    if (location.pathname.startsWith("/vip/")) {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+    } else {
+      navigate("/vip/csgoempire"); // Navega para a página do CSGOEmpire
     }
   };
 
@@ -124,6 +140,10 @@ function NavBar() {
     return location.pathname === "/" && location.hash === `#${anchorId}`;
   };
 
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
+  };
+
   return (
     <nav className="fixed top-0 w-full bg-zinc-950 bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
@@ -139,7 +159,7 @@ function NavBar() {
           </div>
           {/* Navigation Links */}
           <div className="hidden md:block lg:block">
-            <div className="ml-10 flex items-baseline 2xl:space-x-4 2xl:text-lg lg:space-x-2 lg:text-base text-zinc-500 relative">
+            <div className="ml-10 flex items-center 2xl:space-x-4 2xl:text-lg lg:space-x-2 lg:text-base text-zinc-500 relative">
               <Link
                 to="/"
                 onClick={handleHomeClick}
@@ -184,9 +204,8 @@ function NavBar() {
               >
                 Leaderboard
               </Link>
-              <Link
-                to="/vip/csgoempire"
-                onClick={() => handleLeaderboardClick()}
+              <a
+                onClick={() => handleVipClick()}
                 className={`px-3 py-2 rounded-md cursor-pointer ${
                   location.pathname.startsWith("/vip")
                     ? "text-white"
@@ -194,7 +213,34 @@ function NavBar() {
                 }`}
               >
                 Vip
-              </Link>
+              </a>
+              {isLoggedIn ? (
+                <div className="relative flex items-center">
+                  <Link to="#" className="rounded-md" onClick={handleLogin}>
+                    <img
+                      src="/logo2.png"
+                      alt="User Icon"
+                      className="w-8 h-8 mr-2 rounded-full"
+                      onClick={() => setOpenProfile((prev) => !prev)}
+                    />
+                  </Link>
+                  {openProfile && <DropDownProfile toggleLogin={toggleLogin} />}{" "}
+                  {/* Passa a função de alternância */}
+                </div>
+              ) : (
+                <Link
+                  onClick={handleLogin} // Altera o estado para logged in
+                  to="#"
+                  className="flex items-center justify-center text-white px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md"
+                >
+                  <img
+                    src="/discordlogo.png"
+                    alt="Login Icon"
+                    className="w-5 h-5 mr-2"
+                  />
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -263,13 +309,13 @@ function NavBar() {
                     action: () => navigate("/vip/csgoempire"),
                     icon: "/empirelogo.png",
                     color: "bg-yellow-500 text-white",
-                  }, // Texto branco
+                  },
                   {
                     label: "Vip Shuffle",
                     action: () => navigate("/vip/shuffle"),
                     icon: "/shufflelogo.png",
                     color: "bg-purple-500 text-white",
-                  }, // Texto branco
+                  },
                 ].map((link, index) => (
                   <button
                     key={index}
@@ -320,6 +366,40 @@ function NavBar() {
                     {link.label}
                   </button>
                 ))}
+
+                {/* Botão de Login */}
+                <div className="flex flex-col mt-5 mx-6">
+                  <hr className="mb-6 border-zinc-700" />
+                  {isLoggedIn ? (
+                    <ul className="flex flex-col gap-4">
+                      <li className="flex items-center text-lg text-white px-2 py-3 bg-zinc-800 rounded-md overflow-hidden">
+                        <img
+                          src="/logo2.png"
+                          alt="User Icon"
+                          className="w-6 h-6 mr-2 ml-1 rounded-full"
+                        />
+                        <span className="mr-8">{username}</span>
+                      </li>
+                      <li className="hover:text-white">
+                        <i className="fas fa-cog mx-2"></i>
+                        <a href="#">Settings</a>
+                      </li>
+                      <li className="hover:text-white cursor-pointer">
+                        <i className="fas fa-sign-out-alt mx-2"></i>
+                        <a onClick={toggleLogin}>Logout</a>{" "}
+                        {/* Chama a função de logout */}
+                      </li>
+                    </ul>
+                  ) : (
+                    <button
+                      onClick={handleLogin} // Chama a função de login
+                      className="flex items-center px-3 py-2 rounded-md text-lg my-1 bg-blue-600 hover:bg-blue-700 text-white"
+                    >
+                      <i className="fas fa-sign-in-alt mr-2"></i>
+                      Login
+                    </button>
+                  )}
+                </div>
               </div>
             </motion.div>
           )}
@@ -329,4 +409,5 @@ function NavBar() {
   );
 }
 
+export const username = "Sérgio";
 export default NavBar;
