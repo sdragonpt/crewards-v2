@@ -19,7 +19,7 @@ function Empire() {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
+        <i className="absolute top-32 lg:top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
           <i className="shadow-lg glow-effect-text-5">LEADER</i>BOARD
         </i>
 
@@ -29,7 +29,7 @@ function Empire() {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.7 }}
-          className="relative z-10 flex flex-wrap justify-center space-x-12 mt-28 2xl:mt-28"
+          className="relative z-10 flex flex-wrap justify-center space-x-12 mt-28 2xl:mt-36"
         >
           {/* Cards do Empire */}
           <div className="bg-zinc-900 rounded-lg p-6 text-center relative w-48">

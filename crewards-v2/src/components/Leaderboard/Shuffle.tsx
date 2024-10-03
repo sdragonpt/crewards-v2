@@ -29,7 +29,7 @@ function Shuffle() {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.7 }}
-          className="relative z-10 flex flex-wrap justify-center space-x-12 mt-28 2xl:mt-28"
+          className="relative z-10 flex flex-wrap justify-center space-x-12 mt-28 2xl:mt-36"
         >
           {/* Cards do Shuffle */}
           <div className="bg-zinc-900 rounded-lg p-6 text-center relative w-48">
