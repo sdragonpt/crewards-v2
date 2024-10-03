@@ -16,7 +16,7 @@ type Tier =
 
 const Shuffle: React.FC = () => {
   const [userTier] = useState<Tier>("wood");
-  const levelPercent = 69;
+  const levelPercent: number = 0;
 
   const tierData: Record<
     Tier,
@@ -127,7 +127,7 @@ const Shuffle: React.FC = () => {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
+        <i className="absolute top-32 lg:top-36 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
           <i className="shadow-lg glow-effect-text-4">VIP </i>REWARDS
         </i>
         <div
@@ -145,13 +145,14 @@ const Shuffle: React.FC = () => {
           className="relative z-10 flex flex-wrap justify-center space-x-12"
         >
           <div
-            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-48 2xl:px-56 2xl:py-20 z-10 text-center 2xl:mt-48"
+            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-20 z-10 text-center 2xl:mt-48 lg:mt-36"
             style={{
               height: "auto",
               overflow: "hidden",
               borderColor: currentTier.color,
               borderWidth: "2px",
               borderStyle: "solid",
+              boxShadow: "inset 10px 10px 20px rgba(0, 0, 0, 0.5)", // Adiciona uma sombra interna
             }}
           >
             <div className="flex items-center justify-center mb-12">
@@ -187,7 +188,7 @@ const Shuffle: React.FC = () => {
                 <span>75%</span>
                 <span>100%</span>
               </div>
-              <div className="2xl:w-[700px] w-full h-3 bg-gray-600 rounded-full relative">
+              <div className="2xl:w-[700px] lg:w-[500px] w-full h-3 bg-gray-600 rounded-full relative">
                 <div
                   className="h-full rounded-full progress-bar"
                   style={{
@@ -234,6 +235,9 @@ const Shuffle: React.FC = () => {
             >
               Claim Rewards
             </button>
+            <button className="bg-[#8337d8] text-white py-2 px-4 rounded-full hover:bg-[#582c8c] transition ml-4">
+              Login
+            </button>
           </div>
         </motion.div>
       </div>
@@ -241,17 +245,17 @@ const Shuffle: React.FC = () => {
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
         ref={secondViewRef} // Ref para a segunda view
-        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pt-10 2xl:pb-0 lg:my-0"
+        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pt-28 lg:pb-10 2xl:pb-0 lg:my-0"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
         }}
       >
-        <div className="flex flex-wrap justify-center 2xl:w-[1400px]">
+        <div className="flex flex-wrap justify-center 2xl:w-[1400px] lg:w-[1000px]">
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className="bg-zinc-900 rounded-lg p-4 mb-4 2xl:w-[580px] 2xl:h-[130px] flex flex-col justify-between m-2"
+              className="bg-zinc-900 rounded-lg p-4 mb-4 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
               style={{
                 borderColor: tierData[tier].color,
                 borderWidth: "2px",
@@ -259,6 +263,7 @@ const Shuffle: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 flexWrap: "wrap",
+                boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.5)", // Adiciona uma sombra interna
               }}
             >
               <div className="flex items-start">
@@ -272,6 +277,26 @@ const Shuffle: React.FC = () => {
                     {tier.charAt(0).toUpperCase() + tier.slice(1)}
                   </h3>
                   <p className="text-gray-300">{tierData[tier].info}</p>
+                </div>
+                {/* Botão "Claim" */}
+                <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10">
+                  <button
+                    className={`py-2 px-4 rounded-full text-sm ${
+                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                      (userTier === "diamond" && levelPercent === 100) // Verifica se o usuário está no tier diamond com 100%
+                        ? "bg-[#8337d8] text-white hover:bg-[#582c8c] cursor-pointer" // Botão ativo para o tier atual ou anterior
+                        : "bg-gray-500 text-gray-300 cursor-not-allowed" // Botão desativado para os outros níveis
+                    } transition`}
+                    disabled={
+                      !(
+                        tier === userTier ||
+                        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                        (userTier === "diamond" && levelPercent === 100)
+                      ) // Desativa se não for o tier do usuário, anterior ou se for diamond com 100%
+                    }
+                  >
+                    Claim
+                  </button>
                 </div>
                 {tier === userTier && (
                   <div className="bg-zinc-700 text-zinc-400 rounded-full px-2 py-1 text-xs">

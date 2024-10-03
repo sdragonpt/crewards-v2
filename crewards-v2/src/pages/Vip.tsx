@@ -15,7 +15,7 @@ function Vip() {
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
       {/* Imagens para alternar entre Empire e Shuffle */}
-      <div className="absolute top-48 2xl:top-64 left-1/2 transform -translate-x-1/2 z-20 flex space-x-8">
+      <div className="absolute top-48 lg:top-52 2xl:top-64 left-1/2 transform -translate-x-1/2 z-20 flex space-x-8">
         {/* Imagem do Empire */}
         <img
           src="/csgoempire.png"

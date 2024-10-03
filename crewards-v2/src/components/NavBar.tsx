@@ -1,11 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function NavBar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
   const [, setActiveLink] = useState<string>("");
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false); // State for mobile menu
 
   // Home click
   const handleHomeClick = () => {
@@ -29,10 +31,21 @@ function NavBar() {
 
   // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
-    if (location.pathname === "/leaderboard") {
-      setTargetAnchor(anchorId);
+    if (location.pathname === "/") {
+      const element = document.getElementById(anchorId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (location.pathname === "/leaderboard") {
+      // Se estiver na página do leaderboard, você pode querer navegar de volta para a home
       navigate("/");
-    } else if (location.pathname === "/") {
+      setTimeout(() => {
+        const element = document.getElementById(anchorId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Atraso para garantir que a navegação esteja concluída
+    } else {
       const element = document.getElementById(anchorId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -66,16 +79,21 @@ function NavBar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-neutral-900 bg-opacity-15 backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-28">
-        <div className="flex justify-between items-center h-16 relative">
+    <nav className="fixed top-0 w-full bg-zinc-900 bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
+      <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex lg:justify-between lg:items-center h-24 lg:h-16 lg:relative">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <img className="h-20 w-auto" src="/logo.png" alt="Logo" />
+          <div className="flex-shrink-0 lg:mr-6">
+            <img
+              className="h-20 w-auto mx-auto lg:mx-0"
+              src="/logo.png"
+              alt="Logo"
+            />
           </div>
           {/* Navigation Links */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6 text-lg text-zinc-500 relative">
+          <div className="hidden md:block lg:block">
+            <div className="ml-10 flex items-baseline 2xl:space-x-4 2xl:text-lg lg:space-x-2 lg:text-base text-zinc-500 relative">
               <Link
                 to="/"
                 onClick={handleHomeClick}
@@ -134,6 +152,88 @@ function NavBar() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation */}
+        <div className="lg:hidden flex justify-between items-center h-24 z-20">
+          {/* Logo */}
+          <div className="flex-shrink-0 mx-auto">
+            <img className="h-20 w-auto ml-6" src="/logo.png" alt="Logo" />
+          </div>
+          {/* Hamburger Menu Button */}
+          <button
+            className="text-white focus:outline-none mr-2"
+            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <div className="w-6 h-0.5 bg-white mb-1"></div>
+            <div className="w-6 h-0.5 bg-white mb-1"></div>
+            <div className="w-6 h-0.5 bg-white"></div>
+          </button>
+        </div>
+
+        {/* Expanded Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="fixed top-24 left-0 w-full bg-zinc-900 bg-opacity-100 z-10 border-b-2 border-zinc-600 h-screen overflow-hidden" // Adicionando overflow-hidden
+              initial={{ y: -30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -30, opacity: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex flex-col items-left py-4 text-zinc-400">
+                {[
+                  { path: "/", label: "Home", icon: "home" },
+                  { path: "/#rewards", label: "Rewards", icon: "trophy" },
+                  {
+                    path: "/#challenges",
+                    label: "Challenges",
+                    icon: "clipboard-list",
+                  },
+                  { path: "/#video-bar", label: "Videos", icon: "video" },
+                  {
+                    path: "/leaderboard",
+                    label: "Leaderboard",
+                    icon: "chart-line",
+                  },
+                  { path: "/vip/csgoempire", label: "Vip", icon: "star" },
+                ].map((link, index) => (
+                  <Link
+                    key={index}
+                    to={link.path}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      // Se o link for para uma âncora, redireciona para a Home primeiro
+                      if (link.path !== "/") {
+                        navigate("/"); // Redireciona para a Home
+                        setTimeout(() => {
+                          const anchorId = link.label.toLowerCase(); // Obtém o ID correspondente
+                          const element = document.getElementById(anchorId);
+                          if (element) {
+                            element.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }, 300); // Atraso para garantir que a navegação funcione corretamente
+                      } else {
+                        // Para links que vão para a Home
+                        navigate(link.path);
+                      }
+                    }}
+                    className={`flex items-center px-3 py-2 rounded-md text-lg mx-6 my-1 ${
+                      location.pathname === link.path ||
+                      (link.path === "/" && location.pathname === "/") ||
+                      (link.path.startsWith("/") &&
+                        isActive(link.label.toLowerCase()))
+                        ? "bg-red-600 text-white"
+                        : "hover:text-white"
+                    }`}
+                  >
+                    <i className={`fas fa-${link.icon} mr-2`}></i>
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );

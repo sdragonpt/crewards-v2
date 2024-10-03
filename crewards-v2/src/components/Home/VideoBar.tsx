@@ -14,7 +14,7 @@ const VideoBar: React.FC = () => {
     setError(null);
 
     try {
-      const response = await fetch('/.netlify/functions/fetchVideos');
+      const response = await fetch("/.netlify/functions/fetchVideos");
       if (response.ok) {
         const data = await response.json();
         setVideos(data.items);
