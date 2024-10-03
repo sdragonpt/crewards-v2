@@ -34,30 +34,40 @@ function NavBar() {
     if (location.pathname === "/") {
       const element = document.getElementById(anchorId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - 100; // Ajuste de 100px para cima
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     } else if (location.pathname === "/leaderboard") {
-      // Se estiver na página do leaderboard, você pode querer navegar de volta para a home
-      navigate("/");
+      navigate("/"); // Navegar para a home se estiver no leaderboard
       setTimeout(() => {
         const element = document.getElementById(anchorId);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 100;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
-      }, 100); // Atraso para garantir que a navegação esteja concluída
+      }, 100); // Atraso para garantir a navegação
     } else if (location.pathname.includes("/vip")) {
-      // Se estiver na página do leaderboard, você pode querer navegar de volta para a home
-      navigate("/");
+      navigate("/"); // Navegar para a home se estiver na página VIP
       setTimeout(() => {
         const element = document.getElementById(anchorId);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 100;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         }
-      }, 100); // Atraso para garantir que a navegação esteja concluída
+      }, 100); // Atraso para garantir a navegação
     } else {
       const element = document.getElementById(anchorId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - 100;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       }
     }
   };
@@ -191,61 +201,97 @@ function NavBar() {
             >
               <div className="flex flex-col items-left py-4 text-zinc-400">
                 {[
-                  { path: "/", label: "Home", icon: "home" },
-                  { path: "/#rewards", label: "Rewards", icon: "trophy" },
                   {
-                    path: "/#challenges",
+                    label: "Home",
+                    action: handleHomeClick,
+                    icon: "home",
+                    color: "",
+                  },
+                  {
+                    label: "Rewards",
+                    action: () => handleAnchorClick("rewards"),
+                    icon: "trophy",
+                    color: "",
+                  },
+                  {
                     label: "Challenges",
+                    action: () => handleAnchorClick("challenges"),
                     icon: "clipboard-list",
+                    color: "",
                   },
-                  { path: "/#video-bar", label: "Videos", icon: "video" },
                   {
-                    path: "/leaderboard",
+                    label: "Videos",
+                    action: () => handleAnchorClick("video-bar"),
+                    icon: "video",
+                    color: "",
+                  },
+                  {
                     label: "Leaderboard",
+                    action: handleLeaderboardClick,
                     icon: "chart-line",
+                    color: "",
                   },
                   {
-                    path: "/vip/csgoempire",
                     label: "Vip CSGOEmpire",
+                    action: () => navigate("/vip/csgoempire"),
                     icon: "/empirelogo.png",
-                  },
+                    color: "bg-yellow-500 text-white",
+                  }, // Texto branco
                   {
-                    path: "/vip/shuffle",
                     label: "Vip Shuffle",
+                    action: () => navigate("/vip/shuffle"),
                     icon: "/shufflelogo.png",
-                  },
+                    color: "bg-purple-500 text-white",
+                  }, // Texto branco
                 ].map((link, index) => (
-                  <Link
+                  <button
                     key={index}
-                    to={link.path}
                     onClick={() => {
-                      setMobileMenuOpen(false);
-                      // Resto do código...
+                      // Se já estiver na página do leaderboard, rola para o topo
+                      if (
+                        link.label === "Leaderboard" &&
+                        location.pathname.includes("/leaderboard")
+                      ) {
+                        window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+                      } else if (
+                        link.label === "Vip CSGOEmpire" &&
+                        location.pathname.includes("/vip/csgoempire")
+                      ) {
+                        window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+                      } else if (
+                        link.label === "Vip Shuffle" &&
+                        location.pathname.includes("/vip/shuffle")
+                      ) {
+                        window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+                      } else {
+                        link.action(); // Executa a ação normal
+                      }
+
+                      setMobileMenuOpen(false); // Fechar o menu após o clique
                     }}
                     className={`flex items-center px-3 py-2 rounded-md text-lg mx-6 my-1 ${
-                      location.pathname === link.path ||
-                      (link.path === "/" && location.pathname === "/") ||
-                      (link.path.startsWith("/") &&
-                        isActive(link.label.toLowerCase()))
-                        ? link.path === "/vip/csgoempire"
-                          ? "bg-[#eab30d] text-white" // Cor para o link do CSGOEmpire
-                          : link.path === "/vip/shuffle"
-                          ? "bg-[#8337d8] text-white" // Cor para o link do Shuffle
-                          : "bg-red-600 text-white"
+                      location.pathname === "/" && link.label === "Home"
+                        ? "text-white"
                         : "hover:text-white"
-                    }`}
+                    } ${link.color} ${
+                      location.pathname.includes(
+                        link.label.replace(" ", "").toLowerCase()
+                      )
+                        ? "bg-opacity-50"
+                        : ""
+                    }`} // Ativar cor de fundo
                   >
-                    {link.path.startsWith("/vip/") ? (
+                    {link.icon.startsWith("/") ? (
                       <img
                         src={link.icon}
-                        alt={link.label}
+                        alt={`${link.label} icon`}
                         className="w-5 h-5 mr-2"
                       />
                     ) : (
-                      <i className={`fas fa-${link.icon} mr-2`}></i>
+                      <i className={`fas fa-${link.icon} mr-2`}></i> // Usando Font Awesome para os outros ícones
                     )}
                     {link.label}
-                  </Link>
+                  </button>
                 ))}
               </div>
             </motion.div>
