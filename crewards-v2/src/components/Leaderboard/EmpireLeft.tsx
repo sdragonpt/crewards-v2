@@ -3,7 +3,7 @@ import { motion } from "framer-motion"; // Importar motion
 function EmpireLeft() {
   return (
     <motion.div
-      className="absolute left-0 top-0 w-1/2 h-full bg-cover z-5 overflow-hidden"
+      className="absolute left-0 top-0 w-1/2 lg:h-full h-[160vh] bg-cover z-5 overflow-hidden"
       style={{
         backgroundImage: "url(/yellowglow3.png)", // Fundo do componente
         backgroundSize: "200% auto", // Estica a imagem
@@ -18,7 +18,7 @@ function EmpireLeft() {
       <img
         src="/left.png"
         alt="Mini Left 1"
-        className="absolute 2xl:top-12 top-14 left-0 2xl:w-[27rem] lg:w-[20rem] z-5" // Assegura que esta imagem fique acima do fundo
+        className="absolute 2xl:top-12 lg:top-14 left-0 2xl:w-[27rem] lg:w-[20rem] h-[100vh] top-1/3 w-auto z-5 lg:opacity-100 opacity-40" // Assegura que esta imagem fique acima do fundo
       />
       {/* <img
         src="/awp.png"

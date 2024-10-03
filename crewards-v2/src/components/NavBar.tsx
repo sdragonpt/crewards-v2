@@ -79,7 +79,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-zinc-900 bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
+    <nav className="fixed top-0 w-full bg-zinc-950 bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:justify-between lg:items-center h-24 lg:h-16 lg:relative">
@@ -154,7 +154,7 @@ function NavBar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden flex justify-between items-center h-24 z-20">
+        <div className="lg:hidden flex justify-between items-center h-24 z-40">
           {/* Logo */}
           <div className="flex-shrink-0 mx-auto">
             <img className="h-20 w-auto ml-6" src="/logo.png" alt="Logo" />
@@ -174,7 +174,7 @@ function NavBar() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="fixed top-24 left-0 w-full bg-zinc-900 bg-opacity-100 z-10 border-b-2 border-zinc-600 h-screen overflow-hidden" // Adicionando overflow-hidden
+              className="fixed top-24 left-0 w-full bg-zinc-950 z-10 border-b-2 border-zinc-600 h-screen overflow-hidden"
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -30, opacity: 0 }}
@@ -195,25 +195,35 @@ function NavBar() {
                     label: "Leaderboard",
                     icon: "chart-line",
                   },
-                  { path: "/vip/csgoempire", label: "Vip", icon: "star" },
+                  {
+                    path: "/vip/csgoempire",
+                    label: "Vip CSGOEmpire",
+                    icon: "empirelogo.png", // Adiciona a imagem correspondente
+                  },
+                  {
+                    path: "/vip/shuffle",
+                    label: "Vip Shuffle",
+                    icon: "shufflelogo.png", // Adiciona a imagem correspondente
+                  },
                 ].map((link, index) => (
                   <Link
                     key={index}
                     to={link.path}
                     onClick={() => {
                       setMobileMenuOpen(false);
-                      // Se o link for para uma âncora, redireciona para a Home primeiro
-                      if (link.path !== "/") {
+
+                      // Se o link for para uma âncora (seção), redireciona para a Home antes de rolar
+                      if (link.path.startsWith("/#")) {
                         navigate("/"); // Redireciona para a Home
+
                         setTimeout(() => {
-                          const anchorId = link.label.toLowerCase(); // Obtém o ID correspondente
+                          const anchorId = link.label.toLowerCase();
                           const element = document.getElementById(anchorId);
                           if (element) {
                             element.scrollIntoView({ behavior: "smooth" });
                           }
-                        }, 300); // Atraso para garantir que a navegação funcione corretamente
+                        }, 300);
                       } else {
-                        // Para links que vão para a Home
                         navigate(link.path);
                       }
                     }}
@@ -222,11 +232,24 @@ function NavBar() {
                       (link.path === "/" && location.pathname === "/") ||
                       (link.path.startsWith("/") &&
                         isActive(link.label.toLowerCase()))
-                        ? "bg-red-600 text-white"
+                        ? link.path === "/vip/csgoempire"
+                          ? "bg-[#eab30d] text-white" // Cor para o link do CSGOEmpire
+                          : link.path === "/vip/shuffle"
+                          ? "bg-[#8337d8] text-white" // Cor para o link do Shuffle
+                          : "bg-red-600 text-white"
                         : "hover:text-white"
                     }`}
                   >
-                    <i className={`fas fa-${link.icon} mr-2`}></i>
+                    {/* Substituir ícone por imagem para links VIP */}
+                    {link.path.includes("/vip") ? (
+                      <img
+                        src={`/${link.icon}`}
+                        alt={link.label}
+                        className="w-6 h-6 mr-2" // Define o tamanho da imagem
+                      />
+                    ) : (
+                      <i className={`fas fa-${link.icon} mr-2`}></i>
+                    )}
                     {link.label}
                   </Link>
                 ))}
