@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Definindo um tipo para os níveis
 type Tier =
@@ -15,6 +16,7 @@ type Tier =
   | "diamond";
 
 const Shuffle: React.FC = () => {
+  const navigate = useNavigate();
   const [userTier] = useState<Tier>("wood");
   const levelPercent: number = 0;
 
@@ -114,6 +116,10 @@ const Shuffle: React.FC = () => {
 
   const handleScrollToView = () => {
     secondViewRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleLogin = () => {
+    navigate("/login/shuffle"); // Redireciona para a página de login
   };
 
   return (
@@ -235,7 +241,10 @@ const Shuffle: React.FC = () => {
             >
               Claim Rewards
             </button>
-            <button className="bg-[#8337d8] text-white py-2 px-4 rounded-full hover:bg-[#582c8c] transition ml-4">
+            <button
+              onClick={handleLogin}
+              className="bg-[#8337d8] text-white py-2 px-4 rounded-full hover:bg-[#582c8c] transition ml-4"
+            >
               Login
             </button>
           </div>

@@ -11,6 +11,8 @@ import LoadingScreen from "./LoadingScreen";
 import Leaderboard from "./Leaderboard";
 import Vip from "./Vip";
 import Challenges from "../components/Home/Challenges";
+import EmpireLoginPage from "./EmpireLoginPage";
+import ShuffleLoginPage from "./ShuffleLoginPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -65,6 +67,14 @@ function App() {
                 <Footer />
               </div>
             }
+          />
+          <Route
+            path="/login/csgoempire" // Adiciona a rota para a página de login
+            element={<EmpireLoginPage />}
+          />
+          <Route
+            path="/login/shuffle" // Adiciona a rota para a página de login
+            element={<ShuffleLoginPage />}
           />
         </Routes>
       </div>

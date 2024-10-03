@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Definindo um tipo para os níveis
 type Tier =
@@ -13,6 +14,7 @@ type Tier =
   | "unbreakable";
 
 const Empire: React.FC = () => {
+  const navigate = useNavigate();
   const [userTier] = useState<Tier>("rust");
   const levelPercent: number = 0;
 
@@ -96,6 +98,10 @@ const Empire: React.FC = () => {
 
   const handleScrollToView = () => {
     secondViewRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleLogin = () => {
+    navigate("/login/csgoempire"); // Redireciona para a página de login
   };
 
   return (
@@ -216,7 +222,10 @@ const Empire: React.FC = () => {
             >
               Claim Rewards
             </button>
-            <button className="bg-[#eab30d] text-white py-2 px-4 rounded-full hover:bg-[#f4dc84] ml-4 transition">
+            <button
+              onClick={handleLogin} // Adiciona o onClick ao botão de login
+              className="bg-[#eab30d] text-white py-2 px-4 rounded-full hover:bg-[#f4dc84] ml-4 transition"
+            >
               Login
             </button>
           </div>
