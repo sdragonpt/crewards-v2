@@ -29,8 +29,35 @@ function NavBar() {
     }
   };
 
-  // Smooth transition to the anchor
   const handleAnchorClick = (anchorId: string) => {
+    const scrollToElement = () => {
+      const element = document.getElementById(anchorId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    if (location.pathname === "/") {
+      scrollToElement();
+    } else if (location.pathname === "/leaderboard") {
+      // Se estiver na página do leaderboard, navega para a home e depois faz o scroll
+      navigate("/");
+      setTimeout(() => {
+        scrollToElement();
+      }, 100); // Atraso para garantir a navegação
+    } else if (location.pathname.includes("/vip")) {
+      // Se estiver em /vip/csgoempire ou /vip/shuffle, navega para a home
+      navigate("/");
+      setTimeout(() => {
+        scrollToElement();
+      }, 100); // Atraso para garantir a navegação
+    } else {
+      scrollToElement(); // Scroll direto para outras rotas
+    }
+  };
+
+  // Smooth transition to the anchor
+  const handleMobileAnchorClick = (anchorId: string) => {
     if (location.pathname === "/") {
       const element = document.getElementById(anchorId);
       if (element) {
@@ -209,19 +236,19 @@ function NavBar() {
                   },
                   {
                     label: "Rewards",
-                    action: () => handleAnchorClick("rewards"),
+                    action: () => handleMobileAnchorClick("rewards"),
                     icon: "trophy",
                     color: "",
                   },
                   {
                     label: "Challenges",
-                    action: () => handleAnchorClick("challenges"),
+                    action: () => handleMobileAnchorClick("challenges"),
                     icon: "clipboard-list",
                     color: "",
                   },
                   {
                     label: "Videos",
-                    action: () => handleAnchorClick("video-bar"),
+                    action: () => handleMobileAnchorClick("video-bar"),
                     icon: "video",
                     color: "",
                   },
