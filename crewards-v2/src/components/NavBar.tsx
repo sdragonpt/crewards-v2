@@ -394,7 +394,7 @@ function NavBar() {
                       </li>
                       <li className="hover:text-white">
                         <i className="fas fa-cog mx-2"></i>
-                        <a href="#">Settings</a>
+                        <a href="/profile">Settings</a>
                       </li>
                       <li className="hover:text-white cursor-pointer">
                         <i className="fas fa-sign-out-alt mx-2"></i>
