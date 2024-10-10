@@ -35,6 +35,7 @@ function NavBar() {
       location.pathname === "/vip/csgoempire" ||
       location.pathname === "/vip/shuffle" ||
       location.pathname === "/leaderboard" ||
+      location.pathname === "/profile" ||
       location.pathname === "/"
     ) {
       setOpenProfile(false);
@@ -74,6 +75,12 @@ function NavBar() {
         scrollToElement();
       }, 100); // Atraso para garantir a navegação
     } else if (location.pathname.includes("/vip")) {
+      // Se estiver em /vip/csgoempire ou /vip/shuffle, navega para a home
+      navigate("/");
+      setTimeout(() => {
+        scrollToElement();
+      }, 100); // Atraso para garantir a navegação
+    } else if (location.pathname.includes("/profile")) {
       // Se estiver em /vip/csgoempire ou /vip/shuffle, navega para a home
       navigate("/");
       setTimeout(() => {

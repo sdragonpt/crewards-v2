@@ -69,7 +69,11 @@ function App() {
           />
           <Route
             path="/profile" // Adiciona a rota para a página de login
-            element={<ProfileSettings />}
+            element={
+              <div>
+                <ProfileSettings />
+              </div>
+            }
           />
         </Routes>
       </div>

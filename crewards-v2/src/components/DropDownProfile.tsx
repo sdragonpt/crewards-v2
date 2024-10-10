@@ -1,12 +1,24 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion"; // Importa o motion do framer-motion
 import { username } from "./NavBar";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface DropDownProfileProps {
   toggleLogin: () => void; // Define a função de alternância como prop
 }
 
 const DropDownProfile: React.FC<DropDownProfileProps> = ({ toggleLogin }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSettingsClick = () => {
+    if (location.pathname.startsWith("/profile")) {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+    } else {
+      navigate("/profile"); // Navega para a página do CSGOEmpire
+    }
+  };
+
   return (
     <AnimatePresence>
       <motion.div
@@ -26,10 +38,18 @@ const DropDownProfile: React.FC<DropDownProfileProps> = ({ toggleLogin }) => {
             <span className="mr-8">{username}</span>
           </li>
           <li className="hover:text-white cursor-pointer">
-            <a href="/profile">
+            <Link
+              to="/profile"
+              onClick={() => handleSettingsClick()}
+              className={`cursor-pointer ${
+                location.pathname === "/profile"
+                  ? "text-white"
+                  : "hover:text-white"
+              }`}
+            >
               <i className="fas fa-cog mx-1"></i>{" "}
               <span className="hover:text-white">Settings</span>
-            </a>
+            </Link>
           </li>
           <li className="hover:text-white cursor-pointer">
             <i className="fas fa-sign-out-alt mx-1"></i>{" "}
