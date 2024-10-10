@@ -29,6 +29,18 @@ function NavBar() {
     }
   };
 
+  useEffect(() => {
+    // Feche o menu quando a URL mudar para as páginas específicas
+    if (
+      location.pathname === "/vip/csgoempire" ||
+      location.pathname === "/vip/shuffle" ||
+      location.pathname === "/leaderboard" ||
+      location.pathname === "/"
+    ) {
+      setOpenProfile(false);
+    }
+  }, [location.pathname]);
+
   const handleLeaderboardClick = () => {
     if (location.pathname === "/leaderboard") {
       window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
@@ -212,7 +224,7 @@ function NavBar() {
                     : "hover:text-white"
                 }`}
               >
-                Vip
+                VIP
               </a>
               {isLoggedIn ? (
                 <div className="relative flex items-center">
@@ -305,13 +317,13 @@ function NavBar() {
                     color: "",
                   },
                   {
-                    label: "Vip CSGOEmpire",
+                    label: "VIP CSGOEmpire",
                     action: () => navigate("/vip/csgoempire"),
                     icon: "/empirelogo.png",
                     color: "bg-yellow-500 text-white",
                   },
                   {
-                    label: "Vip Shuffle",
+                    label: "VIP Shuffle",
                     action: () => navigate("/vip/shuffle"),
                     icon: "/shufflelogo.png",
                     color: "bg-purple-500 text-white",
@@ -327,12 +339,12 @@ function NavBar() {
                       ) {
                         window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
                       } else if (
-                        link.label === "Vip CSGOEmpire" &&
+                        link.label === "VIP CSGOEmpire" &&
                         location.pathname.includes("/vip/csgoempire")
                       ) {
                         window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
                       } else if (
-                        link.label === "Vip Shuffle" &&
+                        link.label === "VIP Shuffle" &&
                         location.pathname.includes("/vip/shuffle")
                       ) {
                         window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo

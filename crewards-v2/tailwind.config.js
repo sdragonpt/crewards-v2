@@ -8,7 +8,10 @@ export default {
     extend: {
       userSelect: {
         'none': 'none',
-      }
+      },
+      screens: {
+        '3xl': '1920px', // Define o novo breakpoint para telas maiores que 1920px
+      },
     },
   },
   plugins: [],

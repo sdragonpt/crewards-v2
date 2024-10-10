@@ -87,7 +87,7 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         className="flex flex-col place-items-end justify-center mr-4 z-10"
         ref={counterRef}
       >
-        <h2 className="text-4xl 2xl:text-6xl font-bold mb-4 2xl:mb-8 text-white font-thunder">
+        <h2 className="text-4xl 3xl:text-6xl font-bold mb-4 3xl:mb-8 text-white font-thunder">
           Total Given Away
         </h2>
         <div className="relative inline-block">

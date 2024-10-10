@@ -127,7 +127,7 @@ const Shuffle: React.FC = () => {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 lg:top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
+        <i className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
           <i className="shadow-lg glow-effect-text-4">VIP </i>REWARDS
         </i>
         <div
@@ -145,7 +145,7 @@ const Shuffle: React.FC = () => {
           className="relative z-10 flex flex-wrap justify-center space-x-12"
         >
           <div
-            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-20 z-10 text-center 2xl:mt-48 lg:mt-36"
+            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
             style={{
               height: "auto",
               overflow: "hidden",

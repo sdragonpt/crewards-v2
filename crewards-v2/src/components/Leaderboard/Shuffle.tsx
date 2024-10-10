@@ -36,7 +36,7 @@ function Shuffle() {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 lg:top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
+        <i className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
           <i className="shadow-lg glow-effect-text-4">LEADER</i>BOARD
         </i>
 
@@ -47,7 +47,7 @@ function Shuffle() {
           animate={isShortScreen ? "show" : "hidden"} // Usar animate para telas pequenas
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
-          className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-28 2xl:mt-36"
+          className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-16 3xl:mt-36"
         >
           {/* Cards do Shuffle */}
           <div className="absolute top-[-150px] sm:top-[-170px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
@@ -156,7 +156,7 @@ function Shuffle() {
             wager on the leaderboard
           </span>
         </div>
-        <div className="flex justify-between items-center px-6 rounded w-full lg:max-w-3xl lg:mt-16">
+        <div className="flex justify-between items-center px-6 rounded w-full lg:max-w-3xl lg:mt-16 ">
           <div className="flex items-center">
             <span className="text-zinc-500 ml-4">User</span>
           </div>
@@ -166,7 +166,7 @@ function Shuffle() {
           </div>
         </div>
 
-        <div className="flex flex-col space-y-4 mt-4 w-full max-w-3xl">
+        <div className="flex flex-col space-y-4 mt-4 w-full max-w-3xl lg:mb-12">
           {[...Array(7)].map((_, index) => {
             const prizes = [50, 50, 50, 25, 25, 25, 25];
             const prize = prizes[index] || 0;

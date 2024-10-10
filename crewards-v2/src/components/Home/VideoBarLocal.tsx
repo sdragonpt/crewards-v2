@@ -132,7 +132,7 @@ const VideoBarLocal: React.FC = () => {
         className="absolute inset-0 bg-black opacity-70 z-0"
         style={{ backgroundImage: "url('background2.png')" }}
       />
-      <h1 className="text-6xl mb-4 font-bold text-white text-center z-10 font-thunder">
+      <h1 className="text-6xl mb-4 font-bold text-white text-center z-10 font-thunder lg:mt-12 mt-0">
         Videos
       </h1>
       <div

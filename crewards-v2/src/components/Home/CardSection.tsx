@@ -38,7 +38,7 @@ const CardSection: React.FC = () => {
       <div className="absolute inset-0 bg-black opacity-70" />
       <h1
         ref={h1Ref}
-        className="text-6xl xl:mt-24 lg:mt-16 font-bold xl:mb-8 mb-2 text-white z-20 font-thunder"
+        className="text-6xl 3xl:mt-24 lg:mt-32 font-bold lg:mb-0 xl:mb-8 mb-2 text-white z-20 font-thunder"
       >
         Rewards
       </h1>
@@ -70,7 +70,7 @@ const CardSection: React.FC = () => {
             <p className="text-center text-sm text-neutral-300 mb-6">
               CLASH.GG
             </p>
-            <div className="bg-[#171414] rounded-lg border-b border-[#FFD627] p-4 mb-4 text-center">
+            <div className="bg-[#171414] rounded-lg border-b border-[#FFD627] p-4 lg:p-2 mb-4 text-center">
               <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
@@ -91,7 +91,7 @@ const CardSection: React.FC = () => {
                 5% DEPOSIT BONUS
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-3 mb-6 text-center">
+            <div className="bg-[#171414] rounded-lg p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 2xl:text-sm text-sm">EXTRA</p>
               <span className="text-zinc-300 2xl:text-base text-xs">
                 PLAY FOR FREE USING ON-SITE RAIN
@@ -138,7 +138,7 @@ const CardSection: React.FC = () => {
             <p className="text-center text-sm text-neutral-300 mb-6">
               SHUFFLE.COM
             </p>
-            <div className="bg-[#171414] rounded-lg border-b border-[#762CFB] p-4 mb-4 text-center">
+            <div className="bg-[#171414] rounded-lg border-b border-[#762CFB] p-4 lg:p-2 mb-4 text-center">
               <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
@@ -159,7 +159,7 @@ const CardSection: React.FC = () => {
                 REDEEM BONUSES
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-3 mb-6 text-center">
+            <div className="bg-[#171414] rounded-lg p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
               <span className="text-zinc-300 text-base">
                 WEEKLY $20K RAFFLE
@@ -206,7 +206,7 @@ const CardSection: React.FC = () => {
             <p className="text-center text-sm text-neutral-300 mb-6">
               CSGOEMPIRE.COM
             </p>
-            <div className="bg-[#171414] rounded-lg border-b border-[#FFC31A] p-4 mb-4 text-center h-[85px]">
+            <div className="bg-[#171414] rounded-lg border-b border-[#FFC31A] p-4 mb-4 lg:p-2 text-center">
               <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
               <motion.span
                 ref={ref}
@@ -227,7 +227,7 @@ const CardSection: React.FC = () => {
                 1 FREE CASE
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-3 mb-6 text-center">
+            <div className="bg-[#171414] rounded-lg p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
               <span className="text-zinc-300">2K MONTHLY LEADERBOARD</span>
             </div>

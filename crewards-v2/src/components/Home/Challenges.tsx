@@ -135,7 +135,7 @@ const Challenges: React.FC = () => {
       <div
         {...handlers}
         ref={challengesContainerRef}
-        className="relative bg-zinc-700 bg-opacity-0 rounded-xl p-8 mx-6 lg:mx-48 2xl:mx-48 z-10"
+        className="relative bg-zinc-700 bg-opacity-0 rounded-xl p-8 lg:pt-0 2xl:p-8 mx-6 lg:mx-48 2xl:mx-48 z-10"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart} // Add touch event handler

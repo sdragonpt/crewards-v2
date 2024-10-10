@@ -36,7 +36,6 @@
   }
 }
 
-
 @keyframes spin-y {
   0% {
     transform: rotateY(0deg);
@@ -247,16 +246,32 @@
   filter: drop-shadow(0 0 14px rgba(221, 187, 86, 0.9)); /* Glow para o tier gold */
 }
 
+.glow-rank-platinum {
+  filter: drop-shadow(0 0 14px rgba(144, 148, 182, 0.9)); /* Glow para o tier platinum */
+}
+
+.glow-rank-emerald {
+  filter: drop-shadow(0 0 14px rgba(39, 252, 47, 0.9)); /* Glow para o tier platinum */
+}
+
+.glow-rank-sapphire {
+  filter: drop-shadow(0 0 14px rgba(43, 64, 252, 0.9)); /* Glow para o tier platinum */
+}
+
+.glow-rank-ruby {
+  filter: drop-shadow(0 0 14px rgba(238, 56, 41, 0.9)); /* Glow para o tier platinum */
+}
+
 .glow-rank-diamond {
-  filter: drop-shadow(0 0 14px rgba(123, 228, 252, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(0 0 14px rgba(19, 207, 251, 0.9)); /* Glow para o tier platinum */
 }
 
-.glow-rank-uranium {
-  filter: drop-shadow(0 0 14px rgba(99, 241, 36, 0.9)); /* Glow para o tier jade */
+.glow-rank-mythic {
+  filter: drop-shadow(0 0 14px rgba(160, 35, 217, 0.9)); /* Glow para o tier platinum */
 }
 
-.glow-rank-unbreakable {
-  filter: drop-shadow(0 0 14px rgba(250, 71, 25, 0.9)); /* Glow para o tier sapphire */
+.glow-rank-darkmatter {
+  filter: drop-shadow(0 0 14px rgba(100, 4, 100, 0.9)); /* Glow para o tier platinum */
 }
 
 /* Outros efeitos */

@@ -8,9 +8,13 @@ type Tier =
   | "bronze"
   | "silver"
   | "gold"
+  | "platinum"
+  | "emerald"
+  | "sapphire"
+  | "ruby"
   | "diamond"
-  | "uranium"
-  | "unbreakable";
+  | "mythic"
+  | "darkmatter";
 
 const Empire: React.FC = () => {
   const [userTier] = useState<Tier>("rust");
@@ -37,7 +41,7 @@ const Empire: React.FC = () => {
     },
     bronze: {
       color: "#d5a06c",
-      image: "/rank-bronze.png",
+      image: "/2bronze.png",
       text: "is your current tier",
       info: "- Wagger 100$",
       next: "silver",
@@ -45,7 +49,7 @@ const Empire: React.FC = () => {
     },
     silver: {
       color: "#ced7e5",
-      image: "/rank-silver.png",
+      image: "/3silver.png",
       text: "is your current tier",
       info: "- Wagger 100$",
       next: "gold",
@@ -53,31 +57,63 @@ const Empire: React.FC = () => {
     },
     gold: {
       color: "#ddbb56",
-      image: "/rank-gold.png",
+      image: "/4gold.png",
+      text: "is your current tier",
+      info: "- Wagger 100$",
+      next: "platinum",
+      nextText: "Platinum tier",
+    },
+    platinum: {
+      color: "#9094b6",
+      image: "/5platinum.png",
+      text: "is your current tier",
+      info: "- Wagger 100$",
+      next: "emerald",
+      nextText: "Emerald tier",
+    },
+    emerald: {
+      color: "#27fc2f",
+      image: "/6emerald.png",
+      text: "is your current tier",
+      info: "- Wagger 100$",
+      next: "sapphire",
+      nextText: "Sapphire tier",
+    },
+    sapphire: {
+      color: "#2b40fc",
+      image: "/7sapphire1.png",
+      text: "is your current tier",
+      info: "- Wagger 100$",
+      next: "ruby",
+      nextText: "Ruby tier",
+    },
+    ruby: {
+      color: "#ee3829",
+      image: "/8ruby.png",
       text: "is your current tier",
       info: "- Wagger 100$",
       next: "diamond",
       nextText: "Diamond tier",
     },
     diamond: {
-      color: "#7be4fc",
-      image: "/rank-diamond.png",
+      color: "#13cffb",
+      image: "/9diamond.png",
       text: "is your current tier",
       info: "- Wagger 100$",
-      next: "uranium",
-      nextText: "Uranium tier",
+      next: "mythic",
+      nextText: "Mythic tier",
     },
-    uranium: {
-      color: "#63f124",
-      image: "/rank-uranium.png",
+    mythic: {
+      color: "#a023d9",
+      image: "/10mythic.png",
       text: "is your current tier",
       info: "- Wagger 100$",
-      next: "unbreakable",
-      nextText: "Unbreakable tier",
+      next: "sapphire",
+      nextText: "Sapphire tier",
     },
-    unbreakable: {
-      color: "#fa4719",
-      image: "/rank-unbreakable.png",
+    darkmatter: {
+      color: "#640464",
+      image: "/11darkmatter.png",
       text: "is your current tier",
       info: "- Wagger 100$",
       next: null,
@@ -109,7 +145,7 @@ const Empire: React.FC = () => {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 lg:top-32 2xl:top-40 text-6xl 2xl:text-8xl font-bold font-thunder z-10 text-white">
+        <i className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
           <i className="shadow-lg glow-effect-text-5">VIP </i>REWARDS
         </i>
         <div
@@ -127,7 +163,7 @@ const Empire: React.FC = () => {
           className="relative z-10 flex flex-wrap justify-center space-x-12"
         >
           <div
-            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-20 z-10 text-center 2xl:mt-48 lg:mt-36"
+            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
             style={{
               height: "auto",
               overflow: "hidden",
@@ -248,7 +284,7 @@ const Empire: React.FC = () => {
                 <img
                   src={tierData[tier].image}
                   alt={tierData[tier].text}
-                  className={`w-16 h-16 mr-6 ml-2 mt-4 glow-rank-${tier}`}
+                  className={`w-16 h-16 mr-6 ml-2 mt-2 mb-2 glow-rank-${tier}`}
                 />
                 <div className="flex-1">
                   <h3 className="text-white font-normal">
@@ -261,7 +297,7 @@ const Empire: React.FC = () => {
                   <button
                     className={`py-2 px-4 rounded-full text-sm ${
                       tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                      (userTier === "unbreakable" && levelPercent === 100) // Verifica se o usuário está no tier unbreakable com 100%
+                      (userTier === "darkmatter" && levelPercent === 100) // Verifica se o usuário está no tier unbreakable com 100%
                         ? "bg-[#eab30d] text-white hover:bg-[#f4dc84] cursor-pointer"
                         : "bg-gray-500 text-gray-300 cursor-not-allowed"
                     } transition`}
@@ -269,7 +305,7 @@ const Empire: React.FC = () => {
                       !(
                         tier === userTier ||
                         tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                        (userTier === "unbreakable" && levelPercent === 100)
+                        (userTier === "darkmatter" && levelPercent === 100)
                       ) // Desativa se não for o tier do usuário, anterior ou se for unbreakable com 100%
                     }
                   >

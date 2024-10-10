@@ -41,7 +41,7 @@ function Hero() {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        className="relative z-10 text-center text-white 2xl:mt-0 mt-24"
+        className="relative z-10 text-center text-white 3xl:mt-0 mt-24"
       >
         <i className="text-8xl 2xl:text-9xl font-bold font-thunder">
           UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
