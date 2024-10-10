@@ -26,7 +26,8 @@ const Empire: React.FC = () => {
       color: string;
       image: string;
       text: string;
-      info: string;
+      wager: string;
+      prize: string;
       next: Tier | null; // O próximo nível pode ser null
       nextText: string | null;
     }
@@ -35,7 +36,8 @@ const Empire: React.FC = () => {
       color: "#9c8474",
       image: "/rank-rust.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 1000$",
+      prize: "- Claim 10$",
       next: "bronze",
       nextText: "Bronze tier",
     },
@@ -43,7 +45,8 @@ const Empire: React.FC = () => {
       color: "#d5a06c",
       image: "/2bronze.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 5000$",
+      prize: "- Claim 40$",
       next: "silver",
       nextText: "Silver tier",
     },
@@ -51,7 +54,8 @@ const Empire: React.FC = () => {
       color: "#ced7e5",
       image: "/3silver.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 10000$",
+      prize: "- Claim 60$",
       next: "gold",
       nextText: "Gold tier",
     },
@@ -59,7 +63,8 @@ const Empire: React.FC = () => {
       color: "#ddbb56",
       image: "/4gold.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 25000$",
+      prize: "- Claim 190$",
       next: "platinum",
       nextText: "Platinum tier",
     },
@@ -67,7 +72,8 @@ const Empire: React.FC = () => {
       color: "#9094b6",
       image: "/5platinum.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 50000$",
+      prize: "- Claim 325$",
       next: "emerald",
       nextText: "Emerald tier",
     },
@@ -75,7 +81,8 @@ const Empire: React.FC = () => {
       color: "#27fc2f",
       image: "/6emerald.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 75000$",
+      prize: "- Claim 340$",
       next: "sapphire",
       nextText: "Sapphire tier",
     },
@@ -83,7 +90,8 @@ const Empire: React.FC = () => {
       color: "#2b40fc",
       image: "/7sapphire1.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 100000$",
+      prize: "- Claim 350$",
       next: "ruby",
       nextText: "Ruby tier",
     },
@@ -91,7 +99,8 @@ const Empire: React.FC = () => {
       color: "#ee3829",
       image: "/8ruby.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 250000$",
+      prize: "- Claim 2250$",
       next: "diamond",
       nextText: "Diamond tier",
     },
@@ -99,7 +108,8 @@ const Empire: React.FC = () => {
       color: "#13cffb",
       image: "/9diamond.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 500000$",
+      prize: "- Claim 4000$",
       next: "mythic",
       nextText: "Mythic tier",
     },
@@ -107,7 +117,8 @@ const Empire: React.FC = () => {
       color: "#a023d9",
       image: "/10mythic.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 1000000$",
+      prize: "- Claim 8500$",
       next: "sapphire",
       nextText: "Sapphire tier",
     },
@@ -115,7 +126,8 @@ const Empire: React.FC = () => {
       color: "#640464",
       image: "/11darkmatter.png",
       text: "is your current tier",
-      info: "- Wagger 100$",
+      wager: "- Wager 2500000$",
+      prize: "- Claim 27000$",
       next: null,
       nextText: null,
     },
@@ -290,7 +302,8 @@ const Empire: React.FC = () => {
                   <h3 className="text-white font-normal">
                     {tier.charAt(0).toUpperCase() + tier.slice(1)}
                   </h3>
-                  <p className="text-gray-300">{tierData[tier].info}</p>
+                  <p className="text-gray-300">{tierData[tier].wager}</p>
+                  <p className="text-gray-300">{tierData[tier].prize}</p>
                 </div>
                 {/* Botão "Claim" */}
                 <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10">

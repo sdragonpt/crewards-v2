@@ -189,6 +189,16 @@ function NavBar() {
                 Home
               </Link>
               <a
+                onClick={() => handleVipClick()}
+                className={`px-3 py-2 rounded-md cursor-pointer glow-effect-text-5 ${
+                  location.pathname.startsWith("/vip")
+                    ? "text-white"
+                    : "hover:text-white"
+                }`}
+              >
+                VIP
+              </a>
+              <a
                 onClick={() => handleAnchorClick("rewards")}
                 className={`px-3 py-2 rounded-md cursor-pointer ${
                   isActive("rewards") ? "text-white" : "hover:text-white"
@@ -223,16 +233,6 @@ function NavBar() {
               >
                 Leaderboard
               </Link>
-              <a
-                onClick={() => handleVipClick()}
-                className={`px-3 py-2 rounded-md cursor-pointer ${
-                  location.pathname.startsWith("/vip")
-                    ? "text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                VIP
-              </a>
               {isLoggedIn ? (
                 <div className="relative flex items-center">
                   <Link to="#" className="rounded-md" onClick={handleLogin}>
