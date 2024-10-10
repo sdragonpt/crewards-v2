@@ -25,7 +25,7 @@ const DropDownProfile: React.FC<DropDownProfileProps> = ({ toggleLogin }) => {
             />
             <span className="mr-8">{username}</span>
           </li>
-          <li className="hover:text-white">
+          <li className="hover:text-white cursor-pointer">
             <i className="fas fa-cog mx-1"></i>{" "}
             <a href="#" className="hover:text-white">
               Settings
