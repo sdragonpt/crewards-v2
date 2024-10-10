@@ -47,21 +47,21 @@ function Shuffle() {
           animate={isShortScreen ? "show" : "hidden"} // Usar animate para telas pequenas
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
-          className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-16 3xl:mt-36"
+          className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-24 3xl:mt-36"
         >
           {/* Cards do Shuffle */}
           <div className="absolute top-[-150px] sm:top-[-170px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
-            <div className="bg-zinc-950 rounded-full 2xl:w-24 2xl:h-24 lg:w-16 w-20 mx-auto 2xl:mb-4 lg:mb-3">
+            <div className="bg-zinc-950 rounded-full 3xl:w-24 3xl:h-24 lg:w-16 w-20 mx-auto 3xl:mb-4 lg:mb-3">
               <img
                 src="/logo2.png"
                 alt="Second Place"
                 className="rounded-full"
               />
-              <div className="absolute 2xl:top-[6.7rem] lg:top-[4.8rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black 2xl:text-sm lg:text-sm text-sm font-bold 2xl:px-[0.65rem] 2xl:py-1 lg:px-[0.44rem] lg:py-0 px-[0.44rem] py-0 rounded-full">
+              <div className="absolute 3xl:top-[6.7rem] lg:top-[4.8rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black 3xl:text-sm lg:text-sm text-sm font-bold 3xl:px-[0.65rem] 3xl:py-1 lg:px-[0.44rem] lg:py-0 px-[0.44rem] py-0 rounded-full">
                 2
               </div>
             </div>
-            <h3 className="lg:text-xl text-2xl text-white lg:mb-4 2xl:mb-8 lg:mt-0 mt-2">
+            <h3 className="lg:text-xl text-3xl text-white lg:mb-4 3xl:mb-8 lg:mt-0 mt-2">
               Player 2
             </h3>
             <p className="text-sm text-zinc-500">Wagered</p>
@@ -70,7 +70,7 @@ function Shuffle() {
             </p>
 
             {/* Div do gradiente */}
-            <div className="absolute left-0 right-0 lg:w-60 w-72 2xl:top-[17rem] top-56 -mx-6">
+            <div className="absolute left-0 right-0 lg:w-60 w-72 3xl:top-[17rem] top-56 -mx-6">
               <div className="bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black font-semibold px-4 py-2 rounded-lg mx-4 shadow-2">
                 $15,000
               </div>
@@ -78,13 +78,13 @@ function Shuffle() {
           </div>
 
           <div className="absolute top-[-500px] sm:top-[-520px] lg:top-0 bg-zinc-900 rounded-lg p-8 pb-20 text-center lg:relative transform scale-110 overflow-visible w-60 lg:ml-24">
-            <div className="bg-zinc-950 rounded-full 2xl:w-32 2xl:h-32 w-20 mx-auto mb-3">
+            <div className="bg-zinc-950 rounded-full 3xl:w-32 3xl:h-32 w-20 mx-auto mb-3">
               <img
                 src="/logo2.png"
                 alt="First Place"
                 className="rounded-full"
               />
-              <div className="absolute 2xl:top-[8.9rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black 2xl:text-base text-sm font-bold 2xl:px-[0.85rem] 2xl:py-1 px-[0.51rem] py-0 rounded-full">
+              <div className="absolute 3xl:top-[8.9rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black 3xl:text-base text-sm font-bold 3xl:px-[0.85rem] 3xl:py-1 px-[0.51rem] py-0 rounded-full">
                 1
               </div>
             </div>
@@ -95,7 +95,7 @@ function Shuffle() {
             </p>
 
             {/* Div do gradiente */}
-            <div className="absolute left-0 right-0 w-72 2xl:top-[17rem] top-56 -mx-6">
+            <div className="absolute left-0 right-0 w-72 3xl:top-[17rem] top-56 -mx-6">
               <div className="bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black font-semibold px-6 py-2 rounded-lg mx-4 shadow-1">
                 $50,000
               </div>
@@ -103,17 +103,17 @@ function Shuffle() {
           </div>
 
           <div className="absolute top-[200px] sm:top-[180px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
-            <div className="bg-zinc-950 rounded-full 2xl:w-24 2xl:h-24 lg:w-16 w-20 mx-auto 2xl:mb-4 lg:mb-3">
+            <div className="bg-zinc-950 rounded-full 3xl:w-24 3xl:h-24 lg:w-16 w-20 mx-auto 3xl:mb-4 lg:mb-3">
               <img
                 src="/logo2.png"
                 alt="Third Place"
                 className="rounded-full"
               />
-              <div className="absolute 2xl:top-[6.7rem] lg:top-[4.8rem] top-[6.2rem]  left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black 2xl:text-sm lg:text-sm text-sm font-bold 2xl:px-[0.65rem] 2xl:py-1 lg:px-[0.44rem] lg:py-0 px-[0.44rem] py-0 rounded-full">
+              <div className="absolute 3xl:top-[6.7rem] lg:top-[4.8rem] top-[6.2rem]  left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black 3xl:text-sm lg:text-sm text-sm font-bold 3xl:px-[0.65rem] 3xl:py-1 lg:px-[0.44rem] lg:py-0 px-[0.44rem] py-0 rounded-full">
                 3
               </div>
             </div>
-            <h3 className="lg:text-xl text-2xl text-white lg:mb-4 2xl:mb-8 lg:mt-0 mt-2">
+            <h3 className="lg:text-xl text-3xl text-white lg:mb-4 3xl:mb-8 lg:mt-0 mt-2">
               Player 3
             </h3>
             <p className="text-sm text-zinc-500">Wagered</p>
@@ -121,7 +121,7 @@ function Shuffle() {
               <span className="text-[#9D4D25]">$</span>90,000
             </p>
             {/* Div do gradiente */}
-            <div className="absolute left-0 right-0 lg:w-60 w-72 2xl:top-[17rem] top-56 -mx-6">
+            <div className="absolute left-0 right-0 lg:w-60 w-72 3xl:top-[17rem] top-56 -mx-6">
               <div className="bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black font-semibold px-4 py-2 rounded-lg mx-4 shadow-3">
                 $10,000
               </div>
@@ -130,7 +130,7 @@ function Shuffle() {
         </motion.div>
 
         {/* Time Component */}
-        <div className="absolute 2xl:bottom-10 bottom-5 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="absolute 3xl:bottom-10 bottom-5 left-1/2 transform -translate-x-1/2 z-10">
           <Time targetDate={time} leaderboardType="SHUFFLE " />
         </div>
 
@@ -141,7 +141,7 @@ function Shuffle() {
 
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
-        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 2xl:pb-0 my-[-90px] lg:my-0"
+        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
@@ -206,7 +206,7 @@ function Shuffle() {
                   <img
                     src={`/${avatar}.png`}
                     alt={`Avatar`}
-                    className="2xl:w-12 w-10 rounded-full ml-2"
+                    className="3xl:w-12 w-10 rounded-full ml-2"
                   />
                   <span className="text-white ml-4">{name}</span>
                 </div>
