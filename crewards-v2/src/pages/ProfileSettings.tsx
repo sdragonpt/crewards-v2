@@ -15,6 +15,7 @@ const ProfileSettings: React.FC = () => {
   const [ltcAddress, setLtcAddress] = useState<string>("");
   const [csgoEmpireUsername, setCsgoEmpireUsername] = useState<string>("");
   const [discordName, setDiscordName] = useState<string | null>(null);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   // Simulando o carregamento de dados do usuário ao montar o componente
   useEffect(() => {
@@ -56,12 +57,24 @@ const ProfileSettings: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div
       className="flex items-center justify-center h-screen bg-zinc-900 bg-cover bg-center"
       style={{
         backgroundImage:
           "linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url(/background.png)",
+        marginTop: windowHeight < 700 ? "60px" : "0", // Margem superior condicional
       }}
     >
       <div className="bg-zinc-800 px-8 py-4 rounded-lg shadow-lg w-full max-w-xl lg:mt-24 3xl:mt-36 border-2 mx-4 border-zinc-700">
