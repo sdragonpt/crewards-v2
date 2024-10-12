@@ -3,26 +3,9 @@ import { fadeIn } from "../../variants";
 import Time from "./Time";
 import EmpireLeft from "./EmpireLeft";
 import EmpireRight from "./EmpireRight";
-import { useEffect, useState } from "react";
 
 function Empire() {
   const time = "2024-10-05T23:59:59";
-
-  // Estado para armazenar a altura da tela
-  const [isShortScreen, setIsShortScreen] = useState(window.innerHeight < 1000);
-
-  useEffect(() => {
-    // Função para atualizar o estado da altura da tela
-    const handleResize = () => {
-      setIsShortScreen(window.innerHeight < 1000);
-    };
-
-    // Adiciona o listener ao redimensionar a janela
-    window.addEventListener("resize", handleResize);
-
-    // Limpa o listener ao desmontar o componente
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
@@ -44,7 +27,7 @@ function Empire() {
         <motion.div
           variants={fadeIn("up", 0.3)}
           initial={"hidden"} // Verifica se a tela é pequena
-          animate={isShortScreen ? "show" : "hidden"} // Usar animate para telas pequenas
+          animate="show"
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
           className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-24 3xl:mt-36"
