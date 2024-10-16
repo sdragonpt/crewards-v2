@@ -295,7 +295,7 @@ const Empire: React.FC = () => {
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className="bg-zinc-900 rounded-lg p-4 mb-4 w-full 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
+              className="relative bg-zinc-900 rounded-lg p-4 mb-4 w-full 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
               style={{
                 borderColor: tierData[tier].color,
                 borderWidth: "2px",
@@ -306,6 +306,22 @@ const Empire: React.FC = () => {
                 boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.5)", // Adiciona uma sombra interna
               }}
             >
+              {/* Badge */}
+              {tier === userTier && (
+                <div
+                  className="absolute -top-4 left-1 bg-zinc-900 text-white px-4 py-[0.15rem] rounded-full"
+                  style={{
+                    borderColor: tierData[tier].color,
+                    borderWidth: "2px",
+                    borderStyle: "solid",
+                    zIndex: 10, // Certifica que o badge fica sobre o card
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Sombra para o badge
+                  }}
+                >
+                  Your Tier
+                </div>
+              )}
+
               <div className="flex items-start">
                 <img
                   src={tierData[tier].image}
@@ -320,12 +336,7 @@ const Empire: React.FC = () => {
                   <p className="text-gray-300">{tierData[tier].prize}</p>
                 </div>
               </div>
-              {/* Renderiza "Your Tier" somente se o tier atual for igual ao userTier */}
-              {tier === userTier && (
-                <div className="bg-zinc-700 text-zinc-400 rounded-full px-2 py-1 text-xs mb-2 lg:mb-0">
-                  Your Tier
-                </div>
-              )}
+
               {/* Botão "Claim" */}
               <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10 flex-col lg:flex-row">
                 <button
