@@ -129,8 +129,13 @@ const VideoBarLocal: React.FC = () => {
       className="relative min-h-screen flex flex-col justify-center bg-[#171414] lg:pb-8 lg:pt-16 pb-20"
     >
       <div
-        className="absolute inset-0 bg-black opacity-70 z-0"
-        style={{ backgroundImage: "url('background2.png')" }}
+        className="absolute inset-0 bg-black opacity-70 z-0 bg-no-repeat bg-cover bg-center"
+        style={{
+          backgroundImage: "url('background2.png')",
+          backgroundSize: "120%", // Ajuste o valor conforme necessário
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       />
       <h1 className="text-6xl mb-4 font-bold text-white text-center z-10 font-thunder lg:mt-12 mt-0">
         Videos
