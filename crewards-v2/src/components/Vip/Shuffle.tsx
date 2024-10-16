@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Definindo um tipo para os níveis
 type Tier =
@@ -116,6 +116,18 @@ const Shuffle: React.FC = () => {
     secondViewRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Hook para atualizar a largura da janela
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
       <div
@@ -142,10 +154,12 @@ const Shuffle: React.FC = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.7 }}
-          className="relative z-10 flex flex-wrap justify-center space-x-12"
+          className={`relative z-10 flex flex-wrap justify-center space-x-12 mx-2 ${
+            window.innerWidth < 390 ? "mt-60" : ""
+          }`}
         >
           <div
-            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
+            className="custom-mt custom-p relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
             style={{
               height: "auto",
               overflow: "hidden",
@@ -242,17 +256,17 @@ const Shuffle: React.FC = () => {
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
         ref={secondViewRef} // Ref para a segunda view
-        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pt-28 lg:pb-10 2xl:pb-0 lg:my-0"
+        className="z-30 min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pt-28 lg:pb-10 2xl:pb-0 lg:my-0"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
         }}
       >
-        <div className="flex flex-wrap justify-center 2xl:w-[1400px] lg:w-[1000px]">
+        <div className="z-20 flex flex-wrap justify-center 2xl:w-[1400px] lg:w-[1000px]">
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className="bg-zinc-900 rounded-lg p-4 mb-4 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
+              className="bg-zinc-900 rounded-lg p-4 mb-4 w-full 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
               style={{
                 borderColor: tierData[tier].color,
                 borderWidth: "2px",
@@ -267,7 +281,7 @@ const Shuffle: React.FC = () => {
                 <img
                   src={tierData[tier].image}
                   alt={tierData[tier].text}
-                  className={`w-16 h-16 mr-6 ml-2 mt-4 glow-${tier}`}
+                  className={`w-16 h-16 mr-6 ml-2 mt-4 mb-4 md:mb-0 glow-${tier}`}
                 />
                 <div className="flex-1">
                   <h3 className="text-white font-normal">
@@ -275,31 +289,32 @@ const Shuffle: React.FC = () => {
                   </h3>
                   <p className="text-gray-300">{tierData[tier].info}</p>
                 </div>
-                {/* Botão "Claim" */}
-                <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10">
-                  <button
-                    className={`py-2 px-4 rounded-full text-sm ${
-                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                      (userTier === "diamond" && levelPercent === 100) // Verifica se o usuário está no tier diamond com 100%
-                        ? "bg-[#8337d8] text-white hover:bg-[#582c8c] cursor-pointer" // Botão ativo para o tier atual ou anterior
-                        : "bg-gray-500 text-gray-300 cursor-not-allowed" // Botão desativado para os outros níveis
-                    } transition`}
-                    disabled={
-                      !(
-                        tier === userTier ||
-                        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                        (userTier === "diamond" && levelPercent === 100)
-                      ) // Desativa se não for o tier do usuário, anterior ou se for diamond com 100%
-                    }
-                  >
-                    Claim
-                  </button>
+              </div>
+              {/* Renderiza "Your Tier" somente se o tier atual for igual ao userTier */}
+              {tier === userTier && (
+                <div className="bg-zinc-700 text-zinc-400 rounded-full px-2 py-1 text-xs mb-2 lg:mb-0">
+                  Your tier
                 </div>
-                {tier === userTier && (
-                  <div className="bg-zinc-700 text-zinc-400 rounded-full px-2 py-1 text-xs">
-                    Your tier
-                  </div>
-                )}
+              )}
+              {/* Botão "Claim" */}
+              <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10 flex-col lg:flex-row">
+                <button
+                  className={`py-2 px-4 rounded-full text-sm ${
+                    tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                    (userTier === "diamond" && levelPercent === 100) // Verifica se o usuário está no tier diamond com 100%
+                      ? "bg-[#8337d8] text-white hover:bg-[#582c8c] cursor-pointer" // Botão ativo para o tier atual ou anterior
+                      : "bg-gray-500 text-gray-300 cursor-not-allowed" // Botão desativado para os outros níveis
+                  } transition`}
+                  disabled={
+                    !(
+                      tier === userTier ||
+                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                      (userTier === "diamond" && levelPercent === 100)
+                    ) // Desativa se não for o tier do usuário, anterior ou se for diamond com 100%
+                  }
+                >
+                  Claim
+                </button>
               </div>
             </div>
           ))}
@@ -310,3 +325,6 @@ const Shuffle: React.FC = () => {
 };
 
 export default Shuffle;
+function setWindowWidth(_innerWidth: number) {
+  throw new Error("Function not implemented.");
+}

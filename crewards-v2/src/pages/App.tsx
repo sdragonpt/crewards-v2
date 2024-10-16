@@ -6,16 +6,19 @@ import CardSection from "../components/Home/CardSection";
 import VideoBar from "../components/Home/VideoBar";
 import VideoBarLocal from "../components/Home/VideoBarLocal";
 import Footer from "../components/Footer";
+import MobileFooter from "../components/MobileFooter"; // Importando o MobileFooter
 import ScrollToTop from "../components/ScrollToTop";
 import LoadingScreen from "./LoadingScreen";
 import Leaderboard from "./Leaderboard";
 import Vip from "./Vip";
 import Challenges from "../components/Home/Challenges";
 import ProfileSettings from "./ProfileSettings";
+import useWindowWidth from "../hooks/useWindowWidth"; // Importando o hook
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const isLocalhost = window.location.hostname === "localhost";
+  const windowWidth = useWindowWidth(); // Usando o hook para obter a largura da janela
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,6 +27,11 @@ function App() {
 
     return () => clearTimeout(timer); // Cleans timer
   }, []);
+
+  const renderFooter = () => {
+    // Renderiza o footer apropriado baseado na largura da janela
+    return windowWidth < 768 ? <MobileFooter /> : <Footer />;
+  };
 
   return (
     <Router>
@@ -41,11 +49,10 @@ function App() {
             element={
               <>
                 <Hero />
-                {/* <MoneyCounter targetAmount={33500} /> */}
                 <CardSection />
                 <Challenges />
                 {isLocalhost ? <VideoBarLocal /> : <VideoBar />}
-                <Footer />
+                {renderFooter()} {/* Renderiza o footer aqui */}
               </>
             }
           />
@@ -54,7 +61,7 @@ function App() {
             element={
               <div>
                 <Leaderboard />
-                <Footer />
+                {renderFooter()} {/* Renderiza o footer aqui também */}
               </div>
             }
           />
@@ -63,7 +70,7 @@ function App() {
             element={
               <div>
                 <Vip />
-                <Footer />
+                {renderFooter()} {/* Renderiza o footer aqui também */}
               </div>
             }
           />

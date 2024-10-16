@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Definindo um tipo para os níveis
 type Tier =
@@ -146,6 +146,18 @@ const Empire: React.FC = () => {
     secondViewRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Hook para atualizar a largura da janela
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
       <div
@@ -172,10 +184,12 @@ const Empire: React.FC = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.7 }}
-          className="relative z-10 flex flex-wrap justify-center space-x-12"
+          className={`relative z-10 flex flex-wrap justify-center space-x-12 mx-2 ${
+            window.innerWidth < 390 ? "mt-60" : ""
+          }`}
         >
           <div
-            className="relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
+            className="custom-mt custom-p relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
             style={{
               height: "auto",
               overflow: "hidden",
@@ -277,11 +291,11 @@ const Empire: React.FC = () => {
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
         }}
       >
-        <div className="flex flex-wrap justify-center 2xl:w-[1400px] lg:w-[1000px]">
+        <div className="z-20 flex flex-wrap justify-center 2xl:w-[1400px] lg:w-[1000px]">
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className="bg-zinc-900 rounded-lg p-4 mb-4 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
+              className="bg-zinc-900 rounded-lg p-4 mb-4 w-full 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
               style={{
                 borderColor: tierData[tier].color,
                 borderWidth: "2px",
@@ -296,7 +310,7 @@ const Empire: React.FC = () => {
                 <img
                   src={tierData[tier].image}
                   alt={tierData[tier].text}
-                  className={`w-16 h-16 mr-6 ml-2 mt-2 mb-2 glow-rank-${tier}`}
+                  className={`w-16 h-16 mr-6 ml-2 mt-2 mb-4 md:mb-2 glow-rank-${tier}`}
                 />
                 <div className="flex-1">
                   <h3 className="text-white font-normal">
@@ -305,32 +319,32 @@ const Empire: React.FC = () => {
                   <p className="text-gray-300">{tierData[tier].wager}</p>
                   <p className="text-gray-300">{tierData[tier].prize}</p>
                 </div>
-                {/* Botão "Claim" */}
-                <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10">
-                  <button
-                    className={`py-2 px-4 rounded-full text-sm ${
-                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                      (userTier === "darkmatter" && levelPercent === 100) // Verifica se o usuário está no tier unbreakable com 100%
-                        ? "bg-[#eab30d] text-white hover:bg-[#f4dc84] cursor-pointer"
-                        : "bg-gray-500 text-gray-300 cursor-not-allowed"
-                    } transition`}
-                    disabled={
-                      !(
-                        tier === userTier ||
-                        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                        (userTier === "darkmatter" && levelPercent === 100)
-                      ) // Desativa se não for o tier do usuário, anterior ou se for unbreakable com 100%
-                    }
-                  >
-                    Claim
-                  </button>
+              </div>
+              {/* Renderiza "Your Tier" somente se o tier atual for igual ao userTier */}
+              {tier === userTier && (
+                <div className="bg-zinc-700 text-zinc-400 rounded-full px-2 py-1 text-xs mb-2 lg:mb-0">
+                  Your Tier
                 </div>
-                {/* Renderiza "Your Tier" somente se o tier atual for igual ao userTier */}
-                {tier === userTier && (
-                  <div className="bg-zinc-700 text-zinc-400 rounded-full px-2 py-1 text-xs">
-                    Your Tier
-                  </div>
-                )}
+              )}
+              {/* Botão "Claim" */}
+              <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10 flex-col lg:flex-row">
+                <button
+                  className={`py-2 px-4 rounded-full text-sm ${
+                    tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                    (userTier === "darkmatter" && levelPercent === 100) // Verifica se o usuário está no tier unbreakable com 100%
+                      ? "bg-[#eab30d] text-white hover:bg-[#f4dc84] cursor-pointer"
+                      : "bg-gray-500 text-gray-300 cursor-not-allowed"
+                  } transition`}
+                  disabled={
+                    !(
+                      tier === userTier ||
+                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                      (userTier === "darkmatter" && levelPercent === 100)
+                    ) // Desativa se não for o tier do usuário, anterior ou se for unbreakable com 100%
+                  }
+                >
+                  Claim
+                </button>
               </div>
             </div>
           ))}
@@ -341,3 +355,6 @@ const Empire: React.FC = () => {
 };
 
 export default Empire;
+function setWindowWidth(_innerWidth: number) {
+  throw new Error("Function not implemented.");
+}

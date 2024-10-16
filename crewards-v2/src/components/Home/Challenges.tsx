@@ -115,11 +115,11 @@ const Challenges: React.FC = () => {
   return (
     <div
       id="challenges"
-      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-16 lg:pb-8 lg:pt-32 xl:pt-36 2xl:pt-40"
+      className="relative min-h-screen flex flex-col justify-center bg-[#171414] pb-16 lg:pb-8 lg:pt-32 3xl:pt-40"
     >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-black opacity-20 z-0"
+        className="absolute inset-0 bg-black opacity-20 z-0 bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: "url('shuffle-banner.png')" }}
       />
 

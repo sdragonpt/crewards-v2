@@ -20,7 +20,7 @@ const LoadingScreen: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
 
   return (
     <div
-      className="loading-screen"
+      className="loading-screen z-50"
       style={{ opacity, pointerEvents: isLoading ? 'auto' : 'none' }} // No interaction while still loading
     >
       <img

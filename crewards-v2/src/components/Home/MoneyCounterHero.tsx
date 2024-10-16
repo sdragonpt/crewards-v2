@@ -99,13 +99,13 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
             }}
           />
           <div className="flex items-center space-x-1 bg-[#171414] rounded-xl px-8 py-4 shadow-lg relative z-10">
-            <div className="bg-[#171414] text-red-600 rounded-lg pr-4 py-2 ml-[-8px] shadow-lg glow-effect-text text-3xl 2xl:text-5xl font-bold">
+            <div className="bg-[#171414] text-red-600 rounded-lg pr-4 py-2 ml-[-8px] shadow-lg glow-effect-text text-3xl 3xl:text-5xl font-bold">
               $
             </div>
             {formattedAmount.split("").map((digit, index) => (
               <div
                 key={index}
-                className="bg-[#2a2a2a] text-red-600 rounded-lg px-4 py-2 shadow-lg glow-effect-text text-3xl 2xl:text-5xl font-bold"
+                className="bg-[#2a2a2a] text-red-600 rounded-lg px-4 py-2 shadow-lg glow-effect-text text-3xl 3xl:text-5xl font-bold"
               >
                 {digit}
               </div>

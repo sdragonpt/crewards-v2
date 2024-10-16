@@ -74,10 +74,19 @@ const ProfileSettings: React.FC = () => {
       style={{
         backgroundImage:
           "linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url(/background.png)",
-        marginTop: windowHeight < 700 ? "60px" : "0", // Margem superior condicional
+        paddingTop:
+          windowHeight < 390 ? "20px" : windowHeight < 700 ? "40px" : "0", // Margem superior ajustada
       }}
     >
-      <div className="bg-zinc-800 px-8 py-4 rounded-lg shadow-lg w-full max-w-xl lg:mt-24 3xl:mt-36 border-2 mx-4 border-zinc-700">
+      <div
+        className={`bg-zinc-800 px-8 py-4 rounded-lg shadow-lg w-full max-w-xl border-2 mx-4 border-zinc-700 ${
+          windowHeight < 700 ? "mt-10" : "mt-24"
+        } lg:mt-24 3xl:mt-36`}
+        style={{
+          maxHeight: "80vh", // Define uma altura máxima para a div
+          overflow: "auto", // Adiciona um scroll se o conteúdo for maior que a altura máxima
+        }}
+      >
         {/* Informações do Usuário */}
         <div className="flex items-center mb-6">
           <img

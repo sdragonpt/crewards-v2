@@ -124,7 +124,7 @@ function Shuffle() {
 
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
-        className="min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0"
+        className="pt-32 md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0"
         style={{
           backgroundImage:
             "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
@@ -134,7 +134,7 @@ function Shuffle() {
           <span className="text-zinc-500">Winners will be tipped onside!</span>
         </div>
         <div className="flex flex-wrap text-center lg:mb-0 mb-10">
-          <span className="text-red-600">
+          <span className="text-red-600 px-4">
             Sports betting & coin flip bets will NOT be counted towards your
             wager on the leaderboard
           </span>
@@ -149,7 +149,7 @@ function Shuffle() {
           </div>
         </div>
 
-        <div className="flex flex-col space-y-4 mt-4 w-full max-w-3xl lg:mb-12">
+        <div className="mb-36 flex flex-col space-y-4 mt-4 w-full max-w-3xl lg:mb-12">
           {[...Array(7)].map((_, index) => {
             const prizes = [50, 50, 50, 25, 25, 25, 25];
             const prize = prizes[index] || 0;

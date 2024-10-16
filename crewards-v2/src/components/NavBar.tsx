@@ -268,7 +268,9 @@ function NavBar() {
         <div className="lg:hidden flex justify-between items-center h-24 z-40">
           {/* Logo */}
           <div className="flex-shrink-0 mx-auto">
-            <img className="h-20 w-auto ml-6" src="/logo.png" alt="Logo" />
+            <a href="/">
+              <img className="h-20 w-auto ml-6" src="/logo.png" alt="Logo" />
+            </a>
           </div>
           {/* Hamburger Menu Button */}
           <button

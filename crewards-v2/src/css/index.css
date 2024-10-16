@@ -18,6 +18,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (min-width: 390px) and (max-width: 890px) {
+  .custom-mt {
+    margin-top: 200px;
+  }
+  .custom-p {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+
 @media (max-height: 799px) {
   .custom-min-h {
     min-height: 220vh; /* Para telas menores que 670px de altura */
