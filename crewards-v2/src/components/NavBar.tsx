@@ -412,7 +412,10 @@ function NavBar() {
                       <li className="hover:text-white">
                         <Link
                           to="/profile"
-                          onClick={() => handleSettingsClick()}
+                          onClick={() => {
+                            handleSettingsClick(); // Executa a função de clique
+                            setMobileMenuOpen(false); // Fecha o menu após clicar em Settings
+                          }}
                           className={`cursor-pointer ${
                             location.pathname === "/profile"
                               ? "text-white"
