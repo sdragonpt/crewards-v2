@@ -44,7 +44,7 @@ const CardSection: React.FC = () => {
       </h1>
       <motion.div className="flex flex-wrap items-center justify-center lg:space-x-8 z-10">
         {/* Card 1 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-03 xl:scale-100 scale-90">
+        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-03 3xl:scale-100 scale-90">
           <div className="absolute inset-0 opacity-60 rounded-lg blur-[0px]" />
           <motion.div
             ref={ref}

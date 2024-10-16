@@ -30,26 +30,46 @@ function Vip() {
 
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
+      {/* Camada de fundo com opacidade */}
+      <div className="absolute inset-0 bg-black opacity-20 z-10" />
+
       {/* Imagens para alternar entre Empire e Shuffle */}
       <div className="absolute top-48 lg:top-[10.6rem] 3xl:top-60 left-1/2 transform -translate-x-1/2 z-20 flex space-x-8 justify-center">
-        {/* Imagem do Empire */}
-        <img
-          src="/csgoempire.png"
-          alt="Empire"
-          className={`w-32 lg:w-28 3xl:w-36 cursor-pointer transition duration-300 ${
-            activeImage === 1 ? "brightness-100" : "brightness-50"
-          }`}
-          onClick={() => handleImageClick(1)} // Mudar para Empire ao clicar
-        />
-        {/* Imagem do Shuffle */}
-        <img
-          src="/shuffle.png"
-          alt="Shuffle"
-          className={`w-32 lg:w-28 3xl:w-36 cursor-pointer transition duration-300 ${
-            activeImage === 2 ? "brightness-100" : "brightness-50"
-          }`}
-          onClick={() => handleImageClick(2)} // Mudar para Shuffle ao clicar
-        />
+        {/* Contêiner para a imagem do Empire */}
+        <div className="relative flex flex-col items-center">
+          <div
+            className={`bg-zinc-900 border-b-2 border-zinc-800 rounded-lg px-2 transition-transform duration-300 transform ${
+              activeImage === 1 ? "scale-105" : "opacity-40"
+            }`}
+          >
+            <img
+              src="/csgoempire.png"
+              alt="Empire"
+              className={`w-32 lg:w-28 3xl:w-36 cursor-pointer transition duration-300 ease-in-out hover:scale-110 ${
+                activeImage === 1 ? "brightness-100" : "brightness-100"
+              }`}
+              onClick={() => handleImageClick(1)} // Mudar para Empire ao clicar
+            />
+          </div>
+        </div>
+
+        {/* Contêiner para a imagem do Shuffle */}
+        <div className="relative flex flex-col items-center">
+          <div
+            className={`bg-zinc-900 border-b-2 border-zinc-800 rounded-lg px-2 transition-transform duration-300 transform ${
+              activeImage === 2 ? "scale-105" : "opacity-40"
+            }`}
+          >
+            <img
+              src="/shuffle.png"
+              alt="Shuffle"
+              className={`w-32 lg:w-28 3xl:w-36 cursor-pointer transition duration-300 ease-in-out hover:scale-110 ${
+                activeImage === 2 ? "brightness-100" : "brightness-100"
+              }`}
+              onClick={() => handleImageClick(2)} // Mudar para Shuffle ao clicar
+            />
+          </div>
+        </div>
       </div>
 
       {/* Rotas para Empire e Shuffle */}

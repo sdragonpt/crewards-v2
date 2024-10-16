@@ -139,9 +139,9 @@ const Shuffle: React.FC = () => {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
-          <i className="shadow-lg glow-effect-text-4">VIP </i>REWARDS
-        </i>
+        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
+          <a className="shadow-lg glow-effect-text-7">VIP </a>REWARDS
+        </a>
         <div
           className="absolute z-0 bg-cover bg-center h-full w-full brightness-110"
           style={{

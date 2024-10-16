@@ -19,9 +19,9 @@ function Shuffle() {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <i className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
-          <i className="shadow-lg glow-effect-text-4">LEADER</i>BOARD
-        </i>
+        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
+          <a className="shadow-lg glow-effect-text-7">LEADER</a>BOARD
+        </a>
 
         {/* Leaderboard Cards (Primeira View - Detalhes Simples) */}
         <motion.div
@@ -131,7 +131,7 @@ function Shuffle() {
         }}
       >
         <div className="flex flex-wrap text-center">
-          <span className="text-zinc-500">Winners will be tipped onside!</span>
+          <span className="text-zinc-500">Winners will be tipped onsite!</span>
         </div>
         <div className="flex flex-wrap text-center lg:mb-0 mb-10">
           <span className="text-red-600 px-4">
