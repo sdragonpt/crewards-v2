@@ -29,6 +29,14 @@ function NavBar() {
     }
   };
 
+  const handleSettingsClick = () => {
+    if (location.pathname.startsWith("/profile")) {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+    } else {
+      navigate("/profile"); // Navega para a página do CSGOEmpire
+    }
+  };
+
   useEffect(() => {
     // Feche o menu quando a URL mudar para as páginas específicas
     if (
@@ -401,10 +409,20 @@ function NavBar() {
                         />
                         <span className="mr-8">{username}</span>
                       </li>
-                      <li className="hover:text-white">
-                        <i className="fas fa-cog mx-2"></i>
-                        <a href="/profile">Settings</a>
-                      </li>
+                      <Link
+                        to="/profile"
+                        onClick={() => handleSettingsClick()}
+                        className={`cursor-pointer ${
+                          location.pathname === "/profile"
+                            ? "text-white"
+                            : "hover:text-white"
+                        }`}
+                      >
+                        <li className="hover:text-white">
+                          <i className="fas fa-cog mx-2"></i>
+                          <a href="/profile">Settings</a>
+                        </li>
+                      </Link>
                       <li className="hover:text-white cursor-pointer">
                         <i className="fas fa-sign-out-alt mx-2"></i>
                         <a onClick={toggleLogin}>Logout</a>{" "}
