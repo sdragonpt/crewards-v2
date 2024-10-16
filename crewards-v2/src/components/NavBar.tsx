@@ -409,20 +409,20 @@ function NavBar() {
                         />
                         <span className="mr-8">{username}</span>
                       </li>
-                      <Link
-                        to="/profile"
-                        onClick={() => handleSettingsClick()}
-                        className={`cursor-pointer ${
-                          location.pathname === "/profile"
-                            ? "text-white"
-                            : "hover:text-white"
-                        }`}
-                      >
-                        <li className="hover:text-white">
+                      <li className="hover:text-white">
+                        <Link
+                          to="/profile"
+                          onClick={() => handleSettingsClick()}
+                          className={`cursor-pointer ${
+                            location.pathname === "/profile"
+                              ? "text-white"
+                              : "hover:text-white"
+                          }`}
+                        >
                           <i className="fas fa-cog mx-2"></i>
-                          <a href="/profile">Settings</a>
-                        </li>
-                      </Link>
+                          Settings
+                        </Link>
+                      </li>
                       <li className="hover:text-white cursor-pointer">
                         <i className="fas fa-sign-out-alt mx-2"></i>
                         <a onClick={toggleLogin}>Logout</a>{" "}
