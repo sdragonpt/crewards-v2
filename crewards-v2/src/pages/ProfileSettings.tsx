@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { username } from "../components/NavBar";
+import Modal from "./Modal";
 
 // Simulação de dados de usuário (poderia vir de uma API)
 const mockUser = {
@@ -14,47 +15,111 @@ const ProfileSettings: React.FC = () => {
   const [btcAddress, setBtcAddress] = useState<string>("");
   const [ltcAddress, setLtcAddress] = useState<string>("");
   const [csgoEmpireUsername, setCsgoEmpireUsername] = useState<string>("");
-  const [discordName, setDiscordName] = useState<string | null>(null);
+  const [shuffleUsername, setShuffleUsername] = useState<string>("");
+  const [isConnectedCsgo, setIsConnectedCsgo] = useState(false);
+  const [isConnectedShuffle, setIsConnectedShuffle] = useState(false);
+  const [isVerifiedCsgo, setIsVerifiedCsgo] = useState(false);
+  const [isVerifiedShuffle, setIsVerifiedShuffle] = useState(false);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentConnection, setCurrentConnection] = useState("");
+  const [changesSaved, setChangesSaved] = useState(false);
+  const [notVerifiedCsgo, setNotVerifiedCsgo] = useState(false);
+  const [notVerifiedShuffle, setNotVerifiedShuffle] = useState(false);
 
-  // Simulando o carregamento de dados do usuário ao montar o componente
+  // Estado para armazenar os usernames antigos
+  const [oldCsgoEmpireUsername, setOldCsgoEmpireUsername] =
+    useState<string>("");
+  const [oldShuffleUsername, setOldShuffleUsername] = useState<string>("");
+
   useEffect(() => {
     const storedData = {
       ethAddress: localStorage.getItem("ethAddress") || "",
       btcAddress: localStorage.getItem("btcAddress") || "",
       ltcAddress: localStorage.getItem("ltcAddress") || "",
       csgoEmpireUsername: localStorage.getItem("csgoEmpireUsername") || "",
-      discordName: localStorage.getItem("discordName") || null,
+      shuffleUsername: localStorage.getItem("shuffleUsername") || "",
     };
     setEthAddress(storedData.ethAddress);
     setBtcAddress(storedData.btcAddress);
     setLtcAddress(storedData.ltcAddress);
     setCsgoEmpireUsername(storedData.csgoEmpireUsername);
-    setDiscordName(storedData.discordName);
+    setShuffleUsername(storedData.shuffleUsername);
+
+    // Armazena os usernames antigos
+    setOldCsgoEmpireUsername(storedData.csgoEmpireUsername);
+    setOldShuffleUsername(storedData.shuffleUsername);
   }, []);
 
+  const handleCsgoUsernameChange = (value: string) => {
+    setCsgoEmpireUsername(value);
+    if (isVerifiedCsgo) {
+      setIsVerifiedCsgo(false); // Redefine para não verificado se o usuário alterar o nome
+    }
+  };
+
+  const handleShuffleUsernameChange = (value: string) => {
+    setShuffleUsername(value);
+    if (isVerifiedShuffle) {
+      setIsVerifiedShuffle(false); // Redefine para não verificado se o usuário alterar o nome
+    }
+  };
+
   const handleSaveChanges = () => {
-    // Salvando as informações no localStorage (ou enviar para a API)
+    // Salvando as informações no localStorage
     localStorage.setItem("ethAddress", ethAddress);
     localStorage.setItem("btcAddress", btcAddress);
     localStorage.setItem("ltcAddress", ltcAddress);
     localStorage.setItem("csgoEmpireUsername", csgoEmpireUsername);
+    localStorage.setItem("shuffleUsername", shuffleUsername);
+
     console.log("Informações salvas!");
+
+    // Verifica se houve mudança no username do CSGOEmpire e se não foi verificado
+    if (csgoEmpireUsername !== oldCsgoEmpireUsername && !isVerifiedCsgo) {
+      setNotVerifiedCsgo(true);
+    } else {
+      setNotVerifiedCsgo(false);
+    }
+
+    // Verifica se houve mudança no username do Shuffle e se não foi verificado
+    if (shuffleUsername !== oldShuffleUsername && !isVerifiedShuffle) {
+      setNotVerifiedShuffle(true);
+    } else {
+      setNotVerifiedShuffle(false);
+    }
+
+    // Mostrando a mensagem de alterações salvas
+    setChangesSaved(true);
+
+    setTimeout(() => {
+      setChangesSaved(false);
+    }, 3000);
   };
 
-  const handleDiscordLogin = () => {
-    if (discordName) {
-      // Logout do Discord
-      setDiscordName(null);
-      localStorage.removeItem("discordName");
-      console.log("Usuário deslogado do Discord");
-    } else {
-      // Simulação de login no Discord
-      const discordUser = "sdragonpt"; // Simulação de login
-      setDiscordName(discordUser);
-      localStorage.setItem("discordName", discordUser);
-      console.log("Usuário logado no Discord");
+  const handleConnectCsgo = () => {
+    setCurrentConnection("csgo");
+    setIsModalOpen(true);
+  };
+
+  const handleConnectShuffle = () => {
+    setCurrentConnection("shuffle");
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalConnect = () => {
+    if (currentConnection === "csgo") {
+      setIsConnectedCsgo(true);
+      setIsVerifiedCsgo(true); // Define como verificado
+    } else if (currentConnection === "shuffle") {
+      setIsConnectedShuffle(true);
+      setIsVerifiedShuffle(true); // Define como verificado
     }
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -70,7 +135,7 @@ const ProfileSettings: React.FC = () => {
 
   return (
     <div
-      className="flex items-center justify-center h-screen bg-zinc-900 bg-cover bg-center"
+      className="flex items-center justify-center min-h-screen bg-zinc-900 bg-cover bg-center"
       style={{
         backgroundImage:
           "linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%), url(/background.png)",
@@ -80,10 +145,9 @@ const ProfileSettings: React.FC = () => {
     >
       <div
         className={`bg-zinc-800 px-8 py-4 rounded-lg shadow-lg w-full max-w-xl border-2 mx-4 border-zinc-700 ${
-          windowHeight < 700 ? "mt-10" : "mt-24"
-        } lg:mt-24 3xl:mt-36`}
+          windowHeight < 700 ? "mt-20 mb-10" : "mt-20 mb-10"
+        } md:mt-32 md:mb-20 3xl:mt-32 3xl:mb-32`}
         style={{
-          maxHeight: "80vh", // Define uma altura máxima para a div
           overflow: "auto", // Adiciona um scroll se o conteúdo for maior que a altura máxima
         }}
       >
@@ -140,41 +204,139 @@ const ProfileSettings: React.FC = () => {
               className="w-full p-2 rounded border border-zinc-600 bg-zinc-700 text-white"
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-6 relative">
             <label
               className="block text-white mb-2"
               htmlFor="csgoEmpireUsername"
             >
               CSGOEmpire Username
             </label>
-            <input
-              type="text"
-              id="csgoEmpireUsername"
-              value={csgoEmpireUsername}
-              onChange={(e) => setCsgoEmpireUsername(e.target.value)}
-              className="w-full p-2 rounded border border-zinc-600 bg-zinc-700 text-white"
-            />
-          </div>
-
-          <div className="flex items-center">
-            <button
-              type="button"
-              onClick={handleSaveChanges}
-              className="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700 mr-3"
-            >
-              Save Changes
-            </button>
-
-            <div className="flex items-center justify-between">
+            <div className="relative flex items-center">
+              <img
+                src="/empirelogo.png"
+                alt="Icon"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              />
+              <input
+                type="text"
+                id="csgoEmpireUsername"
+                value={csgoEmpireUsername}
+                onChange={(e) => handleCsgoUsernameChange(e.target.value)} // Atualiza aqui
+                className="flex-grow p-2 rounded border border-zinc-600 bg-zinc-700 text-white pl-10"
+              />
               <button
-                onClick={handleDiscordLogin}
-                className="py-2 px-4 bg-[#7289da] text-white rounded hover:bg-[#8ea1e1]"
+                type="button"
+                onClick={handleConnectCsgo}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white"
               >
-                {discordName ? discordName : "Login with Discord"}
+                <i className="fas fa-link"></i>
               </button>
             </div>
+            {isConnectedCsgo && (
+              <div className="flex items-center mt-2">
+                {isVerifiedCsgo ? (
+                  <div className="text-green-500">
+                    <i className="fas fa-check-circle mr-1"></i>
+                    Verified
+                  </div>
+                ) : (
+                  <div className="text-red-500">
+                    <i className="fas fa-times-circle mr-1"></i>
+                    Not Verified
+                  </div>
+                )}
+              </div>
+            )}
+            {notVerifiedCsgo && !isConnectedCsgo && (
+              <div className="text-red-500">
+                <i className="fas fa-times-circle mr-1"></i>
+                Not Verified
+              </div>
+            )}
+          </div>
+          <div className="mb-6 relative">
+            <label className="block text-white mb-2" htmlFor="shuffleUsername">
+              Shuffle Username
+            </label>
+            <div className="relative flex items-center">
+              <img
+                src="/shufflelogo.png"
+                alt="Icon"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5"
+              />
+              <input
+                type="text"
+                id="shuffleUsername"
+                value={shuffleUsername}
+                onChange={(e) => handleShuffleUsernameChange(e.target.value)} // Atualiza aqui
+                className="flex-grow p-2 rounded border border-zinc-600 bg-zinc-700 text-white pl-10"
+              />
+              <button
+                type="button"
+                onClick={handleConnectShuffle}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white"
+              >
+                <i className="fas fa-link"></i>
+              </button>
+            </div>
+            {isConnectedShuffle && (
+              <div className="flex items-center mt-2">
+                {isVerifiedShuffle ? (
+                  <div className="text-green-500">
+                    <i className="fas fa-check-circle mr-1"></i>
+                    Verified
+                  </div>
+                ) : (
+                  <div className="text-red-500">
+                    <i className="fas fa-times-circle mr-1"></i>
+                    Not Verified
+                  </div>
+                )}
+              </div>
+            )}
+            {notVerifiedShuffle && !isConnectedShuffle && (
+              <div className="text-red-500">
+                <i className="fas fa-times-circle mr-1"></i>
+                Not Verified
+              </div>
+            )}
+          </div>
+
+          {/* Botão "Save Changes" à esquerda */}
+          <div className="flex flex-wrap">
+            <div>
+              <button
+                onClick={handleSaveChanges}
+                className="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                Save Changes
+              </button>
+            </div>
+            <div className="flex flex-wrap items-center justify-between">
+              <span className="flex flex-wrap items-center py-2 px-4 ml-3 bg-[#7289da] text-white rounded">
+                <img src="/discordlogo.png" alt="Discord Logo" className="w-6 mr-2" />
+                {username}
+              </span> 
+            </div>
+            {changesSaved && (
+              <p className="text-green-500 mt-3 ml-3">Changes Saved!</p>
+            )}
           </div>
         </form>
+
+        {/* Modal para Conexão */}
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          onConnect={handleModalConnect}
+        >
+          <h2 className="text-lg mb-4 text-white">
+            Connect to {currentConnection === "csgo" ? "CSGOEmpire" : "Shuffle"}
+          </h2>
+          <p className="text-zinc-400 mb-4">
+            Would you like to connect your account?
+          </p>
+        </Modal>
       </div>
     </div>
   );
