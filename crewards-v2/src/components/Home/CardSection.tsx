@@ -101,10 +101,11 @@ const CardSection: React.FC = () => {
               href="https://clash.gg/r/CLASSY"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#FFD627] text-[#924600] py-2 rounded-lg border-b-4 border-[#EF9C27] hover:opacity-70 text-center block glow-effect-yellow"
+              className="pt-3 w-full bg-[#FFD627] text-[#924600] py-2 rounded-lg border-b-4 border-[#EF9C27] hover:opacity-70 text-center block glow-effect-yellow transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
+
             <p className="text-center text-sm text-neutral-300 mt-4">
               CODE CLASSY
             </p>
@@ -169,7 +170,7 @@ const CardSection: React.FC = () => {
               href="https://shuffle.com?r=Classy"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-lg border-b-4 border-[#621CE0] hover:opacity-70 text-center block glow-effect-purple"
+              className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-lg border-b-4 border-[#621CE0] hover:opacity-70 text-center block glow-effect-purple transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
@@ -235,7 +236,7 @@ const CardSection: React.FC = () => {
               href="https://csgoempire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-lg border-b-4 border-[#E3A906] hover:opacity-70 text-center block glow-effect-yellow-2"
+              className="pt-3 w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-lg border-b-4 border-[#E3A906] hover:opacity-70 text-center block glow-effect-yellow-2 transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>

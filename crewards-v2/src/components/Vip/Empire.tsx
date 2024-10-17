@@ -169,7 +169,7 @@ const Empire: React.FC = () => {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
+        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 2xl:text-7xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-6">VIP </a>REWARDS
         </a>
         <div
@@ -274,7 +274,10 @@ const Empire: React.FC = () => {
 
             <button
               onClick={handleScrollToView}
-              className="bg-[#eab30d] text-white py-2 px-4 rounded-full hover:bg-[#f4dc84] transition"
+              className="bg-[#eab30d] text-white py-2 px-4 rounded-full 
+             hover:bg-[#f4dc84] 
+             transition duration-300 ease-in-out 
+             hover:opacity-90 hover:scale-105"
             >
               Claim Rewards
             </button>
@@ -322,13 +325,45 @@ const Empire: React.FC = () => {
                 </div>
               )}
 
+              {/* Rakeback Button */}
+              {tier === userTier && (
+                <div
+                  className="absolute -top-4 right-1 bg-zinc-900 text-white px-4 py-[0.15rem] rounded-full transition"
+                  style={{
+                    borderColor: tierData[tier].color,
+                    borderWidth: "2px",
+                    borderStyle: "solid",
+                    zIndex: 10, // Certifica que o badge fica sobre o card
+                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Sombra para o badge
+                    backgroundColor: "#18181b", // Cor inicial
+                    transition: "background-color 0.3s ease", // Adiciona transição suave para o hover
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      tierData[tier].color; // Cor ao fazer hover
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "#18181b"; // Volta à cor original quando o hover sai
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      // Função que pode ser executada ao clicar no botão
+                      console.log("Instant Rakeback clicked");
+                    }}
+                  >
+                    Instant Rakeback
+                  </button>
+                </div>
+              )}
+
               <div className="flex items-start">
                 <img
                   src={tierData[tier].image}
                   alt={tierData[tier].text}
-                  className={`w-16 h-16 mr-6 ml-2 mt-2 mb-4 md:mb-2 glow-rank-${tier}`}
+                  className={`w-16 h-16 mr-6 ml-2 mt-4 mb-4 md:mb-2 glow-rank-${tier}`}
                 />
-                <div className="flex-1">
+                <div className="flex-1 mt-2">
                   <h3 className="text-white font-normal">
                     {tier.charAt(0).toUpperCase() + tier.slice(1)}
                   </h3>
@@ -340,17 +375,24 @@ const Empire: React.FC = () => {
               {/* Botão "Claim" */}
               <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10 flex-col lg:flex-row">
                 <button
-                  className={`py-2 px-4 rounded-full text-sm ${
-                    tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                    (userTier === "darkmatter" && levelPercent === 100) // Verifica se o usuário está no tier unbreakable com 100%
-                      ? "bg-[#eab30d] text-white hover:bg-[#f4dc84] cursor-pointer"
-                      : "bg-gray-500 text-gray-300 cursor-not-allowed"
-                  } transition`}
+                  className={`py-2 px-4 rounded-full text-sm 
+      ${
+        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+        (userTier === "darkmatter" && levelPercent === 100) ||
+        (levelPercent === 100 && tier === userTier) // Adiciona esta linha
+          ? "bg-[#eab30d] text-white hover:bg-[#f4dc84] cursor-pointer"
+          : "bg-gray-500 text-gray-300 cursor-not-allowed"
+      } 
+      transition duration-300 ease-in-out 
+      hover:opacity-90 hover:scale-105`}
                   disabled={
                     !(
-                      tier === userTier ||
-                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                      (userTier === "darkmatter" && levelPercent === 100)
+                      (
+                        tier === userTier ||
+                        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                        (userTier === "darkmatter" && levelPercent === 100) ||
+                        (levelPercent === 100 && tier === userTier)
+                      ) // Adiciona esta linha
                     ) // Desativa se não for o tier do usuário, anterior ou se for unbreakable com 100%
                   }
                 >

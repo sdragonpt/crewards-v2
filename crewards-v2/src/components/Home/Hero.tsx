@@ -73,13 +73,13 @@ function Hero() {
         <div className="mt-6 flex justify-center space-x-4">
           <a
             onClick={() => handleAnchorClick("rewards")}
-            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70"
+            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70 transition-opacity duration-300"
           >
             Affiliates
           </a>
           <Link
             to="/leaderboard"
-            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer ${
+            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer transition-opacity duration-300 ${
               location.pathname === "/leaderboard"
             }`}
           >
@@ -91,7 +91,9 @@ function Hero() {
       {/* Condicional para exibir MoneyCounter ou MoneyCounterHero com base no tamanho da tela */}
       <div
         className={`absolute ${
-          isMdOrLarger ? "right-10 bottom-10" : "left-1/2 transform -translate-x-1/2 bottom-[14%]"
+          isMdOrLarger
+            ? "right-10 bottom-10"
+            : "left-1/2 transform -translate-x-1/2 bottom-[14%]"
         } z-20`}
       >
         {isMdOrLarger ? (

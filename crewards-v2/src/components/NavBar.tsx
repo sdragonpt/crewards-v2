@@ -177,20 +177,22 @@ function NavBar() {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:justify-between lg:items-center h-24 lg:h-16 lg:relative">
           {/* Logo */}
-          <div className="flex-shrink-0 lg:mr-6">
+          <div className="flex-shrink-0 lg:mr-6 lg:ml-4">
             <img
+              onClick={handleHomeClick}
               className="h-20 w-auto mx-auto lg:mx-0"
               src="/logo.png"
               alt="Logo"
             />
           </div>
+
           {/* Navigation Links */}
-          <div className="hidden md:block lg:block">
-            <div className="ml-10 flex items-center 2xl:space-x-4 2xl:text-lg lg:space-x-2 lg:text-base text-zinc-500 relative">
+          <div className="flex-grow">
+            <div className="ml-2 flex justify-center items-center 2xl:space-x-3 2xl:text-lg lg:space-x-2 lg:text-base text-zinc-500">
               <Link
                 to="/"
                 onClick={handleHomeClick}
-                className={`px-3 py-2 rounded-md cursor-pointer ${
+                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   location.pathname === "/" ? "text-white" : "hover:text-white"
                 }`}
               >
@@ -198,7 +200,7 @@ function NavBar() {
               </Link>
               <a
                 onClick={() => handleVipClick()}
-                className={`px-3 py-2 rounded-md cursor-pointer glow-effect-text-5 ${
+                className={`px-3 py-2 rounded-md cursor-pointer glow-effect-text-5 transition-colors duration-300 ${
                   location.pathname.startsWith("/vip")
                     ? "text-white"
                     : "hover:text-white"
@@ -208,7 +210,7 @@ function NavBar() {
               </a>
               <a
                 onClick={() => handleAnchorClick("rewards")}
-                className={`px-3 py-2 rounded-md cursor-pointer ${
+                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   isActive("rewards") ? "text-white" : "hover:text-white"
                 }`}
               >
@@ -216,7 +218,7 @@ function NavBar() {
               </a>
               <a
                 onClick={() => handleAnchorClick("challenges")}
-                className={`px-3 py-2 rounded-md cursor-pointer ${
+                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   isActive("challenges") ? "text-white" : "hover:text-white"
                 }`}
               >
@@ -224,7 +226,7 @@ function NavBar() {
               </a>
               <a
                 onClick={() => handleAnchorClick("video-bar")}
-                className={`px-3 py-2 rounded-md cursor-pointer ${
+                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   isActive("video-bar") ? "text-white" : "hover:text-white"
                 }`}
               >
@@ -232,8 +234,8 @@ function NavBar() {
               </a>
               <Link
                 to="/leaderboard"
-                onClick={() => handleLeaderboardClick()}
-                className={`px-3 py-2 rounded-md cursor-pointer ${
+                onClick={handleLeaderboardClick}
+                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   location.pathname === "/leaderboard"
                     ? "text-white"
                     : "hover:text-white"
@@ -241,34 +243,37 @@ function NavBar() {
               >
                 Leaderboard
               </Link>
-              {isLoggedIn ? (
-                <div className="relative flex items-center">
-                  <Link to="#" className="rounded-md" onClick={handleLogin}>
-                    <img
-                      src="/logo2.png"
-                      alt="User Icon"
-                      className="w-8 h-8 mr-2 rounded-full"
-                      onClick={() => setOpenProfile((prev) => !prev)}
-                    />
-                  </Link>
-                  {openProfile && <DropDownProfile toggleLogin={toggleLogin} />}{" "}
-                  {/* Passa a função de alternância */}
-                </div>
-              ) : (
-                <Link
-                  onClick={handleLogin} // Altera o estado para logged in
-                  to="#"
-                  className="flex items-center justify-center text-white px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-md"
-                >
-                  <img
-                    src="/discordlogo.png"
-                    alt="Login Icon"
-                    className="w-5 h-5 mr-2"
-                  />
-                  Sign In
-                </Link>
-              )}
             </div>
+          </div>
+
+          {/* Login */}
+          <div className="flex-shrink-0 lg:mr-4">
+            {isLoggedIn ? (
+              <div className="relative flex items-center">
+                <Link to="#" className="rounded-md" onClick={handleLogin}>
+                  <img
+                    src="/logo2.png"
+                    alt="User Icon"
+                    className="w-10 h-10 mr-2 rounded-full transition-transform duration-300 hover:scale-110" // Adicionando a transição e o efeito de aumento
+                    onClick={() => setOpenProfile((prev) => !prev)}
+                  />
+                </Link>
+                {openProfile && <DropDownProfile toggleLogin={toggleLogin} />}
+              </div>
+            ) : (
+              <Link
+                onClick={handleLogin} // Altera o estado para logged in
+                to="#"
+                className="flex items-center justify-center text-white px-4 py-2 bg-zinc-800 transition-colors duration-300 hover:bg-zinc-700 rounded-md" // Adicionando a transição suave na cor
+              >
+                <img
+                  src="/discordlogo.png"
+                  alt="Login Icon"
+                  className="w-5 h-5 mr-2 transition-transform duration-300 transform hover:scale-110 group-hover:scale-110" // O hover agora está no link
+                />
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
 
@@ -276,7 +281,7 @@ function NavBar() {
         <div className="lg:hidden flex justify-between items-center h-24 z-40">
           {/* Logo */}
           <div className="flex-shrink-0 mx-auto">
-            <a href="/">
+            <a onClick={handleHomeClick}>
               <img className="h-20 w-auto ml-6" src="/logo.png" alt="Logo" />
             </a>
           </div>

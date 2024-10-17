@@ -24,7 +24,8 @@ const Shuffle: React.FC = () => {
       color: string;
       image: string;
       text: string;
-      info: string;
+      wager: string;
+      prize: string;
       next: Tier | null; // O próximo nível pode ser null
       nextText: string | null;
     }
@@ -33,7 +34,8 @@ const Shuffle: React.FC = () => {
       color: "#d88667",
       image: "/wood.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 1000$",
+      prize: "- Claim 10$",
       next: "bronze",
       nextText: "Bronze tier",
     },
@@ -41,7 +43,8 @@ const Shuffle: React.FC = () => {
       color: "#f4d4b4",
       image: "/bronze.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 5000$",
+      prize: "- Claim 40$",
       next: "silver",
       nextText: "Silver tier",
     },
@@ -49,7 +52,8 @@ const Shuffle: React.FC = () => {
       color: "#b4bcc4",
       image: "/silver.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 10000$",
+      prize: "- Claim 60$",
       next: "gold",
       nextText: "Gold tier",
     },
@@ -57,7 +61,8 @@ const Shuffle: React.FC = () => {
       color: "#f0d77f",
       image: "/gold.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 25000$",
+      prize: "- Claim 190$",
       next: "platinum",
       nextText: "Platinum tier",
     },
@@ -65,7 +70,8 @@ const Shuffle: React.FC = () => {
       color: "#acb4db",
       image: "/platinum.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 50000$",
+      prize: "- Claim 325$",
       next: "jade",
       nextText: "Jade tier",
     },
@@ -73,7 +79,8 @@ const Shuffle: React.FC = () => {
       color: "#59f658",
       image: "/jade.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 75000$",
+      prize: "- Claim 340$",
       next: "sapphire",
       nextText: "Sapphire tier",
     },
@@ -81,7 +88,8 @@ const Shuffle: React.FC = () => {
       color: "#748bfc",
       image: "/sapphire.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 100000$",
+      prize: "- Claim 350$",
       next: "ruby",
       nextText: "Ruby tier",
     },
@@ -89,7 +97,8 @@ const Shuffle: React.FC = () => {
       color: "#fc4149",
       image: "/ruby.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 250000$",
+      prize: "- Claim 2250$",
       next: "diamond",
       nextText: "Diamond tier",
     },
@@ -97,7 +106,8 @@ const Shuffle: React.FC = () => {
       color: "#56d5fc",
       image: "/diamond.svg",
       text: "is your current tier",
-      info: "- Wager 100$",
+      wager: "- Wager 500000$",
+      prize: "- Claim 4000$",
       next: null,
       nextText: null,
     },
@@ -139,7 +149,7 @@ const Shuffle: React.FC = () => {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
+        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 2xl:text-7xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-7">VIP </a>REWARDS
         </a>
         <div
@@ -245,7 +255,10 @@ const Shuffle: React.FC = () => {
 
             <button
               onClick={handleScrollToView}
-              className="bg-[#8337d8] text-white py-2 px-4 rounded-full hover:bg-[#582c8c] transition"
+              className="bg-[#8337d8] text-white py-2 px-4 rounded-full 
+    hover:bg-[#582c8c] 
+    transition duration-300 ease-in-out 
+    hover:opacity-90 hover:scale-105"
             >
               Claim Rewards
             </button>
@@ -299,28 +312,36 @@ const Shuffle: React.FC = () => {
                   alt={tierData[tier].text}
                   className={`w-16 h-16 mr-6 ml-2 mt-4 mb-4 md:mb-0 glow-${tier}`}
                 />
-                <div className="flex-1">
+                <div className="flex-1 mt-2">
                   <h3 className="text-white font-normal">
                     {tier.charAt(0).toUpperCase() + tier.slice(1)}
                   </h3>
-                  <p className="text-gray-300">{tierData[tier].info}</p>
+                  <p className="text-gray-300">{tierData[tier].wager}</p>
+                  <p className="text-gray-300">{tierData[tier].prize}</p>
                 </div>
               </div>
               {/* Botão "Claim" */}
               <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10 flex-col lg:flex-row">
                 <button
-                  className={`py-2 px-4 rounded-full text-sm ${
-                    tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                    (userTier === "diamond" && levelPercent === 100) // Verifica se o usuário está no tier diamond com 100%
-                      ? "bg-[#8337d8] text-white hover:bg-[#582c8c] cursor-pointer" // Botão ativo para o tier atual ou anterior
-                      : "bg-gray-500 text-gray-300 cursor-not-allowed" // Botão desativado para os outros níveis
-                  } transition`}
+                  className={`py-2 px-4 rounded-full text-sm 
+      ${
+        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+        (userTier === "diamond" && levelPercent === 100) ||
+        (levelPercent === 100 && tier === userTier) // Verifica se o usuário está no tier atual ou anterior, ou se tem 100%
+          ? "bg-[#8337d8] text-white hover:bg-[#582c8c] cursor-pointer" // Botão ativo
+          : "bg-gray-500 text-gray-300 cursor-not-allowed" // Botão desativado
+      } 
+      transition duration-300 ease-in-out 
+      hover:opacity-90 hover:scale-105`}
                   disabled={
                     !(
-                      tier === userTier ||
-                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                      (userTier === "diamond" && levelPercent === 100)
-                    ) // Desativa se não for o tier do usuário, anterior ou se for diamond com 100%
+                      (
+                        tier === userTier ||
+                        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                        (userTier === "diamond" && levelPercent === 100) ||
+                        (levelPercent === 100 && tier === userTier)
+                      ) // Adiciona condição de 100%
+                    ) // Desativa se não for o tier do usuário, anterior, ou se for diamond com 100%
                   }
                 >
                   Claim

@@ -307,16 +307,20 @@ const ProfileSettings: React.FC = () => {
             <div>
               <button
                 onClick={handleSaveChanges}
-                className="py-2 px-4 bg-red-600 text-white rounded hover:bg-red-700"
+                className="py-2 px-4 bg-red-600 text-white rounded transition duration-300 ease-in-out hover:bg-red-700 hover:opacity-90"
               >
                 Save Changes
               </button>
             </div>
             <div className="flex flex-wrap items-center justify-between">
               <span className="flex flex-wrap items-center py-2 px-4 ml-3 bg-[#7289da] text-white rounded">
-                <img src="/discordlogo.png" alt="Discord Logo" className="w-6 mr-2" />
+                <img
+                  src="/discordlogo.png"
+                  alt="Discord Logo"
+                  className="w-6 mr-2"
+                />
                 {username}
-              </span> 
+              </span>
             </div>
             {changesSaved && (
               <p className="text-green-500 mt-3 ml-3">Changes Saved!</p>

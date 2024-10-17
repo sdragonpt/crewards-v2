@@ -39,26 +39,26 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="footer-section text-xl mx-2">
-          <h4 className="hover:text-white transition-colors mb-2">
+          <h4 className="mb-2">
             <a
               onClick={() => handleAnchorClick("rewards")}
-              className="hover:text-white transition-colors cursor-pointer"
+              className="hover:text-white transition-colors duration-300 cursor-pointer"
             >
               Rewards
             </a>
           </h4>
-          <h4 className="hover:text-white transition-colors mb-2">
+          <h4 className="mb-2">
             <a
               onClick={() => handleAnchorClick("challenges")}
-              className="hover:text-white transition-colors cursor-pointer"
+              className="hover:text-white transition-colors duration-300 cursor-pointer"
             >
               Challenges
             </a>
           </h4>
-          <h4 className="hover:text-white transition-colors mb-2">
+          <h4 className="mb-2">
             <a
               onClick={() => handleAnchorClick("video-bar")}
-              className="hover:text-white transition-colors cursor-pointer"
+              className="hover:text-white transition-colors duration-300 cursor-pointer"
             >
               Videos
             </a>
@@ -66,33 +66,33 @@ const Footer: React.FC = () => {
           <Link
             to="/leaderboard"
             onClick={() => handleAnchorClick("leaderboard")}
-            className={`hover:text-white transition-colors mb-2 cursor-pointer`}
+            className="hover:text-white transition-colors duration-300 mb-2 cursor-pointer"
           >
             Leaderboard
           </Link>
         </div>
 
         <div className="footer-section text-xl mx-4">
-          <h4 className="hover:text-white transition-colors mb-2">
+          <h4 className="mb-2">
             <Link
               to="/contact"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors duration-300"
             >
               Contact
             </Link>
           </h4>
-          <h4 className="hover:text-white transition-colors mb-2">
+          <h4 className="mb-2">
             <Link
               to="/privacy"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors duration-300"
             >
               Privacy Policy
             </Link>
           </h4>
-          <h4 className="hover:text-white transition-colors mb-2">
+          <h4 className="mb-2">
             <Link
               to="/terms"
-              className="hover:text-white transition-colors"
+              className="hover:text-white transition-colors duration-300"
             >
               Terms of Service
             </Link>
@@ -102,22 +102,25 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <div className="social-icons flex justify-end items-center">
             <a
-              href="https://x.com/classybets" target="_blank"
+              href="https://x.com/classybets"
+              target="_blank"
               className="transform transition-transform hover:scale-110"
             >
               <img className="w-16" src="/X.png" alt="X" />
             </a>
             <a
-              href="https://discord.gg/classy" target="_blank"
+              href="https://discord.gg/classy"
+              target="_blank"
               className="transform transition-transform hover:scale-110"
             >
               <img className="w-16" src="/Discord.png" alt="Discord" />
             </a>
             <a
-              href="https://www.youtube.com/classy" target="_blank"
+              href="https://www.youtube.com/classy"
+              target="_blank"
               className="transform transition-transform hover:scale-110"
             >
-              <img className="w-16" src="/Youtube.png" alt="Youtube" /> 
+              <img className="w-16" src="/Youtube.png" alt="Youtube" />
             </a>
           </div>
         </div>

@@ -19,7 +19,7 @@ function Shuffle() {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
+        <a className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 2xl:text-7xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-7">LEADER</a>BOARD
         </a>
 
@@ -191,7 +191,9 @@ function Shuffle() {
                     alt={`Avatar`}
                     className="3xl:w-12 w-10 rounded-full ml-2"
                   />
-                  <span className="text-white ml-4">{name}</span>
+                  <span className="text-white ml-4 overflow-hidden whitespace-nowrap text-ellipsis max-w-20 md:max-w-sm">
+                    {name}
+                  </span>
                 </div>
                 <div className="flex items-center">
                   <span className="text-white lg:mr-16 mr-10">
