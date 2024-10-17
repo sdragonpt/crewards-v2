@@ -159,11 +159,8 @@
   0% {
     transform: scale(1);
   }
-  50% {
-    transform: scale(1.05); /* Aumenta para 105% */
-  }
   100% {
-    transform: scale(1);
+    transform: scale(1.05);
   }
 }
 
