@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import { useState, useRef, useEffect } from "react";
+import RakebackModal from "../../pages/RakebackModal";
 
 // Definindo um tipo para os níveis
 type Tier =
@@ -138,9 +139,23 @@ const Empire: React.FC = () => {
   const glowClass = `glow-rank-${userTier}`;
   const glowClassNext = nextTier ? `glow-rank-${currentTier.next}` : "";
   const tierKeys = Object.keys(tierData) as Tier[];
+  const [isModalOpen, setModalOpen] = useState(false);
 
   // Ref para a segunda view
   const secondViewRef = useRef<HTMLDivElement>(null);
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleConfirm = () => {
+    console.log("Confirmed!"); // Ação a ser realizada na confirmação
+    setModalOpen(false); // Fechar o modal
+  };
+
+  const handleClose = () => {
+    setModalOpen(false); // Fechar o modal
+  };
 
   const handleScrollToView = () => {
     const offset = 120; // Aumenta a quantidade para rolar para cima
@@ -176,6 +191,8 @@ const Empire: React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
@@ -347,34 +364,38 @@ const Empire: React.FC = () => {
               {/* Rakeback Button */}
               {tier === userTier && (
                 <div
-                  className="absolute -top-4 right-1 bg-zinc-900 text-white px-4 py-[0.15rem] rounded-full transition"
+                  className={`absolute -top-4 right-1 text-white px-4 py-[0.15rem] rounded-full transition 
+                            ${isHovered ? "scale-105" : ""}`} // Adiciona a classe scale-105 ao hover
                   style={{
-                    borderColor: tierData[tier].color,
+                    borderColor: "#4CAF50",
                     borderWidth: "2px",
                     borderStyle: "solid",
                     zIndex: 10, // Certifica que o badge fica sobre o card
                     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Sombra para o badge
-                    backgroundColor: "#18181b", // Cor inicial
-                    transition: "background-color 0.3s ease", // Adiciona transição suave para o hover
+                    backgroundColor: isHovered ? "#45a049" : "#4CAF50", // Cor verde mais escura ao fazer hover
+                    transition:
+                      "background-color 0.3s ease, transform 0.3s ease", // Adiciona transição suave para a cor e transformação
+                    animation: isHovered
+                      ? "none"
+                      : "pulse 2s infinite alternate", // Pausa a animação ao fazer hover
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor =
-                      tierData[tier].color; // Cor ao fazer hover
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "#18181b"; // Volta à cor original quando o hover sai
-                  }}
+                  onMouseEnter={() => setIsHovered(true)} // Atualiza o estado para true ao passar o mouse
+                  onMouseLeave={() => setIsHovered(false)} // Atualiza o estado para false ao retirar o mouse
                 >
                   <button
-                    onClick={() => {
-                      // Função que pode ser executada ao clicar no botão
-                      console.log("Instant Rakeback clicked");
-                    }}
+                    onClick={handleOpenModal} // Abrindo o modal ao clicar no botão
                   >
                     Instant Rakeback
                   </button>
                 </div>
               )}
+
+              <RakebackModal
+                isOpen={isModalOpen}
+                onClose={handleClose}
+                onConfirm={handleConfirm}
+                title="Are you sure you want to proceed with Instant Rakeback?"
+              />
 
               <div className="flex items-start">
                 <img
