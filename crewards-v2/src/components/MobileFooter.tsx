@@ -38,7 +38,7 @@ const MobileFooter: React.FC = () => {
           </p>
         </div>
 
-        <div className="footer-section text-lg text-start mt-4">
+        {/* <div className="footer-section text-lg text-start mt-4">
           <h4 className="hover:text-white transition-colors mb-2">
             <a
               onClick={() => handleAnchorClick("rewards")}
@@ -70,7 +70,7 @@ const MobileFooter: React.FC = () => {
           >
             Leaderboard
           </Link>
-        </div>
+        </div> */}
 
         <div className="footer-section text-lg text-start mb-4 mt-4">
           <h4 className="hover:text-white transition-colors mb-2">
