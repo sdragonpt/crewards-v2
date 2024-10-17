@@ -1,28 +1,29 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 
 const MobileFooter: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
-  const handleAnchorClick = (anchorId: string) => {
-    // If already in the homepage, scrolls to the anchor
-    if (location.pathname === "/") {
-      const element = document.getElementById(anchorId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // Goes to homepage
-      navigate("/");
-      setTimeout(() => {
-        const element = document.getElementById(anchorId);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100); // Delay
-    }
-  };
+  // const handleAnchorClick = (anchorId: string) => {
+  //   // If already in the homepage, scrolls to the anchor
+  //   if (location.pathname === "/") {
+  //     const element = document.getElementById(anchorId);
+  //     if (element) {
+  //       element.scrollIntoView({ behavior: "smooth" });
+  //     }
+  //   } else {
+  //     // Goes to homepage
+  //     navigate("/");
+  //     setTimeout(() => {
+  //       const element = document.getElementById(anchorId);
+  //       if (element) {
+  //         element.scrollIntoView({ behavior: "smooth" });
+  //       }
+  //     }, 100); // Delay
+  //   }
+  // };
 
   return (
     <footer className="bg-gradient-to-b from-[#0c0c0c] to-[#0a0a0a] text-[#444444] font-bold border-t-2 border-y-[#242424] px-4">
