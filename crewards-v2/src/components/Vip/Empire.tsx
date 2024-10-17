@@ -143,7 +143,26 @@ const Empire: React.FC = () => {
   const secondViewRef = useRef<HTMLDivElement>(null);
 
   const handleScrollToView = () => {
-    secondViewRef.current?.scrollIntoView({ behavior: "smooth" });
+    const offset = 120; // Aumenta a quantidade para rolar para cima
+
+    if (secondViewRef.current) {
+      // Verifica se a referência está disponível
+      const elementPosition = secondViewRef.current.getBoundingClientRect().top; // Posição do elemento
+      const offsetPosition = elementPosition + window.scrollY - offset; // Posição final com deslocamento
+
+      if (window.innerWidth < 1024) {
+        // Para dispositivos móveis
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth", // Rolagem suave
+        });
+      } else {
+        // Para telas maiores
+        secondViewRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      console.warn("Elemento de referência não está disponível."); // Opcional: log para debugging
+    }
   };
 
   // Hook para atualizar a largura da janela
