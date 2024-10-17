@@ -440,7 +440,7 @@ function NavBar() {
                   ) : (
                     <button
                       onClick={handleLogin} // Chama a função de login
-                      className="flex items-center px-3 py-2 rounded-md text-lg my-1 bg-blue-600 hover:bg-blue-700 text-white"
+                      className="flex items-center px-3 py-2 rounded-md text-lg my-1 bg-red-600 hover:bg-red-700 text-white"
                     >
                       <i className="fas fa-sign-in-alt mr-2"></i>
                       Login
