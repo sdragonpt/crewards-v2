@@ -55,17 +55,23 @@ function Hero() {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        className="absolute 3xl:top-52 2xl:top-44 xl:top-36 lg:top-20 z-10 text-center text-white"
+        className="absolute top-[18%] transform -translate-x-1/2 z-10 text-center text-white"
+        style={{ width: "80%", maxWidth: "1900px" }} // Define um tamanho máximo para a div
       >
-        <i className="text-6xl md:text-8xl 3xl:text-9xl font-bold font-thunder">
+        <i style={{ fontSize: "7vw" }} className="font-bold font-thunder">
           UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
         </i>
-        <h2 className="text-5xl md:text-7xl 3xl:text-8xl mt-[-0.7rem] 3xl:mt-[-1.5rem] font-semibold font-thunder">
+        <h2
+          style={{ fontSize: "6vw", marginTop: '-4vw'}}
+          className="font-semibold font-thunder"
+        >
           AT EVERY STEP
         </h2>
-        <p className="3xl:mt-4 text-sm md:text-base 3xl:text-xl max-w-3xl mx-auto">
+        <p
+          style={{ fontSize: "1vw", marginTop: "-1vw" }}
+          className="max-w-3xl mx-auto"
+        >
           From small wins to big rewards, our program has something for everyone
-          {/* Quebra de linha para telas maiores */}
           <br className="hidden md:inline" />
           at every step of the way!
         </p>
@@ -74,16 +80,20 @@ function Hero() {
           <a
             onClick={() => handleAnchorClick("rewards")}
             className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md hover:opacity-70 transition-opacity duration-300"
+            style={{ fontSize: "1vw" }} // Ajusta o tamanho da fonte
           >
             Affiliates
           </a>
           <Link
             to="/leaderboard"
             className={`animated-button text-white px-6 py-3 rounded-md
-    cursor-pointer transition-opacity duration-300 
-    ${
-      location.pathname === "/leaderboard" ? "opacity-100" : "hover:opacity-70"
-    }`}
+      cursor-pointer transition-opacity duration-300 
+      ${
+        location.pathname === "/leaderboard"
+          ? "opacity-100"
+          : "hover:opacity-70"
+      }`}
+            style={{ fontSize: "1vw" }} // Ajusta o tamanho da fonte
           >
             Leaderboard
           </Link>
@@ -106,26 +116,26 @@ function Hero() {
       </div>
 
       {/* Imagens Mini Rotativas */}
+      {/* <img
+        src="/logo.png"
+        alt="Mini 1"
+        className="hidden md:block absolute left-[6%] bottom-[5%] w-[10%] md:w-[12%] lg:w-[15%] xl:w-[18%] 3xl:w-[20%] animate-sway-slow glow-effect"
+      />
       <img
         src="/logo.png"
         alt="Mini 2"
-        className="hidden md:block absolute lg:left-[10%] top-40 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 3xl:w-40 3xl:h-40 animate-sway-slow glow-effect"
-      />
-      <img
-        src="/logo.png"
-        alt="Mini 4"
-        className="hidden md:block absolute right-32 md:right-24 lg:right-10 top-1/3 md:top-1/3 transform -translate-y-1/2 w-36 h-36 md:w-24 md:h-36 lg:w-36 lg:h-36 xl:w-36 3xl:w-44 3xl:h-44 animate-sway-slow glow-effect"
-      />
-      <img
-        src="/logo.png"
-        alt="Mini 1"
-        className="hidden md:block absolute lg:left-[15%] bottom-20 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 3xl:w-40 3xl:h-40 animate-sway-slow glow-effect"
+        className="hidden md:block absolute left-[15%] top-1/4 transform -translate-y-1/2 w-[12%] animate-sway-slow glow-effect"
       />
       <img
         src="/logo.png"
         alt="Mini 3"
-        className="hidden md:block absolute right-16 md:right-24 lg:right-72 top-1/3 md:top-3/4 transform -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 3xl:w-36 animate-sway-slow glow-effect"
+        className="hidden md:block absolute right-[15%] top-1/3 w-[16%] animate-sway-slow glow-effect"
       />
+      <img
+        src="/logo.png"
+        alt="Mini 4"
+        className="hidden md:block absolute right-[5%] bottom-[4%] transform -translate-y-1/2 w-[12%] animate-sway-slow glow-effect"
+      /> */}
     </div>
   );
 }
