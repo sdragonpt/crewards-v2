@@ -45,7 +45,7 @@ function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent z-10 filter blur-lg" />
       <div className="absolute inset-0 bg-black opacity-50" />
       <div
-        className="absolute z-0 bg-cover bg-center h-full w-full brightness-110"
+        className="absolute z-0 bg-cover bg-center h-full w-full brightness-110 bottom-1/4"
         style={{
           backgroundImage: "url(/redglow.png)", // Imagem atrás do texto
         }}
@@ -56,20 +56,18 @@ function Hero() {
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
         className="absolute top-[18%] transform -translate-x-1/2 z-10 text-center text-white"
-        style={{ width: "80%", maxWidth: "1900px" }} // Define um tamanho máximo para a div
+        style={{ width: "80%", maxWidth: "1900px" }} // Tamanho máximo da div
       >
-        <i style={{ fontSize: "7vw" }} className="font-bold font-thunder">
+        {/* Tamanho ajustado para mobile e vw a partir de md */}
+        <i className="font-bold font-thunder text-5xl md:text-[7vw]">
           UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
         </i>
-        <h2
-          style={{ fontSize: "6vw", marginTop: '-4vw'}}
-          className="font-semibold font-thunder"
-        >
+        <h2 className="font-semibold font-thunder text-4xl md:text-[6vw] mt-[0.2rem] md:mt-[1vw]">
           AT EVERY STEP
         </h2>
         <p
-          style={{ fontSize: "1vw", marginTop: "-1vw" }}
-          className="max-w-3xl mx-auto"
+          className="text-base md:text-[1vw] mt-[0.5rem] md:mt-[2vw] max-w-5xl mx-auto"
+          style={{ lineHeight: "1.6"}} // Controla o espaçamento entre linhas
         >
           From small wins to big rewards, our program has something for everyone
           <br className="hidden md:inline" />
@@ -77,23 +75,20 @@ function Hero() {
         </p>
 
         <div className="mt-6 flex justify-center space-x-4">
+          {/* Fonte ajustada para mobile e vw para md+ */}
           <a
             onClick={() => handleAnchorClick("rewards")}
-            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md hover:opacity-70 transition-opacity duration-300"
-            style={{ fontSize: "1vw" }} // Ajusta o tamanho da fonte
+            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-4 py-2 md:px-[1.6vw] md:py-[0.8vw] rounded-md hover:opacity-70 transition-opacity duration-300 text-sm md:text-[1vw]"
           >
             Affiliates
           </a>
           <Link
             to="/leaderboard"
-            className={`animated-button text-white px-6 py-3 rounded-md
-      cursor-pointer transition-opacity duration-300 
-      ${
-        location.pathname === "/leaderboard"
-          ? "opacity-100"
-          : "hover:opacity-70"
-      }`}
-            style={{ fontSize: "1vw" }} // Ajusta o tamanho da fonte
+            className={`animated-button text-white px-4 py-2 md:px-[1.6vw] md:py-[0.8vw] rounded-md cursor-pointer transition-opacity duration-300 text-sm md:text-[1vw] ${
+              location.pathname === "/leaderboard"
+                ? "opacity-100"
+                : "hover:opacity-70"
+            }`}
           >
             Leaderboard
           </Link>
