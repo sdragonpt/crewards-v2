@@ -1,38 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface RakebackModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void; // Altera para onConfirm
-  title: string; // Adicionando a propriedade title
+  totalReward: number;
 }
 
 const RakebackModal: React.FC<RakebackModalProps> = ({
   isOpen,
   onClose,
-  onConfirm,
-  title,
+  totalReward = 0,
 }) => {
-  if (!isOpen) return null;
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      // Reinicia o estado de fechamento quando o modal é aberto
+      setIsClosing(false);
+
+      const timer = setTimeout(() => {
+        setIsClosing(true); // Inicia a animação de saída após 3 segundos
+        const closeTimer = setTimeout(() => {
+          onClose(); // Fecha o modal após a animação de saída
+        }, 500); // Aguarda a duração da animação de saída
+        return () => clearTimeout(closeTimer); // Limpa o timer quando o componente desmontar
+      }, 5000);
+
+      return () => clearTimeout(timer); // Limpa o timer quando o componente desmontar
+    }
+  }, [isOpen, onClose]);
+
+  // Renderiza o modal se estiver aberto ou em fechamento
+  if (!isOpen && !isClosing) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-20">
-      <div className="bg-zinc-800 p-6 rounded-lg shadow-lg w-80">
-        <h2 className="text-white text-lg font-base mb-4">{title}</h2>
-        <div className="flex justify-start">
-          <button
-            onClick={onConfirm}
-            className="py-2 px-4 bg-green-600 text-white rounded transition duration-300 ease-in-out hover:bg-green-700 hover:scale-105 mr-3"
-          >
-            Confirm
-          </button>
-          <button
-            onClick={onClose}
-            className="py-2 px-4 bg-red-600 text-white rounded transition duration-300 ease-in-out hover:bg-red-700 hover:scale-105"
-          >
-            Cancel
-          </button>
-        </div>
+    <div
+      className={`fixed top-28 left-4 rounded-xl shadow-md flex items-center justify-center border-green-600 z-20 ${
+        isClosing ? "animate-slideOutLeft" : "animate-slideInLeft"
+      }`}
+    >
+      {/* Parte com o ícone de verificado */}
+      <div className="bg-green-600 rounded-l-xl p-4 flex items-center h-[64px]">
+        <i className="fas fa-check-circle text-white text-xl mx-1"></i>
+      </div>
+
+      {/* Parte com a mensagem e o botão de fechar */}
+      <div className="bg-zinc-800 ml-0 text-white rounded-r-xl p-3 h-[64px] flex items-center space-x-3 border-[1px] border-zinc-700">
+        <p className="text-lg mr-10">
+          Successfully claimed ${totalReward.toFixed(2)}
+        </p>
+
+        {/* Botão de fechar */}
+        <button
+          onClick={() => {
+            setIsClosing(true); // Inicia a animação de saída ao clicar no botão
+            setTimeout(onClose, 0); // Fecha o modal após a animação de saída
+          }}
+          className="text-3xl text-white hover:text-zinc-600 ml-2 mb-[2px] transition duration-300 ease-in-out"
+        >
+          &times;
+        </button>
       </div>
     </div>
   );

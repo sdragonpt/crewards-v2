@@ -55,7 +55,7 @@ function Hero() {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        className="relative z-10 text-center text-white 3xl:mt-0 lg:mt-24 mt-0"
+        className="absolute 3xl:top-52 2xl:top-44 xl:top-36 lg:top-20 z-10 text-center text-white"
       >
         <i className="text-6xl md:text-8xl 3xl:text-9xl font-bold font-thunder">
           UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
@@ -73,15 +73,17 @@ function Hero() {
         <div className="mt-6 flex justify-center space-x-4">
           <a
             onClick={() => handleAnchorClick("rewards")}
-            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md border-b-4 border-red-800 hover:opacity-70 transition-opacity duration-300"
+            className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-6 py-3 rounded-md hover:opacity-70 transition-opacity duration-300"
           >
             Affiliates
           </a>
           <Link
             to="/leaderboard"
-            className={`bg-gradient-to-r from-red-900 to-red-800 text-white px-6 py-3 rounded-md border-b-4 border-red-950 hover:opacity-70 cursor-pointer transition-opacity duration-300 ${
-              location.pathname === "/leaderboard"
-            }`}
+            className={`animated-button text-white px-6 py-3 rounded-md
+    cursor-pointer transition-opacity duration-300 
+    ${
+      location.pathname === "/leaderboard" ? "opacity-100" : "hover:opacity-70"
+    }`}
           >
             Leaderboard
           </Link>
@@ -92,7 +94,7 @@ function Hero() {
       <div
         className={`absolute ${
           isMdOrLarger
-            ? "right-10 bottom-10"
+            ? "3xl:bottom-24 2xl:bottom-14 bottom-10"
             : "left-1/2 transform -translate-x-1/2 bottom-[14%]"
         } z-20`}
       >
@@ -106,18 +108,23 @@ function Hero() {
       {/* Imagens Mini Rotativas */}
       <img
         src="/logo.png"
+        alt="Mini 2"
+        className="hidden md:block absolute lg:left-[10%] top-40 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 3xl:w-40 3xl:h-40 animate-sway-slow glow-effect"
+      />
+      <img
+        src="/logo.png"
+        alt="Mini 4"
+        className="hidden md:block absolute right-32 md:right-24 lg:right-10 top-1/3 md:top-1/3 transform -translate-y-1/2 w-36 h-36 md:w-24 md:h-36 lg:w-36 lg:h-36 xl:w-36 3xl:w-44 3xl:h-44 animate-sway-slow glow-effect"
+      />
+      <img
+        src="/logo.png"
         alt="Mini 1"
         className="hidden md:block absolute lg:left-[15%] bottom-20 md:bottom-32 lg:bottom-44 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 3xl:w-40 3xl:h-40 animate-sway-slow glow-effect"
       />
       <img
         src="/logo.png"
-        alt="Mini 2"
-        className="hidden md:block absolute top-36 md:top-20 lg:top-36 left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 3xl:w-18 animate-sway glow-effect"
-      />
-      <img
-        src="/logo.png"
         alt="Mini 3"
-        className="hidden md:block absolute right-16 md:right-24 lg:right-44 top-1/3 md:top-1/2 transform -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 3xl:w-36 animate-sway-slow glow-effect"
+        className="hidden md:block absolute right-16 md:right-24 lg:right-72 top-1/3 md:top-3/4 transform -translate-y-1/2 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 3xl:w-36 animate-sway-slow glow-effect"
       />
     </div>
   );

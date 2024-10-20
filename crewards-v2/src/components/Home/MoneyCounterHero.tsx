@@ -84,7 +84,7 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        className="flex flex-col place-items-end justify-center mr-4 z-10"
+        className="flex flex-col place-items-center justify-center mr-4 z-10"
         ref={counterRef}
       >
         <h2 className="text-4xl 3xl:text-6xl font-bold mb-4 3xl:mb-8 text-white font-thunder">

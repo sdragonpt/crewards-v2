@@ -192,15 +192,15 @@ function NavBar() {
               <Link
                 to="/"
                 onClick={handleHomeClick}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   location.pathname === "/" ? "text-white" : "hover:text-white"
                 }`}
               >
-                Home
+                HOME
               </Link>
               <a
                 onClick={() => handleVipClick()}
-                className={`px-3 py-2 rounded-md cursor-pointer glow-effect-text-5 transition-colors duration-300 ${
+                className={`px-1 py-2 rounded-md cursor-pointer glow-effect-text-5 transition-colors duration-300 ${
                   location.pathname.startsWith("/vip")
                     ? "text-white"
                     : "hover:text-white"
@@ -210,38 +210,38 @@ function NavBar() {
               </a>
               <a
                 onClick={() => handleAnchorClick("rewards")}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   isActive("rewards") ? "text-white" : "hover:text-white"
                 }`}
               >
-                Rewards
+                REWARDS
               </a>
               <a
                 onClick={() => handleAnchorClick("challenges")}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   isActive("challenges") ? "text-white" : "hover:text-white"
                 }`}
               >
-                Challenges
+                CHALLENGES
               </a>
               <a
                 onClick={() => handleAnchorClick("video-bar")}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   isActive("video-bar") ? "text-white" : "hover:text-white"
                 }`}
               >
-                Videos
+                VIDEOS
               </a>
               <Link
                 to="/leaderboard"
                 onClick={handleLeaderboardClick}
-                className={`px-3 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
                   location.pathname === "/leaderboard"
                     ? "text-white"
                     : "hover:text-white"
                 }`}
               >
-                Leaderboard
+                LEADERBOARD
               </Link>
             </div>
           </div>

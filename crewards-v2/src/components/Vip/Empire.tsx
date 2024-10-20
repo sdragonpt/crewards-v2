@@ -148,11 +148,6 @@ const Empire: React.FC = () => {
     setModalOpen(true);
   };
 
-  const handleConfirm = () => {
-    console.log("Confirmed!"); // Ação a ser realizada na confirmação
-    setModalOpen(false); // Fechar o modal
-  };
-
   const handleClose = () => {
     setModalOpen(false); // Fechar o modal
   };
@@ -393,8 +388,7 @@ const Empire: React.FC = () => {
               <RakebackModal
                 isOpen={isModalOpen}
                 onClose={handleClose}
-                onConfirm={handleConfirm}
-                title="Are you sure you want to proceed with Instant Rakeback?"
+                totalReward={100}
               />
 
               <div className="flex items-start">
