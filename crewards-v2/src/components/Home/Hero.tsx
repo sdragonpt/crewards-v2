@@ -28,7 +28,15 @@ function Hero() {
     } else if (location.pathname === "/") {
       const element = document.getElementById(anchorId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        // Verifica se a tela é mobile (por exemplo, largura abaixo de 768px)
+        if (window.innerWidth < 768) {
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - 100; // Ajuste de 100px para mobile
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        } else {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
   };
@@ -67,7 +75,7 @@ function Hero() {
         </h2>
         <p
           className="text-base md:text-[1vw] mt-[0.5rem] md:mt-[2vw] max-w-5xl mx-auto"
-          style={{ lineHeight: "1.6"}} // Controla o espaçamento entre linhas
+          style={{ lineHeight: "1.6" }} // Controla o espaçamento entre linhas
         >
           From small wins to big rewards, our program has something for everyone
           <br className="hidden md:inline" />
