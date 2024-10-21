@@ -67,9 +67,9 @@ function Hero() {
         style={{ width: "80%", maxWidth: "1900px" }} // Tamanho máximo da div
       >
         {/* Tamanho ajustado para mobile e vw a partir de md */}
-        <i className="font-bold font-thunder text-5xl md:text-[7vw]">
-          UNLOCK <i className="shadow-lg glow-effect-text-2">REWARDS</i>
-        </i>
+        <a className="font-bold font-thunder text-5xl md:text-[7vw]">
+          UNLOCK <a className="shadow-lg glow-effect-text-2">REWARDS</a>
+        </a>
         <h2 className="font-semibold font-thunder text-4xl md:text-[6vw] mt-[0.2rem] md:mt-[1vw]">
           AT EVERY STEP
         </h2>

@@ -34,7 +34,7 @@ function Vip() {
       <div className="absolute inset-0 bg-black opacity-20 z-10" />
 
       {/* Imagens para alternar entre Empire e Shuffle */}
-      <div className="absolute top-48 lg:top-[10.6rem] 2xl:top-48 3xl:top-60 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center">
+      <div className="absolute top-[52vw] md:top-[12vw] left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center">
         <div className="flex space-x-8 justify-center">
           {/* Contêiner para a imagem do Empire */}
           <div className="relative flex flex-col items-center">
@@ -46,7 +46,7 @@ function Vip() {
               <img
                 src="/csgoempire.png"
                 alt="Empire"
-                className={`w-32 lg:w-28 3xl:w-36 cursor-pointer transition duration-300 ease-in-out hover:scale-110 hidden md:block`}
+                className={`w-[8vw] cursor-pointer transition duration-300 ease-in-out hover:scale-110 hidden md:block`}
                 onClick={() => handleImageClick(1)} // Mudar para Empire ao clicar
               />
               <img
@@ -68,7 +68,7 @@ function Vip() {
               <img
                 src="/shuffle.png"
                 alt="Shuffle"
-                className={`w-32 lg:w-28 3xl:w-36 cursor-pointer transition duration-300 ease-in-out hover:scale-110 hidden md:block`}
+                className={`w-[8vw] cursor-pointer transition duration-300 ease-in-out hover:scale-110 hidden md:block`}
                 onClick={() => handleImageClick(2)} // Mudar para Shuffle ao clicar
               />
               <img

@@ -19,7 +19,7 @@ function Empire() {
       >
         <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
-        <p className="absolute top-32 lg:top-32 3xl:top-40 text-6xl 2xl:text-7xl 3xl:text-8xl font-bold font-thunder z-10 text-white">
+        <p className="absolute top-[30vw] md:top-[6vw] text-[16vw] md:text-[6vw] font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-6">LEADER</a>BOARD
         </p>
 
@@ -30,100 +30,104 @@ function Empire() {
           animate="show"
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
-          className="relative z-10 flex flex-wrap justify-center lg:space-x-12 mt-28 lg:mt-24 3xl:mt-36"
+          className="relative z-10 flex flex-wrap justify-center md:space-x-12 xl:space-x-16 3xl:space-x-20 mt-[50vw] md:mt-[6vw]"
         >
           {/* Cards do Empire */}
-          <div className="absolute top-[-150px] sm:top-[-170px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
-            <div className="bg-zinc-950 rounded-full 3xl:w-24 3xl:h-24 lg:w-16 w-20 mx-auto 3xl:mb-4 lg:mb-3">
+          <div className="absolute top-[-42vw] md:top-[0vw] scale-[1.10] md:scale-100 bg-zinc-900 rounded-lg p-[8vw] md:p-[2vw] text-center md:relative w-[60vw] md:w-[12vw] md:h-[17.4vw] h-[70vw]">
+            <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw]">
               <img
                 src="/logo2.png"
                 alt="Second Place"
-                className="rounded-full 3xl:h-auto 3xl:max-width-100"
+                className="rounded-full w-full h-auto"
               />
-              <div className="absolute 3xl:top-[6.7rem] lg:top-[4.8rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black 3xl:text-sm lg:text-sm text-sm font-bold 3xl:px-[0.65rem] 3xl:py-1 lg:px-[0.44rem] lg:py-0 px-[0.44rem] py-0 rounded-full">
+              <div className="absolute top-[25vw] md:top-[6vw] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black text-[3vw] md:text-[0.8vw] font-bold px-[2vw] md:px-[0.4vw] py-[0.5vw] md:py-[0vw] rounded-full">
                 2
               </div>
             </div>
-            <h3 className="lg:text-xl text-3xl text-white lg:mb-4 3xl:mb-8 lg:mt-0 mt-2">
+            <h3 className="text-[5vw] md:text-[1vw] text-white md:mb-[1vw] mt-[2vw] md:mt-0">
               Player 2
             </h3>
-            <p className="text-sm text-zinc-500">Wagered</p>
-            <p className="text-lg font-medium text-white">
+            <p className="text-[3vw] md:text-[0.8vw] text-zinc-500">Wagered</p>
+            <p className="text-[5vw] md:text-[1vw] font-medium text-white">
               <span className="text-[#717171]">
-                <i className="fa-solid fa-coins mr-1"></i>
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>
               </span>
               120,000
             </p>
 
             {/* Div do gradiente */}
-            <div className="absolute left-0 right-0 lg:w-60 w-72 3xl:top-[17rem] top-56 -mx-6">
-              <div className="bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black font-semibold px-4 py-2 rounded-lg mx-4 shadow-2">
-                <i className="fa-solid fa-coins mr-1"></i>500
+            <div className="relative mt-[5vw] w-[64.5vw] md:mt-[1vw] md:w-[13vw] transform -translate-x-[10vw] md:-translate-x-[2.4vw]">
+              <div className="text-[5vw] md:text-[0.8vw] bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black font-semibold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg shadow-2">
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>
+                500
               </div>
             </div>
           </div>
 
-          <div className="absolute top-[-500px] sm:top-[-520px] lg:top-0 bg-zinc-900 rounded-lg p-8 pb-20 text-center lg:relative transform scale-110 overflow-visible w-60 lg:ml-24">
-            <div className="bg-zinc-950 rounded-full 3xl:w-32 3xl:h-32 w-20 mx-auto mb-3">
+          <div className="absolute top-[-125vw] md:top-[0vw] bg-zinc-900 rounded-lg p-[8vw] md:p-[1vw] md:pb-[1vw] text-center md:relative transform scale-[1.10] overflow-visible w-[60vw] md:w-[13vw] md:h-[17.6vw] h-[70vw]">
+            <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[5.2vw] mx-auto mb-[1vw] md:mb-[1vw] md:mt-[1vw]">
               <img
                 src="/logo2.png"
                 alt="First Place"
                 className="rounded-full"
               />
-              <div className="absolute 3xl:top-[8.9rem] top-[6.2rem] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black 3xl:text-base text-sm font-bold 3xl:px-[0.85rem] 3xl:py-1 px-[0.51rem] py-0 rounded-full">
+              <div className="absolute top-[25vw] md:top-[6.2vw] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black text-[3vw] md:text-[0.8vw] font-bold px-[2vw] md:px-[0.5vw] py-[0.5vw] md:py-[0.05vw] rounded-full">
                 1
               </div>
             </div>
-            <h3 className="text-2xl text-white">Player 1</h3>
-            <p className="text-sm text-zinc-500">Wagered</p>
-            <p className="text-lg font-medium text-white">
+            <h3 className="text-[5vw] md:text-[1.3vw] text-white mt-[2.4vw] md:mt-0">
+              Player 1
+            </h3>
+            <p className="text-[3vw] md:text-[0.8vw] text-zinc-500">Wagered</p>
+            <p className="text-[5vw] md:text-[1vw] font-medium text-white">
               <span className="text-[#D89C21]">
-                <i className="fa-solid fa-coins mr-1"></i>
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>
               </span>
               300,000
             </p>
 
-            {/* Div do gradiente */}
-            <div className="absolute left-0 right-0 w-72 3xl:top-[17rem] top-56 -mx-6">
-              <div className="bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black font-semibold px-6 py-2 rounded-lg mx-4 shadow-1">
-                <i className="fa-solid fa-coins mr-1"></i>1,000
+            {/* Div do gradiente ajustada */}
+            <div className="relative mt-[5vw] w-[64.5vw] md:mt-[1vw] md:w-[14.2vw] transform -translate-x-[10vw] md:-translate-x-[1.6vw]">
+              <div className="text-[5vw] md:text-[0.8vw] bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black font-semibold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg shadow-1">
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>
+                1,000
               </div>
             </div>
           </div>
 
-          <div className="absolute top-[200px] sm:top-[180px] scale-110 lg:scale-100 lg:top-0 bg-zinc-900 rounded-lg p-8 lg:p-6 pb-20 lg:pb-0 text-center lg:relative w-60 lg:w-48 lg:mt-0">
-            <div className="bg-zinc-950 rounded-full 3xl:w-24 3xl:h-24 lg:w-16 w-20 mx-auto 3xl:mb-4 lg:mb-3">
+          <div className="absolute top-[41vw] md:top-[0vw] bg-zinc-900 rounded-lg p-[8vw] md:p-[2vw] text-center md:relative transform scale-[1.10] md:scale-100 overflow-visible w-[60vw] md:w-[12vw] md:h-[17.4vw] h-[70vw]">
+            <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw]">
               <img
                 src="/logo2.png"
                 alt="Third Place"
                 className="rounded-full"
               />
               {/* Position */}
-              <div className="absolute 3xl:top-[6.7rem] lg:top-[4.8rem] top-[6.2rem]  left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black 3xl:text-sm lg:text-sm text-sm font-bold 3xl:px-[0.65rem] 3xl:py-1 lg:px-[0.44rem] lg:py-0 px-[0.44rem] py-0 rounded-full">
+              <div className="absolute top-[25vw] md:top-[6vw] left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black text-[3vw] md:text-[0.8vw] font-bold px-[2vw] md:px-[0.4vw] py-[0.5vw] md:py-[0.0vw] rounded-full">
                 3
               </div>
             </div>
-            <h3 className="lg:text-xl text-3xl text-white lg:mb-4 3xl:mb-8 lg:mt-0 mt-2">
+            <h3 className="text-[5vw] md:text-[1vw] text-white md:mb-[1vw] mt-[2vw] md:mt-0">
               Player 3
             </h3>
-            <p className="text-sm text-zinc-500">Wagered</p>
-            <p className="text-lg font-medium text-white">
+            <p className="text-[3vw] md:text-[0.8vw] text-zinc-500">Wagered</p>
+            <p className="text-[5vw] md:text-[1vw] font-medium text-white">
               <span className="text-[#9D4D25]">
-                <i className="fa-solid fa-coins mr-1"></i>
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>
               </span>
               90,000
             </p>
             {/* Div do gradiente */}
-            <div className="absolute left-0 right-0 lg:w-60 w-72 3xl:top-[17rem] top-56 -mx-6">
-              <div className="bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black font-semibold px-4 py-2 rounded-lg mx-4 shadow-3">
-                <i className="fa-solid fa-coins mr-1"></i>250
+            <div className="relative mt-[5vw] w-[64.5vw] md:mt-[1vw] md:w-[13vw] transform -translate-x-[10vw] md:-translate-x-[2.4vw]">
+              <div className="text-[5vw] md:text-[0.8vw] bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black font-semibold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg shadow-3">
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>250
               </div>
             </div>
           </div>
         </motion.div>
 
         {/* Time Component */}
-        <div className="absolute 3xl:bottom-10 bottom-5 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="absolute md:bottom-[2vw] bottom-5 left-1/2 transform -translate-x-1/2 z-10">
           <Time targetDate={time} leaderboardType="EMPIRE " />
         </div>
 
