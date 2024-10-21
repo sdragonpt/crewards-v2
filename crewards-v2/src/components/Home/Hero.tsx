@@ -55,7 +55,7 @@ function Hero() {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        className="absolute top-[18%] transform -translate-x-1/2 z-10 text-center text-white"
+        className="absolute top-[20%] transform -translate-x-1/2 z-10 text-center text-white"
         style={{ width: "80%", maxWidth: "1900px" }} // Tamanho máximo da div
       >
         {/* Tamanho ajustado para mobile e vw a partir de md */}
