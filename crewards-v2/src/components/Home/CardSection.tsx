@@ -33,19 +33,27 @@ const CardSection: React.FC = () => {
   return (
     <div
       id="rewards"
-      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#171414] 2xl:pb-28"
+      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#1B1E22] 2xl:pb-28"
     >
-      <div className="absolute inset-0 bg-black opacity-70" />
-      <h1
-        ref={h1Ref}
-        className="text-6xl 3xl:mt-24 lg:mt-32 font-bold lg:mb-0 xl:mb-8 mb-2 text-white z-20 font-thunder"
-      >
-        Rewards
-      </h1>
-      <motion.div className="flex flex-wrap justify-center lg:space-x-8 z-10">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), url(/background.png)",
+        }}
+      />
+      <div className="absolute inset-0 bg-black opacity-50" />
+      <p ref={h1Ref} className="text-center absolute top-[3vw] md:top-[7vw]">
+        <h1 className="text-[11vw] md:text-[4vw] font-base text-white z-20 font-thunder">
+          BONUSES
+        </h1>
+        <p className="text-[4vw] md:text-[1vw] font-base text-[#797979] mt-[-4vw] md:mt-[-1.6vw]">
+          CLAIM & ENJOY INSTANTLY!
+        </p>
+      </p>
+      <motion.div className="flex flex-wrap justify-center md:space-x-16 z-10 md:absolute mt-[12vw]">
         {/* Card 1 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-03 3xl:scale-100 scale-90">
-          <div className="absolute inset-0 opacity-60 rounded-lg blur-[0px]" />
+        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:scale-105 scale-90">
           <motion.div
             ref={ref}
             variants={fadeIn("up", 0.8)}
@@ -60,7 +68,7 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 0.8 }}
-            className="bg-[#2a2a2a] rounded-lg p-4 relative z-10 border-b-[#FFD627] border-b-2"
+            className="bg-[#1F242A] rounded-md p-4 relative z-10"
           >
             <img
               src="clash.gif"
@@ -70,8 +78,8 @@ const CardSection: React.FC = () => {
             <p className="text-center text-sm text-neutral-300 mb-6">
               CLASH.GG
             </p>
-            <div className="bg-[#171414] rounded-lg border-b border-[#FFD627] p-4 lg:p-2 mb-4 text-center">
-              <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
+            <div className="bg-[#161C26] rounded-md border-b border-[#FFD627] p-4 lg:p-2 mb-4 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">MAIN</p>
               <motion.span
                 ref={ref}
                 variants={fadeIn("up", 1)}
@@ -91,7 +99,7 @@ const CardSection: React.FC = () => {
                 5% DEPOSIT BONUS
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-3 lg:p-2 mb-6 text-center">
+            <div className="bg-[#161C26] rounded-md p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 2xl:text-sm text-sm">EXTRA</p>
               <span className="text-zinc-300 2xl:text-base text-xs">
                 PLAY FOR FREE USING ON-SITE RAIN
@@ -101,7 +109,7 @@ const CardSection: React.FC = () => {
               href="https://clash.gg/r/CLASSY"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#FFD627] text-[#924600] py-2 rounded-lg border-b-4 border-[#EF9C27] hover:opacity-70 text-center block glow-effect-yellow transition-opacity duration-300"
+              className="pt-3 w-full bg-[#FFD627] text-[#924600] py-2 rounded-sm border-b-4 border-[#EF9C27] hover:opacity-70 text-center block glow-effect-yellow transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
@@ -113,8 +121,7 @@ const CardSection: React.FC = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-0 3xl:scale-100 scale-90">
-          <div className="absolute inset-0 opacity-60 rounded-lg" />
+        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-0 md:scale-105 scale-90">
           <motion.div
             ref={ref}
             variants={fadeIn("up", 1.2)}
@@ -129,7 +136,7 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 1.2 }}
-            className="bg-[#2a2a2a] rounded-lg p-4 relative z-10 border-b-[#762CFB] border-b-2"
+            className="bg-[#1F242A] rounded-lg p-4 relative z-10"
           >
             <img
               src="shuffle.png"
@@ -139,8 +146,8 @@ const CardSection: React.FC = () => {
             <p className="text-center text-sm text-neutral-300 mb-6">
               SHUFFLE.COM
             </p>
-            <div className="bg-[#171414] rounded-lg border-b border-[#762CFB] p-4 lg:p-2 mb-4 text-center">
-              <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
+            <div className="bg-[#161C26] rounded-md border-b border-[#762CFB] p-4 lg:p-2 mb-4 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">MAIN</p>
               <motion.span
                 ref={ref}
                 variants={fadeIn("up", 1.4)}
@@ -160,7 +167,7 @@ const CardSection: React.FC = () => {
                 REDEEM BONUSES
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-3 lg:p-2 mb-6 text-center">
+            <div className="bg-[#161C26] rounded-md p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
               <span className="text-zinc-300 text-base">
                 WEEKLY $20K RAFFLE
@@ -170,7 +177,7 @@ const CardSection: React.FC = () => {
               href="https://shuffle.com?r=Classy"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-lg border-b-4 border-[#621CE0] hover:opacity-70 text-center block glow-effect-purple transition-opacity duration-300"
+              className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-sm border-b-4 border-[#621CE0] hover:opacity-70 text-center block glow-effect-purple transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
@@ -181,8 +188,7 @@ const CardSection: React.FC = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-10 md:mb-0 3xl:scale-100 scale-90">
-          <div className="absolute inset-0 opacity-60 rounded-lg" />
+        <div className="relative lg:w-72 2xl:w-[360px] mb-10 md:mb-0 md:scale-105 scale-90">
           <motion.div
             ref={ref}
             variants={fadeIn("up", 1.6)}
@@ -197,7 +203,7 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 1.6 }}
-            className="bg-[#2a2a2a] rounded-lg p-4 relative z-10 border-b-[#FFC31A] border-b-2"
+            className="bg-[#1F242A] rounded-lg p-4 relative z-10"
           >
             <img
               src="csgoempire.png"
@@ -207,8 +213,8 @@ const CardSection: React.FC = () => {
             <p className="text-center text-sm text-neutral-300 mb-6">
               CSGOEMPIRE.COM
             </p>
-            <div className="bg-[#171414] rounded-lg border-b border-[#FFC31A] p-4 mb-4 lg:p-2 text-center">
-              <p className="text-zinc-500 mb-1 text-sm">MAIN BONUS</p>
+            <div className="bg-[#161C26] rounded-md border-b border-[#FFC31A] p-4 mb-4 lg:p-2 text-center">
+              <p className="text-zinc-500 mb-1 text-sm">MAIN</p>
               <motion.span
                 ref={ref}
                 variants={fadeIn("up", 1.8)}
@@ -223,12 +229,12 @@ const CardSection: React.FC = () => {
                     : "hidden"
                 }
                 transition={{ duration: 1.8 }}
-                className="text-white"
+                className="text-white text-lg"
               >
                 1 FREE CASE
               </motion.span>
             </div>
-            <div className="bg-[#171414] rounded-lg p-3 lg:p-2 mb-6 text-center">
+            <div className="bg-[#161C26] rounded-md p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
               <span className="text-zinc-300">2K MONTHLY LEADERBOARD</span>
             </div>
@@ -236,7 +242,7 @@ const CardSection: React.FC = () => {
               href="https://csgoempire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-lg border-b-4 border-[#E3A906] hover:opacity-70 text-center block glow-effect-yellow-2 transition-opacity duration-300"
+              className="pt-3 w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-sm border-b-4 border-[#E3A906] hover:opacity-70 text-center block glow-effect-yellow-2 transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>

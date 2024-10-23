@@ -42,15 +42,14 @@ function Hero() {
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#171414]">
+    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#1B1E22]">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 md:mt-[4vw] bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), url(/background.png)",
+            "url(/background.png)",
         }}
       />
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent z-10 filter blur-lg" />
       <div className="absolute inset-0 bg-black opacity-50" />
       <div
         className="absolute z-0 bg-cover bg-center h-full w-full brightness-110 bottom-1/4"
@@ -88,7 +87,7 @@ function Hero() {
             onClick={() => handleAnchorClick("rewards")}
             className="cursor-pointer bg-gradient-to-r from-red-700 to-red-600 text-white px-4 py-2 md:px-[1.6vw] md:py-[0.8vw] rounded-md hover:opacity-70 transition-opacity duration-300 text-sm md:text-[1vw]"
           >
-            Affiliates
+            Bonuses
           </a>
           <Link
             to="/leaderboard"

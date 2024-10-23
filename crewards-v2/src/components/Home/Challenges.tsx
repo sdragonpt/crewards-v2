@@ -17,7 +17,7 @@ const Challenges: React.FC = () => {
       id: "hacksaw-slayers-inc-96",
       title: "First to hit 750x with minimum $0.20 bet",
       thumbnail: "slayers.png",
-      rewardValue: "150.00000000",
+      rewardValue: "150.00",
       rewardImage: "usd.png",
       glowColor: "rgba(186, 215, 1, 0.5)",
     },
@@ -25,7 +25,7 @@ const Challenges: React.FC = () => {
       id: "hacksaw-six-six-six-96",
       title: "First to hit 666x with minimum $0.20 bet",
       thumbnail: "six.png",
-      rewardValue: "125.00000000",
+      rewardValue: "125.00",
       rewardImage: "usd.png",
       glowColor: "rgba(254, 1, 33, 0.5)",
     },
@@ -33,7 +33,7 @@ const Challenges: React.FC = () => {
       id: "nolimit-apocalypse",
       title: "First to hit 888x with minimum $0.20 bet",
       thumbnail: "apocalypse.png",
-      rewardValue: "175.00000000",
+      rewardValue: "175.00",
       rewardImage: "usd.png",
       glowColor: "rgba(51, 177, 26, 0.5)",
     },
@@ -41,7 +41,7 @@ const Challenges: React.FC = () => {
       id: "originals/keno",
       title: "First to hit 500x with minimum $0.20 bet",
       thumbnail: "keno.png",
-      rewardValue: "100.00000000",
+      rewardValue: "100.00",
       rewardImage: "usd.png",
       glowColor: "rgba(252, 142, 1, 0.5)",
     },
@@ -119,7 +119,7 @@ const Challenges: React.FC = () => {
     >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-black opacity-20 z-0 bg-no-repeat bg-cover bg-center"
+        className="absolute inset-0 bg-black opacity-40 z-0 bg-no-repeat bg-cover bg-center"
         style={{ backgroundImage: "url('shuffle-banner.png')" }}
       />
 
@@ -129,13 +129,13 @@ const Challenges: React.FC = () => {
       {/* Bottom with blur */}
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black via-transparent to-transparent z-10 filter blur-lg" />
 
-      <h1 className="text-6xl font-bold text-white text-center z-10 font-thunder">
-        Challenges
+      <h1 className="text-[14vw] md:text-[4vw] font-base text-white z-20 font-thunder absolute top-[6.6vw] left-1/2 transform -translate-x-1/2">
+        CHALLLENGES
       </h1>
       <div
         {...handlers}
         ref={challengesContainerRef}
-        className="relative bg-zinc-700 bg-opacity-0 rounded-xl p-8 lg:pt-0 2xl:p-8 mx-6 lg:mx-48 2xl:mx-48 z-10"
+        className="md:absolute md:mt-[5vw] bg-zinc-700 bg-opacity-0 rounded-xl p-8 lg:pt-0 2xl:p-8 mx-6 z-10 md:min-w-[80vw] md:left-1/2 md:transform md:-translate-x-1/2"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart} // Add touch event handler
@@ -150,7 +150,7 @@ const Challenges: React.FC = () => {
           {challenges.map((challenge) => (
             <div
               key={challenge.id}
-              className="max-w-[200px] 2xl:max-w-[320px] flex flex-col rounded-lg p-4"
+              className="max-w-[200vw] md:max-w-[320px] flex flex-col rounded-lg p-4"
               onMouseDown={handleMouseDown}
               onClick={() => handleClick(challenge.id)}
             >
@@ -162,7 +162,7 @@ const Challenges: React.FC = () => {
                   filter: `drop-shadow(0 0 20px ${challenge.glowColor})`,
                 }}
               />
-              <h3 className="text-lg text-white text-left mt-6">
+              <h3 className="text-[5vw] md:text-lg text-white text-left mt-6 min-w-[40vw] md:min-w-0">
                 {challenge.title}
               </h3>
               <div className="mt-1">

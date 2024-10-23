@@ -25,15 +25,15 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#0c0c0c] to-[#0a0a0a] text-[#444444] font-bold border-t-2 border-y-[#242424] xl:px-36 2xl:px-60">
-      <div className="container py-8 flex flex-wrap justify-between">
+    <footer className="bg-gradient-to-b from-[#1B1E22] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] xl:px-36 2xl:px-60 py-4">
+      <div className="container py-4 flex flex-wrap justify-between ">
         <div className="footer-section flex flex-col items-start">
           <img
             className="footer-logo w-32 glow-effect-2"
             src="/logo.png"
             alt="Logo"
           />
-          <p className="font-extrabold">
+          <p className="font-base">
             © Copyrights 2024 <br /> crewards.gg
           </p>
         </div>
@@ -128,12 +128,11 @@ const Footer: React.FC = () => {
 
       <hr className="border-[#242424]" />
 
-      <p className="text-sm text-left py-4">
-        18+ | Gamble Responsibly | BeGambleAware. Most people gamble for fun and
-        enjoyment. Do not think of gambling as a way to make money. Only gamble
-        with money you can afford to lose. Set a money and time limit in
-        advance. Never chase your losses. Don't use gambling to distract
-        yourself from everyday problems.
+      <p className="text-left md:text-[0.8vw] items-center py-4 bg-[#25282D] rounded-lg flex text-[#575757] px-3 mt-4">
+        <img src="/18.png" alt="18+" className="mr-4 w-10 h-10" />
+        WE DO NOT TAKE RESPONSIBILITY FOR ANY LOSSES FROM GAMBLING IN CASINOS
+        AND BETTING SITES WHICH ARE LINKED OR PROMOTED ON OUR WEBSITE(S). AS A
+        PLAYER, YOU ARE RESPONSIBLE FOR YOUR BETS.
       </p>
     </footer>
   );
