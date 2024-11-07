@@ -51,9 +51,9 @@ const CardSection: React.FC = () => {
           CLAIM & ENJOY INSTANTLY!
         </p>
       </p>
-      <motion.div className="flex flex-wrap justify-center md:space-x-16 z-10 md:absolute mt-[12vw]">
+      <motion.div className="flex flex-wrap justify-center md:space-x-8 3xl:space-x-16 z-10 md:absolute mt-[12vw] 2xl:mt-64 md:mt-40">
         {/* Card 1 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:scale-105 scale-90">
+        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] 3xl:scale-105 scale-90">
           <motion.div
             ref={ref}
             variants={fadeIn("up", 0.8)}
@@ -68,17 +68,18 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 0.8 }}
-            className="bg-[#1F242A] rounded-md p-4 relative z-10"
+            className="bg-gradient-to-t from-[#111418] to-[#22252b] rounded-md p-4 relative z-10 overflow-hidden"
           >
+            <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFD627] blur-lg opacity-20 rounded-xl z-[-1]"></div>
             <img
               src="clash.gif"
               alt="Reward 1"
               className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
-            <p className="text-center text-sm text-neutral-300 mb-6">
+            <p className="text-center text-base text-neutral-300 mb-6">
               CLASH.GG
             </p>
-            <div className="bg-[#161C26] rounded-md border-b border-[#FFD627] p-4 lg:p-2 mb-4 text-center">
+            <div className="bg-[#21262C] rounded-md border-b border-[#FFD627] p-4 lg:p-2 mb-4 text-center">
               <p className="text-zinc-500 mb-1 text-sm">MAIN</p>
               <motion.span
                 ref={ref}
@@ -99,7 +100,7 @@ const CardSection: React.FC = () => {
                 5% DEPOSIT BONUS
               </motion.span>
             </div>
-            <div className="bg-[#161C26] rounded-md p-3 lg:p-2 mb-6 text-center">
+            <div className="bg-[#21262C] rounded-md p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 2xl:text-sm text-sm">EXTRA</p>
               <span className="text-zinc-300 2xl:text-base text-xs">
                 PLAY FOR FREE USING ON-SITE RAIN
@@ -109,19 +110,15 @@ const CardSection: React.FC = () => {
               href="https://clash.gg/r/CLASSY"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#FFD627] text-[#924600] py-2 rounded-sm border-b-4 border-[#EF9C27] hover:opacity-70 text-center block glow-effect-yellow transition-opacity duration-300"
+              className="w-full bg-gradient-to-l from-[#f7dd69] to-[#FFD627] text-[#924600] py-3 rounded-sm hover:opacity-70 text-center block transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
-
-            <p className="text-center text-sm text-neutral-300 mt-4">
-              CODE CLASSY
-            </p>
           </motion.div>
         </div>
 
         {/* Card 2 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-0 md:scale-105 scale-90">
+        <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] md:mb-0 3xl:scale-105 scale-90">
           <motion.div
             ref={ref}
             variants={fadeIn("up", 1.2)}
@@ -136,17 +133,18 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 1.2 }}
-            className="bg-[#1F242A] rounded-lg p-4 relative z-10"
+            className="bg-gradient-to-t from-[#111418] to-[#22252b] rounded-md p-4 relative z-10 overflow-hidden"
           >
+            <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#762CFB] blur-lg opacity-20 rounded-xl z-[-1]"></div>
             <img
               src="shuffle.png"
               alt="Reward 2"
               className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
-            <p className="text-center text-sm text-neutral-300 mb-6">
+            <p className="text-center text-base text-neutral-300 mb-6">
               SHUFFLE.COM
             </p>
-            <div className="bg-[#161C26] rounded-md border-b border-[#762CFB] p-4 lg:p-2 mb-4 text-center">
+            <div className="bg-[#21262C] rounded-md border-b border-[#762CFB] p-4 lg:p-2 mb-4 text-center">
               <p className="text-zinc-500 mb-1 text-sm">MAIN</p>
               <motion.span
                 ref={ref}
@@ -167,7 +165,7 @@ const CardSection: React.FC = () => {
                 REDEEM BONUSES
               </motion.span>
             </div>
-            <div className="bg-[#161C26] rounded-md p-3 lg:p-2 mb-6 text-center">
+            <div className="bg-[#21262C] rounded-md p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
               <span className="text-zinc-300 text-base">
                 WEEKLY $20K RAFFLE
@@ -177,18 +175,15 @@ const CardSection: React.FC = () => {
               href="https://shuffle.com?r=Classy"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#762CFB] text-white py-2 rounded-sm border-b-4 border-[#621CE0] hover:opacity-70 text-center block glow-effect-purple transition-opacity duration-300"
+              className="w-full bg-gradient-to-l to-[#762CFB] from-[#975eff] text-white py-3 rounded-sm hover:opacity-70 text-center block transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
-            <p className="text-center text-sm text-neutral-300 mt-4">
-              CODE CLASSY
-            </p>
           </motion.div>
         </div>
 
         {/* Card 3 */}
-        <div className="relative lg:w-72 2xl:w-[360px] mb-10 md:mb-0 md:scale-105 scale-90">
+        <div className="relative lg:w-72 2xl:w-[360px] mb-10 md:mb-0 3xl:scale-105 scale-90">
           <motion.div
             ref={ref}
             variants={fadeIn("up", 1.6)}
@@ -203,17 +198,18 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 1.6 }}
-            className="bg-[#1F242A] rounded-lg p-4 relative z-10"
+            className="bg-gradient-to-t from-[#111418] to-[#22252b] rounded-md p-4 relative z-10 overflow-hidden"
           >
+            <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFC31A] blur-lg opacity-20 rounded-xl z-[-1]"></div>
             <img
               src="csgoempire.png"
               alt="Reward 3"
               className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
-            <p className="text-center text-sm text-neutral-300 mb-6">
+            <p className="text-center text-base text-neutral-300 mb-6">
               CSGOEMPIRE.COM
             </p>
-            <div className="bg-[#161C26] rounded-md border-b border-[#FFC31A] p-4 mb-4 lg:p-2 text-center">
+            <div className="bg-[#21262C] rounded-md border-b border-[#FFC31A] p-4 mb-4 lg:p-2 text-center">
               <p className="text-zinc-500 mb-1 text-sm">MAIN</p>
               <motion.span
                 ref={ref}
@@ -234,7 +230,7 @@ const CardSection: React.FC = () => {
                 1 FREE CASE
               </motion.span>
             </div>
-            <div className="bg-[#161C26] rounded-md p-3 lg:p-2 mb-6 text-center">
+            <div className="bg-[#21262C] rounded-md p-3 lg:p-2 mb-6 text-center">
               <p className="text-zinc-500 mb-1 text-sm">EXTRA</p>
               <span className="text-zinc-300">2K MONTHLY LEADERBOARD</span>
             </div>
@@ -242,13 +238,10 @@ const CardSection: React.FC = () => {
               href="https://csgoempire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="pt-3 w-full bg-[#FFC31A] text-[#1A1B28] py-2 rounded-sm border-b-4 border-[#E3A906] hover:opacity-70 text-center block glow-effect-yellow-2 transition-opacity duration-300"
+              className="w-full bg-gradient-to-l from-[#ffd971] to-[#FFC31A] text-[#1A1B28] py-3 rounded-sm hover:opacity-70 text-center block transition-opacity duration-300"
             >
               CLAIM BONUS
             </a>
-            <p className="text-center text-sm text-neutral-300 mt-4">
-              CODE CLASSY
-            </p>
           </motion.div>
         </div>
       </motion.div>

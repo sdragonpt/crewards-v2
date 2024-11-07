@@ -26,7 +26,7 @@ const MobileFooter: React.FC = () => {
   // };
 
   return (
-    <footer className="bg-gradient-to-b from-[#1B1E22] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] px-4 py-4">
+    <footer className="bg-gradient-to-b from-[#111418] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] px-4 py-4">
       <div className="container py-6 flex flex-col items-start pl-4">
         <div className="footer-section flex flex-col items-start mb-4">
           <img

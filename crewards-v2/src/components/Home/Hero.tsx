@@ -118,26 +118,26 @@ function Hero() {
       </div>
 
       {/* Imagens Mini Rotativas */}
-      {/* <img
-        src="/logo.png"
+      <img
+        src="/layer2.png"
         alt="Mini 1"
-        className="hidden md:block absolute left-[6%] bottom-[5%] w-[10%] md:w-[12%] lg:w-[15%] xl:w-[18%] 3xl:w-[20%] animate-sway-slow glow-effect"
+        className="hidden md:block absolute left-[6%] bottom-[5%] w-[16%] animate-sway-slow"
       />
       <img
-        src="/logo.png"
+        src="/layer4.png"
         alt="Mini 2"
-        className="hidden md:block absolute left-[15%] top-1/4 transform -translate-y-1/2 w-[12%] animate-sway-slow glow-effect"
+        className="hidden md:block absolute left-[15%] top-1/4 transform -translate-y-1/2 w-[8%] animate-sway-slow"
       />
       <img
-        src="/logo.png"
+        src="/layer3.png"
         alt="Mini 3"
-        className="hidden md:block absolute right-[15%] top-1/3 w-[16%] animate-sway-slow glow-effect"
+        className="hidden md:block absolute right-[10%] top-[20%] w-[10%] animate-sway-slow"
       />
       <img
-        src="/logo.png"
+        src="/layer1.png"
         alt="Mini 4"
-        className="hidden md:block absolute right-[5%] bottom-[4%] transform -translate-y-1/2 w-[12%] animate-sway-slow glow-effect"
-      /> */}
+        className="hidden md:block absolute right-[18%] bottom-[16%] transform -translate-y-1/2 w-[4%] animate-sway-slow "
+      />
     </div>
   );
 }

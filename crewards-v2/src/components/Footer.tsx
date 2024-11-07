@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#1B1E22] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] xl:px-36 2xl:px-60 py-4">
+    <footer className="bg-gradient-to-b from-[#111418] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] xl:px-36 2xl:px-60 py-4">
       <div className="container py-4 flex flex-wrap justify-between ">
         <div className="footer-section flex flex-col items-start">
           <img
@@ -128,7 +128,7 @@ const Footer: React.FC = () => {
 
       <hr className="border-[#242424]" />
 
-      <p className="text-left md:text-[0.8vw] items-center py-4 bg-[#25282D] rounded-lg flex text-[#575757] px-3 mt-4">
+      <p className="text-left md:text-[0.8vw] items-center py-4 bg-[#21262C] rounded-lg flex text-[#575757] px-3 mt-4">
         <img src="/18.png" alt="18+" className="mr-4 w-10 h-10" />
         WE DO NOT TAKE RESPONSIBILITY FOR ANY LOSSES FROM GAMBLING IN CASINOS
         AND BETTING SITES WHICH ARE LINKED OR PROMOTED ON OUR WEBSITE(S). AS A

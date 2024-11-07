@@ -143,7 +143,7 @@ const VideoBarLocal: React.FC = () => {
       <div
         {...handlers}
         ref={videoContainerRef}
-        className="relative bg-zinc-700 bg-opacity-10 rounded-xl p-8 mx-6 lg:mx-24 2xl:mx-48 z-10"
+        className="relative bg-zinc-700 bg-opacity-10 rounded-xl p-8 mx-6 lg:mx-24 2xl:mx-48 z-10 md:mt-20"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart} // Adiciona o handler de toque

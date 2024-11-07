@@ -89,15 +89,15 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         style={{ marginRight: "2vw" }} // Responsivo para margem
       >
         <h2
-          className="text-white font-thunder font-bold"
-          style={{ fontSize: "3vw", marginBottom: "0.2vw" }} // Tamanho e margem responsivos
+          className="text-zinc-300 font-base"
+          style={{ fontSize: "1.2vw", marginBottom: "1vw" }} // Tamanho e margem responsivos
         >
-          Total Given Away
+          TOTAL GIVEN AWAY
         </h2>
 
         <div className="relative inline-block">
           <div
-            className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#161616] to-red-600 z-0"
+            className="absolute inset-0 rounded-md bg-red-600 z-0"
             style={{
               width: "calc(100% + 0.5vw)", // Responsivo para borda externa
               height: "calc(100% + 0.5vw)", // Responsivo para borda externa
@@ -105,15 +105,13 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
             }}
           />
           <div
-            className="flex items-center space-x-1 bg-[#171414] rounded-xl shadow-lg relative z-10"
-            style={{ padding: "0.5vw 2vw" }} // Padding responsivo
+            className="flex items-center space-x-1 rounded-xl shadow-lg relative z-10"
           >
             <div
-              className="bg-[#171414] text-red-600 rounded-lg shadow-lg glow-effect-text font-bold"
+              className="bg-[#2a2a2a] bg-opacity-90 text-white rounded-sm shadow-lg font-bold"
               style={{
-                padding: "0.5vw 0.5vw", // Padding responsivo
-                marginLeft: "-0.5vw", // Margem negativa responsiva
-                fontSize: "2vw", // Tamanho de fonte responsivo
+                padding: "0.4vw 1.3vw", // Padding responsivo
+                fontSize: "3vw", // Tamanho de fonte responsivo
               }}
             >
               $
@@ -121,10 +119,10 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
             {formattedAmount.split("").map((digit, index) => (
               <div
                 key={index}
-                className="bg-[#2a2a2a] text-red-600 rounded-lg shadow-lg glow-effect-text font-bold"
+                className="bg-[#2a2a2a] bg-opacity-90 text-white rounded-sm shadow-lg font-bold"
                 style={{
                   padding: "0.4vw 1.3vw", // Padding responsivo
-                  fontSize: "2vw", // Tamanho de fonte responsivo
+                  fontSize: "3vw", // Tamanho de fonte responsivo
                 }}
               >
                 {digit}

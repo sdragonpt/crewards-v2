@@ -172,7 +172,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-[#1B1E22] bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
+    <nav className="fixed top-0 w-full bg-[#111418] bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
       <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:justify-between lg:items-center h-24 lg:h-16 lg:relative">
@@ -264,7 +264,7 @@ function NavBar() {
               <Link
                 onClick={handleLogin} // Altera o estado para logged in
                 to="#"
-                className="flex items-center justify-center text-zinc-500 px-4 py-2 bg-zinc-800 transition-colors duration-300 hover:bg-zinc-700 rounded-md" // Adicionando a transição suave na cor
+                className="flex items-center justify-center text-zinc-500 px-4 py-2 bg-[#21262C] transition-colors duration-300 hover:bg-zinc-700 rounded-md" // Adicionando a transição suave na cor
               >
                 SIGN IN
               </Link>
@@ -295,7 +295,7 @@ function NavBar() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="fixed top-24 left-0 w-full bg-gradient-to-b from-[#1B1E22] to-[#1B1E22] z-10 border-b-2 border-zinc-600 h-screen overflow-hidden"
+              className="fixed top-24 left-0 w-full bg-gradient-to-b from-[#111418] to-[#1B1E22] z-10 border-b-2 border-zinc-600 h-screen overflow-hidden"
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -30, opacity: 0 }}

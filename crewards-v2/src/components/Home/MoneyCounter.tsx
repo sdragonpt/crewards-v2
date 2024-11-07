@@ -84,28 +84,44 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.7 }}
-        className="flex flex-col place-items-center justify-center z-10" // Centraliza o conteúdo
+        className="flex flex-col place-items-center justify-center z-10"
         ref={counterRef}
+        style={{ marginRight: "2vw" }} // Responsivo para margem
       >
-        <h2 className="text-3xl md:text-4xl 3xl:text-6xl font-bold mb-2 md:mb-4 3xl:mb-8 text-white font-thunder">
-          Total Given Away
+        <h2
+          className="text-zinc-300 font-base"
+          style={{ fontSize: "5vw", marginBottom: "2vw" }} // Tamanho e margem responsivos
+        >
+          TOTAL GIVEN AWAY
         </h2>
+
         <div className="relative inline-block">
           <div
-            className="absolute inset-0 rounded-xl bg-gradient-to-b from-[#161616] to-red-600 z-0 transform -translate-x-[2px] -translate-y-[2px]"
+            className="absolute inset-0 rounded-sm bg-red-600 z-0"
             style={{
-              width: "calc(100% + 4px)",
-              height: "calc(100% + 4px)",
+              width: "calc(100% + 0.5vw)", // Responsivo para borda externa
+              height: "calc(100% + 0.5vw)", // Responsivo para borda externa
+              transform: "translate(-0.25vw, -0.25vw)", // Responsivo para offset de borda
             }}
           />
-          <div className="flex items-center space-x-1 bg-[#171414] rounded-xl px-4 py-2 md:px-8 md:py-4 shadow-lg relative z-10">
-            <div className="bg-[#171414] text-red-600 rounded-lg pr-2 py-1 md:pr-4 md:py-2 ml-[-8px] shadow-lg glow-effect-text text-xl md:text-3xl 2xl:text-5xl font-bold">
+          <div className="flex items-center md:space-x-1 space-x-[1px] rounded-xl shadow-lg relative z-10">
+            <div
+              className="bg-[#2a2a2a] bg-opacity-90 text-white rounded-sm shadow-lg font-bold"
+              style={{
+                padding: "0.4vw 1.3vw", // Padding responsivo
+                fontSize: "10vw", // Tamanho de fonte responsivo
+              }}
+            >
               $
             </div>
             {formattedAmount.split("").map((digit, index) => (
               <div
                 key={index}
-                className="bg-[#2a2a2a] text-red-600 rounded-lg px-2 py-1 md:px-4 md:py-2 shadow-lg glow-effect-text text-xl md:text-3xl 2xl:text-5xl font-bold"
+                className="bg-[#2a2a2a] bg-opacity-90 text-white rounded-sm shadow-lg font-bold"
+                style={{
+                  padding: "0.4vw 1.3vw", // Padding responsivo
+                  fontSize: "10vw", // Tamanho de fonte responsivo
+                }}
               >
                 {digit}
               </div>
