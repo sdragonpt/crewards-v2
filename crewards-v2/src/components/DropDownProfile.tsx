@@ -22,7 +22,7 @@ const DropDownProfile: React.FC<DropDownProfileProps> = ({ toggleLogin }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="flex flex-col dropDownProfile overflow-hidden text-base text-zinc-500"
+        className="flex flex-col dropDownProfile overflow-hidden text-base text-zinc-500 bg-[#111418] border-zinc-800"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}

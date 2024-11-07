@@ -144,7 +144,7 @@ const ProfileSettings: React.FC = () => {
       }}
     >
       <div
-        className={`bg-zinc-800 px-8 py-4 rounded-lg shadow-lg w-full max-w-xl border-2 mx-4 border-zinc-700 ${
+        className={`bg-gradient-to-t from-[#111418] to-[#22252b] px-8 py-4 rounded-lg shadow-lg w-full max-w-xl border-2 mx-4 border-zinc-800 ${
           windowHeight < 700 ? "mt-20 mb-10" : "mt-20 mb-10"
         } md:mt-32 md:mb-20 3xl:mt-32 3xl:mb-32`}
         style={{
@@ -177,7 +177,7 @@ const ProfileSettings: React.FC = () => {
               id="ethAddress"
               value={ethAddress}
               onChange={(e) => setEthAddress(e.target.value)}
-              className="w-full p-2 rounded border border-zinc-600 bg-zinc-700 text-white"
+              className="w-full p-2 rounded border border-zinc-900 bg-[#21262C] text-white"
             />
           </div>
           <div className="mb-4">
@@ -189,7 +189,7 @@ const ProfileSettings: React.FC = () => {
               id="btcAddress"
               value={btcAddress}
               onChange={(e) => setBtcAddress(e.target.value)}
-              className="w-full p-2 rounded border border-zinc-600 bg-zinc-700 text-white"
+              className="w-full p-2 rounded border border-zinc-900 bg-[#21262C] text-white"
             />
           </div>
           <div className="mb-4">
@@ -201,7 +201,7 @@ const ProfileSettings: React.FC = () => {
               id="ltcAddress"
               value={ltcAddress}
               onChange={(e) => setLtcAddress(e.target.value)}
-              className="w-full p-2 rounded border border-zinc-600 bg-zinc-700 text-white"
+              className="w-full p-2 rounded border border-zinc-900 bg-[#21262C] text-white"
             />
           </div>
           <div className="mb-6 relative">
@@ -222,7 +222,7 @@ const ProfileSettings: React.FC = () => {
                 id="csgoEmpireUsername"
                 value={csgoEmpireUsername}
                 onChange={(e) => handleCsgoUsernameChange(e.target.value)} // Atualiza aqui
-                className="flex-grow p-2 rounded border border-zinc-600 bg-zinc-700 text-white pl-10"
+                className="flex-grow p-2 rounded border border-zinc-900 bg-[#21262C] text-white pl-10"
               />
               <button
                 type="button"
@@ -269,7 +269,7 @@ const ProfileSettings: React.FC = () => {
                 id="shuffleUsername"
                 value={shuffleUsername}
                 onChange={(e) => handleShuffleUsernameChange(e.target.value)} // Atualiza aqui
-                className="flex-grow p-2 rounded border border-zinc-600 bg-zinc-700 text-white pl-10"
+                className="flex-grow p-2 rounded border border-zinc-900 bg-[#21262C] text-white pl-10"
               />
               <button
                 type="button"
