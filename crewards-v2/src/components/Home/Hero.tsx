@@ -48,7 +48,7 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-black opacity-50" />
       <div
-        className={`${containerClasses} h-full w-full brightness-110 bottom-1/4`}
+        className={`${containerClasses} md:mt-[4vw] brightness-150`}
         style={{ backgroundImage: "url(/redglow.png)" }}
       />
 
@@ -60,7 +60,10 @@ function Hero() {
         className="absolute top-[20%] transform -translate-x-1/2 z-10 text-center text-white w-[80%] max-w-[1900px]"
       >
         <a className={textGlowClasses}>
-          UNLOCK <span className="shadow-lg glow-effect-text-2 font-thunder">REWARDS</span>
+          UNLOCK{" "}
+          <span className="shadow-lg glow-effect-text-2 font-thunder">
+            REWARDS
+          </span>
         </a>
         <h2 className="font-semibold font-thunder text-4xl md:text-[6vw] mt-[0.2rem] md:mt-[1vw]">
           AT EVERY STEP
