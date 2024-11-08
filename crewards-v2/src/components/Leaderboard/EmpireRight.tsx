@@ -3,10 +3,10 @@ import { motion } from "framer-motion"; // Importar motion
 function EmpireRight() {
   return (
     <motion.div
-      className="absolute right-0 top-0 w-1/2 lg:h-full h-[160vh] bg-cover z-5 overflow-hidden" // Ajustado para ocupar metade da largura
+      className="absolute right-0 top-0 w-1/2 lg:h-full h-[160vh] bg-cover z-5" // Ajustado para ocupar metade da largura
       style={{
         backgroundImage: "url(/yellowglow2.png)", // Fundo do componente
-        backgroundSize: "200% auto", // Estica a imagem
+        backgroundSize: "200% 100%", // Aumenta o tamanho da imagem para cobrir as duas views
         backgroundPosition: "left", // Muda a posição da imagem para a direita
         backgroundRepeat: "no-repeat", // Garante que a imagem não repita
       }}

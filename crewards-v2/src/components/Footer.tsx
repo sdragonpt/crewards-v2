@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-b from-[#111418] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] xl:px-36 2xl:px-60 py-4">
+    <footer className="bg-gradient-to-b from-[#121215] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] xl:px-36 2xl:px-60 py-4">
       <div className="container py-4 flex flex-wrap justify-between ">
         <div className="footer-section flex flex-col items-start">
           <img

@@ -8,16 +8,11 @@ function Empire() {
   const time = "2024-10-05T23:59:59";
 
   return (
-    <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
+    <div className="relative bg-cover bg-center bg-[#22252b] overflow-hidden">
       {/* Primeira View - Leaderboard Cards */}
       <div
         className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%), url(/background.png)",
-        }}
       >
-        <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
         <p className="absolute top-[30vw] md:top-[6vw] text-[16vw] md:text-[6vw] font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-6">LEADER</a>BOARD
@@ -33,7 +28,7 @@ function Empire() {
           className="relative z-10 flex flex-wrap justify-center md:space-x-12 xl:space-x-16 3xl:space-x-20 mt-[50vw] md:mt-[6vw]"
         >
           {/* Cards do Empire */}
-          <div className="absolute top-[-42vw] md:top-[0vw] scale-[1.10] md:scale-100 bg-zinc-900 rounded-lg p-[8vw] md:p-[2vw] text-center md:relative w-[60vw] md:w-[12vw] md:h-[17.4vw] h-[70vw]">
+          <div className="absolute top-[-42vw] md:top-[0vw] scale-[1.10] md:scale-100 bg-gradient-to-b from-[#121215] to-[#1B1E22] rounded-lg p-[8vw] md:p-[2vw] text-center md:relative w-[60vw] md:w-[12vw] md:h-[17.4vw] h-[70vw]">
             <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw]">
               <img
                 src="/logo2.png"
@@ -64,7 +59,7 @@ function Empire() {
             </div>
           </div>
 
-          <div className="absolute top-[-125vw] md:top-[0vw] bg-zinc-900 rounded-lg p-[8vw] md:p-[1vw] md:pb-[1vw] text-center md:relative transform scale-[1.10] overflow-visible w-[60vw] md:w-[13vw] md:h-[17.6vw] h-[70vw]">
+          <div className="absolute top-[-125vw] md:top-[0vw] bg-gradient-to-b from-[#121215] to-[#1B1E22] rounded-lg p-[8vw] md:p-[1vw] md:pb-[1vw] text-center md:relative transform scale-[1.10] overflow-visible w-[60vw] md:w-[13vw] md:h-[17.6vw] h-[70vw]">
             <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[5.2vw] mx-auto mb-[1vw] md:mb-[1vw] md:mt-[1vw]">
               <img
                 src="/logo2.png"
@@ -95,7 +90,7 @@ function Empire() {
             </div>
           </div>
 
-          <div className="absolute top-[41vw] md:top-[0vw] bg-zinc-900 rounded-lg p-[8vw] md:p-[2vw] text-center md:relative transform scale-[1.10] md:scale-100 overflow-visible w-[60vw] md:w-[12vw] md:h-[17.4vw] h-[70vw]">
+          <div className="absolute top-[41vw] md:top-[0vw] bg-gradient-to-b from-[#121215] to-[#1B1E22] rounded-lg p-[8vw] md:p-[2vw] text-center md:relative transform scale-[1.10] md:scale-100 overflow-visible w-[60vw] md:w-[12vw] md:h-[17.4vw] h-[70vw]">
             <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw]">
               <img
                 src="/logo2.png"
@@ -138,11 +133,7 @@ function Empire() {
 
       {/* Segunda View - Detalhes dos Jogadores */}
       <div
-        className="pt-32 md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
-        }}
+        className="pt-32 md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#121215] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0"
       >
         <div className="flex flex-wrap text-center">
           <span className="text-zinc-500">Winners will be tipped onsite!</span>
@@ -193,7 +184,7 @@ function Empire() {
             return (
               <div
                 key={index}
-                className="flex justify-between items-center p-2 pr-6 bg-zinc-900 rounded lg:mx-0 mx-4 border-zinc-500"
+                className="flex justify-between items-center p-2 pr-6 bg-[#21262C] rounded lg:mx-0 mx-4 border-zinc-500"
               >
                 <div className="flex items-center">
                   <span className="text-white w-10 lg:ml-6 ml-2">
