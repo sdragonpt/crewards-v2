@@ -4,21 +4,37 @@ import "../css/LoadingScreen.css";
 const LoadingScreen: React.FC = () => {
   const [opacity, setOpacity] = useState(1);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [loadedResources, setLoadedResources] = useState(0);
+  const [totalResources, setTotalResources] = useState(0);
 
   useEffect(() => {
-    // Evento para verificar quando a página estiver completamente carregada
-    const handlePageLoad = () => {
-      setIsPageLoaded(true); // Define que a página foi carregada
+    // Função para contar os recursos carregados (imagens, etc.)
+    const handleResourceLoad = () => {
+      setLoadedResources((prev) => prev + 1);
     };
 
-    // Adiciona o ouvinte para o evento de load da janela
-    window.addEventListener("load", handlePageLoad);
+    // Seleciona todas as imagens da página
+    const images = Array.from(document.getElementsByTagName("img"));
 
-    return () => {
-      // Remove o ouvinte ao desmontar o componente
-      window.removeEventListener("load", handlePageLoad);
-    };
-  }, []);
+    // Conta o número total de imagens e outros recursos
+    setTotalResources(images.length);
+
+    // A cada imagem carregada, chama a função handleResourceLoad
+    images.forEach((img) => {
+      if (img.complete) {
+        // Se a imagem já está carregada, imediatamente chama o handler
+        handleResourceLoad();
+      } else {
+        // Caso contrário, aguarda o evento onLoad da imagem
+        img.onload = handleResourceLoad;
+      }
+    });
+
+    // Verifica quando todos os recursos foram carregados
+    if (loadedResources === totalResources) {
+      setIsPageLoaded(true); // Página está completamente carregada
+    }
+  }, [loadedResources, totalResources]);
 
   useEffect(() => {
     if (isPageLoaded) {
