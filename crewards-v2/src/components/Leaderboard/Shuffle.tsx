@@ -119,7 +119,7 @@ function Shuffle() {
 
         {/* Time Component */}
         <div className="absolute md:bottom-[2vw] bottom-5 left-1/2 transform -translate-x-1/2 z-10">
-          <Time targetDate={time} leaderboardType="EMPIRE " />
+          <Time targetDate={time} leaderboardType="SHUFFLE " />
         </div>
 
         {/* Componentes laterais */}
