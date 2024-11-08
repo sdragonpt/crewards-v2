@@ -56,7 +56,7 @@ function Hero() {
         variants={fadeIn("up", 0.3)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: false, amount: 0.7 }}
+        viewport={{ once: true, amount: 0.7 }}
         className="absolute top-[20%] transform -translate-x-1/2 z-10 text-center text-white w-[80%] max-w-[1900px]"
       >
         <a className={textGlowClasses}>

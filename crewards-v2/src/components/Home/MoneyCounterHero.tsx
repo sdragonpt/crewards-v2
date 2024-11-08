@@ -83,7 +83,7 @@ const MoneyCounterHero: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
         variants={fadeIn("left", 0.3)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.7 }}
+        viewport={{ once: true, amount: 0.7 }}
         className="flex flex-col place-items-center justify-center z-10"
         ref={counterRef}
         style={{ marginRight: "2vw" }} // Responsivo para margem

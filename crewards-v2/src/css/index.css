@@ -61,10 +61,10 @@
     transform: rotate(0deg);
   }
   50% {
-    transform: rotate(-15deg);
+    transform: rotate(-7deg);
   }
   100% {
-    transform: rotate(15deg);
+    transform: rotate(7deg);
   }
 }
 
@@ -295,7 +295,7 @@
 }
 
 .animate-sway-slow {
-  animation: sway-left-right 8s ease-in-out infinite alternate;
+  animation: sway-left-right 16s ease-in-out infinite alternate;
 }
 
 /* Efeitos de glow para cada tier */
