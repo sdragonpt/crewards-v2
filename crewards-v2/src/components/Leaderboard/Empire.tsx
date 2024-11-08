@@ -1,18 +1,28 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { fadeIn } from "../../variants";
 import Time from "./Time";
 import EmpireLeft from "./EmpireLeft";
 import EmpireRight from "./EmpireRight";
 
 function Empire() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const time = "2024-10-05T23:59:59";
+
+  // Usando useEffect para simular o carregamento de dados
+  useEffect(() => {
+    // Simula o carregamento dos dados (exemplo com 100ms de espera)
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100); // Ajuste o tempo conforme necessário para o seu caso de uso
+
+    return () => clearTimeout(timer); // Limpa o timer quando o componente é desmontado
+  }, []);
 
   return (
     <div className="relative bg-cover bg-center bg-[#22252b] overflow-hidden">
       {/* Primeira View - Leaderboard Cards */}
-      <div
-        className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center"
-      >
+      <div className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center">
         <div className="absolute inset-0 bg-black opacity-50" />
         <p className="absolute top-[30vw] md:top-[6vw] text-[16vw] md:text-[6vw] font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-6">LEADER</a>BOARD
@@ -22,7 +32,7 @@ function Empire() {
         <motion.div
           variants={fadeIn("up", 0.3)}
           initial={"hidden"} // Verifica se a tela é pequena
-          animate="show"
+          animate={isLoaded ? "show" : "hidden"}
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
           className="relative z-10 flex flex-wrap justify-center md:space-x-12 xl:space-x-16 3xl:space-x-20 mt-[50vw] md:mt-[6vw]"
@@ -115,7 +125,8 @@ function Empire() {
             {/* Div do gradiente */}
             <div className="relative mt-[5vw] w-[64.5vw] md:mt-[1vw] md:w-[13vw] transform -translate-x-[10vw] md:-translate-x-[2.4vw]">
               <div className="text-[5vw] md:text-[0.8vw] bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black font-semibold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg shadow-3">
-                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>250
+                <i className="fa-solid fa-coins md:mr-[0.2vw] mr-[1.2vw]"></i>
+                250
               </div>
             </div>
           </div>
@@ -127,14 +138,19 @@ function Empire() {
         </div>
 
         {/* Componentes laterais */}
-        <EmpireLeft />
-        <EmpireRight />
+        {isLoaded && (
+          <>
+            {/* EmpireLeft com animação */}
+            <EmpireLeft />
+
+            {/* EmpireRight com animação */}
+            <EmpireRight />
+          </>
+        )}
       </div>
 
       {/* Segunda View - Detalhes dos Jogadores */}
-      <div
-        className="pt-32 md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#121215] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0"
-      >
+      <div className="pt-32 md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#121215] items-center lg:pb-20 lg:pt-10 3xl:pb-0 my-[-90px] lg:my-0">
         <div className="flex flex-wrap text-center">
           <span className="text-zinc-500">Winners will be tipped onsite!</span>
         </div>
