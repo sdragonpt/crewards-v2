@@ -36,7 +36,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <LoadingScreen isLoading={isLoading} /> {/* Goes to loading */}
+      <LoadingScreen />
       <div
         className={`bg-[#1c1c1c] min-h-screen ${
           isLoading ? "hidden" : ""
