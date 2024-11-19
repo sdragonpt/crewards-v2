@@ -44,22 +44,15 @@ const CardSection: React.FC = () => {
       id="rewards"
       className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#1B1E22] 2xl:pb-28"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%), url(/background.png)",
-        }}
-      />
       <div className="absolute inset-0 bg-black opacity-50" />
-      <p ref={h1Ref} className="text-center absolute top-[3vw] md:top-[7vw]">
+      <span ref={h1Ref} className="text-center absolute top-[3vw] md:top-[7vw]">
         <h1 className="text-[11vw] md:text-[4vw] font-base text-white z-20 font-thunder">
           BONUSES
         </h1>
         <p className="text-[4vw] md:text-[1vw] font-base text-[#797979] mt-[-4vw] md:mt-[-1.6vw]">
           CLAIM & ENJOY INSTANTLY!
         </p>
-      </p>
+      </span>
       <motion.div className="flex flex-wrap justify-center md:space-x-8 3xl:space-x-16 z-10 md:absolute mt-[12vw] 2xl:mt-64 md:mt-40">
         {/* Card 1 */}
         <div className="relative lg:w-72 2xl:w-[360px] mb-[-10px] 3xl:scale-105 scale-90">

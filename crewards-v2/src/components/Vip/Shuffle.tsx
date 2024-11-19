@@ -157,17 +157,16 @@ const Shuffle: React.FC = () => {
     };
   }, []);
 
+  const containerClasses =
+    "relative flex items-center justify-center min-h-[100vh] bg-cover bg-center";
+
   return (
-    <div className="relative bg-cover bg-center bg-[#171414] overflow-hidden">
+    <div className="relative bg-cover bg-center bg-[#1B1E22] overflow-hidden">
       <div
-        className="relative flex items-center justify-center min-h-[100vh] bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%), url(/background.png)",
-        }}
+        className={`${containerClasses} brightness-125 background-0`}
       >
-        <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <div className="absolute inset-0 bg-black opacity-50" />
+        <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#060606] to-transparent z-10 filter blur-lg" />
         <a className="absolute top-[30vw] md:top-[6vw] text-[16vw] md:text-[6vw] font-bold font-thunder z-10 text-white">
           <a className="shadow-lg glow-effect-text-7">VIP </a>REWARDS
         </a>

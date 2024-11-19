@@ -44,17 +44,9 @@ function Hero() {
     <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#1B1E22]">
       <div className="absolute inset-0 bg-black opacity-50" />
       <div
-        className={`${containerClasses} md:mt-[4vw] brightness-125`}
-        style={{
-          backgroundImage: `url(/background-0.png?timestamp=${new Date().getTime()})`,
-        }}
+        className={`${containerClasses} md:mt-[4vw] brightness-125 background-0`}
       />
-      <div
-        className={`${containerClasses} md:mt-[4vw] brightness-75`}
-        style={{
-          backgroundImage: `url(/Glows.png?timestamp=${new Date().getTime()})`,
-        }}
-      />
+      <div className={`${containerClasses} md:mt-[4vw] brightness-75 glows`} />
 
       <motion.div
         variants={fadeIn("up", 0.3)}
