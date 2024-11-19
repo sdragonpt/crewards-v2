@@ -6,6 +6,15 @@ import { useEffect, useState } from "react";
 const CardSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    if (location.hash === "#rewards") {
+      const element = document.getElementById("rewards");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   // Detectar se a tela é pequena
   useEffect(() => {
     const handleResize = () => {

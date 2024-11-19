@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
 interface Challenge {
@@ -111,6 +111,15 @@ const Challenges: React.FC = () => {
     onSwipedRight: () => console.log("Swiped Right"),
     trackMouse: true,
   });
+
+  useEffect(() => {
+    if (location.hash === "#challenges") {
+      const element = document.getElementById("challenges");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <div

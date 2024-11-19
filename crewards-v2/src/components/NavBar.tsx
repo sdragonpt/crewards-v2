@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DropDownProfile from "./DropDownProfile";
 
@@ -13,6 +13,79 @@ function NavBar() {
   // LOGIN
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de login
   const [openProfile, setOpenProfile] = useState(false);
+
+  const [activeLinkWidth, setActiveLinkWidth] = useState(0);
+  const [activeLinkOffset, setActiveLinkOffset] = useState(0);
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  const navLinks = [
+    {
+      path: "/",
+      label: "HOME",
+      icon: "/icons/home-roof.png",
+      iconActive: "/icons/home-roof-0.png",
+      isAnchor: false, // Isso indica que é um link normal de página
+    },
+    {
+      path: "/#rewards", // Usando # para identificar a âncora
+      label: "REWARDS",
+      icon: "/icons/gift-1.png",
+      iconActive: "/icons/gift-1-0.png",
+      isAnchor: true, // Indica que é uma seção interna da Home
+      anchorId: "rewards", // ID da seção dentro da Home
+    },
+    {
+      path: "/#challenges", // Usando # para identificar a âncora
+      label: "CHALLENGES",
+      icon: "/icons/trophy.png",
+      iconActive: "/icons/trophy-0.png",
+      isAnchor: true, // Indica que é uma seção interna da Home
+      anchorId: "challenges", // ID da seção dentro da Home
+    },
+    {
+      path: "/#video-bar", // Usando # para identificar a âncora
+      label: "VIDEOS",
+      icon: "/icons/video.png",
+      iconActive: "/icons/video-0.png",
+      isAnchor: true, // Indica que é uma seção interna da Home
+      anchorId: "videos-bar", // ID da seção dentro da Home
+    },
+    {
+      path: "/vip/csgoempire",
+      label: "VIP",
+      icon: "/icons/sparkles-two-2.png",
+      iconActive: "/icons/sparkles-two-2-0.png",
+      isAnchor: false,
+    },
+    {
+      path: "/leaderboard",
+      label: "LEADERBOARD",
+      icon: "/icons/flag-2.png",
+      iconActive: "/icons/flag-2-0.png",
+      isAnchor: false,
+    },
+  ];
+
+  useEffect(() => {
+    const activeLinkIndex = navLinks.findIndex((link) => {
+      // Verifica se existe um hash na URL
+      if (location.hash) {
+        // Se houver hash, compara com o anchorId do link
+        return location.hash === `#${link.anchorId}`;
+      }
+      // Caso não tenha hash, usa o pathname
+      return link.path === location.pathname;
+    });
+
+    if (activeLinkIndex >= 0) {
+      const activeLink = linkRefs.current[activeLinkIndex];
+      if (activeLink) {
+        // Agora garantimos que activeLink não seja null
+        setActiveLinkWidth(activeLink.offsetWidth);
+        setActiveLinkOffset(activeLink.offsetLeft);
+      }
+    }
+  }, [location.pathname, location.hash]);
 
   // Função para alternar o estado de isLoggedIn
   const toggleLogin = () => {
@@ -58,13 +131,13 @@ function NavBar() {
     }
   };
 
-  const handleVipClick = () => {
-    if (location.pathname.startsWith("/vip/")) {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
-    } else {
-      navigate("/vip/csgoempire"); // Navega para a página do CSGOEmpire
-    }
-  };
+  // const handleVipClick = () => {
+  //   if (location.pathname.startsWith("/vip/")) {
+  //     window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
+  //   } else {
+  //     navigate("/vip/csgoempire"); // Navega para a página do CSGOEmpire
+  //   }
+  // };
 
   const handleAnchorClick = (anchorId: string) => {
     const scrollToElement = () => {
@@ -74,28 +147,44 @@ function NavBar() {
       }
     };
 
-    if (location.pathname === "/") {
-      scrollToElement();
+    // Se já estiver na página home, rola até a âncora diretamente
+    if (location.pathname === "/" && location.hash !== `#${anchorId}`) {
+      // Atualiza o hash na URL, mas sem recarregar a página
+      window.history.pushState(null, "", `/#${anchorId}`);
+
+      setTimeout(() => {
+        scrollToElement();
+      }, 100);
     } else if (location.pathname === "/leaderboard") {
       // Se estiver na página do leaderboard, navega para a home e depois faz o scroll
       navigate("/");
       setTimeout(() => {
         scrollToElement();
-      }, 100); // Atraso para garantir a navegação
-    } else if (location.pathname.includes("/vip")) {
-      // Se estiver em /vip/csgoempire ou /vip/shuffle, navega para a home
+      }, 300); // Atraso para garantir a navegação
+    } else if (
+      location.pathname === "/vip/csgoempire" ||
+      location.pathname === "/vip/shuffle"
+    ) {
+      // Se estiver em /vip/csgoempire ou /vip/shuffle, vai para a home e depois rola até a âncora
       navigate("/");
       setTimeout(() => {
-        scrollToElement();
-      }, 100); // Atraso para garantir a navegação
+        // Verifica se a navegação foi concluída antes de rolar para o topo
+        const rewardsElement = document.getElementById(anchorId);
+        if (rewardsElement) {
+          rewardsElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Atraso para garantir a navegação
     } else if (location.pathname.includes("/profile")) {
-      // Se estiver em /vip/csgoempire ou /vip/shuffle, navega para a home
+      // Se estiver em /profile, navega para a home
       navigate("/");
+    } else {
+      // Se estiver em uma página diferente de "/"
+      navigate("/"); // Navega para a Home
+
+      // Após a navegação, rola até o elemento da âncora
       setTimeout(() => {
         scrollToElement();
-      }, 100); // Atraso para garantir a navegação
-    } else {
-      scrollToElement(); // Scroll direto para outras rotas
+      }, 300); // Atraso para garantir que a navegação ocorreu antes de rolar
     }
   };
 
@@ -162,10 +251,10 @@ function NavBar() {
     }
   }, [location]);
 
-  // Check if the anchor is active
-  const isActive = (anchorId: string) => {
-    return location.pathname === "/" && location.hash === `#${anchorId}`;
-  };
+  // // Check if the anchor is active
+  // const isActive = (anchorId: string) => {
+  //   return location.pathname === "/" && location.hash === `#${anchorId}`;
+  // };
 
   const handleLogin = () => {
     setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
@@ -173,11 +262,11 @@ function NavBar() {
 
   return (
     <nav className="fixed top-0 w-full bg-[#111418] bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
-      <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
+      <div className="lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex lg:justify-between lg:items-center h-24 lg:h-16 lg:relative">
+        <div className="hidden lg:flex lg:items-center h-24 lg:h-16 lg:relative">
           {/* Logo */}
-          <div className="flex-shrink-0 lg:mr-6 lg:ml-4">
+          <div className="flex-shrink-0 lg:mr-4">
             <img
               onClick={handleHomeClick}
               className="h-20 w-auto mx-auto lg:mx-0"
@@ -187,74 +276,69 @@ function NavBar() {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex-grow">
-            <div className="ml-2 flex justify-center items-center 2xl:space-x-3 2xl:text-lg lg:space-x-2 lg:text-base text-zinc-500">
-              <Link
-                to="/"
-                onClick={handleHomeClick}
-                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
-                  location.pathname === "/" ? "text-white" : "hover:text-white"
-                }`}
-              >
-                HOME
-              </Link>
-              <a
-                onClick={() => handleVipClick()}
-                className={`px-1 py-2 rounded-md cursor-pointer glow-effect-text-5 transition-colors duration-300 ${
-                  location.pathname.startsWith("/vip")
-                    ? "text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                VIP
-              </a>
-              <a
-                onClick={() => handleAnchorClick("rewards")}
-                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
-                  isActive("rewards") ? "text-white" : "hover:text-white"
-                }`}
-              >
-                REWARDS
-              </a>
-              <a
-                onClick={() => handleAnchorClick("challenges")}
-                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
-                  isActive("challenges") ? "text-white" : "hover:text-white"
-                }`}
-              >
-                CHALLENGES
-              </a>
-              <a
-                onClick={() => handleAnchorClick("video-bar")}
-                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
-                  isActive("video-bar") ? "text-white" : "hover:text-white"
-                }`}
-              >
-                VIDEOS
-              </a>
-              <Link
-                to="/leaderboard"
-                onClick={handleLeaderboardClick}
-                className={`px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
-                  location.pathname === "/leaderboard"
-                    ? "text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                LEADERBOARD
-              </Link>
-            </div>
+          <div className="relative flex ml-2 justify-start items-center space-x-4 text-base text-[#B2B2B2] font-sans font-semibold">
+            <div
+              className="absolute top-[-28px] left-0 h-2 bg-cover transition-transform duration-300"
+              style={{
+                width: `${activeLinkWidth}px`,
+                transform: `translateX(${activeLinkOffset}px)`,
+                backgroundImage: "url('/Group.png')",
+              }}
+            ></div>
+
+            {navLinks.map(
+              ({ path, label, icon, iconActive, anchorId }, index) => (
+                <Link
+                  key={index}
+                  to={path}
+                  onClick={() => {
+                    if (path === "/") {
+                      // Se estiver em "Home", rola até o topo
+                      handleHomeClick();
+                    } else {
+                      // Para outros links, chama o handleAnchorClick para rolar até a âncora
+                      if (anchorId) {
+                        handleAnchorClick(anchorId); // Passa anchorId se não for undefined
+                      }
+                    }
+                  }}
+                  className={`relative flex items-center px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                    location.pathname === path ||
+                    location.hash === `#${anchorId}` ||
+                    (path.startsWith("/vip") &&
+                      location.pathname.startsWith("/vip"))
+                      ? "text-white"
+                      : "hover:text-white"
+                  }`}
+                  ref={(el) => (linkRefs.current[index] = el)}
+                >
+                  <img
+                    src={
+                      location.pathname === path ||
+                      location.hash === `#${anchorId}` ||
+                      (path.startsWith("/vip") &&
+                        location.pathname.startsWith("/vip"))
+                        ? iconActive
+                        : icon
+                    }
+                    alt={`${label} Icon`}
+                    className="w-5 mr-2"
+                  />
+                  {label}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Login */}
-          <div className="flex-shrink-0 lg:mr-4">
+          <div className="flex-shrink-0 lg:ml-auto lg:mr-4">
             {isLoggedIn ? (
               <div className="relative flex items-center">
                 <Link to="#" className="rounded-md" onClick={handleLogin}>
                   <img
                     src="/logo2.png"
                     alt="User Icon"
-                    className="w-10 h-10 mr-2 rounded-full transition-transform duration-300 hover:scale-110" // Adicionando a transição e o efeito de aumento
+                    className="w-10 h-10 mr-2 rounded-full transition-transform duration-300 hover:scale-110"
                     onClick={() => setOpenProfile((prev) => !prev)}
                   />
                 </Link>
@@ -262,9 +346,9 @@ function NavBar() {
               </div>
             ) : (
               <Link
-                onClick={handleLogin} // Altera o estado para logged in
+                onClick={handleLogin}
                 to="#"
-                className="flex items-center justify-center text-zinc-500 px-4 py-2 bg-[#21262C] transition-colors duration-300 hover:bg-zinc-700 rounded-md" // Adicionando a transição suave na cor
+                className="flex items-center justify-center text-zinc-500 px-4 py-2 bg-[#21262C] transition-colors duration-300 hover:bg-zinc-700 rounded-md"
               >
                 SIGN IN
               </Link>

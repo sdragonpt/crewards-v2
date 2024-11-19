@@ -44,7 +44,7 @@ function Hero() {
     <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#1B1E22]">
       <div
         className={`${containerClasses} md:mt-[4vw]`}
-        style={{ backgroundImage: "url(/background.png)" }}
+        style={{ backgroundImage: "url(/background-0.png)" }}
       />
       <div className="absolute inset-0 bg-black opacity-50" />
       <div

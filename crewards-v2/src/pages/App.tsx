@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import Hero from "../components/Home/Hero";
 import CardSection from "../components/Home/CardSection";
 import VideoBar from "../components/Home/VideoBar";
-import VideoBarLocal from "../components/Home/VideoBarLocal";
+// import VideoBarLocal from "../components/Home/VideoBarLocal";
 import Footer from "../components/Footer";
 import MobileFooter from "../components/MobileFooter"; // Importando o MobileFooter
 import ScrollToTop from "../components/ScrollToTop";
@@ -51,7 +51,7 @@ function App() {
                 <Hero />
                 <CardSection />
                 <Challenges />
-                {isLocalhost ? <VideoBarLocal /> : <VideoBar />}
+                {isLocalhost ? <Challenges /> : <VideoBar />}
                 {renderFooter()} {/* Renderiza o footer aqui */}
               </>
             }

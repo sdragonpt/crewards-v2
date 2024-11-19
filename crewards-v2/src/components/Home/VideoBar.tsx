@@ -101,6 +101,15 @@ const VideoBar: React.FC = () => {
     trackMouse: true,
   });
 
+  useEffect(() => {
+    if (location.hash === "#video-bar") {
+      const element = document.getElementById("video-bar");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
   return (
     <div
       id="video-bar"
