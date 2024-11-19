@@ -28,7 +28,6 @@
   }
 }
 
-
 @media (max-height: 799px) {
   .custom-min-h {
     min-height: 220vh; /* Para telas menores que 670px de altura */
@@ -93,64 +92,64 @@
 /* Animation of the text */
 @keyframes color-shift {
   0% {
-    color: #ff0000; 
+    color: #ff0000;
   }
   100% {
-    color: #ff4343; 
+    color: #ff4343;
   }
 }
 
 @keyframes color-shift-2 {
   0% {
-    color: #ff0000; 
+    color: #ff0000;
     text-shadow: 0 0 8px rgba(255, 0, 0, 0.9);
   }
   100% {
-    color: #71717a; 
+    color: #71717a;
     text-shadow: 0 0 8px rgba(230, 222, 222, 0.9);
   }
 }
 
 @keyframes color-shift-3 {
   0% {
-    color: #8337d8; 
+    color: #8337d8;
     text-shadow: 0 0 8px rgba(131, 55, 216, 0.9);
   }
   100% {
-    color: #582c8c; 
+    color: #582c8c;
     text-shadow: 0 0 8px rgba(88, 44, 140, 0.9);
   }
 }
 
 @keyframes color-shift-4 {
   0% {
-    color: #eab30d; 
+    color: #eab30d;
     text-shadow: 0 0 8px rgba(234, 179, 13, 0.9);
   }
   100% {
-    color: #f4dc84; 
+    color: #f4dc84;
     text-shadow: 0 0 8px rgba(244, 220, 132, 0.9);
   }
 }
 
 @keyframes color-shift-5 {
   0% {
-    color: #eab30d; 
+    color: #eab30d;
     text-shadow: 0 0 140px rgba(234, 179, 13, 1);
   }
   100% {
-    color: #f4dc84; 
+    color: #f4dc84;
     text-shadow: 0 0 140px rgba(234, 179, 13, 1);
   }
 }
 
 @keyframes color-shift-6 {
   0% {
-    color: #8337d8; 
+    color: #8337d8;
     text-shadow: 0 0 140px rgba(131, 55, 216, 1);
   }
   100% {
-    color: #582c8c; 
+    color: #582c8c;
     text-shadow: 0 0 140px rgba(131, 55, 216, 1);
   }
 }
@@ -164,7 +163,6 @@
   }
 }
 
-
 @keyframes anime {
   0% {
     background-position: 0% 40%;
@@ -177,7 +175,7 @@
   }
 }
 
-.animated-button{
+.animated-button {
   background-image: linear-gradient(
     270deg,
     rgba(234, 179, 13, 0.9),
@@ -229,7 +227,11 @@
 .progress-bar {
   height: 100%;
   border-radius: 10px;
-  background: linear-gradient(to right, #d88667, #f4d4b4); /* Inicialmente cinza */
+  background: linear-gradient(
+    to right,
+    #d88667,
+    #f4d4b4
+  ); /* Inicialmente cinza */
   transition: width 0.3s ease; /* Transição suave */
 }
 
@@ -300,84 +302,124 @@
 
 /* Efeitos de glow para cada tier */
 .glow-wood {
-  filter: drop-shadow(0 0 14px rgba(216, 134, 103, 0.9)); /* Glow para o tier wood */
+  filter: drop-shadow(
+    0 0 14px rgba(216, 134, 103, 0.9)
+  ); /* Glow para o tier wood */
 }
 
 .glow-bronze {
-  filter: drop-shadow(0 0 14px rgba(244, 212, 180, 0.9)); /* Glow para o tier bronze */
+  filter: drop-shadow(
+    0 0 14px rgba(244, 212, 180, 0.9)
+  ); /* Glow para o tier bronze */
 }
 
 .glow-silver {
-  filter: drop-shadow(0 0 14px rgba(180, 188, 196, 0.9)); /* Glow para o tier silver */
+  filter: drop-shadow(
+    0 0 14px rgba(180, 188, 196, 0.9)
+  ); /* Glow para o tier silver */
 }
 
 .glow-gold {
-  filter: drop-shadow(0 0 14px rgba(240, 215, 127, 0.9)); /* Glow para o tier gold */
+  filter: drop-shadow(
+    0 0 14px rgba(240, 215, 127, 0.9)
+  ); /* Glow para o tier gold */
 }
 
 .glow-platinum {
-  filter: drop-shadow(0 0 14px rgba(172, 180, 219, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(172, 180, 219, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-jade {
-  filter: drop-shadow(0 0 14px rgba(89, 246, 88, 0.9)); /* Glow para o tier jade */
+  filter: drop-shadow(
+    0 0 14px rgba(89, 246, 88, 0.9)
+  ); /* Glow para o tier jade */
 }
 
 .glow-sapphire {
-  filter: drop-shadow(0 0 14px rgba(116, 139, 252, 0.9)); /* Glow para o tier sapphire */
+  filter: drop-shadow(
+    0 0 14px rgba(116, 139, 252, 0.9)
+  ); /* Glow para o tier sapphire */
 }
 
 .glow-ruby {
-  filter: drop-shadow(0 0 14px rgba(252, 65, 73, 0.9)); /* Glow para o tier ruby */
+  filter: drop-shadow(
+    0 0 14px rgba(252, 65, 73, 0.9)
+  ); /* Glow para o tier ruby */
 }
 
 .glow-diamond {
-  filter: drop-shadow(0 0 14px rgba(86, 213, 252, 0.9)); /* Glow para o tier diamond */
+  filter: drop-shadow(
+    0 0 14px rgba(86, 213, 252, 0.9)
+  ); /* Glow para o tier diamond */
 }
 
 /* Efeitos de glow para cada tier CSGOEMPIRE*/
 .glow-rank-rust {
-  filter: drop-shadow(0 0 14px rgba(156, 132, 116, 0.9)); /* Glow para o tier wood */
+  filter: drop-shadow(
+    0 0 14px rgba(156, 132, 116, 0.9)
+  ); /* Glow para o tier wood */
 }
 
 .glow-rank-bronze {
-  filter: drop-shadow(0 0 14px rgba(213, 160, 108, 0.9)); /* Glow para o tier bronze */
+  filter: drop-shadow(
+    0 0 14px rgba(213, 160, 108, 0.9)
+  ); /* Glow para o tier bronze */
 }
 
 .glow-rank-silver {
-  filter: drop-shadow(0 0 14px rgba(206, 215, 229, 0.9)); /* Glow para o tier silver */
+  filter: drop-shadow(
+    0 0 14px rgba(206, 215, 229, 0.9)
+  ); /* Glow para o tier silver */
 }
 
 .glow-rank-gold {
-  filter: drop-shadow(0 0 14px rgba(221, 187, 86, 0.9)); /* Glow para o tier gold */
+  filter: drop-shadow(
+    0 0 14px rgba(221, 187, 86, 0.9)
+  ); /* Glow para o tier gold */
 }
 
 .glow-rank-platinum {
-  filter: drop-shadow(0 0 14px rgba(144, 148, 182, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(144, 148, 182, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-rank-emerald {
-  filter: drop-shadow(0 0 14px rgba(39, 252, 47, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(39, 252, 47, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-rank-sapphire {
-  filter: drop-shadow(0 0 14px rgba(43, 64, 252, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(43, 64, 252, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-rank-ruby {
-  filter: drop-shadow(0 0 14px rgba(238, 56, 41, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(238, 56, 41, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-rank-diamond {
-  filter: drop-shadow(0 0 14px rgba(19, 207, 251, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(19, 207, 251, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-rank-mythic {
-  filter: drop-shadow(0 0 14px rgba(160, 35, 217, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(160, 35, 217, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 .glow-rank-darkmatter {
-  filter: drop-shadow(0 0 14px rgba(100, 4, 100, 0.9)); /* Glow para o tier platinum */
+  filter: drop-shadow(
+    0 0 14px rgba(100, 4, 100, 0.9)
+  ); /* Glow para o tier platinum */
 }
 
 /* Outros efeitos */
@@ -451,31 +493,35 @@
   box-shadow: 0 0px 20px rgba(157, 77, 37, 0.9); /* Exemplo de sombra marrom-avermelhada */
 }
 
-
 /* Font-Face Definitions */
 @font-face {
   font-family: "Brutal Type-ExtraBold";
-  src: url("https://anima-uploads.s3.amazonaws.com/5c55563ec806ca000bc459be/BrutalType-ExtraBold.otf") format("opentype");
+  src: url("https://anima-uploads.s3.amazonaws.com/5c55563ec806ca000bc459be/BrutalType-ExtraBold.otf")
+    format("opentype");
 }
 
 @font-face {
   font-family: "Brutal Type-Bold";
-  src: url("https://anima-uploads.s3.amazonaws.com/5c5463f2a2a48e000abe6f48/BrutalType-Bold.otf") format("opentype");
+  src: url("https://anima-uploads.s3.amazonaws.com/5c5463f2a2a48e000abe6f48/BrutalType-Bold.otf")
+    format("opentype");
 }
 
 @font-face {
   font-family: "Brutal Type-Medium";
-  src: url("https://anima-uploads.s3.amazonaws.com/5c5463f2a2a48e000abe6f48/BrutalType-Medium.otf") format("opentype");
+  src: url("https://anima-uploads.s3.amazonaws.com/5c5463f2a2a48e000abe6f48/BrutalType-Medium.otf")
+    format("opentype");
 }
 
 @font-face {
   font-family: "Brutal Type-Black";
-  src: url("https://anima-uploads.s3.amazonaws.com/5c55563ec806ca000bc459be/BrutalType-Black.otf") format("opentype");
+  src: url("https://anima-uploads.s3.amazonaws.com/5c55563ec806ca000bc459be/BrutalType-Black.otf")
+    format("opentype");
 }
 
 @font-face {
   font-family: "Thunder-BoldLC";
-  src: url("https://anima-uploads.s3.amazonaws.com/projects/62501e32ea279961d222b9ea/fonts/thunder-boldlc.otf") format("opentype");
+  src: url("https://anima-uploads.s3.amazonaws.com/projects/62501e32ea279961d222b9ea/fonts/thunder-boldlc.otf")
+    format("opentype");
 }
 
 .font-thunder {
@@ -487,7 +533,9 @@ body {
   font-family: "Brutal Type-Medium", sans-serif; /* Fonte principal */
 }
 
-p, span, li {
+p,
+span,
+li {
   font-family: "Brutal Type-Medium", sans-serif; /* Texto normal */
 }
 
@@ -499,4 +547,11 @@ p, span, li {
   font-family: "Thunder-BoldLC", sans-serif; /* Destaque para títulos importantes */
 }
 
+.shadow-text {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Deslocamento X, Y, desfoque, cor */
+}
 
+.shadow-button {
+  box-shadow: inset 0px 1px 2px rgba(169, 169, 169, 0.5),
+    /* Sombra cinza na parte superior */ inset -1px -1px 2px rgba(0, 0, 0, 0.6); /* Sombra preta na parte inferior */
+}

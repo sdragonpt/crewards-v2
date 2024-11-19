@@ -338,7 +338,7 @@ function NavBar() {
                   <img
                     src="/logo2.png"
                     alt="User Icon"
-                    className="w-10 h-10 mr-2 rounded-full transition-transform duration-300 hover:scale-110"
+                    className="w-10 h-10 mr-2 rounded-full transition-transform duration-300 hover:scale-110 "
                     onClick={() => setOpenProfile((prev) => !prev)}
                   />
                 </Link>
@@ -348,7 +348,7 @@ function NavBar() {
               <Link
                 onClick={handleLogin}
                 to="#"
-                className="flex items-center justify-center text-zinc-500 px-4 py-2 bg-[#21262C] transition-colors duration-300 hover:bg-zinc-700 rounded-md"
+                className="font-workSans font-bold flex items-center justify-center text-zinc-500 px-4 py-2 bg-[#21262C] transition-colors duration-300 hover:bg-zinc-700 rounded-xl"
               >
                 SIGN IN
               </Link>
