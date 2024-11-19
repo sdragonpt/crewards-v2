@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from "react";
 function Hero() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isMdOrLarger, setIsMdOrLarger] = useState(window.innerWidth >= 768);
+  const [, setIsMdOrLarger] = useState(window.innerWidth >= 768);
 
   // Debounced resize event handler
   const updateScreenSize = useCallback(() => {
