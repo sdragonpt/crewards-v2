@@ -124,10 +124,8 @@ const Challenges: React.FC = () => {
   return (
     <div
       id="challenges"
-      className="relative min-h-screen flex flex-col justify-center bg-[#1B1E22] pb-16 lg:pb-8 lg:pt-32 3xl:pt-40"
+      className="relative min-h-screen flex flex-col justify-center bg-[#0E0E0E] pb-16 lg:pb-8 lg:pt-32 3xl:pt-40"
     >
-      <div className="absolute inset-0 bg-black opacity-50" />
-
       <h1 className="text-[14vw] md:text-[4vw] font-base text-white z-20 font-thunder absolute top-[6.6vw] left-1/2 transform -translate-x-1/2">
         CHALLLENGES
       </h1>

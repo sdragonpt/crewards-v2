@@ -42,9 +42,8 @@ const CardSection: React.FC = () => {
   return (
     <div
       id="rewards"
-      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#1B1E22] 2xl:pb-28"
+      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#0E0E0E] 2xl:pb-28"
     >
-      <div className="absolute inset-0 bg-black opacity-50" />
       <span ref={h1Ref} className="text-center absolute top-[3vw] md:top-[7vw]">
         <h1 className="text-[11vw] md:text-[4vw] font-base text-white z-20 font-thunder">
           BONUSES

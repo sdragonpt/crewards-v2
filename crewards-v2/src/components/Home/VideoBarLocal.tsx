@@ -126,7 +126,7 @@ const VideoBarLocal: React.FC = () => {
   return (
     <div
       id="video-bar"
-      className="relative min-h-screen flex flex-col justify-center bg-[#1B1E22] lg:pb-8 lg:pt-16 pb-20"
+      className="relative min-h-screen flex flex-col justify-center bg-[#0E0E0E] lg:pb-8 lg:pt-16 pb-20"
     >
       <div
         className="absolute inset-0 bg-black opacity-50 z-0 bg-no-repeat bg-cover bg-center"

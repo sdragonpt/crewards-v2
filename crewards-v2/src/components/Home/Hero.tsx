@@ -41,8 +41,7 @@ function Hero() {
   const textGlowClasses = "font-extrabold font-workSans text-5xl md:text-[5vw]";
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#1B1E22]">
-      <div className="absolute inset-0 bg-black opacity-50" />
+    <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#0E0E0E]">
       <div
         className={`${containerClasses} md:mt-[4vw] brightness-125 background-0`}
       />

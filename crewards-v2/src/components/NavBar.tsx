@@ -339,11 +339,15 @@ function NavBar() {
           <div className="flex-shrink-0 lg:ml-auto lg:mr-4">
             {isLoggedIn ? (
               <div className="relative flex items-center">
+                <div className="mr-3 flex items-center font-workSans font-medium justify-center text-white px-4 py-2 bg-[#2B2B2B] rounded-xl">
+                  <i className="fa-solid fa-coins mr-2"></i>
+                  5,000
+                </div>
                 <Link to="#" className="rounded-md" onClick={handleLogin}>
                   <img
                     src="/logo2.png"
                     alt="User Icon"
-                    className="w-10 h-10 mr-2 rounded-full transition-transform duration-300 hover:scale-110 "
+                    className="w-10 h-10 mr-2 rounded-full border-[3px] border-transparent outline outline-3 outline-offset-2 outline-[#2B2B2B] transition-transform duration-300 hover:scale-110"
                     onClick={() => setOpenProfile((prev) => !prev)}
                   />
                 </Link>
@@ -353,9 +357,14 @@ function NavBar() {
               <Link
                 onClick={handleLogin}
                 to="#"
-                className="font-workSans font-bold flex items-center justify-center text-zinc-500 px-4 py-2 bg-[#21262C] transition-colors duration-300 hover:bg-zinc-700 rounded-xl"
+                className="flex items-center shadow-button cursor-pointer bg-gradient-to-r from-[#FF1D44] to-[#B70020] text-white font-workSans font-bold px-4 py-2  transition-colors duration-300  rounded-xl"
               >
-                SIGN IN
+                <img
+                  src="/discordlogo.png"
+                  alt="Imagem do botão"
+                  className="w-4 h-4 object-contain mr-2"
+                />
+                LOG IN
               </Link>
             )}
           </div>

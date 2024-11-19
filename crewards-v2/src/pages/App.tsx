@@ -51,7 +51,7 @@ function App() {
                 <Hero />
                 <CardSection />
                 <Challenges />
-                {isLocalhost ? <Challenges /> : <VideoBar />}
+                {isLocalhost ? <VideoBar /> : <VideoBar />}
                 {renderFooter()} {/* Renderiza o footer aqui */}
               </>
             }
