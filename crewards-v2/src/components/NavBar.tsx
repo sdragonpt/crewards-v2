@@ -48,7 +48,7 @@ function NavBar() {
       icon: "/icons/video.png",
       iconActive: "/icons/video-0.png",
       isAnchor: true, // Indica que é uma seção interna da Home
-      anchorId: "videos-bar", // ID da seção dentro da Home
+      anchorId: "video-bar", // ID da seção dentro da Home
     },
     {
       path: "/vip/csgoempire",
