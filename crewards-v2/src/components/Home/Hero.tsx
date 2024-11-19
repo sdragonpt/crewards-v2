@@ -45,11 +45,15 @@ function Hero() {
       <div className="absolute inset-0 bg-black opacity-50" />
       <div
         className={`${containerClasses} md:mt-[4vw] brightness-125`}
-        style={{ backgroundImage: "url(/background-0.png)" }}
+        style={{
+          backgroundImage: `url(/background-0.png?timestamp=${new Date().getTime()})`,
+        }}
       />
       <div
         className={`${containerClasses} md:mt-[4vw] brightness-75`}
-        style={{ backgroundImage: "url(/Glows.png)" }}
+        style={{
+          backgroundImage: `url(/Glows.png?timestamp=${new Date().getTime()})`,
+        }}
       />
 
       <motion.div
