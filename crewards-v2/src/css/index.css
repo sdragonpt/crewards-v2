@@ -530,13 +530,13 @@
 
 /* Font styles and usage */
 body {
-  font-family: "Brutal Type-Medium", sans-serif; /* Fonte principal */
+  font-family: Work Sans, sans-serif;
 }
 
 p,
 span,
 li {
-  font-family: "Brutal Type-Medium", sans-serif; /* Texto normal */
+  font-family: Work Sans, sans-serif;
 }
 
 .button {
@@ -567,5 +567,5 @@ li {
 }
 
 .group {
-  background-image: url('/Group.png') !important;
+  background-image: url("/Group.png") !important;
 }

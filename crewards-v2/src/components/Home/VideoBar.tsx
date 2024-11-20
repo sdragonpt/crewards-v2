@@ -115,18 +115,16 @@ const VideoBar: React.FC = () => {
       id="video-bar"
       className="relative min-h-screen flex flex-col justify-center bg-[#0E0E0E] lg:pb-8 lg:pt-16 pb-20"
     >
-      <div
-        className="absolute inset-0 bg-[#0E0E0E] z-0 bg-no-repeat bg-cover bg-center"
-        style={{
-          backgroundImage: "url('background2.png')",
-          backgroundSize: "120%", // Ajuste o valor conforme necessário
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      <h1 className="text-[14vw] md:text-[4vw] font-base text-white z-20 font-thunder absolute top-[6.6vw] left-1/2 transform -translate-x-1/2">
-        VIDEOS
-      </h1>
+      <span className="flex text-left items-center absolute top-[3vw] md:top-[7vw] left-[6%] md:left-[12%] font-workSans">
+        <img
+          src="/icons/star.png"
+          alt="Imagem do botão"
+          className="w-8 h-8 object-contain mr-2"
+        />
+        <p className="text-[8vw] md:text-[2vw] font-workSans text-white z-20 font-bold">
+          Highlights
+        </p>
+      </span>
       <div
         {...handlers}
         ref={videoContainerRef}

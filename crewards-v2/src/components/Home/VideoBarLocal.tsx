@@ -128,22 +128,20 @@ const VideoBarLocal: React.FC = () => {
       id="video-bar"
       className="relative min-h-screen flex flex-col justify-center bg-[#0E0E0E] lg:pb-8 lg:pt-16 pb-20"
     >
-      <div
-        className="absolute inset-0 bg-black opacity-50 z-0 bg-no-repeat bg-cover bg-center"
-        style={{
-          backgroundImage: "url('background2.png')",
-          backgroundSize: "120%", // Ajuste o valor conforme necessário
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      />
-      <h1 className="text-[14vw] md:text-[4vw] font-base text-white z-20 font-thunder absolute top-[6.6vw] left-1/2 transform -translate-x-1/2">
-        VIDEOS
-      </h1>
+      <span className="flex text-left items-center absolute top-[3vw] md:top-[7vw] left-[6%] md:left-[12%] font-workSans">
+        <img
+          src="/icons/star.png"
+          alt="Imagem do botão"
+          className="w-8 h-8 object-contain mr-2"
+        />
+        <p className="text-[8vw] md:text-[2vw] font-workSans text-white z-20 font-bold">
+          Highlights
+        </p>
+      </span>
       <div
         {...handlers}
         ref={videoContainerRef}
-        className="relative bg-zinc-700 bg-opacity-10 rounded-xl p-8 mx-6 lg:mx-24 2xl:mx-48 z-10 md:mt-20"
+        className="relative bg-zinc-700 bg-opacity-10 rounded-xl p-8 mx-6 lg:mx-40 2xl:mx-48 3xl:mx-60 z-10 md:mt-20"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart} // Adiciona o handler de toque
@@ -155,7 +153,7 @@ const VideoBarLocal: React.FC = () => {
           {videos.map((video, index) => (
             <div
               key={index}
-              className="min-w-[300px] 2xl:min-w-[400px] flex flex-col rounded-lg p-4"
+              className="min-w-[300px] 2xl:min-w-[380px] flex flex-col rounded-lg p-4"
               onMouseDown={handleMouseDown}
               onClick={(event) => handleClick(video.id.videoId, event)}
             >
