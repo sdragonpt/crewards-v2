@@ -128,7 +128,7 @@ const VideoBar: React.FC = () => {
       <div
         {...handlers}
         ref={videoContainerRef}
-        className="relative bg-zinc-700 bg-opacity-10 rounded-xl p-8 mx-6 lg:mx-24 2xl:mx-48 z-10 md:mt-20"
+        className="relative bg-[#191919] rounded-xl p-2 mx-6 md:max-w-[80%] 2xl:max-w-[70%] z-10 md:mt-20 md:left-1/2 md:transform md:-translate-x-1/2"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart} // Add touch event handler
@@ -140,7 +140,7 @@ const VideoBar: React.FC = () => {
           {videos.map((video, index) => (
             <div
               key={index}
-              className="min-w-[300px] 2xl:min-w-[400px] flex flex-col rounded-lg p-4"
+              className="min-w-[300px] 2xl:min-w-[380px] flex flex-col rounded-lg p-4"
               onMouseDown={handleMouseDown}
               onTouchStart={handleTouchStart} // Add touch event handler
               onClick={(event) => handleClick(video.id.videoId, event)}
@@ -150,21 +150,11 @@ const VideoBar: React.FC = () => {
                 alt={video.snippet.title}
                 className="rounded-lg transition-transform transform hover:scale-110"
               />
-              <h3 className="text-lg text-white text-left mt-2">
+              <h3 className="text-lg text-white font-semibold text-left mt-2">
                 {video.snippet.title}
               </h3>
-              <div className="flex justify-between items-center mt-2">
-                <div className="flex items-center">
-                  <img
-                    src="pfpic.png"
-                    alt={video.snippet.channelTitle}
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <span className="text-sm text-white ml-2">
-                    {video.snippet.channelTitle}
-                  </span>
-                </div>
-                <div className="text-sm text-gray-500">
+              <div className="flex justify-between items-center mt-2 ">
+                <div className="text-sm font-bold text-gray-500">
                   {new Date(video.snippet.publishedAt).toLocaleString()}
                 </div>
               </div>
