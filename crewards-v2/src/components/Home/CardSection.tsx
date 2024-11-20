@@ -39,8 +39,35 @@ const CardSection: React.FC = () => {
     threshold: 0.3, // Iniciar animação dos cards quando 30% do card estiver visível
   });
 
-  const handleCopy = () => {
+  const handleCopy = (event: React.MouseEvent<SVGSVGElement>) => {
+    // Copiar o texto para a área de transferência
     navigator.clipboard.writeText("CLASSY");
+
+    // Encontrar o container para manipular os ícones
+    const label = event.currentTarget.closest("label") as HTMLElement | null;
+
+    if (label) {
+      // Encontrar os ícones dentro do label
+      const clipboardIcon = label.querySelector(
+        ".clipboard"
+      ) as HTMLElement | null;
+      const clipboardCheckIcon = label.querySelector(
+        ".clipboard-check"
+      ) as HTMLElement | null;
+
+      // Verificar se os ícones existem
+      if (clipboardIcon && clipboardCheckIcon) {
+        // Mostrar o ícone de "check" e esconder o ícone original
+        clipboardCheckIcon.style.display = "block";
+        clipboardIcon.style.display = "none";
+
+        // Após 3 segundos, voltar ao ícone original
+        setTimeout(() => {
+          clipboardCheckIcon.style.display = "none";
+          clipboardIcon.style.display = "block";
+        }, 3000); // 3000 milissegundos = 3 segundos
+      }
+    }
   };
 
   return (
@@ -115,12 +142,28 @@ const CardSection: React.FC = () => {
             <hr className="border-[#3F3F3F] mb-6" />
             <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
               <span className="font-bold font-workSans ml-2">CLASSY</span>
-              <img
-                src="/icons/copy.png"
-                alt="Imagem do botão"
-                className="w-5 h-5 object-contain mr-2 cursor-pointer"
-                onClick={handleCopy}
-              />
+              <label className="container-1 mr-4">
+                <input type="checkbox" id="checkbox" />
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard"
+                  onClick={handleCopy}
+                >
+                  <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard-check"
+                  style={{ display: "none" }} // Inicialmente invisível
+                >
+                  <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+              </label>
             </div>
             <a
               href="https://clash.gg/r/CLASSY"
@@ -192,12 +235,28 @@ const CardSection: React.FC = () => {
             <hr className="border-[#3F3F3F] mb-6" />
             <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
               <span className="font-bold font-workSans ml-2">CLASSY</span>
-              <img
-                src="/icons/copy.png"
-                alt="Imagem do botão"
-                className="w-5 h-5 object-contain mr-2 cursor-pointer"
-                onClick={handleCopy}
-              />
+              <label className="container-1 mr-4">
+                <input type="checkbox" id="checkbox" />
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard"
+                  onClick={handleCopy}
+                >
+                  <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard-check"
+                  style={{ display: "none" }} // Inicialmente invisível
+                >
+                  <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+              </label>
             </div>
             <a
               href="https://shuffle.com?r=Classy"
@@ -269,12 +328,28 @@ const CardSection: React.FC = () => {
             <hr className="border-[#3F3F3F] mb-6" />
             <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
               <span className="font-bold font-workSans ml-2">CLASSY</span>
-              <img
-                src="/icons/copy.png"
-                alt="Imagem do botão"
-                className="w-5 h-5 object-contain mr-2 cursor-pointer"
-                onClick={handleCopy}
-              />
+              <label className="container-1 mr-4">
+                <input type="checkbox" id="checkbox" />
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard"
+                  onClick={handleCopy}
+                >
+                  <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard-check"
+                  style={{ display: "none" }} // Inicialmente invisível
+                >
+                  <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+              </label>
             </div>
             <a
               href="https://csgoempire.com"
