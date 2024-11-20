@@ -26,7 +26,7 @@ const MobileFooter: React.FC = () => {
   // };
 
   return (
-    <footer className="bg-gradient-to-b from-[#111418] to-[#1B1E22] text-[#575757] font-base border-t-2 border-y-[#242424] px-4 py-4">
+    <footer className="bg-[#131313] text-[#575757] font-base border-t-2 border-y-[#242424] px-4 py-4">
       <div className="container py-6 flex flex-col items-start pl-4">
         <div className="footer-section flex flex-col items-start mb-4">
           <img
@@ -125,11 +125,12 @@ const MobileFooter: React.FC = () => {
 
       <hr className="border-[#242424]" />
 
-      <p className="text-sm text-start py-4 bg-[#25282D] rounded-lg flex text-[#575757] px-3 mt-4">
-        <img src="/18.png" alt="18+" className="mr-3 mt-2 w-8 h-8" />
-        WE DO NOT TAKE RESPONSIBILITY FOR ANY LOSSES FROM GAMBLING IN CASINOS
-        AND BETTING SITES WHICH ARE LINKED OR PROMOTED ON OUR WEBSITE(S). AS A
-        PLAYER, YOU ARE RESPONSIBLE FOR YOUR BETS.
+      <p className="text-sm text-start py-4 rounded-lg flex text-[#575757] mt-4 font-semibold">
+        18+ | Play Responsibly | Many individuals engage in gambling for
+        entertainment and pleasure. Avoid viewing gambling as a method to earn
+        money. Only wager with funds you can afford to part with. Establish both
+        a budget and a time limit beforehand. Never pursue your losses. Refrain
+        from using gambling as an escape from daily challenges.
       </p>
     </footer>
   );

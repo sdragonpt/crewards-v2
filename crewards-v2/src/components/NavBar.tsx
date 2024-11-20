@@ -26,7 +26,7 @@ function NavBar() {
       icon: "/icons/home-roof.png",
       iconActive: "/icons/home-roof-0.png",
       isAnchor: false, // Isso indica que é um link normal de página
-      height: "7px", // Altura personalizada
+      height: "9px", // Altura personalizada
     },
     {
       path: "/#rewards", // Usando # para identificar a âncora
@@ -44,7 +44,7 @@ function NavBar() {
       iconActive: "/icons/trophy-0.png",
       isAnchor: true, // Indica que é uma seção interna da Home
       anchorId: "challenges", // ID da seção dentro da Home
-      height: "11px", // Altura personalizada
+      height: "9px", // Altura personalizada
     },
     {
       path: "/#video-bar", // Usando # para identificar a âncora
@@ -53,7 +53,7 @@ function NavBar() {
       iconActive: "/icons/video-0.png",
       isAnchor: true, // Indica que é uma seção interna da Home
       anchorId: "video-bar", // ID da seção dentro da Home
-      height: "8px", // Altura personalizada
+      height: "9px", // Altura personalizada
     },
     {
       path: "/vip/csgoempire",
@@ -61,7 +61,7 @@ function NavBar() {
       icon: "/icons/sparkles-two-2.png",
       iconActive: "/icons/sparkles-two-2-0.png",
       isAnchor: false,
-      height: "5px", // Altura personalizada
+      height: "7px", // Altura personalizada
     },
     {
       path: "/leaderboard",
@@ -69,7 +69,7 @@ function NavBar() {
       icon: "/icons/flag-2.png",
       iconActive: "/icons/flag-2-0.png",
       isAnchor: false,
-      height: "12px", // Altura personalizada
+      height: "9px", // Altura personalizada
     },
   ];
 
@@ -265,9 +265,13 @@ function NavBar() {
     setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
   };
 
+  const toggleMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <nav className="fixed top-0 w-full bg-[#111418] bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
-      <div className="lg:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-48 2xl:px-28">
+    <nav className="fixed top-0 w-full bg-[#131313] bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
+      <div className="2xl:max-w-[65%] md:max-w-[80%] mx-auto px-4 sm:px-6">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:items-center h-24 lg:h-16 lg:relative">
           {/* Logo */}
@@ -307,7 +311,7 @@ function NavBar() {
                       }
                     }
                   }}
-                  className={`relative flex items-center px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 ${
+                  className={`relative flex items-center px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 text-[1vw] ${
                     location.pathname === path ||
                     location.hash === `#${anchorId}` ||
                     (path.startsWith("/vip") &&
@@ -371,29 +375,33 @@ function NavBar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="lg:hidden flex justify-between items-center h-24 z-40">
+        <div className="lg:hidden flex justify-center items-center h-24 z-40 relative">
           {/* Logo */}
           <div className="flex-shrink-0 mx-auto">
             <a onClick={handleHomeClick}>
-              <img className="h-20 w-auto ml-6" src="/logo.png" alt="Logo" />
+              <img className="h-20 w-auto" src="/logo.png" alt="Logo" />
             </a>
           </div>
+
           {/* Hamburger Menu Button */}
-          <button
-            className="text-white focus:outline-none mr-2"
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <div className="w-6 h-0.5 bg-white mb-1"></div>
-            <div className="w-6 h-0.5 bg-white mb-1"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
-          </button>
+          <div className="background absolute right-0">
+            <button className="menu__icon" onClick={toggleMenu}>
+              <span className={isMobileMenuOpen ? "open top" : "top"}></span>
+              <span
+                className={isMobileMenuOpen ? "open middle" : "middle"}
+              ></span>
+              <span
+                className={isMobileMenuOpen ? "open bottom" : "bottom"}
+              ></span>
+            </button>
+          </div>
         </div>
 
         {/* Expanded Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="fixed top-24 left-0 w-full bg-gradient-to-b from-[#111418] to-[#1B1E22] z-10 border-b-2 border-zinc-600 h-screen overflow-hidden"
+              className="fixed top-24 left-0 w-full bg-gradient-to-b from-[#131313] to-[#202020] z-10 border-b-2 border-zinc-600 h-screen overflow-hidden"
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -30, opacity: 0 }}
@@ -404,44 +412,38 @@ function NavBar() {
                   {
                     label: "Home",
                     action: handleHomeClick,
-                    icon: "home",
+                    icon: "/icons/home-roof.png",
                     color: "",
                   },
                   {
                     label: "Rewards",
                     action: () => handleMobileAnchorClick("rewards"),
-                    icon: "trophy",
+                    icon: "/icons/gift-1.png",
                     color: "",
                   },
                   {
                     label: "Challenges",
                     action: () => handleMobileAnchorClick("challenges"),
-                    icon: "clipboard-list",
+                    icon: "/icons/trophy.png",
                     color: "",
                   },
                   {
                     label: "Videos",
                     action: () => handleMobileAnchorClick("video-bar"),
-                    icon: "video",
+                    icon: "/icons/video.png",
                     color: "",
                   },
                   {
                     label: "Leaderboard",
                     action: handleLeaderboardClick,
-                    icon: "chart-line",
+                    icon: "/icons/flag-2.png",
                     color: "",
                   },
                   {
-                    label: "VIP CSGOEmpire",
+                    label: "VIP",
                     action: () => navigate("/vip/csgoempire"),
-                    icon: "/empirelogo.png",
-                    color: "bg-yellow-500 text-white",
-                  },
-                  {
-                    label: "VIP Shuffle",
-                    action: () => navigate("/vip/shuffle"),
-                    icon: "/shufflelogo.png",
-                    color: "bg-purple-500 text-white",
+                    icon: "/icons/sparkles-two-2.png",
+                    color: "",
                   },
                 ].map((link, index) => (
                   <button
@@ -470,26 +472,28 @@ function NavBar() {
                       setMobileMenuOpen(false); // Fechar o menu após o clique
                     }}
                     className={`flex items-center px-3 py-2 rounded-md text-lg mx-6 my-1 ${
-                      location.pathname === "/" && link.label === "Home"
+                      (location.pathname === "/" && link.label === "Home") ||
+                      location.pathname === `/${link.label.toLowerCase()}` ||
+                      (location.pathname.startsWith("/vip") &&
+                        link.label.toLowerCase().includes("vip"))
                         ? "text-white"
                         : "hover:text-white"
-                    } ${link.color} ${
-                      location.pathname.includes(
-                        link.label.replace(" ", "").toLowerCase()
-                      )
-                        ? "bg-opacity-50"
-                        : ""
-                    }`} // Ativar cor de fundo
+                    }`}
                   >
-                    {link.icon.startsWith("/") ? (
-                      <img
-                        src={link.icon}
-                        alt={`${link.label} icon`}
-                        className="w-5 h-5 mr-2"
-                      />
-                    ) : (
-                      <i className={`fas fa-${link.icon} mr-2`}></i> // Usando Font Awesome para os outros ícones
-                    )}
+                    <img
+                      src={
+                        (location.pathname === "/" && link.label === "Home") ||
+                        location.pathname === `/${link.label.toLowerCase()}` ||
+                        (location.pathname.startsWith("/vip") &&
+                          link.label.toLowerCase().includes("vip"))
+                          ? `${link.icon.split(".")[0]}-0.${
+                              link.icon.split(".")[1]
+                            }`
+                          : link.icon
+                      }
+                      alt={link.label}
+                      className="h-6 w-6 mr-2"
+                    />
                     {link.label}
                   </button>
                 ))}

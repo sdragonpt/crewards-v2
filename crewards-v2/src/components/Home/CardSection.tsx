@@ -64,10 +64,10 @@ const CardSection: React.FC = () => {
 
       <motion.div className="flex flex-wrap justify-center md:space-x-2 3xl:space-x-16 z-10 md:absolute mt-[12vw] 2xl:mt-64 md:mt-40">
         {/* Card 1 */}
-        <div className="relative lg:w-96 2xl:w-[420px] mb-[-10px] 3xl:scale-105 scale-90">
+        <div className="relative lg:w-96 2xl:w-[420px] mb-[-10px] 3xl:scale-105 scale-90 md:mt-0 mt-[10vw]">
           <motion.div
             ref={ref}
-            variants={fadeIn("up", 0.8)}
+            variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate={
               isMobile
@@ -78,7 +78,7 @@ const CardSection: React.FC = () => {
                 ? "show"
                 : "hidden"
             }
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
             className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
           >
             <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFD627] blur-lg opacity-20 rounded-xl z-[-1]"></div>
@@ -141,10 +141,10 @@ const CardSection: React.FC = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="relative lg:w-96 2xl:w-[420px] mb-[-10px] md:mb-0 3xl:scale-105 scale-90">
+        <div className="relative lg:w-96 2xl:w-[420px] mb-[-10px] md:mb-0 3xl:scale-105 scale-90 md:mt-0 mt-[10vw]">
           <motion.div
             ref={ref}
-            variants={fadeIn("up", 1.2)}
+            variants={fadeIn("up", 0.8)}
             initial="hidden"
             animate={
               isMobile
@@ -155,7 +155,7 @@ const CardSection: React.FC = () => {
                 ? "show"
                 : "hidden"
             }
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 0.8 }}
             className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
           >
             <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#762CFB] blur-lg opacity-20 rounded-xl z-[-1]"></div>
@@ -218,10 +218,10 @@ const CardSection: React.FC = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="relative lg:w-96 2xl:w-[420px] mb-10 md:mb-0 3xl:scale-105 scale-90">
+        <div className="relative lg:w-96 2xl:w-[420px] mb-10 md:mb-0 3xl:scale-105 scale-90 md:mt-0 mt-[10vw]">
           <motion.div
             ref={ref}
-            variants={fadeIn("up", 1.6)}
+            variants={fadeIn("up", 1.2)}
             initial="hidden"
             animate={
               isMobile
@@ -232,7 +232,7 @@ const CardSection: React.FC = () => {
                 ? "show"
                 : "hidden"
             }
-            transition={{ duration: 1.6 }}
+            transition={{ duration: 1.2 }}
             className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
           >
             <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFC31A] blur-lg opacity-20 rounded-xl z-[-1]"></div>

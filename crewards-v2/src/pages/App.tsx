@@ -14,6 +14,7 @@ import Vip from "./Vip";
 import Challenges from "../components/Home/Challenges";
 import ProfileSettings from "./ProfileSettings";
 import useWindowWidth from "../hooks/useWindowWidth"; // Importando o hook
+import MoneyCounter from "../components/Home/MoneyCounter";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +39,7 @@ function App() {
       <ScrollToTop />
       <LoadingScreen />
       <div
-        className={`bg-[#1c1c1c] min-h-screen ${
+        className={`bg-[#131313] min-h-screen ${
           isLoading ? "hidden" : ""
         } select-none`}
       >
@@ -49,6 +50,7 @@ function App() {
             element={
               <>
                 <Hero />
+                <MoneyCounter targetAmount={35000} />
                 <CardSection />
                 <Challenges />
                 {isLocalhost ? <VideoBarLocal /> : <VideoBar />}

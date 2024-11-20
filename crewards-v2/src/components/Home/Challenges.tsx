@@ -149,7 +149,7 @@ const Challenges: React.FC = () => {
       <div
         {...handlers}
         ref={challengesContainerRef}
-        className="md:absolute md:mt-[3vw] rounded-xl mx-6 z-10 md:min-w-[80vw] md:left-1/2 md:transform md:-translate-x-1/2"
+        className="md:absolute md:mt-[3vw] rounded-xl mx-6 z-10 md:min-w-[80%] md:max-w-[80%] 2xl:min-w-[70%] 2xl:max-w-[70%] md:left-1/2 md:transform md:-translate-x-1/2"
         style={{ height: "auto", overflow: "hidden" }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart} // Add touch event handler
@@ -164,7 +164,7 @@ const Challenges: React.FC = () => {
           {challenges.map((challenge) => (
             <div
               key={challenge.id}
-              className="max-w-[200vw] md:max-w-[18%] 3xl:max-w-[23%] md:max-h-[550px] 2xl:max-h-[30%] flex flex-col rounded-xl p-2 bg-[#191919]"
+              className="md:mt-0 mt-[20vw] max-w-[50vw] md:max-w-[18%] 3xl:max-w-[23%] md:max-h-[550px] 2xl:max-h-[30%] flex flex-col rounded-xl p-2 bg-[#191919]"
               onMouseDown={handleMouseDown}
               onClick={() => handleClick(challenge.id)}
             >

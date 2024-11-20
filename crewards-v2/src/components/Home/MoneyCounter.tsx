@@ -77,58 +77,73 @@ const MoneyCounter: React.FC<MoneyCounterProps> = ({ targetAmount }) => {
   const formattedAmount = amount.toLocaleString("pt-BR").replace(/\./g, ",");
 
   return (
-    <div className="">
-      <div className="" />
-      <motion.div
-        variants={fadeIn("left", 0.3)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: true, amount: 0.7 }}
-        className="flex flex-col place-items-center justify-center z-10"
-        ref={counterRef}
-        style={{ marginRight: "2vw" }} // Responsivo para margem
-      >
-        <h2
-          className="text-zinc-300 font-base"
-          style={{ fontSize: "5vw", marginBottom: "2vw" }} // Tamanho e margem responsivos
-        >
-          TOTAL GIVEN AWAY
-        </h2>
+    <div className="bg-[#0E0E0E] bg-[url('/fundo-1.png')] md:bg-contain bg-no-repeat bg-center">
+      {/* Contêiner principal com position: relative */}
+      <div className="relative">
+        <img
+          src="/Vectors/money1.png"
+          alt="Imagem fixa 1"
+          className="absolute top-20 md:right-[32%] right-[8%] md:w-[4%] w-[8%] h-auto"
+        />
+        <img
+          src="/Vectors/money2.png"
+          alt="Imagem fixa 2"
+          className="absolute bottom-8 md:left-[26%] left-[6%] md:w-[5%] w-[10%] h-auto"
+        />
 
-        <div className="relative inline-block">
-          <div
-            className="absolute inset-0 rounded-sm bg-red-600 z-0"
-            style={{
-              width: "calc(100% + 0.5vw)", // Responsivo para borda externa
-              height: "calc(100% + 0.5vw)", // Responsivo para borda externa
-              transform: "translate(-0.25vw, -0.25vw)", // Responsivo para offset de borda
-            }}
-          />
-          <div className="flex items-center md:space-x-1 space-x-[1px] rounded-xl shadow-lg relative z-10">
-            <div
-              className="bg-[#2a2a2a] bg-opacity-90 text-white rounded-sm shadow-lg font-bold"
-              style={{
-                padding: "0.4vw 1.3vw", // Padding responsivo
-                fontSize: "10vw", // Tamanho de fonte responsivo
-              }}
+        <motion.div
+          variants={fadeIn("up", 0.3)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: true, amount: 0.7 }}
+          className="flex flex-col place-items-center justify-center z-10 md:py-[4vw] md:pt-[8vw] pt-[14vw] pb-[20vw]"
+          ref={counterRef}
+        >
+          <div className="flex items-center">
+            <img
+              src="/icons/gift-1-0.png"
+              alt="Imagem do botão"
+              className="w-6 h-6 object-contain mr-2"
+            />
+            <h2
+              className="text-[#EE1B3F] font-semibold text-[4.4vw] md:text-[1.3vw]"
             >
-              $
-            </div>
-            {formattedAmount.split("").map((digit, index) => (
-              <div
-                key={index}
-                className="bg-[#2a2a2a] bg-opacity-90 text-white rounded-sm shadow-lg font-bold"
-                style={{
-                  padding: "0.4vw 1.3vw", // Padding responsivo
-                  fontSize: "10vw", // Tamanho de fonte responsivo
-                }}
-              >
-                {digit}
-              </div>
-            ))}
+              GIVEN AWAY
+            </h2>
           </div>
-        </div>
-      </motion.div>
+
+          <div className="relative inline-block">
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                width: "calc(100% + 0.5vw)", // Responsivo para borda externa
+                height: "calc(100% + 0.5vw)", // Responsivo para borda externa
+                transform: "translate(-0.25vw, -0.25vw)", // Responsivo para offset de borda
+              }}
+            />
+            <div className="flex items-center md:space-x-1 space-x-[1px] relative z-10">
+              <div
+                className="text-white rounded-sm font-extrabold italic text-[12vw] md:text-[5vw]"
+              >
+                $
+              </div>
+              {formattedAmount.split("").map((digit, index) => (
+                <div
+                  key={index}
+                  className="text-white rounded-sm font-extrabold italic text-[12vw] md:text-[5vw]"
+                >
+                  {digit}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="font-medium text-[#B2B2B2] max-w-[84%] md:max-w-[34%] text-center -mt-[0.5%] text-[3.8vw] md:text-[1vw]">
+            Amount given away to our community. Register under my codes and get
+            a chance of winning crazy rewards each month!
+          </p>
+        </motion.div>
+      </div>
     </div>
   );
 };

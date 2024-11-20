@@ -66,14 +66,14 @@ function Hero() {
         <div className="mt-6 flex justify-center space-x-4">
           <a
             onClick={() => handleAnchorClick("rewards")}
-            className="flex items-center shadow-button cursor-pointer bg-gradient-to-r from-[#FF1D44] to-[#B70020] text-white px-4 py-2 md:px-[1.6vw] md:py-[0.8vw] rounded-xl hover:opacity-70 transition-opacity duration-300 text-sm md:text-[1vw]"
+            className="inline-flex items-center shadow-button cursor-pointer bg-gradient-to-r from-[#FF1D44] to-[#B70020] text-white pl-1 pr-3 py-2 md:px-[1.6vw] md:py-[0.8vw] rounded-xl hover:opacity-70 transition-opacity duration-300 text-sm md:text-[1vw]"
           >
             <img
               src="/icons/gift-1-1.png"
               alt="Imagem do botão"
-              className="w-5 h-5 object-contain mr-2"
+              className="w-5 h-5 object-contain mr-1 md:mr-2"
             />
-            <span className="font-bold font-workSans text-base">REWARDS</span>
+            <span className="font-bold font-workSans text-[4vw] md:text-base">REWARDS</span>
           </a>
 
           <Link
