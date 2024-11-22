@@ -343,10 +343,10 @@ function NavBar() {
           <div className="flex-shrink-0 lg:ml-auto lg:mr-4">
             {isLoggedIn ? (
               <div className="relative flex items-center">
-                <div className="mr-3 flex items-center font-workSans font-medium justify-center text-white px-4 py-2 bg-[#2B2B2B] rounded-xl">
+                {/* <div className="mr-3 flex items-center font-workSans font-medium justify-center text-white px-4 py-2 bg-[#2B2B2B] rounded-xl">
                   <i className="fa-solid fa-coins mr-2"></i>
                   5,000
-                </div>
+                </div> */}
                 <Link to="#" className="rounded-md" onClick={handleLogin}>
                   <img
                     src="/logo2.png"

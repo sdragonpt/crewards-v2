@@ -566,6 +566,16 @@ li {
   z-index: 1;
 }
 
+.glows-1 {
+  background-image: url("/Glows-1.png") !important;
+  z-index: 1;
+}
+
+.glows-2 {
+  background-image: url("/Glows-2.png") !important;
+  z-index: 1;
+}
+
 .group {
   background-image: url("/Group.png") !important;
 }

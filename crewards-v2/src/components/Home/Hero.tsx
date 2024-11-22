@@ -43,9 +43,9 @@ function Hero() {
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-cover bg-center bg-[#0E0E0E]">
       <div
-        className={`${containerClasses} md:mt-[4vw] brightness-125 background-0`}
+        className={`${containerClasses} brightness-125 background-0`}
       />
-      <div className={`${containerClasses} md:mt-[4vw] brightness-75 glows`} />
+      <div className={`${containerClasses} brightness-75 glows`} />
 
       <motion.div
         variants={fadeIn("up", 0.3)}

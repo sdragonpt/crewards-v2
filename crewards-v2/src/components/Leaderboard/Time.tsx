@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 interface TimeProps {
   targetDate: string;
   textColor?: string; // Adicionando uma prop para a cor do texto
-  leaderboardType: "EMPIRE " | "SHUFFLE "; // Adicionando uma prop para identificar o tipo de leaderboard
 }
-const Time: React.FC<TimeProps> = ({ targetDate, leaderboardType }) => {
+const Time: React.FC<TimeProps> = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -41,43 +40,42 @@ const Time: React.FC<TimeProps> = ({ targetDate, leaderboardType }) => {
     <div>
       {/* Texto e contador de tempo */}
       <div>
-        <p className="text-white md:text-[1vw] text-[4vw] mb-[0.6vw] text-center">
-          <span
-            className={`glow-effect-text-${
-              leaderboardType === "SHUFFLE " ? "4" : "5"
-            }`}
-          >
-            {leaderboardType}
-          </span>
-          LEADERBOARD ENDS IN:
-        </p>
-        <div className="flex space-x-[2vw] text-white">
-          <hr className="md:w-[20vw] w-[10vw] md:mt-[3vw] mt-[8vw] border-t-zinc-700" />
-          <div className="bg-zinc-900 p-[1vw] rounded-md md:w-[4vw] w-[16vw] text-center bg-opacity-40">
-            <span className="block md:text-[1.2vw] text-[6vw] text-center">
+        <p className="text-white md:text-[1vw] text-[4vw] mb-[0.6vw] text-center"></p>
+        <div className="flex text-white">
+          <hr className="md:mr-[1vw] md:w-[20vw] w-[10vw] md:mt-[3vw] mt-[8vw] border-0 h-[0.1vw] bg-gradient-to-r from-[#0E0E0E] to-[#3F3F3F]" />
+          <div className="p-[1vw] md:w-[4vw] w-[16vw] flex flex-col items-center justify-center">
+            <span className="block md:text-[2vw] text-[6vw] font-bold">
               {timeLeft.days}
             </span>
-            <span className="md:text-[0.8vw] text-[4vw] text-zinc-500">DAYS</span>
-          </div>
-          <div className="bg-zinc-900 p-[1vw] rounded-md md:w-[4vw] w-[16vw] text-center bg-opacity-40">
-            <span className="block md:text-[1.2vw] text-[6vw] text-center">
-              {timeLeft.hours}
+            <span className="md:text-[0.8vw] text-[4vw] text-[#B2B2B2] font-semibold">
+              DAYS
             </span>
-            <span className="md:text-[0.8vw] text-[4vw] text-zinc-500">HRS</span>
           </div>
-          <div className="bg-zinc-900 p-[1vw] rounded-md md:w-[4vw] w-[16vw] text-center bg-opacity-40">
-            <span className="block md:text-[1.2vw] text-[6vw] text-center">
+          <div className="p-[1vw] md:w-[4vw] w-[16vw] flex flex-col items-center justify-center">
+            <p className="block md:text-[2vw] text-[6vw] font-bold">
+              {timeLeft.hours}
+            </p>
+            <p className="md:text-[0.8vw] text-[4vw] text-[#B2B2B2] font-semibold">
+              HOURS
+            </p>
+          </div>
+          <div className="p-[1vw] md:w-[4vw] w-[16vw] flex flex-col items-center justify-center">
+            <span className="block md:text-[2vw] text-[6vw] text-center font-bold">
               {timeLeft.minutes}
             </span>
-            <span className="md:text-[0.8vw] text-[4vw] text-zinc-500">MIN</span>
+            <span className="md:text-[0.8vw] text-[4vw] text-[#B2B2B2] font-semibold">
+              MINS
+            </span>
           </div>
-          <div className="bg-zinc-900 p-[1vw] rounded-md md:w-[4vw] w-[16vw] text-center bg-opacity-40">
-            <span className="block md:text-[1.2vw] text-[6vw] text-center">
+          <div className="p-[1vw] md:w-[4vw] w-[16vw] flex flex-col items-center justify-center">
+            <span className="block md:text-[2vw] text-[6vw] text-center font-bold">
               {timeLeft.seconds}
             </span>
-            <span className="md:text-[0.8vw] text-[4vw] text-zinc-500">SEC</span>
+            <span className="md:text-[0.8vw] text-[4vw] text-[#B2B2B2] font-semibold">
+              SECS
+            </span>
           </div>
-          <hr className="md:w-[20vw] w-[10vw] md:mt-[3vw] mt-[8vw] md:border-t-zinc-700 border-t-zinc-600" />
+          <hr className="md:ml-[1vw] md:w-[20vw] w-[10vw] md:mt-[3vw] mt-[8vw] border-0 h-[0.1vw] bg-gradient-to-r from-[#3F3F3F] to-[#0E0E0E]" />
         </div>
       </div>
     </div>
