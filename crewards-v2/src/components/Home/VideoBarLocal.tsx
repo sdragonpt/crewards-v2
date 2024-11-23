@@ -126,52 +126,54 @@ const VideoBarLocal: React.FC = () => {
   return (
     <div
       id="video-bar"
-      className="relative min-h-screen flex flex-col justify-center bg-[#0E0E0E] lg:pb-8 lg:pt-16 pb-20"
+      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#0E0E0E] font-workSans"
     >
-      <span className="flex text-left items-center absolute top-[3vw] md:top-[7vw] left-[6%] md:left-[12%] font-workSans">
-        <img
-          src="/icons/star.png"
-          alt="Imagem do botão"
-          className="w-8 h-8 object-contain mr-2"
-        />
-        <p className="text-[8vw] md:text-[2vw] font-workSans text-white z-20 font-bold">
-          Highlights
-        </p>
-      </span>
-      <div
-        {...handlers}
-        ref={videoContainerRef}
-        className="relative bg-[#191919] rounded-xl p-2 mx-6 md:max-w-[80%] 2xl:max-w-[70%] z-10 md:mt-20 md:left-1/2 md:transform md:-translate-x-1/2"
-        style={{ height: "auto", overflow: "hidden" }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart} // Adiciona o handler de toque
-      >
+      <div className="w-[68%]">
+        <div className="flex items-center">
+          <img
+            src="/icons/star-1.png"
+            alt="Imagem do botão"
+            className="w-5 h-5 object-contain mr-2"
+          />
+          <span className="font-bold font-workSans text-base text-white text-[1.2vw]">
+            Highlights
+          </span>
+        </div>
         <div
-          className="flex space-x-4"
-          style={{ cursor: "grab", justifyContent: "flex-start" }}
+          {...handlers}
+          ref={videoContainerRef}
+          className="relative bg-[#191919] rounded-xl p-2 w-full z-10 md:mt-20 md:left-1/2 md:transform md:-translate-x-1/2"
+          style={{ height: "auto", overflow: "hidden" }}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart} // Adiciona o handler de toque
         >
-          {videos.map((video, index) => (
-            <div
-              key={index}
-              className="min-w-[300px] 2xl:min-w-[380px] flex flex-col rounded-lg p-4"
-              onMouseDown={handleMouseDown}
-              onClick={(event) => handleClick(video.id.videoId, event)}
-            >
-              <img
-                src={video.snippet.thumbnails.medium.url}
-                alt={video.snippet.title}
-                className="rounded-lg transition-transform transform hover:scale-110"
-              />
-              <h3 className="text-lg text-white font-semibold text-left mt-2">
-                {video.snippet.title}
-              </h3>
-              <div className="flex justify-between items-center mt-2 ">
-                <div className="text-sm font-bold text-gray-500">
-                  {new Date(video.snippet.publishedAt).toLocaleString()}
+          <div
+            className="flex space-x-4"
+            style={{ cursor: "grab", justifyContent: "flex-start" }}
+          >
+            {videos.map((video, index) => (
+              <div
+                key={index}
+                className="min-w-[300px] 2xl:min-w-[380px] flex flex-col rounded-lg p-4"
+                onMouseDown={handleMouseDown}
+                onClick={(event) => handleClick(video.id.videoId, event)}
+              >
+                <img
+                  src={video.snippet.thumbnails.medium.url}
+                  alt={video.snippet.title}
+                  className="rounded-lg transition-transform transform hover:scale-110"
+                />
+                <h3 className="text-lg text-white font-semibold text-left mt-2">
+                  {video.snippet.title}
+                </h3>
+                <div className="flex justify-between items-center mt-2 ">
+                  <div className="text-sm font-bold text-gray-500">
+                    {new Date(video.snippet.publishedAt).toLocaleString()}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

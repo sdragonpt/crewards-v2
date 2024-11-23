@@ -271,7 +271,7 @@ function NavBar() {
 
   return (
     <nav className="fixed top-0 w-full bg-[#131313] bg-opacity-100 lg:bg-neutral-900 lg:bg-opacity-15 lg:backdrop-blur-lg lg:py-4 z-30 border-b border-zinc-800">
-      <div className="2xl:max-w-[65%] md:max-w-[80%] mx-auto px-4 sm:px-6">
+      <div className="lg:max-w-[76%] mx-auto px-4 sm:px-6">
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:items-center h-24 lg:h-16 lg:relative">
           {/* Logo */}

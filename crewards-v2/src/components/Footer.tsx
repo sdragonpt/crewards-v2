@@ -29,28 +29,28 @@ const Footer: React.FC = () => {
       <div className="container py-4 flex flex-wrap justify-between w-[100%]">
         <div className="footer-section flex flex-col items-start">
           <img
-            className="footer-logo w-32 glow-effect-2"
+            className="footer-logo w-28 glow-effect-2"
             src="/logo.png"
             alt="Logo"
           />
           <p className="font-medium">© Copyrights 2024 crewards.gg</p>
-          <div className="social-icons flex justify-end items-center mt-6">
+          <div className="social-icons flex justify-end items-center mt-4">
             <a
               href="https://x.com/classybets"
               target="_blank"
-              className="transform transition-transform hover:scale-110 mr-3"
+              className="transform transition-transform hover:scale-110 mr-2"
             >
               <span>
-                <img className="w-14" src="/X.png" alt="X" />
+                <img className="w-12" src="/X.png" alt="X" />
               </span>
             </a>
             <a
               href="https://discord.gg/classy"
               target="_blank"
-              className="transform transition-transform hover:scale-110 mr-3"
+              className="transform transition-transform hover:scale-110 mr-2"
             >
               <span>
-                <img className="w-14" src="/Discord.png" alt="Discord" />
+                <img className="w-12" src="/Discord.png" alt="Discord" />
               </span>
             </a>
             <a
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
               className="transform transition-transform hover:scale-110"
             >
               <span>
-                <img className="w-14" src="/Youtube.png" alt="Youtube" />
+                <img className="w-12" src="/Youtube.png" alt="Youtube" />
               </span>
             </a>
           </div>
@@ -67,11 +67,11 @@ const Footer: React.FC = () => {
 
         <div className="flex">
           <div className="footer-section md:text-lg 2xl:text-xl mx-2 mr-6 font-medium">
-            <p className="mb-2 text-white font-semibold">EXPLORE</p>
+            <p className="mb-2 text-white font-semibold text-[1.2vw]">EXPLORE</p>
             <h4 className="mb-2">
               <a
                 onClick={() => handleAnchorClick("rewards")}
-                className="hover:text-white transition-colors duration-300 cursor-pointer"
+                className="hover:text-white transition-colors duration-300 cursor-pointer text-[1.1vw]"
               >
                 Rewards
               </a>
@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
             <h4 className="mb-2">
               <a
                 onClick={() => handleAnchorClick("challenges")}
-                className="hover:text-white transition-colors duration-300 cursor-pointer"
+                className="hover:text-white transition-colors duration-300 cursor-pointer text-[1.1vw]"
               >
                 Challenges
               </a>
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
             <h4 className="mb-2">
               <a
                 onClick={() => handleAnchorClick("video-bar")}
-                className="hover:text-white transition-colors duration-300 cursor-pointer"
+                className="hover:text-white transition-colors duration-300 cursor-pointer text-[1.1vw]"
               >
                 Videos
               </a>
@@ -95,17 +95,17 @@ const Footer: React.FC = () => {
             <Link
               to="/leaderboard"
               onClick={() => handleAnchorClick("leaderboard")}
-              className="hover:text-white transition-colors duration-300 mb-2 cursor-pointer"
+              className="hover:text-white transition-colors duration-300 mb-2 cursor-pointer text-[1.1vw]"
             >
               Leaderboard
             </Link>
           </div>
           <div className="footer-section text-xl mx-4 font-medium md:text-lg 2xl:text-xl">
-            <p className="mb-2 text-white font-semibold">ABOUT</p>
+            <p className="mb-2 text-white font-semibold text-[1.2vw]">ABOUT</p>
             <h4 className="mb-2">
               <Link
                 to="/contact"
-                className="hover:text-white transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300 text-[1.1vw]"
               >
                 Contact
               </Link>
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
             <h4 className="mb-2">
               <Link
                 to="/privacy"
-                className="hover:text-white transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300 text-[1.1vw]"
               >
                 Privacy Policy
               </Link>
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
             <h4 className="mb-2">
               <Link
                 to="/terms"
-                className="hover:text-white transition-colors duration-300"
+                className="hover:text-white transition-colors duration-300 text-[1.1vw]"
               >
                 Terms of Service
               </Link>
@@ -130,9 +130,9 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <hr className="border-[#242424] mt-6" />
+      <hr className="border-[#242424] mt-2" />
 
-      <p className="text-left md:text-[0.8vw] items-center py-4 rounded-lg flex text-[#575757] mt-4 font-semibold">
+      <p className="text-left md:text-[0.8vw] items-center py-4 rounded-lg flex text-[#575757] mt-2 font-semibold">
         18+ | Play Responsibly | Many individuals engage in gambling for
         entertainment and pleasure. Avoid viewing gambling as a method to earn
         money. Only wager with funds you can afford to part with. Establish both

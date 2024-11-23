@@ -134,82 +134,84 @@ const Challenges: React.FC = () => {
   return (
     <div
       id="challenges"
-      className="relative min-h-screen flex flex-col justify-center bg-[#0E0E0E] pb-16 lg:pb-8 lg:pt-32 3xl:pt-40"
+      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#0E0E0E] font-workSans"
     >
-      <span className="flex text-left items-center absolute top-[3vw] md:top-[7vw] left-[6%] md:left-[12%] font-workSans">
-        <img
-          src="/icons/trophy-1.png"
-          alt="Imagem do botão"
-          className="w-8 h-8 object-contain mr-2"
-        />
-        <p className="text-[8vw] md:text-[2vw] font-workSans text-white z-20 font-bold">
-          Challenges
-        </p>
-      </span>
-      <div
-        {...handlers}
-        ref={challengesContainerRef}
-        className="md:absolute md:mt-[3vw] rounded-xl mx-6 z-10 md:min-w-[80%] md:max-w-[80%] 2xl:min-w-[70%] 2xl:max-w-[70%] md:left-1/2 md:transform md:-translate-x-1/2"
-        style={{ height: "auto", overflow: "hidden" }}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleTouchStart} // Add touch event handler
-      >
+      <div className="w-[68%] mt-[6vw]">
+        <div className="flex items-center">
+          <img
+            src="/icons/trophy.png"
+            alt="Imagem do botão"
+            className="w-5 h-5 object-contain mr-2"
+          />
+          <span className="font-bold font-workSans text-base text-white text-[1.2vw]">
+            Challenges
+          </span>
+        </div>
         <div
-          className="flex space-x-4"
-          style={{
-            cursor: isDragging ? "grabbing" : "grab",
-            justifyContent: "flex-start",
-          }}
+          {...handlers}
+          ref={challengesContainerRef}
+          className="flex justify-between mt-6"
+          style={{ height: "full", width: "auto", overflow: "hidden" }}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart} // Add touch event handler
         >
-          {challenges.map((challenge) => (
-            <div
-              key={challenge.id}
-              className="md:mt-0 mt-[20vw] max-w-[50vw] md:max-w-[18%] 3xl:max-w-[23%] md:max-h-[550px] 2xl:max-h-[30%] flex flex-col rounded-xl p-2 bg-[#191919]"
-              onMouseDown={handleMouseDown}
-              onClick={() => handleClick(challenge.id)}
-            >
-              <img
-                src={challenge.thumbnail}
-                alt={challenge.title}
-                className="rounded-3xl transition-transform transform hover:scale-105 p-4"
-              />
-              <div className="px-4">
-                <p className="text-white font-bold text-base">
-                  {challenge.title}
-                </p>
-                <p className="text-[#B2B2B2] font-medium text-sm">
-                  {challenge.provider}
-                </p>
-                <p className="text-[#B2B2B2] font-semibold text-sm mt-4">
-                  CHALLENGE
-                </p>
-                <p className="text-[5vw] md:text-sm font-normal text-white text-left min-w-[40vw] md:min-w-0">
-                  {challenge.description}
-                </p>
-                <div className="mt-1 mb-4">
-                  <p className="text-[#B2B2B2] font-semibold text-sm mt-4">
-                    REWARD
-                  </p>
-                  <div className="flex items-center">
-                    <img
-                      src={challenge.rewardImage}
-                      alt="Reward"
-                      className="w-4 h-4 mr-1"
-                    />
-                    <span className="text-base font-semibold text-white ml-1">
-                      ${challenge.rewardValue}
-                    </span>
-                  </div>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
+          <div
+            className="flex space-x-4"
+            style={{
+              cursor: isDragging ? "grabbing" : "grab",
+              justifyContent: "flex-start",
+            }}
+          >
+            {challenges.map((challenge) => (
+              <div
+                key={challenge.id}
+                className="flex flex-col rounded-xl bg-[#191919] w-[18%]"
+                onMouseDown={handleMouseDown}
+                onClick={() => handleClick(challenge.id)}
+              >
                 <img
-                  src="/logo4.png"
-                  alt="Shuffle Logo"
-                  className="w-28 object-contain mb-4"
+                  src={challenge.thumbnail}
+                  alt={challenge.title}
+                  className="rounded-3xl w-auto transition-transform transform hover:scale-105 p-4"
                 />
+                <div className="px-4">
+                  <p className="text-white font-bold text-base">
+                    {challenge.title}
+                  </p>
+                  <p className="text-[#B2B2B2] font-medium text-sm">
+                    {challenge.provider}
+                  </p>
+                  <p className="text-[#B2B2B2] font-semibold text-sm mt-4">
+                    CHALLENGE
+                  </p>
+                  <p className="text-[5vw] md:text-sm font-normal text-white text-left min-w-[40vw] md:min-w-0">
+                    {challenge.description}
+                  </p>
+                  <div className="mt-1 mb-4">
+                    <p className="text-[#B2B2B2] font-semibold text-sm mt-4">
+                      REWARD
+                    </p>
+                    <div className="flex items-center">
+                      <img
+                        src={challenge.rewardImage}
+                        alt="Reward"
+                        className="w-4 h-4 mr-1"
+                      />
+                      <span className="text-base font-semibold text-white ml-1">
+                        ${challenge.rewardValue}
+                      </span>
+                    </div>
+                  </div>
+                  <hr className="border-[#3F3F3F] mb-6" />
+                  <img
+                    src="/logo4.png"
+                    alt="Shuffle Logo"
+                    className="w-28 object-contain mb-4"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

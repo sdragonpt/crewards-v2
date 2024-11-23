@@ -75,23 +75,21 @@ const CardSection: React.FC = () => {
       id="rewards"
       className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#0E0E0E] 2xl:pb-28 font-workSans"
     >
-      <span
-        ref={h1Ref}
-        className="flex text-left items-center absolute top-[3vw] md:top-[7vw] left-[6%] md:left-[12%] font-workSans"
-      >
-        <img
-          src="/icons/gift-1-1.png"
-          alt="Imagem do botão"
-          className="w-8 h-8 object-contain mr-2"
-        />
-        <p className="text-[8vw] md:text-[2vw] font-workSans text-white z-20 font-bold">
-          Rewards
-        </p>
-      </span>
+      <div className="w-[68%]">
+        <div ref={h1Ref} className="flex items-center mt-[8vw]">
+          <img
+            src="/icons/gift-1.png"
+            alt="Imagem do botão"
+            className="w-5 h-5 object-contain mr-2"
+          />
+          <span className="font-bold font-workSans text-base text-white text-[1.2vw]">
+            Rewards
+          </span>
+        </div>
 
-      <motion.div className="flex flex-wrap justify-center md:space-x-2 3xl:space-x-16 z-10 md:absolute mt-[12vw] 2xl:mt-64 md:mt-40">
-        {/* Card 1 */}
-        <div className="relative lg:w-96 2xl:w-[420px] mb-[-10px] 3xl:scale-105 scale-90 md:mt-0 mt-[10vw]">
+        <motion.div className="flex justify-between mt-6">
+          {/* Card 1 */}
+
           <motion.div
             ref={ref}
             variants={fadeIn("up", 0.4)}
@@ -181,10 +179,9 @@ const CardSection: React.FC = () => {
               </span>
             </a>
           </motion.div>
-        </div>
 
-        {/* Card 2 */}
-        <div className="relative lg:w-96 2xl:w-[420px] mb-[-10px] md:mb-0 3xl:scale-105 scale-90 md:mt-0 mt-[10vw]">
+          {/* Card 2 */}
+
           <motion.div
             ref={ref}
             variants={fadeIn("up", 0.8)}
@@ -199,7 +196,7 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 0.8 }}
-            className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
+            className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden ml-[2vw]"
           >
             <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#762CFB] blur-lg opacity-20 rounded-xl z-[-1]"></div>
             <img
@@ -274,10 +271,9 @@ const CardSection: React.FC = () => {
               </span>
             </a>
           </motion.div>
-        </div>
 
-        {/* Card 3 */}
-        <div className="relative lg:w-96 2xl:w-[420px] mb-10 md:mb-0 3xl:scale-105 scale-90 md:mt-0 mt-[10vw]">
+          {/* Card 3 */}
+
           <motion.div
             ref={ref}
             variants={fadeIn("up", 1.2)}
@@ -292,7 +288,7 @@ const CardSection: React.FC = () => {
                 : "hidden"
             }
             transition={{ duration: 1.2 }}
-            className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
+            className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden ml-[2vw]"
           >
             <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFC31A] blur-lg opacity-20 rounded-xl z-[-1]"></div>
             <img
@@ -367,8 +363,8 @@ const CardSection: React.FC = () => {
               </span>
             </a>
           </motion.div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };
