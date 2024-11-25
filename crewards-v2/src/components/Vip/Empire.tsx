@@ -3,131 +3,119 @@ import { Link } from "react-router-dom";
 
 // Definindo um tipo para os níveis
 type Tier =
-  | "rust"
-  | "bronze"
-  | "silver"
-  | "gold"
-  | "platinum"
-  | "emerald"
-  | "sapphire"
-  | "ruby"
-  | "diamond"
-  | "mythic"
-  | "darkmatter";
+  | "RUST"
+  | "BRONZE"
+  | "SILVER"
+  | "GOLD"
+  | "PLATINUM"
+  | "EMERALD"
+  | "SAPPHIRE"
+  | "RUBY"
+  | "DIAMOND"
+  | "MYTHIC"
+  | "DARKMATTER";
 
 const Empire: React.FC = () => {
-  const [userTier] = useState<Tier>("rust");
-  const levelPercent: number = 0;
+  const [userTier] = useState<Tier>("SILVER");
+  const levelPercent: number = 20;
 
-  const [, setIsLoggedIn] = useState(false); // Estado de login
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de login
 
   const tierData: Record<
     Tier,
     {
       color: string;
       image: string;
-      text: string;
       wager: string;
       prize: string;
       next: Tier | null; // O próximo nível pode ser null
       nextText: string | null;
     }
   > = {
-    rust: {
+    RUST: {
       color: "#9c8474",
       image: "/rank-rust.png",
-      text: "is your current tier",
-      wager: "1000",
+      wager: "1,000",
       prize: "10",
-      next: "bronze",
-      nextText: "Bronze tier",
+      next: "BRONZE",
+      nextText: "BRONZE",
     },
-    bronze: {
+    BRONZE: {
       color: "#d5a06c",
       image: "/2bronze.png",
-      text: "is your current tier",
-      wager: "5000",
+      wager: "5,000",
       prize: "40",
-      next: "silver",
-      nextText: "Silver tier",
+      next: "SILVER",
+      nextText: "SILVER",
     },
-    silver: {
+    SILVER: {
       color: "#ced7e5",
       image: "/3silver.png",
-      text: "is your current tier",
-      wager: "10000",
+      wager: "10,000",
       prize: "60",
-      next: "gold",
-      nextText: "Gold tier",
+      next: "GOLD",
+      nextText: "GOLD",
     },
-    gold: {
+    GOLD: {
       color: "#ddbb56",
       image: "/4gold.png",
-      text: "is your current tier",
-      wager: "25000",
+      wager: "25,000",
       prize: "190",
-      next: "platinum",
-      nextText: "Platinum tier",
+      next: "PLATINUM",
+      nextText: "PLATINUM",
     },
-    platinum: {
+    PLATINUM: {
       color: "#9094b6",
       image: "/5platinum.png",
-      text: "is your current tier",
-      wager: "50000",
+      wager: "50,000",
       prize: "325",
-      next: "emerald",
-      nextText: "Emerald tier",
+      next: "EMERALD",
+      nextText: "EMERALD",
     },
-    emerald: {
+    EMERALD: {
       color: "#27fc2f",
       image: "/6emerald.png",
-      text: "is your current tier",
-      wager: "75000",
+      wager: "75,000",
       prize: "400",
-      next: "sapphire",
-      nextText: "Sapphire tier",
+      next: "SAPPHIRE",
+      nextText: "SAPPHIRE",
     },
-    sapphire: {
+    SAPPHIRE: {
       color: "#2b40fc",
       image: "/7sapphire1.png",
-      text: "is your current tier",
-      wager: "100000",
+      wager: "100,000",
       prize: "350",
-      next: "ruby",
-      nextText: "Ruby tier",
+      next: "RUBY",
+      nextText: "RUBY",
     },
-    ruby: {
+    RUBY: {
       color: "#ee3829",
       image: "/8ruby.png",
-      text: "is your current tier",
-      wager: "250000",
+      wager: "250,000",
       prize: "2250",
-      next: "diamond",
-      nextText: "Diamond tier",
+      next: "DIAMOND",
+      nextText: "DIAMOND",
     },
-    diamond: {
+    DIAMOND: {
       color: "#13cffb",
       image: "/9diamond.png",
-      text: "is your current tier",
-      wager: "500000",
+      wager: "500,000",
       prize: "4000",
-      next: "mythic",
-      nextText: "Mythic tier",
+      next: "MYTHIC",
+      nextText: "MYTHIC",
     },
-    mythic: {
+    MYTHIC: {
       color: "#a023d9",
       image: "/10mythic.png",
-      text: "is your current tier",
-      wager: "1000000",
+      wager: "1,000,000",
       prize: "8500",
-      next: "sapphire",
-      nextText: "Sapphire tier",
+      next: "DARKMATTER",
+      nextText: "DARKMATER",
     },
-    darkmatter: {
+    DARKMATTER: {
       color: "#640464",
       image: "/11darkmatter.png",
-      text: "is your current tier",
-      wager: "2500000",
+      wager: "2,500,000",
       prize: "27000",
       next: null,
       nextText: null,
@@ -136,8 +124,12 @@ const Empire: React.FC = () => {
 
   const tierKeys = Object.keys(tierData) as Tier[];
 
+  const currentTier = tierData[userTier];
+  const nextTier = currentTier.next ? tierData[currentTier.next] : null;
+
   const handleLogin = () => {
     setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
+    console.log("Login true");
   };
 
   // Hook para atualizar a largura da janela
@@ -151,6 +143,25 @@ const Empire: React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const [redeemedTiers, setRedeemedTiers] = useState<Tier[]>([]);
+
+  const handleClick = (tier: Tier) => {
+    if (
+      tier === userTier ||
+      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+      (userTier === "DARKMATTER" && levelPercent === 100) ||
+      (levelPercent === 100 && tier === userTier)
+    ) {
+      setRedeemedTiers((prev) => {
+        // Adiciona o tier ao array apenas se ainda não estiver presente
+        if (!prev.includes(tier)) {
+          return [...prev, tier];
+        }
+        return prev; // Retorna o mesmo estado se o tier já foi resgatado
+      });
+    }
+  };
 
   const containerClasses = "absolute inset-0 bg-cover bg-center";
 
@@ -166,25 +177,98 @@ const Empire: React.FC = () => {
 
         {/* Content */}
         <div className="z-10 w-[68%]">
-          {/* Log In */}
-          <div className="bg-[#191919] rounded-xl p-[2vw] z-10 mt-[3vw] text-white text-center flex flex-col items-center">
-            <h1 className="font-extrabold text-[1.6vw]">LOG IN</h1>
-            <p className="font-semibold text-[0.7vw] text-[#B2B2B2]">
-              LOG IN TO VIEW YOUR PERSONAL STATISTICS AND CLAIM THE VIP REWARDS!
-            </p>
-            <Link
-              onClick={handleLogin}
-              to="#"
-              className="flex items-center mt-[1vw] shadow-button-1 text-center cursor-pointer bg-[#2B2B2B] text-[#B2B2B2] font-workSans font-bold px-[0.8vw] py-[0.5vw] hover:opacity-70 transition-opacity duration-300 rounded-[0.6vw]"
-            >
-              <img
-                src="/discordlogo.png"
-                alt="Imagem do botão"
-                className="w-[0.8vw] object-contain mr-2"
-              />
-              <p className="text-[0.8vw]">LOG IN</p>
-            </Link>
-          </div>
+          {isLoggedIn ? (
+            // Logged
+            <div className="bg-[#191919] rounded-xl p-[1vw] z-10 mt-[3vw] text-white text-center">
+              {/* Topo com informações alinhadas à esquerda e à direita */}
+              <div className="flex justify-between items-center mb-4">
+                {/* Esquerda: Tier e Wagered */}
+                <div className="flex items-center">
+                  <div className="bg-[#131313] p-[0.4vw] rounded-xl">
+                    <img
+                      src={currentTier.image}
+                      alt="Tier Badge"
+                      className="w-[2.6vw] object-contain"
+                    />
+                  </div>
+                  <div className="text-left ml-[1vw]">
+                    <h2 className="text-white text-[1.1vw] font-extrabold">
+                      {userTier}
+                    </h2>
+                    <p className="text-[#B2B2B2] font-semibold text-[0.6vw]">
+                      WAGERED
+                    </p>
+                  </div>
+                </div>
+
+                {/* Direita: Progress e Level Percentage */}
+                <div className="flex items-center">
+                  <div className="text-right">
+                    <h2 className="text-white text-[1.1vw] font-extrabold">
+                      {levelPercent}%
+                    </h2>
+                    <p className="text-[#B2B2B2] font-semibold text-[0.6vw]">
+                      YOUR PROGRESS
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Barra de Carregamento */}
+              <div className="w-full h-3 bg-[#131313] rounded-full relative mt-[2vw] mb-[1.2vw]">
+                <div
+                  className="h-full rounded-full progress-bar"
+                  style={{
+                    width: `${levelPercent}%`,
+                    background: `#E9B10E`,
+                  }}
+                ></div>
+              </div>
+
+              {/* Legenda da Barra de Progresso */}
+              <div className="flex justify-between mt-3">
+                <div className="flex items-center space-x-2">
+                  <img
+                    src={currentTier.image}
+                    alt="start"
+                    className="w-6 h-6"
+                  />
+                  <p className="text-gray-300 text-xs">{userTier}</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  {nextTier && (
+                    <>
+                      <img src={nextTier.image} alt="end" className="w-6 h-6" />
+                      <span className="text-gray-300 text-xs">
+                        <span>{currentTier.nextText}</span>
+                      </span>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            // Log In
+            <div className="bg-[#191919] rounded-xl p-[2vw] z-10 mt-[3vw] text-white text-center flex flex-col items-center">
+              <h1 className="font-extrabold text-[1.6vw]">LOG IN</h1>
+              <p className="font-semibold text-[0.7vw] text-[#B2B2B2]">
+                LOG IN TO VIEW YOUR PERSONAL STATISTICS AND CLAIM THE VIP
+                REWARDS!
+              </p>
+              <Link
+                onClick={handleLogin}
+                to="#"
+                className="flex items-center mt-[1vw] shadow-button-1 text-center cursor-pointer bg-[#2B2B2B] text-[#B2B2B2] font-workSans font-bold px-[0.8vw] py-[0.5vw] hover:opacity-70 transition-opacity duration-300 rounded-[0.6vw]"
+              >
+                <img
+                  src="/discordlogo.png"
+                  alt="Imagem do botão"
+                  className="w-[0.8vw] object-contain mr-2"
+                />
+                <p className="text-[0.8vw]">LOG IN</p>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* VIP Rewards */}
@@ -205,11 +289,11 @@ const Empire: React.FC = () => {
             <div className="flex flex-col items-center space-y-4">
               {/* Coins */}
               <div className="flex items-center space-x-4">
-                <div className="bg-[#131313] p-[1.3vw] rounded-xl">
+                <div className="bg-[#131313] p-[1vw] rounded-xl">
                   <img
                     src="/icons/coins.png"
                     alt="Coins"
-                    className="w-[1.6vw] object-contain"
+                    className="w-[1.3vw] object-contain"
                   />
                 </div>
                 <div className="text-left">
@@ -233,18 +317,30 @@ const Empire: React.FC = () => {
                 />
                 <p className="font-bold">0</p>
               </div>
-
               {/* Redeem Reward */}
-              <div className="flex cursor-pointer justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] rounded-xl hover:opacity-70 transition-opacity duration-300">
-                <img
-                  src="/icons/gift-1-1.png"
-                  alt="Imagem do botão"
-                  className="w-5 h-5 object-contain mr-2"
-                />
-                <span className="font-bold font-workSans text-base text-white">
-                  REDEEM REWARD
-                </span>
-              </div>
+              {isLoggedIn ? (
+                <div className="flex cursor-pointer justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] rounded-xl hover:opacity-70 transition-opacity duration-300">
+                  <img
+                    src="/icons/gift-1-1.png"
+                    alt="Imagem do botão"
+                    className="w-5 h-5 object-contain mr-2"
+                  />
+                  <span className="font-bold font-workSans text-base text-white">
+                    REDEEM REWARD
+                  </span>
+                </div>
+              ) : (
+                <div className="flex cursor-not-allowed justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] rounded-xl opacity-20">
+                  <img
+                    src="/icons/gift-1-1.png"
+                    alt="Imagem do botão"
+                    className="w-5 h-5 object-contain mr-2"
+                  />
+                  <span className="font-bold font-workSans text-base text-white">
+                    REDEEM REWARD
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -256,22 +352,39 @@ const Empire: React.FC = () => {
       {/* Second View */}
       <div className="flex items-center justify-center text-center">
         {/* Tiers */}
-        <div className="z-10 w-[68%]">
+        <div className="z-10 w-[68%] mb-[4vw]">
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className="bg-[#191919] rounded-xl p-8 z-10 text-white text-center flex justify-between items-center mb-6"
+              className={`bg-[#191919] relative rounded-xl p-8 z-10 text-white text-center flex justify-between items-center mb-6 overflow-hidden ${
+                tier === userTier
+                  ? "border-l-4 border-[#E9B10E]" // Estilo especial para o rank atual
+                  : ""
+              }`}
             >
+              {/* Glow lateral apenas para o rank atual */}
+              {tier === userTier && (
+                <div className="absolute left-[-2vw] h-full w-[20vw] bg-[#E9B10E] blur-3xl opacity-5 z-[-1]"></div>
+              )}
+
               {/* Lado esquerdo */}
               <div className="flex flex-col items-center space-y-4">
                 {/* Imagem do Tier */}
                 <div className="flex items-center space-x-4">
-                  <div className="bg-[#131313] p-3 rounded-xl">
+                  <div className="bg-[#131313] relative p-3 rounded-xl">
                     <img
                       src={tierData[tier].image}
-                      alt={tierData[tier].text}
-                      className="w-[2.8vw] object-contain"
+                      alt={tierData[tier].prize}
+                      className="w-[2vw] object-contain"
                     />
+                    {/* Ícone de check para tiers passados */}
+                    {tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) && (
+                      <img
+                        src="/circle-check-2.png"
+                        alt="Check Icon"
+                        className="absolute top-0 left-0 w-5 h-5 transform -translate-x-[50%] translate-y-[50%]"
+                      />
+                    )}
                   </div>
                   <div className="text-left">
                     {/* Nome do Tier */}
@@ -307,30 +420,41 @@ const Empire: React.FC = () => {
 
                 {/* Botão Redeem Reward */}
                 <button
-                  className={`flex cursor-pointer justify-center p-4 shadow-button items-center text-center rounded-xl hover:opacity-70 transition-opacity duration-300 ${
-                    tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                    (userTier === "darkmatter" && levelPercent === 100) ||
-                    (levelPercent === 100 && tier === userTier)
-                      ? "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] text-white"
-                      : "bg-gray-500 text-gray-300 cursor-not-allowed"
+                  className={`flex justify-center p-4 shadow-button items-center text-center rounded-xl ${
+                    redeemedTiers.includes(tier)
+                      ? "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] cursor-not-allowed opacity-20"
+                      : tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                        (userTier === "DARKMATTER" && levelPercent === 100) ||
+                        (levelPercent === 100 && tier === userTier)
+                      ? "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] text-white cursor-pointer hover:opacity-70 transition-opacity duration-300"
+                      : "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] cursor-not-allowed opacity-20"
                   }`}
-                  disabled={
-                    !(
-                      tier === userTier ||
-                      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                      (userTier === "darkmatter" && levelPercent === 100) ||
-                      (levelPercent === 100 && tier === userTier)
-                    )
-                  }
+                  disabled={redeemedTiers.includes(tier)}
+                  onClick={() => handleClick(tier)}
                 >
-                  <img
-                    src="/icons/gift-1-1.png"
-                    alt="Gift Icon"
-                    className="w-5 h-5 object-contain mr-2"
-                  />
-                  <span className="font-bold font-workSans text-base">
-                    REDEEM REWARD
-                  </span>
+                  {redeemedTiers.includes(tier) ? (
+                    <>
+                      <img
+                        src="/circle-check-3.png"
+                        alt="Check Icon"
+                        className="w-5 h-5 object-contain mr-2"
+                      />
+                      <span className="font-bold font-workSans text-base">
+                        REDEEMED
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        src="/icons/gift-1-1.png"
+                        alt="Gift Icon"
+                        className="w-5 h-5 object-contain mr-2"
+                      />
+                      <span className="font-bold font-workSans text-base">
+                        REDEEM REWARD
+                      </span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
