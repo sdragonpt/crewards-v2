@@ -313,7 +313,7 @@ function Empire() {
               href="https://csgoempire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center scale-90 px-6 shadow-button items-center text-center w-full bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+              className="flex justify-center px-6 shadow-button items-center text-center w-full bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
             >
               <img
                 src="/icons/gift-1-1.png"
