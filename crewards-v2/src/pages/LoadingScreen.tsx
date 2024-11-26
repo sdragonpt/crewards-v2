@@ -2,51 +2,51 @@ import React, { useEffect, useState } from "react";
 import "../css/LoadingScreen.css";
 
 const LoadingScreen: React.FC = () => {
-  const [opacity, setOpacity] = useState(1);
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [opacity, setOpacity] = useState(1); // Controla a opacidade
+  const [isMinTimeElapsed, setIsMinTimeElapsed] = useState(false); // Tempo mínimo
+  const [isPageLoaded, setIsPageLoaded] = useState(false); // Página carregada
 
   useEffect(() => {
-    // Função para contar os recursos carregados (imagens, etc.)
-    const handleResourceLoad = () => {
-      // Verifica se todos os recursos foram carregados
-      const images = Array.from(document.getElementsByTagName("img"));
-      const loadedImages = images.filter((img) => img.complete).length;
+    // Define o tempo mínimo de exibição do loading (1 segundo)
+    const timer = setTimeout(() => {
+      setIsMinTimeElapsed(true);
+    }, 1000);
 
-      // Se todos os recursos foram carregados, marca a página como carregada
-      if (loadedImages === images.length) {
-        setIsPageLoaded(true); // Página está completamente carregada
-      }
+    // Limpa o timer ao desmontar o componente
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    // Captura o evento global de carregamento da página
+    const handlePageLoad = () => {
+      setIsPageLoaded(true); // Marca a página como carregada
     };
 
-    // Seleciona todas as imagens da página e configura os eventos de carregamento
-    const images = Array.from(document.getElementsByTagName("img"));
-    images.forEach((img) => {
-      if (img.complete) {
-        handleResourceLoad();
-      } else {
-        img.onload = handleResourceLoad;
-      }
-    });
-  }, []); // Esse efeito executa apenas uma vez quando o componente é montado
-
-  useEffect(() => {
-    if (isPageLoaded) {
-      // Aguarda 1 segundo para garantir o tempo mínimo de exibição
-      const timer = setTimeout(() => {
-        setOpacity(0); // Inicia a transição para opacidade 0 após 1 segundo
-      }, 1000); // 1 segundo
-
-      // Limpa o timer ao desmontar ou alterar o estado
-      return () => clearTimeout(timer);
+    // Adiciona o listener para o evento de carregamento completo
+    if (document.readyState === "complete") {
+      handlePageLoad(); // Página já está carregada
+    } else {
+      window.addEventListener("load", handlePageLoad);
     }
-  }, [isPageLoaded]); // Executa quando a página estiver carregada
+
+    // Remove o listener ao desmontar o componente
+    return () => window.removeEventListener("load", handlePageLoad);
+  }, []);
+
+  // Fade-out quando ambas as condições forem atendidas
+  useEffect(() => {
+    if (isMinTimeElapsed && isPageLoaded) {
+      setOpacity(0); // Inicia a transição para desaparecer
+    }
+  }, [isMinTimeElapsed, isPageLoaded]);
 
   return (
     <div
       className="loading-screen z-50"
       style={{
         opacity,
-        pointerEvents: isPageLoaded ? "none" : "auto", // Desabilita interação após o carregamento
+        pointerEvents: opacity === 0 ? "none" : "auto", // Desativa interação após desaparecer
+        transition: "opacity 0.5s ease", // Transição suave
       }}
     >
       <img
