@@ -142,7 +142,7 @@ const VideoBarLocal: React.FC = () => {
         <div
           {...handlers}
           ref={videoContainerRef}
-          className="relative bg-[#191919] rounded-xl p-2 w-full z-10 md:mt-20 md:left-1/2 md:transform md:-translate-x-1/2"
+          className="relative rounded-xl w-full z-10 py-2 -mx-2 mt-[0.5vw] md:left-1/2 md:transform md:-translate-x-1/2"
           style={{ height: "auto", overflow: "hidden" }}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart} // Adiciona o handler de toque
@@ -154,7 +154,7 @@ const VideoBarLocal: React.FC = () => {
             {videos.map((video, index) => (
               <div
                 key={index}
-                className="min-w-[300px] 2xl:min-w-[380px] flex flex-col rounded-lg p-4"
+                className="min-w-[18vw] flex flex-col p-4 rounded-lg"
                 onMouseDown={handleMouseDown}
                 onClick={(event) => handleClick(video.id.videoId, event)}
               >

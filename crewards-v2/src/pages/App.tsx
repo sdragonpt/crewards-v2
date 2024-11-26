@@ -15,18 +15,28 @@ import Challenges from "../components/Home/Challenges";
 import ProfileSettings from "./ProfileSettings";
 import useWindowWidth from "../hooks/useWindowWidth"; // Importando o hook
 import MoneyCounter from "../components/Home/MoneyCounter";
+import ProfileSettingsModal from "./ProfileSettingsModal";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const isLocalhost = window.location.hostname === "localhost";
+  const [openModal, setOpenModal] = useState(false); // Estado para controlar o modal
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para controle de login
   const windowWidth = useWindowWidth(); // Usando o hook para obter a largura da janela
+
+  const toggleModal = () => setOpenModal((prev) => !prev);
+
+  const isLocalhost = window.location.hostname === "localhost";
+
+  const toggleLogin = () => {
+    setIsLoggedIn((prev) => !prev); // Alterna o valor de isLoggedIn
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false); // False after 1 sec
     }, 1000); // 1 sec
 
-    return () => clearTimeout(timer); // Cleans timer
+    return () => clearTimeout(timer); // Limpa o timer
   }, []);
 
   const renderFooter = () => {
@@ -37,13 +47,24 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      {/* Carregando a tela */}
       <LoadingScreen />
+
       <div
         className={`bg-[#131313] min-h-screen ${
           isLoading ? "hidden" : ""
         } select-none`}
       >
-        <NavBar />
+        <NavBar toggleModal={toggleModal} />
+
+        {/* Modal de configurações de perfil */}
+        <ProfileSettingsModal
+          isOpen={openModal} // Passa o estado de abertura
+          onClose={toggleModal} // Passa a função de fechamento
+          onConfirm={() => console.log("Confirmado")} // Função de confirmação
+          toggleLogin={toggleLogin} // Passando a função toggleLogin para o modal
+        />
+
         <Routes>
           <Route
             path="/"
@@ -80,7 +101,11 @@ function App() {
             path="/profile" // Adiciona a rota para a página de login
             element={
               <div>
-                <ProfileSettings />
+                {isLoggedIn ? (
+                  <ProfileSettings /> // Exibe a página de configurações se estiver logado
+                ) : (
+                  <div>Você precisa estar logado para acessar esta página</div> // Caso contrário, exibe uma mensagem
+                )}
               </div>
             }
           />

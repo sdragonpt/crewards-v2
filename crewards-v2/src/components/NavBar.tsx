@@ -1,9 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import DropDownProfile from "./DropDownProfile";
+import ProfileSettingsModal from "../pages/ProfileSettingsModal";
 
-function NavBar() {
+// Tipagem para as props do NavBar
+interface NavBarProps {
+  toggleModal: () => void;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [targetAnchor, setTargetAnchor] = useState<string | null>(null);
@@ -12,12 +17,14 @@ function NavBar() {
 
   // LOGIN
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de login
-  const [openProfile, setOpenProfile] = useState(false);
 
   const [activeLinkWidth, setActiveLinkWidth] = useState(0);
   const [activeLinkOffset, setActiveLinkOffset] = useState(0);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const [linkHeight, setLinkHeight] = useState("10px"); // Valor inicial para a altura
+  const [linkHeight, setLinkHeight] = useState("10px"); // Valor inicial para a altura~
+
+  // MODAL
+  const [openModal] = useState(false);
 
   const navLinks = [
     {
@@ -94,8 +101,7 @@ function NavBar() {
 
   // Função para alternar o estado de isLoggedIn
   const toggleLogin = () => {
-    setIsLoggedIn((prev) => !prev); // Alterna o valor de isLoggedIn
-    setOpenProfile(false);
+    setIsLoggedIn((prev) => !prev); // Alterna o estado de login
   };
 
   // Home click
@@ -124,7 +130,6 @@ function NavBar() {
       location.pathname === "/profile" ||
       location.pathname === "/"
     ) {
-      setOpenProfile(false);
     }
   }, [location.pathname]);
 
@@ -135,14 +140,6 @@ function NavBar() {
       navigate("/leaderboard"); // Navega para a página do leaderboard
     }
   };
-
-  // const handleVipClick = () => {
-  //   if (location.pathname.startsWith("/vip/")) {
-  //     window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
-  //   } else {
-  //     navigate("/vip/csgoempire"); // Navega para a página do CSGOEmpire
-  //   }
-  // };
 
   const handleAnchorClick = (anchorId: string) => {
     const scrollToElement = () => {
@@ -256,11 +253,6 @@ function NavBar() {
     }
   }, [location]);
 
-  // // Check if the anchor is active
-  // const isActive = (anchorId: string) => {
-  //   return location.pathname === "/" && location.hash === `#${anchorId}`;
-  // };
-
   const handleLogin = () => {
     setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
   };
@@ -343,19 +335,24 @@ function NavBar() {
           <div className="flex-shrink-0 lg:ml-auto lg:mr-4">
             {isLoggedIn ? (
               <div className="relative flex items-center">
-                {/* <div className="mr-3 flex items-center font-workSans font-medium justify-center text-white px-4 py-2 bg-[#2B2B2B] rounded-xl">
-                  <i className="fa-solid fa-coins mr-2"></i>
-                  5,000
-                </div> */}
-                <Link to="#" className="rounded-md" onClick={handleLogin}>
+                <Link to="#" className="rounded-md" onClick={toggleModal}>
                   <img
                     src="/logo2.png"
                     alt="User Icon"
-                    className="w-10 h-10 mr-2 rounded-full border-[3px] border-transparent outline outline-3 outline-offset-2 outline-[#2B2B2B] transition-transform duration-300 hover:scale-110"
-                    onClick={() => setOpenProfile((prev) => !prev)}
+                    className="w-10 h-10 mr-2 rounded-full border-[3px] border-transparent outline outline-2 outline-offset-2 outline-[#2B2B2B] transition-transform duration-300 hover:scale-110"
                   />
                 </Link>
-                {openProfile && <DropDownProfile toggleLogin={toggleLogin} />}
+
+                {/* Dropdown do perfil */}
+                {/* {openProfile && <DropDownProfile toggleLogin={toggleLogin} />} */}
+
+                {/* Modal de configurações de perfil */}
+                <ProfileSettingsModal
+                  isOpen={openModal}
+                  onClose={toggleModal}
+                  onConfirm={handleLogin}
+                  toggleLogin={toggleLogin} // Passando a função toggleLogin para o modal
+                />
               </div>
             ) : (
               <Link
@@ -551,7 +548,7 @@ function NavBar() {
       </div>
     </nav>
   );
-}
+};
 
 export const username = "Sérgio";
 export default NavBar;

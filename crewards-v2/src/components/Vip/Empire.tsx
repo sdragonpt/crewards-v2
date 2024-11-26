@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // Definindo um tipo para os níveis
 type Tier =
@@ -24,101 +25,77 @@ const Empire: React.FC = () => {
   const tierData: Record<
     Tier,
     {
-      color: string;
       image: string;
       wager: string;
       prize: string;
       next: Tier | null; // O próximo nível pode ser null
-      nextText: string | null;
     }
   > = {
     RUST: {
-      color: "#9c8474",
       image: "/rank-rust.png",
       wager: "1,000",
       prize: "10",
       next: "BRONZE",
-      nextText: "BRONZE",
     },
     BRONZE: {
-      color: "#d5a06c",
       image: "/2bronze.png",
       wager: "5,000",
       prize: "40",
       next: "SILVER",
-      nextText: "SILVER",
     },
     SILVER: {
-      color: "#ced7e5",
       image: "/3silver.png",
       wager: "10,000",
       prize: "60",
       next: "GOLD",
-      nextText: "GOLD",
     },
     GOLD: {
-      color: "#ddbb56",
       image: "/4gold.png",
       wager: "25,000",
       prize: "190",
       next: "PLATINUM",
-      nextText: "PLATINUM",
     },
     PLATINUM: {
-      color: "#9094b6",
       image: "/5platinum.png",
       wager: "50,000",
       prize: "325",
       next: "EMERALD",
-      nextText: "EMERALD",
     },
     EMERALD: {
-      color: "#27fc2f",
       image: "/6emerald.png",
       wager: "75,000",
       prize: "400",
       next: "SAPPHIRE",
-      nextText: "SAPPHIRE",
     },
     SAPPHIRE: {
-      color: "#2b40fc",
       image: "/7sapphire1.png",
       wager: "100,000",
       prize: "350",
       next: "RUBY",
-      nextText: "RUBY",
     },
     RUBY: {
-      color: "#ee3829",
       image: "/8ruby.png",
       wager: "250,000",
       prize: "2250",
       next: "DIAMOND",
-      nextText: "DIAMOND",
     },
     DIAMOND: {
-      color: "#13cffb",
       image: "/9diamond.png",
       wager: "500,000",
       prize: "4000",
       next: "MYTHIC",
-      nextText: "MYTHIC",
     },
     MYTHIC: {
-      color: "#a023d9",
       image: "/10mythic.png",
       wager: "1,000,000",
       prize: "8500",
       next: "DARKMATTER",
-      nextText: "DARKMATER",
     },
     DARKMATTER: {
-      color: "#640464",
       image: "/11darkmatter.png",
       wager: "2,500,000",
       prize: "27000",
       next: null,
-      nextText: null,
     },
   };
 
@@ -163,6 +140,12 @@ const Empire: React.FC = () => {
     }
   };
 
+  const [showRectangle, setShowRectangle] = useState(false);
+
+  const toggleRectangle = () => {
+    setShowRectangle(!showRectangle);
+  };
+
   const containerClasses = "absolute inset-0 bg-cover bg-center";
 
   return (
@@ -171,15 +154,70 @@ const Empire: React.FC = () => {
       <div className="relative flex flex-wrap items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center">
         <div className={`${containerClasses} brightness-125 background-0`} />
         <div className={`${containerClasses} brightness-90 glows-1`} />
+        {/* Fixed Images */}
+        {["Vector-2", "Vector-3"].map((layer, index) => (
+          <img
+            key={index}
+            src={`/Vectors/${layer}.png`}
+            alt={`Vector ${index + 1}`}
+            className={`hidden md:block absolute ${
+              index === 0
+                ? "left-[33%] top-[30%] w-[2%]" // Nova imagem 1
+                : "right-[33%] top-[22%] w-[1.5%]" // Nova imagem 2
+            } `}
+          />
+        ))}
         <p className="items-end absolute top-[32vw] md:top-[7.5vw] text-[11vw] md:text-[3vw] font-extrabold z-10 text-white">
           <span className="text-[3.5vw]">VIP</span>
         </p>
+
+        {/* Info */}
+        <div className="absolute top-[20%] right-[10%] flex items-center z-10 ">
+          <span
+            className="flex items-center cursor-pointer hover:opacity-70 transition-opacity duration-300"
+            onClick={toggleRectangle}
+          >
+            <img
+              src="/info.png"
+              alt="Imagem Info"
+              className="w-5 h-5 object-contain mr-1"
+            />
+            <span className="font-bold font-workSans text-base text-white text-[1vw]">
+              INFO
+            </span>
+          </span>
+
+          {showRectangle && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute top-full -left-[200%] mt-2 bg-[#191919] text-white rounded-lg p-4 w-[20rem] z-20 shadow-lg"
+            >
+              <div className="flex items-center">
+                <img
+                  src="/info-1.png"
+                  alt="Imagem Info"
+                  className="w-4 h-4 object-contain mr-1"
+                />
+                <p className="font-bold font-workSans text-[#B2B2B2] text-[0.9vw] mt-[0.5%]">
+                  INFO
+                </p>
+              </div>
+              <p className="text-sm text-[#656565] mt-2">
+                Winners will be tipped onsite! Sports betting & coin flip bets
+                will NOT be counted towards your wager on the leaderboard.
+              </p>
+            </motion.div>
+          )}
+        </div>
 
         {/* Content */}
         <div className="z-10 w-[68%]">
           {isLoggedIn ? (
             // Logged
-            <div className="bg-[#191919] rounded-xl p-[1vw] z-10 mt-[3vw] text-white text-center">
+            <div className="bg-[#191919] rounded-xl py-[1vw] px-[1.6vw] z-10 mt-[3vw] text-white text-center">
               {/* Topo com informações alinhadas à esquerda e à direita */}
               <div className="flex justify-between items-center mb-4">
                 {/* Esquerda: Tier e Wagered */}
@@ -240,7 +278,7 @@ const Empire: React.FC = () => {
                     <>
                       <img src={nextTier.image} alt="end" className="w-6 h-6" />
                       <span className="text-gray-300 text-xs">
-                        <span>{currentTier.nextText}</span>
+                        <span>{currentTier.next}</span>
                       </span>
                     </>
                   )}
@@ -249,7 +287,20 @@ const Empire: React.FC = () => {
             </div>
           ) : (
             // Log In
-            <div className="bg-[#191919] rounded-xl p-[2vw] z-10 mt-[3vw] text-white text-center flex flex-col items-center">
+            <div className="bg-[#191919] relative rounded-xl p-[2vw] z-10 mt-[3vw] text-white text-center flex flex-col items-center">
+              {/* Fixed Images */}
+              {["Vector-2", "Vector-3"].map((layer, index) => (
+                <img
+                  key={index}
+                  src={`/Vectors/${layer}.png`}
+                  alt={`Vector ${index + 1}`}
+                  className={`hidden md:block absolute ${
+                    index === 0
+                      ? "left-[4%] bottom-[20%] w-[2%]" // Nova imagem 1
+                      : "right-[8%] top-[22%] w-[1.5%]" // Nova imagem 2
+                  } `}
+                />
+              ))}
               <h1 className="font-extrabold text-[1.6vw]">LOG IN</h1>
               <p className="font-semibold text-[0.7vw] text-[#B2B2B2]">
                 LOG IN TO VIEW YOUR PERSONAL STATISTICS AND CLAIM THE VIP

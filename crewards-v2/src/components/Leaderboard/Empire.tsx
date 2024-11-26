@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { fadeIn } from "../../variants";
 import Time from "./Time";
-// import EmpireLeft from "./EmpireLeft";
-// import EmpireRight from "./EmpireRight";
 
 function Empire() {
   const [isLoaded, setIsLoaded] = useState(false);

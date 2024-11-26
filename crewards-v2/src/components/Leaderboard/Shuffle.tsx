@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import Time from "./Time";
 import { useState } from "react";
-// import ShuffleLeft from "./ShuffleLeft";
-// import ShuffleRight from "./ShuffleRight";
 
 function Shuffle() {
   const time = "2024-12-05T23:59:59";

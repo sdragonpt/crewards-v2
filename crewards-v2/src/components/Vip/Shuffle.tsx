@@ -1,148 +1,98 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { fadeIn } from "../../variants";
-import { useState, useRef, useEffect } from "react";
 
 // Definindo um tipo para os níveis
 type Tier =
-  | "wood"
-  | "bronze"
-  | "silver"
-  | "gold"
-  | "platinum"
-  | "jade"
-  | "sapphire"
-  | "ruby"
-  | "diamond";
+  | "WOOD"
+  | "BRONZE"
+  | "SILVER"
+  | "GOLD"
+  | "PLATINUM"
+  | "JADE"
+  | "SAPPHIRE"
+  | "RUBY"
+  | "DIAMOND";
 
 const Shuffle: React.FC = () => {
-  const [userTier] = useState<Tier>("wood");
-  const levelPercent: number = 0;
+  const [userTier] = useState<Tier>("SILVER");
+  const levelPercent: number = 48.7;
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de login
 
   const tierData: Record<
     Tier,
     {
-      color: string;
       image: string;
-      text: string;
       wager: string;
       prize: string;
       next: Tier | null; // O próximo nível pode ser null
-      nextText: string | null;
     }
   > = {
-    wood: {
-      color: "#d88667",
+    WOOD: {
       image: "/wood.svg",
-      text: "is your current tier",
-      wager: "- Wager 1000$",
-      prize: "- Claim 10$",
-      next: "bronze",
-      nextText: "Bronze tier",
+      wager: "1000",
+      prize: "10",
+      next: "BRONZE",
     },
-    bronze: {
-      color: "#f4d4b4",
+    BRONZE: {
       image: "/bronze.svg",
-      text: "is your current tier",
-      wager: "- Wager 5000$",
-      prize: "- Claim 40$",
-      next: "silver",
-      nextText: "Silver tier",
+      wager: "5000",
+      prize: "40",
+      next: "SILVER",
     },
-    silver: {
-      color: "#b4bcc4",
+    SILVER: {
       image: "/silver.svg",
-      text: "is your current tier",
-      wager: "- Wager 10000$",
-      prize: "- Claim 60$",
-      next: "gold",
-      nextText: "Gold tier",
+      wager: "10000",
+      prize: "60",
+      next: "GOLD",
     },
-    gold: {
-      color: "#f0d77f",
+    GOLD: {
       image: "/gold.svg",
-      text: "is your current tier",
-      wager: "- Wager 25000$",
-      prize: "- Claim 190$",
-      next: "platinum",
-      nextText: "Platinum tier",
+      wager: "25000",
+      prize: "190",
+      next: "PLATINUM",
     },
-    platinum: {
-      color: "#acb4db",
+    PLATINUM: {
       image: "/platinum.svg",
-      text: "is your current tier",
-      wager: "- Wager 50000$",
-      prize: "- Claim 325$",
-      next: "jade",
-      nextText: "Jade tier",
+      wager: "50000",
+      prize: "325",
+      next: "JADE",
     },
-    jade: {
-      color: "#59f658",
+    JADE: {
       image: "/jade.svg",
-      text: "is your current tier",
-      wager: "- Wager 75000$",
-      prize: "- Claim 340$",
-      next: "sapphire",
-      nextText: "Sapphire tier",
+      wager: "75000",
+      prize: "340",
+      next: "SAPPHIRE",
     },
-    sapphire: {
-      color: "#748bfc",
+    SAPPHIRE: {
       image: "/sapphire.svg",
-      text: "is your current tier",
-      wager: "- Wager 100000$",
-      prize: "- Claim 350$",
-      next: "ruby",
-      nextText: "Ruby tier",
+      wager: "100000",
+      prize: "350",
+      next: "RUBY",
     },
-    ruby: {
-      color: "#fc4149",
+    RUBY: {
       image: "/ruby.svg",
-      text: "is your current tier",
-      wager: "- Wager 250000$",
-      prize: "- Claim 2250$",
-      next: "diamond",
-      nextText: "Diamond tier",
+      wager: "250000",
+      prize: "2250",
+      next: "DIAMOND",
     },
-    diamond: {
-      color: "#56d5fc",
+    DIAMOND: {
       image: "/diamond.svg",
-      text: "is your current tier",
-      wager: "- Wager 500000$",
-      prize: "- Claim 4000$",
+      wager: "500000",
+      prize: "4000",
       next: null,
-      nextText: null,
     },
   };
 
-  const currentTier = tierData[userTier];
-  const nextTier = currentTier.next ? tierData[currentTier.next] : null;
-  const glowClass = `glow-${userTier}`;
-  const glowClassNext = nextTier ? `glow-${currentTier.next}` : "";
   const tierKeys = Object.keys(tierData) as Tier[];
 
-  // Ref para a segunda view
-  const secondViewRef = useRef<HTMLDivElement>(null);
+  const currentTier = tierData[userTier];
+  const nextTier = currentTier.next ? tierData[currentTier.next] : null;
 
-  const handleScrollToView = () => {
-    const offset = 120; // Aumenta a quantidade para rolar para cima
-
-    if (secondViewRef.current) {
-      // Verifica se a referência está disponível
-      const elementPosition = secondViewRef.current.getBoundingClientRect().top; // Posição do elemento
-      const offsetPosition = elementPosition + window.scrollY - offset; // Posição final com deslocamento
-
-      if (window.innerWidth < 1024) {
-        // Para dispositivos móveis
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth", // Rolagem suave
-        });
-      } else {
-        // Para telas maiores
-        secondViewRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      console.warn("Elemento de referência não está disponível."); // Opcional: log para debugging
-    }
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
+    console.log("Login true");
   };
 
   // Hook para atualizar a largura da janela
@@ -157,6 +107,31 @@ const Shuffle: React.FC = () => {
     };
   }, []);
 
+  const [redeemedTiers, setRedeemedTiers] = useState<Tier[]>([]);
+
+  const handleClick = (tier: Tier) => {
+    if (
+      tier === userTier ||
+      tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+      (userTier === "DIAMOND" && levelPercent === 100) ||
+      (levelPercent === 100 && tier === userTier)
+    ) {
+      setRedeemedTiers((prev) => {
+        // Adiciona o tier ao array apenas se ainda não estiver presente
+        if (!prev.includes(tier)) {
+          return [...prev, tier];
+        }
+        return prev; // Retorna o mesmo estado se o tier já foi resgatado
+      });
+    }
+  };
+
+  const [showRectangle, setShowRectangle] = useState(false);
+
+  const toggleRectangle = () => {
+    setShowRectangle(!showRectangle);
+  };
+
   const containerClasses = "absolute inset-0 bg-cover bg-center";
 
   return (
@@ -165,196 +140,342 @@ const Shuffle: React.FC = () => {
       <div className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center">
         <div className={`${containerClasses} brightness-125 background-0`} />
         <div className={`${containerClasses} brightness-90 glows-2`} />
+        {/* Fixed Images */}
+        {["Vector-2", "Vector-3"].map((layer, index) => (
+          <img
+            key={index}
+            src={`/Vectors/${layer}.png`}
+            alt={`Vector ${index + 1}`}
+            className={`hidden md:block absolute ${
+              index === 0
+                ? "left-[33%] top-[30%] w-[2%]" // Nova imagem 1
+                : "right-[33%] top-[22%] w-[1.5%]" // Nova imagem 2
+            } `}
+          />
+        ))}
         <p className="items-end absolute top-[32vw] md:top-[7.5vw] text-[11vw] md:text-[3vw] font-extrabold z-10 text-white">
           <span className="text-[3.5vw]">VIP</span>
         </p>
 
-        <motion.div
-          variants={fadeIn("up", 0.3)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.7 }}
-          className={`relative z-10 flex flex-wrap justify-center space-x-12 mx-2 ${
-            window.innerWidth < 390 ? "mt-60" : ""
-          }`}
-        >
-          <div
-            className="custom-mt custom-p relative bg-zinc-900 rounded-xl p-8 px-6 lg:px-52 2xl:px-56 2xl:py-12 z-10 text-center 3xl:mt-52 lg:mt-36"
-            style={{
-              height: "auto",
-              overflow: "hidden",
-              borderColor: currentTier.color,
-              borderWidth: "2px",
-              borderStyle: "solid",
-              boxShadow: "inset 10px 10px 20px rgba(0, 0, 0, 0.5)", // Adiciona uma sombra interna
-            }}
+        {/* Info */}
+        <div className="absolute top-[20%] right-[10%] flex items-center z-10 ">
+          <span
+            className="flex items-center cursor-pointer hover:opacity-70 transition-opacity duration-300"
+            onClick={toggleRectangle}
           >
-            <div className="flex items-center justify-center mb-12">
-              {" "}
-              {/* Usando flex com items-center e justify-center */}
-              <img
-                src={currentTier.image}
-                alt="dynamic"
-                className={`w-16 h-16 mr-4 ${glowClass}`} // Mantendo margem à direita para espaçamento
-              />
-              <div className="text-left">
-                {" "}
-                {/* Alinhando o texto à esquerda */}
-                <h2 className="text-white text-xl font-semibold">
-                  <span>
-                    {userTier.charAt(0).toUpperCase() + userTier.slice(1)}
-                  </span>{" "}
-                  <span className="font-normal">{currentTier.text}</span>
-                </h2>
-                <p className="text-gray-300 text-sm">
-                  Your progress is an accumulated sum through your <br />
-                  wager, increase through tiers to earn bigger rewards
+            <img
+              src="/info.png"
+              alt="Imagem Info"
+              className="w-5 h-5 object-contain mr-1"
+            />
+            <span className="font-bold font-workSans text-base text-white text-[1vw]">
+              INFO
+            </span>
+          </span>
+
+          {showRectangle && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.9 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute top-full -left-[200%] mt-2 bg-[#191919] text-white rounded-lg p-4 w-[20rem] z-20 shadow-lg"
+            >
+              <div className="flex items-center">
+                <img
+                  src="/info-1.png"
+                  alt="Imagem Info"
+                  className="w-4 h-4 object-contain mr-1"
+                />
+                <p className="font-bold font-workSans text-[#B2B2B2] text-[0.9vw] mt-[0.5%]">
+                  INFO
                 </p>
               </div>
-            </div>
+              <p className="text-sm text-[#656565] mt-2">
+                Winners will be tipped onsite! Sports betting & coin flip bets
+                will NOT be counted towards your wager on the leaderboard.
+              </p>
+            </motion.div>
+          )}
+        </div>
 
-            {/* Barra de Carregamento com Porcentagem */}
-            <div className="relative mb-4">
-              <div className="flex justify-between text-xs text-gray-300 mb-1">
-                <span>0%</span>
-                <span>25%</span>
-                <span>50%</span>
-                <span>75%</span>
-                <span>100%</span>
+        {/* Content */}
+        <div className="z-10 w-[68%]">
+          {isLoggedIn ? (
+            // Logged
+            <div className="bg-[#191919] rounded-xl py-[1vw] px-[1.6vw] z-10 mt-[3vw] text-white text-center">
+              {/* Topo com informações alinhadas à esquerda e à direita */}
+              <div className="flex justify-between items-center mb-4">
+                {/* Esquerda: Tier e Wagered */}
+                <div className="flex items-center">
+                  <div className="bg-[#131313] p-[0.4vw] rounded-xl">
+                    <img
+                      src={currentTier.image}
+                      alt="Tier Badge"
+                      className="w-[2.6vw] object-contain"
+                    />
+                  </div>
+                  <div className="text-left ml-[1vw]">
+                    <h2 className="text-white text-[1.1vw] font-extrabold">
+                      {userTier}
+                    </h2>
+                    <p className="text-[#B2B2B2] font-semibold text-[0.6vw]">
+                      WAGERED
+                    </p>
+                  </div>
+                </div>
+
+                {/* Direita: Progress e Level Percentage */}
+                <div className="flex items-center">
+                  <div className="text-right">
+                    <h2 className="text-white text-[1.1vw] font-extrabold">
+                      {levelPercent}%
+                    </h2>
+                    <p className="text-[#B2B2B2] font-semibold text-[0.6vw]">
+                      YOUR PROGRESS
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="2xl:w-[700px] lg:w-[500px] w-full h-3 bg-gray-600 rounded-full relative">
+
+              {/* Barra de Carregamento */}
+              <div className="w-full h-3 bg-[#131313] rounded-full relative mt-[2vw] mb-[1.2vw]">
                 <div
                   className="h-full rounded-full progress-bar"
                   style={{
                     width: `${levelPercent}%`,
-                    background: `linear-gradient(to right, ${
-                      currentTier.color
-                    }, ${nextTier ? nextTier.color : currentTier.color})`,
+                    background: `#886cff`,
                   }}
                 ></div>
               </div>
 
+              {/* Legenda da Barra de Progresso */}
               <div className="flex justify-between mt-3">
                 <div className="flex items-center space-x-2">
                   <img
                     src={currentTier.image}
                     alt="start"
-                    className={`w-6 h-6 ${glowClass}`}
+                    className="w-6 h-6"
                   />
-                  <span className="text-gray-300 text-xs">
-                    {userTier.charAt(0).toUpperCase() + userTier.slice(1)} tier
-                  </span>
+                  <p className="text-gray-300 text-xs">{userTier}</p>
                 </div>
-
                 <div className="flex items-center space-x-2">
                   {nextTier && (
                     <>
-                      <img
-                        src={nextTier.image} // Imagem do próximo nível
-                        alt="end"
-                        className={`w-6 h-6 ${glowClassNext}`}
-                      />
+                      <img src={nextTier.image} alt="end" className="w-6 h-6" />
                       <span className="text-gray-300 text-xs">
-                        <span>{currentTier.nextText}</span>
+                        <span>{currentTier.next}</span>
                       </span>
                     </>
                   )}
                 </div>
               </div>
             </div>
+          ) : (
+            // Log In
+            <div className="bg-[#191919] relative rounded-xl p-[2vw] z-10 mt-[3vw] text-white text-center flex flex-col items-center">
+              {/* Fixed Images */}
+              {["Vector-2", "Vector-3"].map((layer, index) => (
+                <img
+                  key={index}
+                  src={`/Vectors/${layer}.png`}
+                  alt={`Vector ${index + 1}`}
+                  className={`hidden md:block absolute ${
+                    index === 0
+                      ? "left-[4%] bottom-[20%] w-[2%]" // Nova imagem 1
+                      : "right-[8%] top-[22%] w-[1.5%]" // Nova imagem 2
+                  } `}
+                />
+              ))}
+              <h1 className="font-extrabold text-[1.6vw]">LOG IN</h1>
+              <p className="font-semibold text-[0.7vw] text-[#B2B2B2]">
+                LOG IN TO VIEW YOUR PERSONAL STATISTICS AND CLAIM THE VIP
+                REWARDS!
+              </p>
+              <Link
+                onClick={handleLogin}
+                to="#"
+                className="flex items-center mt-[1vw] shadow-button-1 text-center cursor-pointer bg-[#2B2B2B] text-[#B2B2B2] font-workSans font-bold px-[0.8vw] py-[0.5vw] hover:opacity-70 transition-opacity duration-300 rounded-[0.6vw]"
+              >
+                <img
+                  src="/discordlogo.png"
+                  alt="Imagem do botão"
+                  className="w-[0.8vw] object-contain mr-2"
+                />
+                <p className="text-[0.8vw]">LOG IN</p>
+              </Link>
+            </div>
+          )}
+        </div>
 
-            <button
-              onClick={handleScrollToView}
-              className="bg-[#8337d8] text-white py-2 px-4 rounded-full 
-    hover:bg-[#582c8c] 
-    transition duration-300 ease-in-out 
-    hover:opacity-90 hover:scale-105"
-            >
-              Claim Rewards
-            </button>
+        {/* VIP Rewards */}
+        <div className="absolute z-10 w-[68%] bottom-[2vw]">
+          {/* Rakeback */}
+          <div className="flex items-center mt-[2vw]">
+            <img
+              src="/icons/sparkles-two-2.png"
+              alt="Imagem do botão"
+              className="w-5 h-5 object-contain mr-2"
+            />
+            <span className="font-bold font-workSans text-base text-white text-[1.2vw]">
+              VIP Rewards
+            </span>
           </div>
-        </motion.div>
+          <div className="bg-[#191919] rounded-xl p-8 z-10 mt-[1vw] text-white text-center flex justify-between items-center">
+            {/* Lado esquerdo */}
+            <div className="flex flex-col items-center space-y-4">
+              {/* Coins */}
+              <div className="flex items-center space-x-4">
+                <div className="bg-[#131313] p-[1vw] rounded-xl">
+                  <img
+                    src="/shufflelogo.png"
+                    alt="Shuffle Logo"
+                    className="w-[1.3vw] object-contain"
+                  />
+                </div>
+                <div className="text-left">
+                  <h2 className="font-extrabold text-[0.8vw]">RAKEBACK</h2>
+                  <p className="font-semibold text-[#B2B2B2] text-[0.7vw]">
+                    INSTANT REWARD
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Lado direito */}
+            <div className="flex items-center">
+              {/* Available */}
+              <div className="flex justify-between items-center bg-[#131313] p-4 rounded-xl border-[#2a2a2a] border-2 mr-6">
+                <h2 className="text-[#B2B2B2] font-bold mr-2">AVAILABLE</h2>
+                <p className="font-bold">$0</p>
+              </div>
+              {/* Redeem Reward */}
+              {isLoggedIn ? (
+                <div className="flex cursor-pointer justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl hover:opacity-70 transition-opacity duration-300">
+                  <img
+                    src="/icons/gift-1-1.png"
+                    alt="Imagem do botão"
+                    className="w-5 h-5 object-contain mr-2"
+                  />
+                  <span className="font-bold font-workSans text-base text-white">
+                    REDEEM REWARD
+                  </span>
+                </div>
+              ) : (
+                <div className="flex cursor-not-allowed justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl opacity-20">
+                  <img
+                    src="/icons/gift-1-1.png"
+                    alt="Imagem do botão"
+                    className="w-5 h-5 object-contain mr-2"
+                  />
+                  <span className="font-bold font-workSans text-base text-white">
+                    REDEEM REWARD
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Hr */}
+          <hr className="border-[#242424] mt-[2vw]" />
+        </div>
       </div>
 
-      {/* Segunda View - Detalhes dos Jogadores */}
-      <div
-        ref={secondViewRef} // Ref para a segunda view
-        className="z-30 min-h-[100vh] flex flex-col justify-center bg-[#111111] items-center lg:pt-28 lg:pb-10 2xl:pb-0 lg:my-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%)",
-        }}
-      >
-        <div className="z-20 flex flex-wrap justify-center 2xl:w-[1400px] lg:w-[1000px]">
+      {/* Second View */}
+      <div className="flex items-center justify-center text-center">
+        {/* Tiers */}
+        <div className="z-10 w-[68%] mb-[4vw]">
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className="relative bg-zinc-900 rounded-lg p-4 mb-4 w-full 2xl:w-[580px] 2xl:h-[130px] lg:w-[460px] flex flex-col justify-between m-2"
-              style={{
-                borderColor: tierData[tier].color,
-                borderWidth: "2px",
-                borderStyle: "solid",
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                boxShadow: "inset 5px 5px 10px rgba(0, 0, 0, 0.5)", // Adiciona uma sombra interna
-              }}
+              className={`bg-[#191919] relative rounded-xl p-8 z-10 text-white text-center flex justify-between items-center mb-6 overflow-hidden ${
+                tier === userTier
+                  ? "border-l-4 border-[#886cff]" // Estilo especial para o rank atual
+                  : ""
+              }`}
             >
-              {/* Badge */}
+              {/* Glow lateral apenas para o rank atual */}
               {tier === userTier && (
-                <div
-                  className="absolute -top-4 left-1 bg-zinc-900 text-white px-4 py-[0.15rem] rounded-full"
-                  style={{
-                    borderColor: tierData[tier].color,
-                    borderWidth: "2px",
-                    borderStyle: "solid",
-                    zIndex: 10, // Certifica que o badge fica sobre o card
-                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)", // Sombra para o badge
-                  }}
-                >
-                  Your Tier
-                </div>
+                <div className="absolute left-[-2vw] h-full w-[20vw] bg-[#886cff] blur-3xl opacity-10 z-[-1]"></div>
               )}
 
-              <div className="flex items-start">
-                <img
-                  src={tierData[tier].image}
-                  alt={tierData[tier].text}
-                  className={`w-16 h-16 mr-6 ml-2 mt-4 mb-4 md:mb-0 glow-${tier}`}
-                />
-                <div className="flex-1 mt-2">
-                  <h3 className="text-white font-normal">
-                    {tier.charAt(0).toUpperCase() + tier.slice(1)}
-                  </h3>
-                  <p className="text-gray-300">{tierData[tier].wager}</p>
-                  <p className="text-gray-300">{tierData[tier].prize}</p>
+              {/* Lado esquerdo */}
+              <div className="flex flex-col items-center space-y-4">
+                {/* Imagem do Tier */}
+                <div className="flex items-center space-x-4">
+                  <div className="bg-[#131313] relative p-3 rounded-xl">
+                    <img
+                      src={tierData[tier].image}
+                      alt={tierData[tier].prize}
+                      className="w-[2vw] object-contain"
+                    />
+                    {/* Ícone de check para tiers passados */}
+                    {tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) && (
+                      <img
+                        src="/circle-check-1.png"
+                        alt="Check Icon"
+                        className="absolute top-0 left-0 w-5 h-5 transform -translate-x-[50%] translate-y-[50%]"
+                      />
+                    )}
+                  </div>
+                  <div className="text-left">
+                    {/* Nome do Tier */}
+                    <h2 className="font-extrabold text-[0.8vw]">
+                      {tier.charAt(0).toUpperCase() + tier.slice(1)}
+                    </h2>
+                    {/* Wager do Tier */}
+                    <p className="font-semibold text-[#B2B2B2] text-[0.7vw] flex items-center">
+                      WAGER ${tierData[tier].wager}
+                    </p>
+                  </div>
                 </div>
               </div>
-              {/* Botão "Claim" */}
-              <div className="flex justify-end lg:mt-6 lg:mr-6 2xl:mt-8 2xl:mr-10 flex-col lg:flex-row">
+
+              {/* Lado direito */}
+              <div className="flex items-center">
+                {/* Available */}
+                <div className="flex justify-between items-center bg-[#131313] p-4 rounded-xl border-[#2a2a2a] border-2 mr-6">
+                  <h2 className="text-[#B2B2B2] font-bold mr-2">CLAIM</h2>
+                  <p className="font-bold">${tierData[tier].prize}</p>
+                </div>
+
+                {/* Botão Redeem Reward */}
                 <button
-                  className={`py-2 px-4 rounded-full text-sm 
-      ${
-        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-        (userTier === "diamond" && levelPercent === 100) ||
-        (levelPercent === 100 && tier === userTier) // Verifica se o usuário está no tier atual ou anterior, ou se tem 100%
-          ? "bg-[#8337d8] text-white hover:bg-[#582c8c] cursor-pointer" // Botão ativo
-          : "bg-gray-500 text-gray-300 cursor-not-allowed" // Botão desativado
-      } 
-      transition duration-300 ease-in-out 
-      hover:opacity-90 hover:scale-105`}
-                  disabled={
-                    !(
-                      (
-                        tier === userTier ||
-                        tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                        (userTier === "diamond" && levelPercent === 100) ||
+                  className={`flex justify-center p-4 shadow-button items-center text-center rounded-xl ${
+                    redeemedTiers.includes(tier)
+                      ? "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] cursor-not-allowed opacity-20"
+                      : tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                        (userTier === "DIAMOND" && levelPercent === 100) ||
                         (levelPercent === 100 && tier === userTier)
-                      ) // Adiciona condição de 100%
-                    ) // Desativa se não for o tier do usuário, anterior, ou se for diamond com 100%
-                  }
+                      ? "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] text-white cursor-pointer hover:opacity-70 transition-opacity duration-300"
+                      : "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] cursor-not-allowed opacity-20"
+                  }`}
+                  disabled={redeemedTiers.includes(tier)}
+                  onClick={() => handleClick(tier)}
                 >
-                  Claim
+                  {redeemedTiers.includes(tier) ? (
+                    <>
+                      <img
+                        src="/circle-check-3.png"
+                        alt="Check Icon"
+                        className="w-5 h-5 object-contain mr-2"
+                      />
+                      <span className="font-bold font-workSans text-base">
+                        REDEEMED
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        src="/icons/gift-1-1.png"
+                        alt="Gift Icon"
+                        className="w-5 h-5 object-contain mr-2"
+                      />
+                      <span className="font-bold font-workSans text-base">
+                        REDEEM REWARD
+                      </span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>

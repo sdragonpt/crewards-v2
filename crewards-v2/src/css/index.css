@@ -13,9 +13,7 @@
   max-width: 240px;
   padding: 15px;
   border-radius: 8px;
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+  background-color: #131313;
 }
 
 @media (min-width: 390px) and (max-width: 890px) {
