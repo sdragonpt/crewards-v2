@@ -62,30 +62,35 @@ function Empire() {
         <div className={`${containerClasses} brightness-125 background-0`} />
         <div className={`${containerClasses} brightness-90 glows-1`} />
         {/* Fixed Images */}
-        {["empire2", "empire1", "empire4", "empire3", "Vector-2", "Vector-3"].map(
-          (layer, index) => (
-            <img
-              key={index}
-              src={`/Vectors/${layer}.png`}
-              alt={`Vector ${index + 1}`}
-              className={`hidden md:block absolute ${
-                index === 0
-                  ? "right-[27%] top-[14%] w-[8%]"
-                  : index === 1
-                  ? "left-[28%] top-[34%] transform -translate-y-1/2 w-[8%]"
-                  : index === 2
-                  ? "left-[33%] top-[16%] w-[1.5%]"
-                  : index === 3
-                  ? "right-[36%] top-[33%] transform -translate-y-1/2 w-[2%]"
-                  : index === 4
-                  ? "left-[15%] bottom-[42%] w-[2%]" // Nova imagem 1
-                  : "right-[10%] top-[46%] w-[1.5%]" // Nova imagem 2
-              } `}
-            />
-          )
-        )}
+        {[
+          "empire2",
+          "empire1",
+          "empire4",
+          "empire3",
+          "Vector-2",
+          "Vector-3",
+        ].map((layer, index) => (
+          <img
+            key={index}
+            src={`/Vectors/${layer}.png`}
+            alt={`Vector ${index + 1}`}
+            className={`hidden md:block absolute ${
+              index === 0
+                ? "right-[27%] top-[14%] w-[8%]"
+                : index === 1
+                ? "left-[28%] top-[34%] transform -translate-y-1/2 w-[8%]"
+                : index === 2
+                ? "left-[33%] top-[16%] w-[1.5%]"
+                : index === 3
+                ? "right-[36%] top-[33%] transform -translate-y-1/2 w-[2%]"
+                : index === 4
+                ? "left-[15%] bottom-[42%] w-[2%]" // Nova imagem 1
+                : "right-[10%] top-[46%] w-[1.5%]" // Nova imagem 2
+            } `}
+          />
+        ))}
 
-        <div className="absolute top-[20%] right-[10%] flex items-center z-10 ">
+        <div className="absolute md:top-[20%] top-[16%] md:right-[10%] right-[6%] flex items-center z-10 ">
           <span
             className="flex items-center cursor-pointer hover:opacity-70 transition-opacity duration-300"
             onClick={toggleRectangle}
@@ -106,7 +111,7 @@ function Empire() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.9 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-full -left-[200%] mt-2 bg-[#191919] text-white rounded-lg p-4 w-[20rem] z-20 shadow-lg"
+              className="absolute top-full -left-[200%] mt-2 bg-[#191919] text-white rounded-lg p-4 w-[20rem] z-50 shadow-lg"
             >
               <div className="flex items-center">
                 <img
@@ -127,7 +132,8 @@ function Empire() {
         </div>
 
         <p className="items-end absolute top-[32vw] md:top-[7.5vw] text-[11vw] md:text-[3vw] font-extrabold z-10 text-white">
-          <span className="text-[3.5vw]">L</span>EADERBOAR<span className="text-[3.5vw]">D</span>
+          <span className="md:text-[3.5vw]">L</span>EADERBOAR
+          <span className="md:text-[3.5vw]">D</span>
         </p>
 
         {/* Leaderboard Cards (Primeira View - Detalhes Simples) */}
@@ -137,12 +143,12 @@ function Empire() {
           animate={isLoaded ? "show" : "hidden"}
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
-          className="relative z-10 flex flex-wrap justify-center md:space-x-4 xl:space-x-4 mt-[50vw] md:mt-[14vw]"
+          className="relative z-10 flex flex-wrap justify-center md:space-x-4 xl:space-x-4 mt-[100vw] md:mt-[14vw]"
         >
           {/* Cards do Empire */}
           <div>
             {/* Card principal */}
-            <div className="absolute top-[-42vw] md:top-[2vw] scale-[1.10] md:scale-100 bg-[#191919] rounded-lg p-[8vw] md:p-[2vw] text-center md:relative w-[60vw] md:w-[16vw] md:h-[17.4vw] h-[70vw] overflow-hidden">
+            <div className="absolute translate-x-[5vw] md:translate-x-0 top-[-42vw] md:top-[2vw] scale-[1.10] md:scale-100 bg-[#191919] rounded-lg p-[8vw] md:p-[2vw] text-center md:relative w-[60vw] md:w-[16vw] md:h-[17.4vw] h-[70vw] overflow-hidden">
               <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-[#191919] via-[#D3D3D3] to-[#191919]"></div>
               <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw] relative">
                 <img
@@ -169,7 +175,7 @@ function Empire() {
             </div>
 
             {/* Gradiente dos "500 coins" */}
-            <div className="relative text-center w-[64.5vw] md:mt-[2.8vw] md:w-[17vw] transform -translate-x-[10vw] md:-translate-x-[.5vw] md:bottom-[4.2vw]">
+            <div className="relative text-center bottom-[-120%] w-[70vw] md:mt-[2.8vw] md:w-[17vw] transform -translate-x-[0vw] md:-translate-x-[.5vw] md:bottom-[4.2vw]">
               <div className="justify-between flex items-center text-[5vw] md:text-[1.1vw] bg-gradient-to-r from-[#717171] via-[#D3D3D3] to-[#717171] text-black font-bold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg">
                 <img
                   src="/icons/Vector.png"
@@ -190,7 +196,7 @@ function Empire() {
           </div>
 
           <div>
-            <div className="absolute top-[-125vw] md:top-[0vw] bg-[#191919] rounded-lg p-[8vw] md:p-[2vw] md:pb-[1vw] text-center md:relative transform overflow-hidden w-[60vw] md:w-[16vw] md:h-[17.4vw] h-[70vw]">
+            <div className="absolute translate-x-[5vw] md:translate-x-0 top-[-125vw] md:scale-100 scale-[1.10] md:top-[0vw] bg-[#191919] rounded-lg p-[8vw] md:p-[2vw] md:pb-[1vw] text-center md:relative transform overflow-hidden w-[60vw] md:w-[16vw] md:h-[17.4vw] h-[70vw]">
               <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-[#191919] via-[#F4E776] to-[#191919]"></div>
               <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw] relative">
                 <img
@@ -217,7 +223,7 @@ function Empire() {
             </div>
 
             {/* Div do gradiente ajustada */}
-            <div className="relative text-center mt-[5vw] w-[64.5vw] md:mt-[1vw] md:w-[17vw] transform -translate-x-[10vw] md:-translate-x-[.5vw] md:bottom-[4.4vw]">
+            <div className="relative text-center bottom-[700%] w-[70vw] md:mt-[1vw] md:w-[17vw] transform -translate-x-[0vw] md:-translate-x-[.5vw] md:bottom-[4.4vw]">
               <div className="justify-between flex items-center text-[5vw] md:text-[1.1vw] bg-gradient-to-r from-[#DB9210] via-[#F4E776] to-[#D89C21] text-black font-bold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg">
                 <img
                   src="/icons/Vector.png"
@@ -238,7 +244,7 @@ function Empire() {
           </div>
 
           <div>
-            <div className="absolute top-[41vw] md:top-[2vw] bg-[#191919] rounded-lg p-[8vw] md:p-[2vw] text-center md:relative transform scale-[1.10] md:scale-100 overflow-hidden w-[60vw] md:w-[16vw] md:h-[17.4vw] h-[70vw]">
+            <div className="absolute translate-x-[5vw] md:translate-x-0 top-[41vw] md:top-[2vw] bg-[#191919] rounded-lg p-[8vw] md:p-[2vw] text-center md:relative transform scale-[1.10] md:scale-100 overflow-hidden w-[60vw] md:w-[16vw] md:h-[17.4vw] h-[70vw]">
               <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-[#191919] via-[#FFA878] to-[#191919]"></div>
               <div className="bg-zinc-950 rounded-full w-[20vw] md:w-[4.5vw] mx-auto mb-[3vw] md:mb-[1vw]">
                 <img
@@ -264,7 +270,7 @@ function Empire() {
               <div className="absolute bottom-[-1vw] left-1/2 -translate-x-1/2 h-[32%] w-full bg-[#a55c38] blur-2xl opacity-40 rounded-xl z-[-1] pointer-events-none"></div>
             </div>
             {/* Div do gradiente */}
-            <div className="relative text-center w-[64.5vw] md:mt-[2.8vw] md:w-[17vw] transform -translate-x-[10vw] md:-translate-x-[.5vw] md:bottom-[4.2vw]">
+            <div className="relative text-center bottom-[-650%] w-[70vw] md:mt-[2.8vw] md:w-[17vw] transform -translate-x-[0vw] md:-translate-x-[.5vw] md:bottom-[4.2vw]">
               <div className="justify-between flex items-center text-[5vw] md:text-[1.1vw] bg-gradient-to-r from-[#9D4D25] via-[#FFA878] to-[#9D4D25] text-black font-bold px-[6vw] md:px-[1vw] py-[2vw] md:py-[0.5vw] rounded-lg">
                 <img
                   src="/icons/Vector.png"
@@ -299,10 +305,12 @@ function Empire() {
             <img
               src="csgoempire.png"
               alt="CSGOEmpire Logo"
-              className="rounded-t-lg w-36 object-contain"
+              className="rounded-t-lg md:w-36 object-contain"
             />
-            <h1 className="font-extrabold text-[1.5vw] ml-2">REDEEM BONUSES</h1>
-            <p className="font-extrabold text-[0.7vw] text-[#B2B2B2] ml-2">
+            <h1 className="font-extrabold md:text-[1.5vw] text-[4vw] ml-2">
+              REDEEM BONUSES
+            </h1>
+            <p className="font-extrabold md:text-[0.7vw] text-[3vw] text-[#B2B2B2] ml-2">
               AND JOIN OUR $2K MONTHLY LEADERBOARD
             </p>
           </div>
@@ -326,15 +334,15 @@ function Empire() {
         </div>
 
         {/* Positions */}
-        <div className="w-[68%] bg-[#191919] rounded-lg p-6 mt-[3vw]">
-          <div className="flex justify-between items-center mb-4 rounded w-full font-medium text-[0.8vw]">
+        <div className="w-[68%] bg-[#191919] rounded-lg p-2 md:p-6 md:mt-[3vw] mt-[10vw]">
+          <div className="flex justify-between items-center mb-4 rounded w-full font-medium text-[3vw] md:text-[0.8vw]">
             <div className="flex items-center">
-              <span className="text-zinc-500">Rank</span>
-              <span className="text-zinc-500 ml-16">User</span>
+              <span className="text-zinc-500 mr-6">Rank</span>
+              <span className="text-zinc-500 md:ml-16">User</span>
             </div>
             <div className="flex items-center">
-              <span className="text-zinc-500 lg:mr-[4.5rem] mr-8">Wagered</span>
-              <span className="text-zinc-500 lg:mr-9 mr-10">Prize</span>
+              <span className="text-zinc-500 md:mr-[4.5rem] mr-4">Wagered</span>
+              <span className="text-zinc-500 md:mr-9">Prize</span>
             </div>
           </div>
 
@@ -368,24 +376,24 @@ function Empire() {
               return (
                 <div
                   key={index}
-                  className={`flex justify-between items-center p-3 pr-6 rounded-lg lg:mx-0 mx-4 ${
+                  className={`flex justify-between items-center md:p-3 md:pr-6 w-full rounded-lg lg:mx-0 md:mx-4 ${
                     index % 2 === 0
                       ? "bg-[#212121] border-t-[1px] border-t-[#2A2A2A] border-b-[2px] border-b-[#181818]"
                       : ""
                   }`}
                 >
                   <div className="flex items-center">
-                    <div className="bg-[#141414] rounded-lg text-center w-10 ml-2 mr-5">
-                      <p className="text-[#b2b2b2] my-1 font-bold text-[0.8vw]">
+                    <div className="bg-[#141414] rounded-lg text-center w-10 ml-2 md:mr-5 mr-[1vw]">
+                      <p className="text-[#b2b2b2] md:my-1 font-bold md:text-[0.8vw] my-[2vw]">
                         #{index + 4}
                       </p>
                     </div>
                     <img
                       src={`/${avatar}.png`}
                       alt={`Avatar`}
-                      className="3xl:w-12 w-8 rounded-full ml-2"
+                      className="3xl:w-12 md:w-8 w-[5vw] rounded-full ml-2"
                     />
-                    <span className="text-white ml-4 text-[1vw] overflow-hidden whitespace-nowrap text-ellipsis max-w-20 md:max-w-sm">
+                    <span className="text-white ml-4 md:text-[1vw] text-[3vw] overflow-hidden whitespace-nowrap text-ellipsis max-w-20 md:max-w-sm">
                       {name}
                     </span>
                   </div>
@@ -410,7 +418,7 @@ function Empire() {
         </div>
 
         {/* History */}
-        <div className="w-[68%] mt-[3vw]">
+        <div className="w-[68%] md:mt-[3vw] mt-[10vw]">
           <div className="flex items-center">
             <img
               src="/icons/history.png"
@@ -421,17 +429,17 @@ function Empire() {
               History
             </span>
           </div>
-          <div className="flex justify-between gap-4 w-full">
+          <div className="flex flex-wrap justify-between gap-4 w-full">
             {["November 2024", "October 2024", "September 2024"].map(
               (month, index) => (
                 <div key={index} className="flex-grow mt-6">
-                  <div className="bg-[#191919] rounded-lg px-7 py-4 flex items-center text-white text-[1vw]">
+                  <div className="bg-[#191919] rounded-lg px-7 py-4 flex items-center text-white md:text-[1vw] text-[3.6vw]">
                     <div>
                       <h1 className="font-bold">{month}</h1>
-                      <p className="font-medium text-[#B2B2B2] text-[0.8vw]">
+                      <p className="font-medium text-[#B2B2B2] md:text-[0.8vw]">
                         #{102 - index}
                       </p>
-                      <h2 className="font-semibold text-[#656565] text-[0.9vw] mt-4">
+                      <h2 className="font-semibold text-[#656565] md:text-[0.9vw] mt-4">
                         TOTAL POOL
                       </h2>
                       <p className="font-semibold">$2000</p>
@@ -454,7 +462,7 @@ function Empire() {
         </div>
 
         {/* Rewards */}
-        <div className="w-[68%] mt-[3vw]">
+        <div className="w-[68%] md:mt-[3vw] mt-[10vw]">
           <div className="flex items-center">
             <img
               src="/icons/gift-1.png"
@@ -465,7 +473,7 @@ function Empire() {
               Rewards
             </span>
           </div>
-          <div className="flex justify-between mt-6">
+          <div className="flex flex-wrap md:flex-nowrap justify-between mt-6 md:mb-0 mb-[20vw]">
             <div className="relative md:w-full mb-[-10px] 3xl:scale-105 md:mt-0 mt-[10vw]">
               <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden">
                 <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFD627] blur-lg opacity-20 rounded-xl z-[-1]"></div>

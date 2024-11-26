@@ -30,17 +30,29 @@
   .custom-min-h {
     min-height: 220vh; /* Para telas menores que 670px de altura */
   }
+
+  .custom-min-h-1 {
+    min-height: 110vh; /* Para telas maiores que 900px de altura */
+  }
 }
 
 @media (min-height: 800px) {
   .custom-min-h {
     min-height: 180vh; /* Para telas maiores que 900px de altura */
   }
+
+  .custom-min-h-1 {
+    min-height: 100vh; /* Para telas maiores que 900px de altura */
+  }
 }
 
 @media (min-height: 860px) {
   .custom-min-h {
     min-height: 160vh; /* Para telas maiores que 900px de altura */
+  }
+
+  .custom-min-h-1 {
+    min-height: 100vh; /* Para telas maiores que 900px de altura */
   }
 }
 

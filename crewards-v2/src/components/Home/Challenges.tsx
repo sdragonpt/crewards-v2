@@ -134,9 +134,9 @@ const Challenges: React.FC = () => {
   return (
     <div
       id="challenges"
-      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#0E0E0E] font-workSans"
+      className="relative md:min-h-screen custom-min-h-1 flex flex-col items-center justify-center bg-[#0E0E0E] font-workSans"
     >
-      <div className="w-[68%] mt-[6vw]">
+      <div className="w-[68%]  md:mt-[6vw]">
         <div className="flex items-center">
           <img
             src="/icons/trophy.png"
@@ -165,7 +165,7 @@ const Challenges: React.FC = () => {
             {challenges.map((challenge) => (
               <div
                 key={challenge.id}
-                className="flex flex-col rounded-xl bg-[#191919] w-[18%]"
+                className="flex flex-col rounded-xl bg-[#191919] md:w-[18%]"
                 onMouseDown={handleMouseDown}
                 onClick={() => handleClick(challenge.id)}
               >

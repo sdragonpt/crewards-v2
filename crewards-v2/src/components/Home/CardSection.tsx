@@ -87,7 +87,7 @@ const CardSection: React.FC = () => {
           </span>
         </div>
 
-        <motion.div className="flex justify-between mt-6">
+        <motion.div className="flex flex-wrap md:flex-nowrap justify-between mt-6">
           {/* Card 1 */}
 
           <motion.div

@@ -113,14 +113,6 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
     }
   };
 
-  const handleSettingsClick = () => {
-    if (location.pathname.startsWith("/profile")) {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
-    } else {
-      navigate("/profile"); // Navega para a página do CSGOEmpire
-    }
-  };
-
   useEffect(() => {
     // Feche o menu quando a URL mudar para as páginas específicas
     if (
@@ -509,10 +501,9 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
                         <span className="mr-8">{username}</span>
                       </li>
                       <li className="hover:text-white">
-                        <Link
-                          to="/profile"
+                        <button
                           onClick={() => {
-                            handleSettingsClick(); // Executa a função de clique
+                            toggleModal();
                             setMobileMenuOpen(false); // Fecha o menu após clicar em Settings
                           }}
                           className={`cursor-pointer ${
@@ -523,7 +514,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
                         >
                           <i className="fas fa-cog mx-2"></i>
                           Settings
-                        </Link>
+                        </button>
                       </li>
                       <li className="hover:text-white cursor-pointer">
                         <i className="fas fa-sign-out-alt mx-2"></i>

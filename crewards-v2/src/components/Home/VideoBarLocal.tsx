@@ -126,7 +126,7 @@ const VideoBarLocal: React.FC = () => {
   return (
     <div
       id="video-bar"
-      className="relative lg:min-h-screen custom-min-h flex flex-col items-center justify-center bg-[#0E0E0E] font-workSans"
+      className="relative lg:min-h-screen custom-min-h-1 flex flex-col items-center justify-center bg-[#0E0E0E] font-workSans"
     >
       <div className="w-[68%]">
         <div className="flex items-center">
@@ -154,7 +154,7 @@ const VideoBarLocal: React.FC = () => {
             {videos.map((video, index) => (
               <div
                 key={index}
-                className="min-w-[18vw] flex flex-col p-4 rounded-lg"
+                className="md:min-w-[18vw] min-w-[50vw] flex flex-col p-4 rounded-lg"
                 onMouseDown={handleMouseDown}
                 onClick={(event) => handleClick(video.id.videoId, event)}
               >

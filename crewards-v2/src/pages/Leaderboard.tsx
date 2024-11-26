@@ -16,7 +16,7 @@ function Leaderboard() {
       if (window.innerWidth < 768) {
         // "md" breakpoint em Tailwind
         setStyles({
-          left: activeImage === 1 ? "2.6%" : "54.6%", // Ajustes menores para telas pequenas
+          left: activeImage === 1 ? "2.6%" : "53.8%", // Ajustes menores para telas pequenas
           width: activeImage === 1 ? "46%" : "43%",
           backgroundColor: "rgb(43 43 43)",
         });
@@ -59,7 +59,7 @@ function Leaderboard() {
               <img
                 src="/empirelogo.png"
                 alt="Empire Small"
-                className={`w-8 pb-2 pt-2 ml-2 cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
+                className={`w-8 pb-2 pt-2 ml-4 mr-4  cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
                 onClick={() => setActiveImage(1)} // Mudar para Empire ao clicar
               />
             </div>
@@ -81,7 +81,7 @@ function Leaderboard() {
               <img
                 src="/shufflelogo2.png"
                 alt="Shuffle Small"
-                className={`w-8 pb-2 pt-2 mr-2 cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
+                className={`w-8 pb-2 pt-2 ml-4 mr-4 cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
                 onClick={() => setActiveImage(2)} // Mudar para Shuffle ao clicar
               />
             </div>
@@ -90,7 +90,7 @@ function Leaderboard() {
 
         {/* Linha de fundo unificada que se move */}
         <div
-          className={`absolute top-[49.5%] transform -translate-y-1/2 bg-[#2B2B2B] rounded-full md:h-[2.2vw] h-[11.4vw] transition-all duration-300 ease-in-out z-10`}
+          className={`absolute top-[49.5%] transform -translate-y-1/2 bg-[#2B2B2B] rounded-full md:h-[2.2vw] md:mt-0 mt-[0.2vw] h-[9.8vw] transition-all duration-300 ease-in-out z-10`}
           style={styles}
         />
       </div>
