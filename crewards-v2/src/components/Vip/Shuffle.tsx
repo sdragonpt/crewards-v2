@@ -137,7 +137,7 @@ const Shuffle: React.FC = () => {
   return (
     <div className="relative items-center justify-center min-h-screen bg-cover bg-center bg-[#0E0E0E]">
       {/* Primeira View */}
-      <div className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h bg-cover bg-center">
+      <div className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h-1 bg-cover bg-center">
         <div className={`${containerClasses} brightness-125 background-0`} />
         <div className={`${containerClasses} brightness-90 glows-2`} />
         {/* Fixed Images */}
@@ -154,7 +154,7 @@ const Shuffle: React.FC = () => {
           />
         ))}
         <p className="items-end absolute top-[32vw] md:top-[7.5vw] text-[11vw] md:text-[3vw] font-extrabold z-10 text-white">
-          <span className="text-[3.5vw]">VIP</span>
+          <span className="md:text-[3.5vw]">VIP</span>
         </p>
 
         {/* Info */}
@@ -203,23 +203,23 @@ const Shuffle: React.FC = () => {
         <div className="z-10 w-[68%]">
           {isLoggedIn ? (
             // Logged
-            <div className="bg-[#191919] rounded-xl py-[1vw] px-[1.6vw] z-10 mt-[3vw] text-white text-center">
+            <div className="bg-[#191919] rounded-xl md:py-[1vw] md:px-[1.6vw] py-[6vw] px-[3vw] z-10 md:mt-[3vw] text-white text-center">
               {/* Topo com informações alinhadas à esquerda e à direita */}
               <div className="flex justify-between items-center mb-4">
                 {/* Esquerda: Tier e Wagered */}
                 <div className="flex items-center">
-                  <div className="bg-[#131313] p-[0.4vw] rounded-xl">
+                  <div className="bg-[#131313] md:p-[0.4vw] p-[2vw] rounded-xl">
                     <img
                       src={currentTier.image}
                       alt="Tier Badge"
-                      className="w-[2.6vw] object-contain"
+                      className="md:w-[2.6vw] w-[8vw] object-contain"
                     />
                   </div>
-                  <div className="text-left ml-[1vw]">
-                    <h2 className="text-white text-[1.1vw] font-extrabold">
+                  <div className="text-left md:ml-[1vw] ml-[2vw]">
+                    <h2 className="text-white md:text-[1.1vw] font-extrabold">
                       {userTier}
                     </h2>
-                    <p className="text-[#B2B2B2] font-semibold text-[0.6vw]">
+                    <p className="text-[#B2B2B2] font-semibold md:text-[0.6vw] text-[2.4vw]">
                       WAGERED
                     </p>
                   </div>
@@ -228,10 +228,10 @@ const Shuffle: React.FC = () => {
                 {/* Direita: Progress e Level Percentage */}
                 <div className="flex items-center">
                   <div className="text-right">
-                    <h2 className="text-white text-[1.1vw] font-extrabold">
+                    <h2 className="text-white md:text-[1.1vw] font-extrabold">
                       {levelPercent}%
                     </h2>
-                    <p className="text-[#B2B2B2] font-semibold text-[0.6vw]">
+                    <p className="text-[#B2B2B2] font-semibold md:text-[0.6vw] text-[2.4vw]">
                       YOUR PROGRESS
                     </p>
                   </div>
@@ -273,7 +273,7 @@ const Shuffle: React.FC = () => {
             </div>
           ) : (
             // Log In
-            <div className="bg-[#191919] relative rounded-xl p-[2vw] z-10 mt-[3vw] text-white text-center flex flex-col items-center">
+            <div className="bg-[#191919] relative rounded-xl md:p-[2vw] p-7 z-10 md:mt-[3vw] text-white text-center flex flex-col items-center">
               {/* Fixed Images */}
               {["Vector-2", "Vector-3"].map((layer, index) => (
                 <img
@@ -287,29 +287,29 @@ const Shuffle: React.FC = () => {
                   } `}
                 />
               ))}
-              <h1 className="font-extrabold text-[1.6vw]">LOG IN</h1>
-              <p className="font-semibold text-[0.7vw] text-[#B2B2B2]">
+              <h1 className="font-extrabold md:text-[1.6vw] text-[7vw]">LOG IN</h1>
+              <p className="font-semibold md:text-[0.7vw] text-[4vw] text-[#B2B2B2]">
                 LOG IN TO VIEW YOUR PERSONAL STATISTICS AND CLAIM THE VIP
                 REWARDS!
               </p>
               <Link
                 onClick={handleLogin}
                 to="#"
-                className="flex items-center mt-[1vw] shadow-button-1 text-center cursor-pointer bg-[#2B2B2B] text-[#B2B2B2] font-workSans font-bold px-[0.8vw] py-[0.5vw] hover:opacity-70 transition-opacity duration-300 rounded-[0.6vw]"
+                className="flex items-center md:mt-[1vw] mt-[3vw] shadow-button-1 text-center cursor-pointer bg-[#2B2B2B] text-[#B2B2B2] font-workSans font-bold md:px-[0.8vw] md:py-[0.5vw] px-[3vw] py-[2vw] hover:opacity-70 transition-opacity duration-300 rounded-[2vw] md:rounded-[0.6vw]"
               >
                 <img
                   src="/discordlogo.png"
                   alt="Imagem do botão"
-                  className="w-[0.8vw] object-contain mr-2"
+                  className="md:w-[0.8vw] w-[4vw] object-contain mr-2"
                 />
-                <p className="text-[0.8vw]">LOG IN</p>
+                <p className="md:text-[0.8vw]">LOG IN</p>
               </Link>
             </div>
           )}
         </div>
 
         {/* VIP Rewards */}
-        <div className="absolute z-10 w-[68%] bottom-[2vw]">
+        <div className="absolute z-10 md:w-[68%] w-[80%] bottom-[2vw]">
           {/* Rakeback */}
           <div className="flex items-center mt-[2vw]">
             <img
@@ -321,21 +321,21 @@ const Shuffle: React.FC = () => {
               VIP Rewards
             </span>
           </div>
-          <div className="bg-[#191919] rounded-xl p-8 z-10 mt-[1vw] text-white text-center flex justify-between items-center">
+          <div className="bg-[#191919] rounded-xl md:p-8 p-2 z-10 mt-[1vw] text-white text-center flex justify-between items-center">
             {/* Lado esquerdo */}
             <div className="flex flex-col items-center space-y-4">
               {/* Coins */}
               <div className="flex items-center space-x-4">
-                <div className="bg-[#131313] p-[1vw] rounded-xl">
+                <div className="bg-[#131313] md:p-[1vw] rounded-xl">
                   <img
                     src="/shufflelogo.png"
                     alt="Shuffle Logo"
-                    className="w-[1.3vw] object-contain"
+                    className="md:w-[1.3vw] w-[7vw] object-contain"
                   />
                 </div>
                 <div className="text-left">
-                  <h2 className="font-extrabold text-[0.8vw]">RAKEBACK</h2>
-                  <p className="font-semibold text-[#B2B2B2] text-[0.7vw]">
+                  <h2 className="font-extrabold md:text-[0.8vw] text-[3vw]">RAKEBACK</h2>
+                  <p className="font-semibold text-[#B2B2B2] md:text-[0.7vw] text-[3vw]">
                     INSTANT REWARD
                   </p>
                 </div>
@@ -345,30 +345,30 @@ const Shuffle: React.FC = () => {
             {/* Lado direito */}
             <div className="flex items-center">
               {/* Available */}
-              <div className="flex justify-between items-center bg-[#131313] p-4 rounded-xl border-[#2a2a2a] border-2 mr-6">
-                <h2 className="text-[#B2B2B2] font-bold mr-2">AVAILABLE</h2>
+              <div className="flex justify-between items-center bg-[#131313] md:p-4 p-2 rounded-xl border-[#2a2a2a] border-2 mr-6">
+                <h2 className="text-[#B2B2B2] font-bold mr-2 md:text-[1vw] text-[2.4vw]">AVAILABLE</h2>
                 <p className="font-bold">$0</p>
               </div>
               {/* Redeem Reward */}
               {isLoggedIn ? (
-                <div className="flex cursor-pointer justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl hover:opacity-70 transition-opacity duration-300">
+                <div className="flex cursor-pointer justify-center md:p-4 shadow-button items-center text-center bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] rounded-xl hover:opacity-70 transition-opacity duration-300">
                   <img
                     src="/icons/gift-1-1.png"
                     alt="Imagem do botão"
                     className="w-5 h-5 object-contain mr-2"
                   />
-                  <span className="font-bold font-workSans text-base text-white">
+                  <span className="font-bold font-workSans text-base text-white md:text-[1vw] text-[12px]">
                     REDEEM REWARD
                   </span>
                 </div>
               ) : (
-                <div className="flex cursor-not-allowed justify-center p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl opacity-20">
+                <div className="flex cursor-not-allowed justify-center md:p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl opacity-20">
                   <img
                     src="/icons/gift-1-1.png"
                     alt="Imagem do botão"
                     className="w-5 h-5 object-contain mr-2"
                   />
-                  <span className="font-bold font-workSans text-base text-white">
+                  <span className="font-bold font-workSans text-base text-white md:text-[1vw] text-[12px]">
                     REDEEM REWARD
                   </span>
                 </div>
@@ -384,11 +384,11 @@ const Shuffle: React.FC = () => {
       {/* Second View */}
       <div className="flex items-center justify-center text-center">
         {/* Tiers */}
-        <div className="z-10 w-[68%] mb-[4vw]">
+        <div className="z-10 md:w-[68%] w-[80%] mb-[4vw]">
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className={`bg-[#191919] relative rounded-xl p-8 z-10 text-white text-center flex justify-between items-center mb-6 overflow-hidden ${
+              className={`bg-[#191919] relative rounded-xl md:p-8 p-2 z-10 text-white text-center flex justify-between items-center mb-6 overflow-hidden ${
                 tier === userTier
                   ? "border-l-4 border-[#886cff]" // Estilo especial para o rank atual
                   : ""
@@ -403,11 +403,11 @@ const Shuffle: React.FC = () => {
               <div className="flex flex-col items-center space-y-4">
                 {/* Imagem do Tier */}
                 <div className="flex items-center space-x-4">
-                  <div className="bg-[#131313] relative p-3 rounded-xl">
+                  <div className="bg-[#131313] relative md:p-3 rounded-xl">
                     <img
                       src={tierData[tier].image}
                       alt={tierData[tier].prize}
-                      className="w-[2vw] object-contain"
+                      className="md:w-[2vw] w-[7vw] object-contain"
                     />
                     {/* Ícone de check para tiers passados */}
                     {tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) && (
@@ -420,11 +420,11 @@ const Shuffle: React.FC = () => {
                   </div>
                   <div className="text-left">
                     {/* Nome do Tier */}
-                    <h2 className="font-extrabold text-[0.8vw]">
+                    <h2 className="font-extrabold md:text-[0.8vw] text-[3vw]">
                       {tier.charAt(0).toUpperCase() + tier.slice(1)}
                     </h2>
                     {/* Wager do Tier */}
-                    <p className="font-semibold text-[#B2B2B2] text-[0.7vw] flex items-center">
+                    <p className="font-semibold flex-wrap md:flex-nowrap text-[#B2B2B2] md:text-[0.7vw] text-[2.4vw] flex items-center">
                       WAGER ${tierData[tier].wager}
                     </p>
                   </div>
@@ -434,14 +434,14 @@ const Shuffle: React.FC = () => {
               {/* Lado direito */}
               <div className="flex items-center">
                 {/* Available */}
-                <div className="flex justify-between items-center bg-[#131313] p-4 rounded-xl border-[#2a2a2a] border-2 mr-6">
-                  <h2 className="text-[#B2B2B2] font-bold mr-2">CLAIM</h2>
-                  <p className="font-bold">${tierData[tier].prize}</p>
+                <div className="flex justify-between items-center bg-[#131313] md:p-4 p-2 rounded-xl border-[#2a2a2a] border-2 mr-6">
+                  <h2 className="text-[#B2B2B2] font-bold mr-2 md:text-[1vw] text-[2.4vw]">CLAIM</h2>
+                  <p className="font-bold md:text-[1vw] text-[2.4vw]">${tierData[tier].prize}</p>
                 </div>
 
                 {/* Botão Redeem Reward */}
                 <button
-                  className={`flex justify-center p-4 shadow-button items-center text-center rounded-xl ${
+                  className={`flex justify-center md:p-4 p-2 shadow-button items-center text-center rounded-xl ${
                     redeemedTiers.includes(tier)
                       ? "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] cursor-not-allowed opacity-20"
                       : tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
@@ -460,7 +460,7 @@ const Shuffle: React.FC = () => {
                         alt="Check Icon"
                         className="w-5 h-5 object-contain mr-2"
                       />
-                      <span className="font-bold font-workSans text-base">
+                      <span className="font-bold font-workSans text-base md:text-[1vw] text-[12px]">
                         REDEEMED
                       </span>
                     </>
@@ -471,7 +471,7 @@ const Shuffle: React.FC = () => {
                         alt="Gift Icon"
                         className="w-5 h-5 object-contain mr-2"
                       />
-                      <span className="font-bold font-workSans text-base">
+                      <span className="font-bold font-workSans text-base md:text-[1vw] text-[12px]">
                         REDEEM REWARD
                       </span>
                     </>
