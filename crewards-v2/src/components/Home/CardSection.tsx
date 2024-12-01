@@ -80,9 +80,9 @@ const CardSection: React.FC = () => {
           <img
             src="/icons/gift-1.png"
             alt="Imagem do botão"
-            className="w-5 h-5 object-contain mr-2"
+            className="md:w-[1.3vw] w-5 object-contain mr-2"
           />
-          <span className="font-bold font-workSans text-base text-white text-[1.2vw]">
+          <span className="font-bold font-workSans text-base text-white md:text-[1.4vw]">
             Rewards
           </span>
         </div>
@@ -113,11 +113,11 @@ const CardSection: React.FC = () => {
               className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
             <div className="text-white text-center mb-6">
-              <p className="font-extrabold font-workSans text-xl mb-2">
+              <p className="font-extrabold font-workSans text-2xl mb-2">
                 5% DEPOSIT BONUS
               </p>
 
-              <p className="font-semibold font-workSans text-xs text-[#B2B2B2]">
+              <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
                 PLAY FOR FREE USING ON-SITE RAIN
               </p>
             </div>
@@ -205,11 +205,11 @@ const CardSection: React.FC = () => {
               className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
             <div className="text-white text-center mb-6">
-              <p className="font-extrabold font-workSans text-xl mb-2">
+              <p className="font-extrabold font-workSans text-2xl mb-2">
                 REDEEM BONUSES
               </p>
 
-              <p className="font-semibold font-workSans text-xs text-[#B2B2B2]">
+              <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
                 AND JOIN THEIR WEEKLY $20K RAFFLE
               </p>
             </div>
@@ -297,11 +297,11 @@ const CardSection: React.FC = () => {
               className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
             />
             <div className="text-white text-center mb-6">
-              <p className="font-extrabold font-workSans text-xl mb-2">
+              <p className="font-extrabold font-workSans text-2xl mb-2">
                 1 FREE CASE
               </p>
 
-              <p className="font-semibold font-workSans text-xs text-[#B2B2B2]">
+              <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
                 AND 2K MONTHLY LEADERBOARD
               </p>
             </div>

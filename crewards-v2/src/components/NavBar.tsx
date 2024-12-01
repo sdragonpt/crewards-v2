@@ -21,7 +21,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
   const [activeLinkWidth, setActiveLinkWidth] = useState(0);
   const [activeLinkOffset, setActiveLinkOffset] = useState(0);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const [linkHeight, setLinkHeight] = useState("10px"); // Valor inicial para a altura~
+  const [linkHeight, setLinkHeight] = useState("10px"); // Valor inicial para a altura
 
   // MODAL
   const [openModal] = useState(false);
@@ -33,7 +33,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
       icon: "/icons/home-roof.png",
       iconActive: "/icons/home-roof-0.png",
       isAnchor: false, // Isso indica que é um link normal de página
-      height: "9px", // Altura personalizada
+      height: "7px", // Altura personalizada
     },
     {
       path: "/#rewards", // Usando # para identificar a âncora
@@ -295,7 +295,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
                       }
                     }
                   }}
-                  className={`relative flex items-center px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 text-[1vw] ${
+                  className={`relative flex items-center px-1 py-2 rounded-md cursor-pointer transition-colors duration-300 text-base ${
                     location.pathname === path ||
                     location.hash === `#${anchorId}` ||
                     (path.startsWith("/vip") &&

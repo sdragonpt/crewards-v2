@@ -315,9 +315,9 @@ const Shuffle: React.FC = () => {
             <img
               src="/icons/sparkles-two-2.png"
               alt="Imagem do botão"
-              className="w-5 h-5 object-contain mr-2"
+              className="md:w-[1.3vw] w-5 object-contain mr-2"
             />
-            <span className="font-bold font-workSans text-base text-white text-[1.2vw]">
+            <span className="font-bold font-workSans text-base text-white md:text-[1.4vw]">
               VIP Rewards
             </span>
           </div>
