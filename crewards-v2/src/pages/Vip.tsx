@@ -82,7 +82,7 @@ function Vip() {
               <img
                 src="/empirelogo.png"
                 alt="Empire Small"
-                className={`w-8 pb-2 pt-2 ml-4 mr-4  cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
+                className={`w-7 pb-2 pt-2 ml-4 mr-4  cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
                 onClick={() => handleImageClick(1)} // Mudar para Empire ao clicar
               />
             </div>
@@ -104,7 +104,7 @@ function Vip() {
               <img
                 src="/shufflelogo2.png"
                 alt="Shuffle Small"
-                className={`w-8 pb-2 pt-2 ml-4 mr-4 cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
+                className={`w-7 pb-2 pt-2 ml-4 mr-4 cursor-pointer transition duration-300 ease-in-out hover:scale-110 block md:hidden`} // Mostra apenas em telas menores que md
                 onClick={() => handleImageClick(2)} // Mudar para Shuffle ao clicar
               />
             </div>
@@ -113,7 +113,7 @@ function Vip() {
 
         {/* Linha de fundo unificada que se move */}
         <div
-          className={`absolute top-[49.5%] transform -translate-y-1/2 bg-[#2B2B2B] rounded-full md:h-[2.2vw] md:mt-0 mt-[0.2vw] h-[9.8vw] transition-all duration-300 ease-in-out z-10`}
+          className={`absolute top-[49.5%] transform -translate-y-1/2 bg-[#2B2B2B] rounded-full md:h-[2.2vw] md:mt-0 h-[40px] transition-all duration-300 ease-in-out z-10`}
           style={styles}
         />
       </div>

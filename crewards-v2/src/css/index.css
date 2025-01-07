@@ -16,6 +16,60 @@
   background-color: #131313;
 }
 
+@media (min-width: 430px) and (max-width: 549px) {
+  .tele-mt {
+    margin-top: 200vw;
+  }
+  .info-mt {
+    margin-top: 20vw;
+  }
+
+  .time-b {
+    bottom: -78vw;
+  }
+
+  .second-view-mt {
+    margin-top: 60vw;
+  }
+
+  .vip-mt{
+    margin-top: 20vw;
+  }
+}
+
+@media (min-width: 550px) and (max-width: 765px) {
+  .tele-mt {
+    margin-top: 200vw;
+  }
+  .info-mt {
+    margin-top: 20vw;
+  }
+
+  .time-b {
+    bottom: -105vw;
+  }
+
+  .second-view-mt {
+    margin-top: 100vw;
+  }
+
+  .vip-mt{
+    margin-top: 50vw;
+  }
+  
+  .vip-mt-2{
+    margin-top: 30vw;
+  }
+
+  .vip-second-view-mt {
+    margin-top: 10vw;
+  }
+
+  .vip-second-view-b {
+    bottom: -8vw;
+  }
+}
+
 @media (min-width: 390px) and (max-width: 890px) {
   .custom-mt {
     margin-top: 200px;

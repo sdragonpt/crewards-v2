@@ -90,7 +90,7 @@ function Empire() {
           />
         ))}
 
-        <div className="absolute md:top-[20%] top-[16%] md:right-[10%] right-[6%] flex items-center z-10 ">
+        <div className="absolute info-mt md:top-[20%] top-[16%] md:right-[10%] right-[6%] flex items-center z-20 ">
           <span
             className="flex items-center cursor-pointer hover:opacity-70 transition-opacity duration-300"
             onClick={toggleRectangle}
@@ -111,7 +111,7 @@ function Empire() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.9 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-full -left-[200%] mt-2 bg-[#191919] text-white rounded-lg p-4 w-[20rem] z-50 shadow-lg"
+              className="absolute top-full md:-left-[200%] -left-[400%] mt-2 bg-[#191919] text-white rounded-lg p-4 w-[20rem] z-20 shadow-lg"
             >
               <div className="flex items-center">
                 <img
@@ -119,7 +119,7 @@ function Empire() {
                   alt="Imagem Info"
                   className="w-4 h-4 object-contain mr-1"
                 />
-                <p className="font-bold font-workSans text-[#B2B2B2] text-[0.9vw] mt-[0.5%]">
+                <p className="font-bold font-workSans text-[#B2B2B2] text-[14px] md:text-[0.9vw] mt-[1px] md:mt-[0.5%]">
                   INFO
                 </p>
               </div>
@@ -143,7 +143,7 @@ function Empire() {
           animate={isLoaded ? "show" : "hidden"}
           viewport={{ once: true, amount: 0.7 }} // Ajusta o amount baseado na altura da tela
           transition={{ duration: 0.5 }} // Mantém a velocidade da animação
-          className="relative z-10 flex flex-wrap justify-center md:space-x-4 xl:space-x-4 mt-[100vw] md:mt-[14vw]"
+          className="relative z-10 flex flex-wrap justify-center md:space-x-4 xl:space-x-4 mt-[100vw] tele-mt md:mt-[14vw]"
         >
           {/* Cards do Empire */}
           <div>
@@ -292,13 +292,13 @@ function Empire() {
         </motion.div>
 
         {/* Time Component */}
-        <div className="absolute md:bottom-[1vw] bottom-5 left-1/2 transform -translate-x-1/2 z-10">
+        <div className="absolute time-b md:bottom-[1vw] bottom-5 left-1/2 transform -translate-x-1/2 z-10">
           <Time targetDate={time} />
         </div>
-      </div>
+      </div>  
 
       {/* Second View - Remaining Players */}
-      <div className="pt-32 md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#0E0E0E] items-center lg:pb-20 lg:pt-10 my-[-90px] lg:my-0">
+      <div className="pt-32 second-view-mt md:pt-0 min-h-[100vh] flex flex-col justify-center bg-[#0E0E0E] items-center lg:pb-20 lg:pt-10 my-[-90px] lg:my-0">
         {/* Redeem */}
         <div className="w-[68%] justify-between pt-2 pb-6 items-center flex bg-gradient-to-r from-[#191919] to-[#0E0E0E] rounded-lg text-white">
           <div className="ml-6">
@@ -348,7 +348,7 @@ function Empire() {
 
           <div className="flex flex-col space-y-1 w-full">
             {[...Array(7)].map((_, index) => {
-              const prizes = [50, 50, 50, 25, 25, 25, 25];
+              const prizes = [250, 150, 100, 100, 50, 50, 50];
               const prize = prizes[index] || 0;
 
               const avatars = [
@@ -384,7 +384,7 @@ function Empire() {
                 >
                   <div className="flex items-center">
                     <div className="bg-[#141414] rounded-lg text-center w-10 ml-2 md:mr-5 mr-[1vw]">
-                      <p className="text-[#b2b2b2] md:my-1 font-bold md:text-[0.8vw] my-[2vw]">
+                      <p className="text-[#b2b2b2] md:my-1 font-bold md:text-[0.8vw] my-[2vw] px-1">
                         #{index + 4}
                       </p>
                     </div>
@@ -398,13 +398,13 @@ function Empire() {
                     </span>
                   </div>
                   <div className="flex items-center">
-                    <span className="text-white lg:mr-16 mr-7">
+                    <span className="text-white">
                       <span className="text-[#eab30d]">
                         <i className="fa-solid fa-coins mr-1"></i>
                       </span>
-                      100
+                      1000
                     </span>
-                    <span className="text-white">
+                    <span className="text-white lg:ml-16 ml-5">
                       <span className="text-[#eab30d]">
                         <i className="fa-solid fa-coins mr-1"></i>
                       </span>

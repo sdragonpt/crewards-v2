@@ -523,12 +523,16 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
                       </li>
                     </ul>
                   ) : (
-                    <button
-                      onClick={handleLogin} // Chama a função de login
-                      className="flex items-center px-3 py-2 rounded-md text-lg my-1 bg-red-600 hover:bg-red-700 text-white"
-                    >
+                    // <button
+                    //   onClick={handleLogin} // Chama a função de login
+                    //   className="flex items-center px-3 py-2 rounded-md text-lg my-1 bg-red-600 hover:bg-red-700 text-white"
+                    // >
+                    //   <i className="fas fa-sign-in-alt mr-2"></i>
+                    //   Login
+                    // </button>
+                    <button className="flex items-center px-3 py-2 rounded-md text-lg my-1 bg-red-600 hover:bg-red-700 text-white">
                       <i className="fas fa-sign-in-alt mr-2"></i>
-                      Login
+                      Coming Soon
                     </button>
                   )}
                 </div>

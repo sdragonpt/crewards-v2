@@ -193,7 +193,7 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
 
   return ReactDOM.createPortal(
     <div className="fixed inset-0 flex flex-wrap justify-center items-center bg-black bg-opacity-50 z-50">
-      <div className="z-10 md:w-[76%] -mt-[10vw] md:-mt-[3vw] scale-75">
+      <div className="z-10 md:w-[76%] -mt-[16vw] md:-mt-[3vw] scale-75">
         <div className="flex justify-between items-center bg-[#191919] rounded-t-xl p-6 border-b-2 border-b-[#191919]">
           {/* Informações do Usuário */}
           <div className="flex items-center">
@@ -457,7 +457,7 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
                   <img
                     src="/icons/x.png" // Substitua pelo ícone de "voltar"
                     alt="Return"
-                    className="w-[1.2vw] object-contain mr-2 z-10"
+                    className="md:w-[1.2vw] w-[20px] object-contain mr-2 z-10"
                   />
                 </div>
               </div>
@@ -561,7 +561,7 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
                   <img
                     src="/icons/x.png" // Substitua pelo ícone de "voltar"
                     alt="Return"
-                    className="w-[1.2vw] object-contain mr-2 z-10"
+                    className="md:w-[1.2vw] w-[20px] object-contain mr-2 z-10"
                   />
                 </div>
               </div>
