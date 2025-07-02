@@ -1,25 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// Usando os mesmos tipos do Shuffle
+// Definindo um tipo para os níveis
 type Tier =
-  | "WOOD"
   | "BRONZE"
   | "SILVER"
   | "GOLD"
-  | "PLATINUM"
-  | "JADE"
-  | "SAPPHIRE"
-  | "RUBY"
-  | "DIAMOND";
+  | "PLATINUM I"
+  | "PLATINUM II"
+  | "PLATINUM III"
+  | "PLATINUM IV"
+  | "PLATINUM V";
 
 const ShuffleMobile: React.FC = () => {
   const [userTier] = useState<Tier>("SILVER");
   const levelPercent: number = 48.7;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Mantendo o mesmo tierData do Shuffle
   const tierData: Record<
     Tier,
     {
@@ -29,58 +27,52 @@ const ShuffleMobile: React.FC = () => {
       next: Tier | null;
     }
   > = {
-    WOOD: {
-      image: "/wood.svg",
-      wager: "1000",
-      prize: "10",
-      next: "BRONZE",
-    },
     BRONZE: {
-      image: "/bronze.svg",
-      wager: "5000",
-      prize: "40",
+      image: "/bronze.png",
+      wager: "10,000",
+      prize: "85",
       next: "SILVER",
     },
     SILVER: {
       image: "/silver.svg",
-      wager: "10000",
-      prize: "60",
+      wager: "50,000",
+      prize: "340",
       next: "GOLD",
     },
     GOLD: {
-      image: "/gold.svg",
-      wager: "25000",
-      prize: "190",
-      next: "PLATINUM",
+      image: "/gold.png",
+      wager: "100,000",
+      prize: "425",
+      next: "PLATINUM I",
     },
-    PLATINUM: {
-      image: "/platinum.svg",
-      wager: "50000",
-      prize: "325",
-      next: "JADE",
+    "PLATINUM I": {
+      image: "/platinum_1.png",
+      wager: "250,000",
+      prize: "1,275",
+      next: "PLATINUM II",
     },
-    JADE: {
-      image: "/jade.svg",
-      wager: "75000",
-      prize: "340",
-      next: "SAPPHIRE",
+    "PLATINUM II": {
+      image: "/platinum_2.png",
+      wager: "500,000",
+      prize: "2,125",
+      next: "PLATINUM III",
     },
-    SAPPHIRE: {
-      image: "/sapphire.svg",
-      wager: "100000",
-      prize: "350",
-      next: "RUBY",
+    "PLATINUM III": {
+      image: "/platinum_3.png",
+      wager: "1,000,000",
+      prize: "4,250",
+      next: "PLATINUM IV",
     },
-    RUBY: {
-      image: "/ruby.svg",
-      wager: "250000",
-      prize: "2250",
-      next: "DIAMOND",
+    "PLATINUM IV": {
+      image: "/platinum_4.png",
+      wager: "2,500,000",
+      prize: "12,750",
+      next: "PLATINUM V",
     },
-    DIAMOND: {
-      image: "/diamond.svg",
-      wager: "500000",
-      prize: "4000",
+    "PLATINUM V": {
+      image: "/platinum_5.png",
+      wager: "5,000,000",
+      prize: "21,250",
       next: null,
     },
   };
@@ -91,21 +83,9 @@ const ShuffleMobile: React.FC = () => {
   const nextTier = currentTier.next ? tierData[currentTier.next] : null;
 
   const handleLogin = () => {
-    setIsLoggedIn(true); // Define isLoggedIn como true ao fazer login
+    setIsLoggedIn(true);
     console.log("Login true");
   };
-
-  // Hook para atualizar a largura da janela
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const [redeemedTiers, setRedeemedTiers] = useState<Tier[]>([]);
 
@@ -113,15 +93,14 @@ const ShuffleMobile: React.FC = () => {
     if (
       tier === userTier ||
       tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-      (userTier === "DIAMOND" && levelPercent === 100) ||
+      (userTier === "PLATINUM V" && levelPercent === 100) ||
       (levelPercent === 100 && tier === userTier)
     ) {
       setRedeemedTiers((prev) => {
-        // Adiciona o tier ao array apenas se ainda não estiver presente
         if (!prev.includes(tier)) {
           return [...prev, tier];
         }
-        return prev; // Retorna o mesmo estado se o tier já foi resgatado
+        return prev;
       });
     }
   };
@@ -140,7 +119,7 @@ const ShuffleMobile: React.FC = () => {
       <div className="relative flex flex-wrap items-center justify-center min-h-[100vh] bg-cover bg-center">
         {/* Background Effects */}
         <div className={`${containerClasses} brightness-125 background-0`} />
-        <div className={`${containerClasses} brightness-90 glows-2`} />
+        <div className={`${containerClasses} brightness-50 glows-2`} />
 
         {/* VIP Title */}
         <p className="absolute top-[32vw] text-[11vw] font-extrabold z-10 text-white">
@@ -219,7 +198,7 @@ const ShuffleMobile: React.FC = () => {
                     className="h-full rounded-full"
                     style={{
                       width: `${levelPercent}%`,
-                      background: `#886cff`,
+                      background: `#1475E1`,
                     }}
                   />
                 </div>
@@ -280,45 +259,7 @@ const ShuffleMobile: React.FC = () => {
               />
               <span className="font-bold text-white text-lg">VIP Rewards</span>
             </div>
-
-            <div className="bg-[#191919] rounded-xl p-4">
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-[#131313] p-3 rounded-xl">
-                    <img
-                      src="/shufflelogo.png"
-                      alt="Shuffle Logo"
-                      className="w-6 h-6"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white">RAKEBACK</h3>
-                    <p className="text-sm text-gray-400">INSTANT REWARD</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-col space-y-3">
-                  <div className="bg-[#131313] p-4 rounded-xl border border-[#2a2a2a]">
-                    <div className="flex justify-between items-center">
-                      <span className="text-[#B2B2B2]">AVAILABLE</span>
-                      <span className="font-bold text-white">$0</span>
-                    </div>
-                  </div>
-
-                  <button
-                    className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl ${
-                      isLoggedIn
-                        ? "bg-gradient-to-r from-[#4C30C0] to-[#886cff]"
-                        : "bg-gradient-to-r from-[#4C30C0] to-[#886cff] opacity-20"
-                    }`}
-                    disabled={!isLoggedIn}
-                  >
-                    <img src="/icons/gift-1-1.png" alt="" className="w-5 h-5" />
-                    <span className="text-white font-bold">REDEEM REWARD</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <hr className="border-[#242424]" />
           </div>
         </div>
       </div>
@@ -329,10 +270,15 @@ const ShuffleMobile: React.FC = () => {
           {tierKeys.map((tier) => (
             <div
               key={tier}
-              className={`bg-[#191919] rounded-xl p-4 ${
-                tier === userTier ? "border-l-4 border-[#886cff]" : ""
+              className={`bg-[#191919] rounded-xl p-4 relative overflow-hidden ${
+                tier === userTier ? "border-l-4 border-[#1475E1]" : ""
               }`}
             >
+              {/* Glow lateral apenas para o rank atual */}
+              {tier === userTier && (
+                <div className="absolute left-[-2vw] h-full w-[20vw] bg-[#1475E1] blur-3xl opacity-10 z-[-1]"></div>
+              )}
+
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
                   <div className="relative bg-[#131313] p-3 rounded-xl">
@@ -350,7 +296,9 @@ const ShuffleMobile: React.FC = () => {
                     )}
                   </div>
                   <div>
-                    <h3 className="font-bold text-white">{tier}</h3>
+                    <h3 className="font-bold text-white">
+                      {tier.charAt(0).toUpperCase() + tier.slice(1)}
+                    </h3>
                     <p className="text-sm text-gray-400">
                       WAGER ${tierData[tier].wager}
                     </p>
@@ -372,10 +320,12 @@ const ShuffleMobile: React.FC = () => {
                     disabled={redeemedTiers.includes(tier)}
                     className={`w-full flex items-center justify-center space-x-2 px-4 py-3 rounded-xl ${
                       redeemedTiers.includes(tier)
-                        ? "bg-gradient-to-r from-[#4C30C0] to-[#886cff] opacity-20"
-                        : tierKeys.indexOf(tier) <= tierKeys.indexOf(userTier)
-                        ? "bg-gradient-to-r from-[#4C30C0] to-[#886cff]"
-                        : "bg-gradient-to-r from-[#4C30C0] to-[#886cff] opacity-20"
+                        ? "bg-gradient-to-l from-[#07478E] to-[#1475E1] cursor-not-allowed opacity-20"
+                        : tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
+                          (userTier === "PLATINUM V" && levelPercent === 100) ||
+                          (levelPercent === 100 && tier === userTier)
+                        ? "bg-gradient-to-l from-[#07478E] to-[#1475E1] text-white cursor-pointer hover:opacity-70 transition-opacity duration-300"
+                        : "bg-gradient-to-l from-[#07478E] to-[#1475E1] cursor-not-allowed opacity-20"
                     }`}
                   >
                     {redeemedTiers.includes(tier) ? (
@@ -411,6 +361,3 @@ const ShuffleMobile: React.FC = () => {
 };
 
 export default ShuffleMobile;
-function setWindowWidth(_innerWidth: number) {
-  throw new Error("Function not implemented.");
-}

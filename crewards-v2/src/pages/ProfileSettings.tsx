@@ -45,17 +45,6 @@ const ProfileSettings: React.FC = () => {
   const [shuffleUsername, setShuffleUsername] = useState("");
   const [csgoEmpireUsername, setCsgoEmpireUsername] = useState("");
 
-  // Função para alternar o estado de conexão do Shuffle
-  const handleShuffleLinkToggle = () => {
-    if (!isShuffleLinked) {
-      const fakeUsername = "SERGIONFR";
-      setShuffleUsername(fakeUsername);
-    } else {
-      setShuffleUsername("");
-    }
-    setIsShuffleLinked(!isShuffleLinked);
-  };
-
   // Função para alternar o estado de conexão do CSGOEmpire
   const handleEmpireLinkToggle = () => {
     if (!isEmpireLinked) {
@@ -219,12 +208,12 @@ const ProfileSettings: React.FC = () => {
 
             <hr className="border-[#242424] mb-6" />
 
-            {/* csgoempire */}
+            {/* stake */}
             <div className="mb-6 relative justify-between flex items-center">
               <div>
                 <img
-                  src="/csgoempire.png"
-                  alt="CSGOEmpire Logo"
+                  src="/stake.png"
+                  alt="Stake Logo"
                   className="w-[8vw] object-contain"
                 />
                 <div className="relative flex items-center">
@@ -232,12 +221,12 @@ const ProfileSettings: React.FC = () => {
                     {isEmpireLinked ? (
                       <>
                         CONNECTED AS{" "}
-                        <span className="text-[#E9B10E]">
+                        <span className="text-[#3C75C4]">
                           @{csgoEmpireUsername}
                         </span>
                       </>
                     ) : (
-                      "CONNECT YOUR SHUFFLE ACCOUNT"
+                      "CONNECT YOUR STAKE ACCOUNT"
                     )}
                   </p>
                 </div>
@@ -246,8 +235,8 @@ const ProfileSettings: React.FC = () => {
                 onClick={handleEmpireLinkToggle} // Alterna conexão/desconexão
                 className={`flex justify-center py-3 px-4 my-2 shadow-button items-center text-center ${
                   isEmpireLinked
-                    ? "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] opacity-30" // Botão desabilitado (conectado)
-                    : "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] hover:opacity-70 cursor-pointer" // Botão ativo
+                    ? "bg-gradient-to-l from-[#07478E] to-[#1475E1] opacity-30" // Botão desabilitado (conectado)
+                    : "bg-gradient-to-l from-[#07478E] to-[#1475E1] hover:opacity-70 cursor-pointer" // Botão ativo
                 } rounded-xl transition-all duration-300`}
               >
                 <img
@@ -257,50 +246,6 @@ const ProfileSettings: React.FC = () => {
                 />
                 <span className="font-bold font-workSans text-base text-white">
                   {isEmpireLinked ? "LINKED" : "LINK ACCOUNT"}
-                </span>
-              </div>
-            </div>
-
-            <hr className="border-[#242424] mb-6" />
-
-            {/* shuffle */}
-            <div className="mb-6 relative justify-between flex items-center">
-              <div>
-                <img
-                  src="/shuffle.png"
-                  alt="Shuffle Logo"
-                  className="w-[8vw] object-contain"
-                />
-                <div className="relative flex items-center">
-                  <p className="text-[#B2B2B2] font-semibold text-[0.8vw] -mt-1 pl-[0.4vw]">
-                    {isShuffleLinked ? (
-                      <>
-                        CONNECTED AS{" "}
-                        <span className="text-[#886CFF]">
-                          @{shuffleUsername}
-                        </span>
-                      </>
-                    ) : (
-                      "CONNECT YOUR SHUFFLE ACCOUNT"
-                    )}
-                  </p>
-                </div>
-              </div>
-              <div
-                onClick={handleShuffleLinkToggle}
-                className={`flex justify-center py-3 px-4 my-2 shadow-button items-center text-center ${
-                  isShuffleLinked
-                    ? "bg-gradient-to-l from-[#4C30C0] to-[#886cff] opacity-30" // LINKED
-                    : "bg-gradient-to-l from-[#4C30C0] to-[#886cff] hover:opacity-70 cursor-pointer"
-                } rounded-xl transition-all duration-300`}
-              >
-                <img
-                  src="/icons/link.png"
-                  alt="Link Icon"
-                  className="w-5 h-5 object-contain mr-2"
-                />
-                <span className="font-bold font-workSans text-base text-white">
-                  {isShuffleLinked ? "LINKED" : "LINK ACCOUNT"}{" "}
                 </span>
               </div>
             </div>

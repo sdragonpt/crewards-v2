@@ -4,15 +4,14 @@ import { motion } from "framer-motion";
 
 // Definindo um tipo para os níveis
 type Tier =
-  | "WOOD"
   | "BRONZE"
   | "SILVER"
   | "GOLD"
-  | "PLATINUM"
-  | "JADE"
-  | "SAPPHIRE"
-  | "RUBY"
-  | "DIAMOND";
+  | "PLATINUM I"
+  | "PLATINUM II"
+  | "PLATINUM III"
+  | "PLATINUM IV"
+  | "PLATINUM V";
 
 const Shuffle: React.FC = () => {
   const [userTier] = useState<Tier>("SILVER");
@@ -29,58 +28,52 @@ const Shuffle: React.FC = () => {
       next: Tier | null; // O próximo nível pode ser null
     }
   > = {
-    WOOD: {
-      image: "/wood.svg",
-      wager: "1000",
-      prize: "10",
-      next: "BRONZE",
-    },
     BRONZE: {
       image: "/bronze.svg",
-      wager: "5000",
-      prize: "40",
+      wager: "10,000",
+      prize: "85",
       next: "SILVER",
     },
     SILVER: {
       image: "/silver.svg",
-      wager: "10000",
-      prize: "60",
+      wager: "50,000",
+      prize: "340",
       next: "GOLD",
     },
     GOLD: {
       image: "/gold.svg",
-      wager: "25000",
-      prize: "190",
-      next: "PLATINUM",
+      wager: "100,000",
+      prize: "425",
+      next: "PLATINUM I",
     },
-    PLATINUM: {
-      image: "/platinum.svg",
-      wager: "50000",
-      prize: "325",
-      next: "JADE",
+    "PLATINUM I": {
+      image: "/platinum_1.svg",
+      wager: "250,000",
+      prize: "1,275",
+      next: "PLATINUM II",
     },
-    JADE: {
-      image: "/jade.svg",
-      wager: "75000",
-      prize: "340",
-      next: "SAPPHIRE",
+    "PLATINUM II": {
+      image: "/platinum_2.svg",
+      wager: "500,000",
+      prize: "2,125",
+      next: "PLATINUM III",
     },
-    SAPPHIRE: {
-      image: "/sapphire.svg",
-      wager: "100000",
-      prize: "350",
-      next: "RUBY",
+    "PLATINUM III": {
+      image: "/platinum_3.svg",
+      wager: "1,000,000",
+      prize: "4,250",
+      next: "PLATINUM IV",
     },
-    RUBY: {
-      image: "/ruby.svg",
-      wager: "250000",
-      prize: "2250",
-      next: "DIAMOND",
+    "PLATINUM IV": {
+      image: "/platinum_4.svg",
+      wager: "2,500,000",
+      prize: "12,750",
+      next: "PLATINUM V",
     },
-    DIAMOND: {
-      image: "/diamond.svg",
-      wager: "500000",
-      prize: "4000",
+    "PLATINUM V": {
+      image: "/platinum_5.svg",
+      wager: "5,000,000",
+      prize: "21,250",
       next: null,
     },
   };
@@ -113,7 +106,7 @@ const Shuffle: React.FC = () => {
     if (
       tier === userTier ||
       tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-      (userTier === "DIAMOND" && levelPercent === 100) ||
+      (userTier === "PLATINUM V" && levelPercent === 100) ||
       (levelPercent === 100 && tier === userTier)
     ) {
       setRedeemedTiers((prev) => {
@@ -139,7 +132,7 @@ const Shuffle: React.FC = () => {
       {/* Primeira View */}
       <div className="relative flex items-center justify-center lg:min-h-[100vh] custom-min-h-1 bg-cover bg-center">
         <div className={`${containerClasses} brightness-125 background-0`} />
-        <div className={`${containerClasses} brightness-90 glows-2`} />
+        <div className={`${containerClasses} brightness-50 glows-2`} />
         {/* Fixed Images */}
         {["Vector-2", "Vector-3"].map((layer, index) => (
           <img
@@ -244,7 +237,7 @@ const Shuffle: React.FC = () => {
                   className="h-full rounded-full progress-bar"
                   style={{
                     width: `${levelPercent}%`,
-                    background: `#886cff`,
+                    background: `#1475E1`,
                   }}
                 ></div>
               </div>
@@ -312,8 +305,7 @@ const Shuffle: React.FC = () => {
 
         {/* VIP Rewards */}
         <div className="absolute vip-second-view-b z-10 md:w-[68%] w-[80%] bottom-[2vw]">
-          {/* Rakeback */}
-          <div className="flex items-center mt-[2vw]">
+                    <div className="flex items-center mt-[8vw]">
             <img
               src="/icons/sparkles-two-2.png"
               alt="Imagem do botão"
@@ -322,64 +314,6 @@ const Shuffle: React.FC = () => {
             <span className="font-bold font-workSans text-base text-white md:text-[1.4vw]">
               VIP Rewards
             </span>
-          </div>
-          <div className="bg-[#191919] rounded-xl md:p-8 p-2 z-10 mt-[1vw] text-white text-center flex justify-between items-center">
-            {/* Lado esquerdo */}
-            <div className="flex flex-col items-center space-y-4">
-              {/* Coins */}
-              <div className="flex items-center space-x-4">
-                <div className="bg-[#131313] md:p-[1vw] rounded-xl">
-                  <img
-                    src="/shufflelogo.png"
-                    alt="Shuffle Logo"
-                    className="md:w-[1.3vw] w-[7vw] object-contain"
-                  />
-                </div>
-                <div className="text-left">
-                  <h2 className="font-extrabold md:text-[0.8vw] text-[3vw]">
-                    RAKEBACK
-                  </h2>
-                  <p className="font-semibold text-[#B2B2B2] md:text-[0.7vw] text-[3vw]">
-                    INSTANT REWARD
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Lado direito */}
-            <div className="flex items-center">
-              {/* Available */}
-              <div className="flex justify-between items-center bg-[#131313] md:p-4 p-2 rounded-xl border-[#2a2a2a] border-2 mr-6">
-                <h2 className="text-[#B2B2B2] font-bold mr-2 md:text-[1vw] text-[2.4vw]">
-                  AVAILABLE
-                </h2>
-                <p className="font-bold">$0</p>
-              </div>
-              {/* Redeem Reward */}
-              {isLoggedIn ? (
-                <div className="flex cursor-pointer justify-center md:p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl hover:opacity-70 transition-opacity duration-300">
-                  <img
-                    src="/icons/gift-1-1.png"
-                    alt="Imagem do botão"
-                    className="w-5 h-5 object-contain mr-2"
-                  />
-                  <span className="font-bold font-workSans text-base text-white md:text-[1vw] text-[12px]">
-                    REDEEM REWARD
-                  </span>
-                </div>
-              ) : (
-                <div className="flex cursor-not-allowed justify-center md:p-4 shadow-button items-center text-center bg-gradient-to-l from-[#4C30C0] to-[#886cff] rounded-xl opacity-20">
-                  <img
-                    src="/icons/gift-1-1.png"
-                    alt="Imagem do botão"
-                    className="w-5 h-5 object-contain mr-2"
-                  />
-                  <span className="font-bold font-workSans text-base text-white md:text-[1vw] text-[12px]">
-                    REDEEM REWARD
-                  </span>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Hr */}
@@ -396,13 +330,13 @@ const Shuffle: React.FC = () => {
               key={tier}
               className={`bg-[#191919] relative rounded-xl md:p-8 p-2 z-10 text-white text-center flex justify-between items-center mb-6 overflow-hidden ${
                 tier === userTier
-                  ? "border-l-4 border-[#886cff]" // Estilo especial para o rank atual
+                  ? "border-l-4 border-[#1475E1]" // Estilo especial para o rank atual
                   : ""
               }`}
             >
               {/* Glow lateral apenas para o rank atual */}
               {tier === userTier && (
-                <div className="absolute left-[-2vw] h-full w-[20vw] bg-[#886cff] blur-3xl opacity-10 z-[-1]"></div>
+                <div className="absolute left-[-2vw] h-full w-[20vw] bg-[#1475E1] blur-3xl opacity-10 z-[-1]"></div>
               )}
 
               {/* Lado esquerdo */}
@@ -418,7 +352,7 @@ const Shuffle: React.FC = () => {
                     {/* Ícone de check para tiers passados */}
                     {tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) && (
                       <img
-                        src="/circle-check-1.png"
+                        src="/blue.png"
                         alt="Check Icon"
                         className="absolute top-0 left-0 w-5 h-5 transform -translate-x-[50%] translate-y-[50%]"
                       />
@@ -453,12 +387,12 @@ const Shuffle: React.FC = () => {
                 <button
                   className={`flex justify-center md:p-4 p-2 shadow-button items-center text-center rounded-xl ${
                     redeemedTiers.includes(tier)
-                      ? "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] cursor-not-allowed opacity-20"
+                      ? "bg-gradient-to-l from-[#07478E] to-[#1475E1] cursor-not-allowed opacity-20"
                       : tierKeys.indexOf(tier) < tierKeys.indexOf(userTier) ||
-                        (userTier === "DIAMOND" && levelPercent === 100) ||
+                        (userTier === "PLATINUM V" && levelPercent === 100) ||
                         (levelPercent === 100 && tier === userTier)
-                      ? "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] text-white cursor-pointer hover:opacity-70 transition-opacity duration-300"
-                      : "bg-gradient-to-l from-[#4C30C0] to-[#886CFF] cursor-not-allowed opacity-20"
+                      ? "bg-gradient-to-l from-[#07478E] to-[#1475E1] text-white cursor-pointer hover:opacity-70 transition-opacity duration-300"
+                      : "bg-gradient-to-l from-[#07478E] to-[#1475E1] cursor-not-allowed opacity-20"
                   }`}
                   disabled={redeemedTiers.includes(tier)}
                   onClick={() => handleClick(tier)}

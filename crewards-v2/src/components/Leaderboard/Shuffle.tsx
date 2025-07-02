@@ -277,15 +277,15 @@ function Shuffle() {
         <div className="w-[68%] justify-between pt-2 pb-6 items-center flex bg-gradient-to-r from-[#191919] to-[#0E0E0E] rounded-lg text-white">
           <div className="ml-5">
             <img
-              src="shuffle.png"
-              alt="Shuffle Logo"
-              className="rounded-t-lg md:w-36 object-contain"
+              src="stake.png"
+              alt="Stake Logo"
+              className="rounded-t-lg md:w-12 object-contain mt-2 ml-2 mb-2"
             />
             <h1 className="font-extrabold md:text-[1.5vw] text-[4vw] ml-2">
               REDEEM BONUSES
             </h1>
             <p className="font-extrabold md:text-[0.7vw] text-[3vw] text-[#B2B2B2] ml-2">
-              AND JOIN OUR $2K MONTHLY LEADERBOARD
+              AND JOIN OUR $5k LEADERBOARD
             </p>
           </div>
           <div className="mr-6">
@@ -293,7 +293,7 @@ function Shuffle() {
               href="https://csgoempire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center px-6 shadow-button items-center text-center w-full bg-gradient-to-l from-[#4C30C0] to-[#886CFF] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+              className="flex justify-center px-6 shadow-button items-center text-center w-full bg-gradient-to-l from-[#07478E] to-[#1475E1] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
             >
               <img
                 src="/icons/gift-1-1.png"
@@ -312,7 +312,7 @@ function Shuffle() {
           <div className="flex justify-between items-center mb-4 rounded w-full font-medium text-[3vw] md:text-[0.8vw]">
             <div className="flex items-center">
               <span className="text-zinc-500 mr-6">Rank</span>
-              <span className="text-zinc-500 md:ml-16">User</span>
+              <span className="text-zinc-500 md:ml-8">User</span>
             </div>
             <div className="flex items-center">
               <span className="text-zinc-500 md:mr-[4.5rem] mr-4">Wagered</span>
@@ -324,17 +324,6 @@ function Shuffle() {
             {[...Array(7)].map((_, index) => {
               const prizes = [250, 150, 100, 100, 50, 50, 50];
               const prize = prizes[index] || 0;
-
-              const avatars = [
-                "logo2",
-                "logo2",
-                "logo2",
-                "logo2",
-                "logo2",
-                "logo2",
-                "logo2",
-              ];
-              const avatar = avatars[index] || "logo2";
 
               const names = [
                 "name4",
@@ -362,23 +351,16 @@ function Shuffle() {
                         #{index + 4}
                       </p>
                     </div>
-                    <img
-                      src={`/${avatar}.png`}
-                      alt={`Avatar`}
-                      className="3xl:w-12 md:w-8 w-[5vw] rounded-full ml-2"
-                    />
                     <span className="text-white ml-4 md:text-[1vw] text-[3vw] overflow-hidden whitespace-nowrap text-ellipsis max-w-20 md:max-w-sm">
                       {name}
                     </span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-white">
-                      <span className="text-[#8337d8]">$</span>
-                      1000
+                      <span className="text-[#666]">$1000</span>
                     </span>
                     <span className="text-white lg:ml-16 ml-5">
-                      <span className="text-[#8337d8]">$</span>
-                      {prize}
+                      ${prize}
                     </span>{" "}
                   </div>
                 </div>
@@ -432,7 +414,7 @@ function Shuffle() {
         </div>
 
         {/* Rewards */}
-        <div className="w-[68%] md:mt-[3vw] mt-[10vw]">
+        <div className="w-[68%] md:mt-[3vw] mt-[10vw] mb-[2vw]">
           <div className="flex items-center">
             <img
               src="/icons/gift-1.png"
@@ -443,238 +425,314 @@ function Shuffle() {
               Rewards
             </span>
           </div>
-          <div className="flex flex-wrap md:flex-nowrap justify-between mt-6 md:mb-0 mb-[20vw]">
-            <div className="relative md:w-full mb-[-10px] 3xl:scale-105 md:mt-0 mt-[10vw]">
-              <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden">
-                <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFD627] blur-lg opacity-20 rounded-xl z-[-1]"></div>
-                <img
-                  src="clash.gif"
-                  alt="Reward 1"
-                  className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
-                />
-                <div className="text-white text-center mb-6">
-                  <p className="font-extrabold font-workSans text-xl mb-2">
-                    5% DEPOSIT BONUS
-                  </p>
+          <div className="flex flex-wrap md:flex-nowrap justify-between mt-6">
+          {/* Card 1 */}
 
-                  <p className="font-semibold font-workSans text-xs text-[#B2B2B2]">
-                    PLAY FOR FREE USING ON-SITE RAIN
-                  </p>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
-                <div className="text-left mb-6">
-                  <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
-                    COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
-                  </p>
-                  <div className="flex text-white">
-                    <img
-                      src="/circle-check.png"
-                      alt="Imagem do botão"
-                      className="w-5 h-5 object-contain mr-2"
-                    />
-                    <span className="font-semibold font-workSans text-sm">
-                      DEPOSIT BETWEEN $100 & $1,000
-                    </span>
-                  </div>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
-                <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-                  <span className="font-bold font-workSans ml-2">CLASSY</span>
-                  <label className="container-1 mr-4">
-                    <input type="checkbox" id="checkbox" />
-                    <svg
-                      viewBox="0 0 384 512"
-                      height="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="clipboard"
-                      onClick={handleCopy}
-                    >
-                      <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
-                    </svg>
-
-                    <svg
-                      viewBox="0 0 384 512"
-                      height="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="clipboard-check"
-                      style={{ display: "none" }} // Inicialmente invisível
-                    >
-                      <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
-                    </svg>
-                  </label>
-                </div>
-                <a
-                  href="https://clash.gg/r/CLASSY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#95720E] to-[#E9B10E] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
-                >
-                  <img
-                    src="/icons/gift-1-1.png"
-                    alt="Imagem do botão"
-                    className="w-5 h-5 object-contain mr-2"
-                  />
-                  <span className="font-bold font-workSans text-base text-white">
-                    REDEEM REWARD
-                  </span>
-                </a>
-              </div>
+          <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
+          >
+            {/* NEW Badge */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="font-workSans italic font-bold text-sm bg-gradient-to-r from-[#1475E1] from-60% to-slate-950 bg-clip-text text-transparent">
+                NEW
+              </span>
             </div>
 
-            <div className="relative md:w-full mb-[-10px] md:mb-0 3xl:scale-105 md:mt-0 mt-[10vw] ml-[2vw]">
-              <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden">
-                <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#762CFB] blur-lg opacity-20 rounded-xl z-[-1]"></div>
+            <img
+              src="stake.png"
+              alt="Reward 1"
+              className="rounded-t-lg 2xl:h-32 w-32 h-24 mx-auto object-contain"
+            />
+            <div className="text-white text-center mb-6">
+              <p className="font-extrabold font-workSans text-2xl mb-2">
+                5% RAKEBACK
+              </p>
+
+              <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
+                REGISTER BY CLICKING ON THE REDEEM BUTTON
+              </p>
+            </div>
+            <hr className="border-[#3F3F3F] mb-6" />
+            <div className="text-left mb-6">
+              <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
+                COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
+              </p>
+              <div className="flex text-white mb-3">
                 <img
-                  src="shuffle.png"
-                  alt="Reward 2"
-                  className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
+                  src="/blue.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
                 />
-                <div className="text-white text-center mb-6">
-                  <p className="font-extrabold font-workSans text-xl mb-2">
-                    REDEEM BONUSES
-                  </p>
-
-                  <p className="font-semibold font-workSans text-xs text-[#B2B2B2]">
-                    AND JOIN THEIR WEEKLY $20K RAFFLE
-                  </p>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
-                <div className="text-left mb-6">
-                  <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
-                    COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
-                  </p>
-                  <div className="flex text-white">
-                    <img
-                      src="/circle-check-1.png"
-                      alt="Imagem do botão"
-                      className="w-5 h-5 object-contain mr-2"
-                    />
-                    <span className="font-semibold font-workSans text-sm">
-                      DEPOSIT BETWEEN $100 & $1,000
-                    </span>
-                  </div>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
-                <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-                  <span className="font-bold font-workSans ml-2">CLASSY</span>
-                  <label className="container-1 mr-4">
-                    <input type="checkbox" id="checkbox" />
-                    <svg
-                      viewBox="0 0 384 512"
-                      height="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="clipboard"
-                      onClick={handleCopy}
-                    >
-                      <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
-                    </svg>
-
-                    <svg
-                      viewBox="0 0 384 512"
-                      height="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="clipboard-check"
-                      style={{ display: "none" }} // Inicialmente invisível
-                    >
-                      <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
-                    </svg>
-                  </label>
-                </div>
-                <a
-                  href="https://shuffle.com?r=Classy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#4C30C0] to-[#886CFF] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
-                >
-                  <img
-                    src="/icons/gift-1-1.png"
-                    alt="Imagem do botão"
-                    className="w-5 h-5 object-contain mr-2"
-                  />
-                  <span className="font-bold font-workSans text-base text-white">
-                    REDEEM REWARD
-                  </span>
-                </a>
+                <span className="font-semibold font-workSans text-sm">
+                  REGISTER USING MY CODE
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/blue.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  INSTANTLY CLAIM YOUR 5% RAKEBACK
+                </span>
+              </div>
+              {/* Span vazio para igualar altura com card 2 */}
+              <div className="flex text-white mb-3">
+                <span className="w-5 h-5 mr-2"></span>
+                <span className="font-semibold font-workSans text-sm opacity-0">
+                  PLACEHOLDER TEXT
+                </span>
               </div>
             </div>
-
-            <div className="relative md:w-full mb-10 md:mb-0 3xl:scale-105 md:mt-0 mt-[10vw] ml-[2vw]">
-              <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden">
-                <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFC31A] blur-lg opacity-20 rounded-xl z-[-1]"></div>
-                <img
-                  src="csgoempire.png"
-                  alt="Reward 1"
-                  className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
-                />
-                <div className="text-white text-center mb-6">
-                  <p className="font-extrabold font-workSans text-xl mb-2">
-                    1 FREE CASE
-                  </p>
-
-                  <p className="font-semibold font-workSans text-xs text-[#B2B2B2]">
-                    AND 2K MONTHLY LEADERBOARD
-                  </p>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
-                <div className="text-left mb-6">
-                  <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
-                    COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
-                  </p>
-                  <div className="flex text-white">
-                    <img
-                      src="/circle-check-2.png"
-                      alt="Imagem do botão"
-                      className="w-5 h-5 object-contain mr-2"
-                    />
-                    <span className="font-semibold font-workSans text-sm">
-                      DEPOSIT BETWEEN $100 & $1,000
-                    </span>
-                  </div>
-                </div>
-                <hr className="border-[#3F3F3F] mb-6" />
-                <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-                  <span className="font-bold font-workSans ml-2">CLASSY</span>
-                  <label className="container-1 mr-4">
-                    <input type="checkbox" id="checkbox" />
-                    <svg
-                      viewBox="0 0 384 512"
-                      height="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="clipboard"
-                      onClick={handleCopy}
-                    >
-                      <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
-                    </svg>
-
-                    <svg
-                      viewBox="0 0 384 512"
-                      height="20px"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="clipboard-check"
-                      style={{ display: "none" }} // Inicialmente invisível
-                    >
-                      <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
-                    </svg>
-                  </label>
-                </div>
-                <a
-                  href="https://csgoempire.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+            <hr className="border-[#3F3F3F] mb-6" />
+            <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
+              <span className="font-bold font-workSans ml-2">ClassyYT</span>
+              <label className="container-1 mr-4">
+                <input type="checkbox" id="checkbox" />
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard"
+                  onClick={handleCopy}
                 >
-                  <img
-                    src="/icons/gift-1-1.png"
-                    alt="Imagem do botão"
-                    className="w-5 h-5 object-contain mr-2"
-                  />
-                  <span className="font-bold font-workSans text-base text-white">
-                    REDEEM REWARD
-                  </span>
-                </a>
-              </div>
+                  <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard-check"
+                  style={{ display: "none" }} // Inicialmente invisível
+                >
+                  <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+              </label>
             </div>
+            <a
+              href="https://clash.gg/r/CLASSY"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#07478E] to-[#1475E1] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+            >
+              <img
+                src="/icons/gift-1-1.png"
+                alt="Imagem do botão"
+                className="w-5 h-5 object-contain mr-2"
+              />
+              <span className="font-bold font-workSans text-base text-white">
+                REDEEM REWARD
+              </span>
+            </a>
           </div>
+
+          {/* Card 2 */}
+
+          <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden ml-[2vw]"
+          >
+            {/* NEW Badge */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="font-workSans italic font-bold text-sm bg-gradient-to-r from-[#00CA51] from-60% to-slate-950 bg-clip-text text-transparent">
+                NEW
+              </span>
+            </div>
+
+            <img
+              src="stake.png"
+              alt="Reward 2"
+              className="rounded-t-lg 2xl:h-32 w-32 h-24 mx-auto object-contain"
+            />
+            <div className="text-white text-center mb-6">
+              <p className="font-extrabold font-workSans text-2xl mb-2">
+                VIP REWARDS
+              </p>
+
+              <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
+                REGISTER BY CLICKING ON THE REDEEM BUTTON
+              </p>
+            </div>
+            <hr className="border-[#3F3F3F] mb-6" />
+            <div className="text-left mb-6">
+              <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
+                COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
+              </p>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/green.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  REGISTER USING MY CODE
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/green.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  CONNECT YOUR STAKE ACCOUNT
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/green.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  ENJOY YOUR VIP REWARDS
+                </span>
+              </div>
+            </div>
+
+            <hr className="border-[#3F3F3F] mb-6" />
+            <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
+              <span className="font-bold font-workSans ml-2">ClassyYT</span>
+              <label className="container-1 mr-4">
+                <input type="checkbox" id="checkbox" />
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard"
+                  onClick={handleCopy}
+                >
+                  <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard-check"
+                  style={{ display: "none" }} // Inicialmente invisível
+                >
+                  <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+              </label>
+            </div>
+            <a
+              href="https://shuffle.com?r=Classy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#007B31] to-[#00CA51] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+            >
+              <img
+                src="/icons/gift-1-1.png"
+                alt="Imagem do botão"
+                className="w-5 h-5 object-contain mr-2"
+              />
+              <span className="font-bold font-workSans text-base text-white">
+                REDEEM REWARD
+              </span>
+            </a>
+          </div>
+
+          {/* Card 3 */}
+
+          <div className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden ml-[2vw]"
+          >
+            {/* NEW Badge */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="font-workSans italic font-bold text-sm bg-gradient-to-r from-[#FF843B] from-60% to-slate-950 bg-clip-text text-transparent">
+                NEW
+              </span>
+            </div>
+
+            <img
+              src="stake.png"
+              alt="Reward 1"
+              className="rounded-t-lg 2xl:h-32 w-32 h-24 mx-auto object-contain"
+            />
+            <div className="text-white text-center mb-6">
+              <p className="font-extrabold font-workSans text-2xl mb-2">
+                $5k LEADERBOARD
+              </p>
+
+              <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
+                REGISTER BY CLICKING ON THE REDEEM BUTTON
+              </p>
+            </div>
+            <hr className="border-[#3F3F3F] mb-6" />
+            <div className="text-left mb-6">
+              <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
+                COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
+              </p>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/orange.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  REGISTER USING MY CODE
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/orange.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  CLIMB THE LEADERBOARD AND WIN
+                </span>
+              </div>
+              {/* Span vazio para igualar altura com card 2 */}
+              <div className="flex text-white mb-3">
+                <span className="w-5 h-5 mr-2"></span>
+                <span className="font-semibold font-workSans text-sm opacity-0">
+                  PLACEHOLDER TEXT
+                </span>
+              </div>
+            </div>
+            <hr className="border-[#3F3F3F] mb-6" />
+            <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
+              <span className="font-bold font-workSans ml-2">ClassyYT</span>
+              <label className="container-1 mr-4">
+                <input type="checkbox" id="checkbox" />
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard"
+                  onClick={handleCopy}
+                >
+                  <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
+                </svg>
+
+                <svg
+                  viewBox="0 0 384 512"
+                  height="20px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="clipboard-check"
+                  style={{ display: "none" }} // Inicialmente invisível
+                >
+                  <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
+                </svg>
+              </label>
+            </div>
+            <a
+              href="https://csgoempire.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#A64D18] to-[#FF843B] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+            >
+              <img
+                src="/icons/gift-1-1.png"
+                alt="Imagem do botão"
+                className="w-5 h-5 object-contain mr-2"
+              />
+              <span className="font-bold font-workSans text-base text-white">
+                REDEEM REWARD
+              </span>
+            </a>
+          </div>
+        </div>
         </div>
       </div>
     </div>

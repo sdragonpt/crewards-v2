@@ -26,20 +26,11 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
   const [timeLeftEmpire, setTimeLeftEmpire] = useState(180); // Tempo para CSGOEmpire
   const [progressBarWidthEmpire, setProgressBarWidthEmpire] = useState(100);
 
-  const [timeLeftShuffle, setTimeLeftShuffle] = useState(180); // Tempo para Shuffle
-  const [progressBarWidthShuffle, setProgressBarWidthShuffle] = useState(100);
-
   const [isEmpireLinkModalOpen, setIsEmpireLinkModalOpen] = useState(false);
-  const [isShuffleLinkModalOpen, setIsShuffleLinkModalOpen] = useState(false);
 
   // Função para abrir o modal de link para CSGOEmpire
   const openEmpireLinkModal = () => {
     setIsEmpireLinkModalOpen(true);
-  };
-
-  // Função para abrir o modal de link para Shuffle
-  const openShuffleLinkModal = () => {
-    setIsShuffleLinkModalOpen(true);
   };
 
   // Timer para CSGOEmpire
@@ -62,38 +53,11 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
     }
   }, [isEmpireLinkModalOpen, timeLeftEmpire]);
 
-  // Timer para Shuffle
-  useEffect(() => {
-    if (isShuffleLinkModalOpen) {
-      const timer = setInterval(() => {
-        setTimeLeftShuffle((prev) => {
-          if (prev <= 0) {
-            clearInterval(timer);
-            return 0;
-          }
-          return prev - 1;
-        });
-
-        // Atualiza a largura da barra para Shuffle
-        setProgressBarWidthShuffle((timeLeftShuffle / 180) * 100);
-      }, 1000);
-
-      return () => clearInterval(timer); // Limpeza ao fechar o modal
-    }
-  }, [isShuffleLinkModalOpen, timeLeftShuffle]);
-
   // Função para fechar o modal de CSGOEmpire
   const closeEmpireLinkModal = () => {
     setIsEmpireLinkModalOpen(false);
     setTimeLeftEmpire(180); // Reseta o tempo
     setProgressBarWidthEmpire(100); // Reseta a largura
-  };
-
-  // Função para fechar o modal de Shuffle
-  const closeShuffleLinkModal = () => {
-    setIsShuffleLinkModalOpen(false);
-    setTimeLeftShuffle(180); // Reseta o tempo
-    setProgressBarWidthShuffle(100); // Reseta a largura
   };
 
   // Estado para os campos do perfil
@@ -325,25 +289,25 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
 
             <hr className="border-[#242424] mb-6" />
 
-            {/* csgoempire */}
+            {/* stake */}
             <div className="mb-6 relative justify-between flex items-center">
               <div>
                 <img
-                  src="/csgoempire.png"
-                  alt="CSGOEmpire Logo"
-                  className="md:w-[8vw] object-contain"
+                  src="/stake.png"
+                  alt="Stake Logo"
+                  className="md:w-[4vw] m-2 object-contain"
                 />
                 <div className="relative flex items-center">
                   <p className="text-[#B2B2B2] font-semibold md:text-[0.8vw] text-[3vw] -mt-1 md:pl-[0.3vw] pl-[2vw]">
                     {isEmpireLinked ? (
                       <>
                         CONNECTED AS{" "}
-                        <span className="text-[#E9B10E]">
+                        <span className="text-[#1475E1]">
                           @{csgoEmpireUsername}
                         </span>
                       </>
                     ) : (
-                      "CONNECT YOUR CSGOEMPIRE ACCOUNT"
+                      "CONNECT YOUR STAKE ACCOUNT"
                     )}
                   </p>
                 </div>
@@ -352,8 +316,8 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
                 onClick={openEmpireLinkModal} // Alterna conexão/desconexão
                 className={`flex justify-center py-3 px-4 my-2 shadow-button items-center text-center ${
                   isEmpireLinked
-                    ? "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] opacity-30" // Botão desabilitado (conectado)
-                    : "bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] hover:opacity-70 cursor-pointer" // Botão ativo
+                    ? "bg-gradient-to-l from-[#07478E] to-[#1475E1] opacity-30" // Botão desabilitado (conectado)
+                    : "bg-gradient-to-l from-[#07478E] to-[#1475E1] hover:opacity-70 cursor-pointer" // Botão ativo
                 } rounded-xl transition-all duration-300`}
               >
                 <img
@@ -363,50 +327,6 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
                 />
                 <span className="font-bold font-workSans text-base text-white">
                   {isEmpireLinked ? "LINKED" : "LINK ACCOUNT"}
-                </span>
-              </div>
-            </div>
-
-            <hr className="border-[#242424] mb-6" />
-
-            {/* shuffle */}
-            <div className="mb-6 relative justify-between flex items-center">
-              <div>
-                <img
-                  src="/shuffle.png"
-                  alt="Shuffle Logo"
-                  className="md:w-[8vw] object-contain"
-                />
-                <div className="relative flex items-center">
-                  <p className="text-[#B2B2B2] font-semibold md:text-[0.8vw] text-[3vw] -mt-1 md:pl-[0.4vw] pl-[2.8vw]">
-                    {isShuffleLinked ? (
-                      <>
-                        CONNECTED AS{" "}
-                        <span className="text-[#886CFF]">
-                          @{shuffleUsername}
-                        </span>
-                      </>
-                    ) : (
-                      "CONNECT YOUR SHUFFLE ACCOUNT"
-                    )}
-                  </p>
-                </div>
-              </div>
-              <div
-                onClick={openShuffleLinkModal}
-                className={`flex justify-center py-3 px-4 my-2 shadow-button items-center text-center ${
-                  isShuffleLinked
-                    ? "bg-gradient-to-l from-[#4C30C0] to-[#886cff] opacity-30" // LINKED
-                    : "bg-gradient-to-l from-[#4C30C0] to-[#886cff] hover:opacity-70 cursor-pointer"
-                } rounded-xl transition-all duration-300`}
-              >
-                <img
-                  src="/icons/link.png"
-                  alt="Link Icon"
-                  className="w-5 h-5 object-contain mr-2"
-                />
-                <span className="font-bold font-workSans text-base text-white">
-                  {isShuffleLinked ? "LINKED" : "LINK ACCOUNT"}{" "}
                 </span>
               </div>
             </div>
@@ -450,7 +370,7 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
                     className="w-5 h-5 object-contain mr-2 z-10"
                   />
                   <h2 className="font-semibold text-[#B2B2B2]">
-                    LINK CSGOEMPIRE
+                    LINK STAKE
                   </h2>
                 </div>
                 <div onClick={closeEmpireLinkModal} className="cursor-pointer">
@@ -468,20 +388,20 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
               <div className="bg-[#161616] rounded-xl mt-4 p-4">
                 <div>
                   <img
-                    src="/csgoempire.png" // Substitua pelo ícone de "voltar"
-                    alt="CSGOEMPIRE Logo"
-                    className="w-[7vw] object-contain mr-2 z-10"
+                    src="/stake.png" // Substitua pelo ícone de "voltar"
+                    alt="Stake Logo"
+                    className="w-[4vw] object-contain mr-2 z-10 my-2"
                   />
                   <h1 className="text-white font-extrabold text-[1vw]">
                     COMPLETE THE FOLLOWING ACTIONS
                   </h1>
                   <h2 className="text-[#505050] font-semibold text-[0.9vw]">
-                    FOLLOW THE STEPS AND LINK YOUR CSGOEMPIRE ACCOUNT
+                    FOLLOW THE STEPS AND LINK YOUR STAKE ACCOUNT
                   </h2>
                 </div>
                 <hr className="border-[#242424] mt-2" />
                 <div className="text-[#B2B2B2] font-semibold mt-4">
-                  <p>1. GO TO CSGOEMPIRE.COM AND OPEN THE CHAT.</p>
+                  <p>1. GO TO STAKE.COM AND OPEN THE CHAT.</p>
                   <p className="mt-2">
                     2. COPY AND PASTE THE FOLLOWING MESSAGE PROVIDED IN THE
                     CHAT.
@@ -529,116 +449,12 @@ const ProfileSettingsModal: React.FC<ModalProps> = ({
               <div className="relative mt-6">
                 <div className="w-full bg-[#131313] rounded-full h-2.5">
                   <div
-                    className="bg-[#e9b10e] h-2.5 rounded-full"
+                    className="bg-[#1475E1] h-2.5 rounded-full"
                     style={{ width: `${progressBarWidthEmpire}%` }}
                   ></div>
                 </div>
                 <p className="text-[#B2B2B2] mt-2 text-left font-semibold">
                   YOU HAVE {timeLeftEmpire} SECONDS TO COMPLETE THIS ACTION
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Novo Modal de Link */}
-        {isShuffleLinkModalOpen && (
-          <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
-            <div className="bg-[#191919] p-6 rounded-lg">
-              <div className="justify-between flex">
-                {/* Title */}
-                <div className="flex items-center">
-                  <img
-                    src="/icons/link.png" // Substitua pelo ícone de "voltar"
-                    alt="Back Icon"
-                    className="w-5 h-5 object-contain mr-2 z-10"
-                  />
-                  <h2 className="font-semibold text-[#B2B2B2]">
-                    LINK SHUFFLE
-                  </h2>
-                </div>
-                <div onClick={closeShuffleLinkModal} className="cursor-pointer">
-                  <img
-                    src="/icons/x.png" // Substitua pelo ícone de "voltar"
-                    alt="Return"
-                    className="md:w-[1.2vw] w-[20px] object-contain mr-2 z-10"
-                  />
-                </div>
-              </div>
-
-              <hr className="border-[#242424] mt-4" />
-
-              {/* Actions */}
-              <div className="bg-[#161616] rounded-xl mt-4 p-4">
-                <div>
-                  <img
-                    src="/shuffle.png" // Substitua pelo ícone de "voltar"
-                    alt="CSGOEMPIRE Logo"
-                    className="w-[7vw] object-contain mr-2 z-10"
-                  />
-                  <h1 className="text-white font-extrabold text-[1vw]">
-                    COMPLETE THE FOLLOWING ACTIONS
-                  </h1>
-                  <h2 className="text-[#505050] font-semibold text-[0.9vw]">
-                    FOLLOW THE STEPS AND LINK YOUR SHUFFLE ACCOUNT
-                  </h2>
-                </div>
-                <hr className="border-[#242424] mt-2" />
-                <div className="text-[#B2B2B2] font-semibold mt-4">
-                  <p>1. GO TO SHUFFLE.COM AND OPEN THE CHAT.</p>
-                  <p className="mt-2">
-                    2. COPY AND PASTE THE FOLLOWING MESSAGE PROVIDED IN THE
-                    CHAT.
-                  </p>
-                </div>
-              </div>
-
-              {/* Mini Title */}
-              <h1 className="text-white font-bold text-[1vw] mt-6 mb-4">
-                YOUR VERIFICATION CODE
-              </h1>
-
-              {/* Code */}
-              <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 lg:py-3 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-                <span className="font-bold font-workSans ml-2">
-                  m27d6hd285yi
-                </span>
-                <label className="container-1 mr-4">
-                  <input type="checkbox" id="checkbox" />
-                  <svg
-                    viewBox="0 0 384 512"
-                    height="20px"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="clipboard"
-                    onClick={handleCopy}
-                  >
-                    <path d="M280 64h40c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128C0 92.7 28.7 64 64 64h40 9.6C121 27.5 153.3 0 192 0s71 27.5 78.4 64H280zM64 112c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V128c0-8.8-7.2-16-16-16H304v24c0 13.3-10.7 24-24 24H192 104c-13.3 0-24-10.7-24-24V112H64zm128-8a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"></path>
-                  </svg>
-
-                  <svg
-                    viewBox="0 0 384 512"
-                    height="20px"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="clipboard-check"
-                    style={{ display: "none" }} // Inicialmente invisível
-                  >
-                    <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 64a32 32 0 1 1 0 64 32 32 0 1 1 0-64zM305 273L177 401c-9.4 9.4-24.6 9.4-33.9 0L79 337c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L271 239c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path>
-                  </svg>
-                </label>
-              </div>
-
-              <hr className="border-[#242424] mt-4" />
-
-              {/* Seconds Bar */}
-              <div className="relative mt-6">
-                <div className="w-full bg-[#131313] rounded-full h-2.5">
-                  <div
-                    className="bg-[#886cff] h-2.5 rounded-full"
-                    style={{ width: `${progressBarWidthShuffle}%` }}
-                  ></div>
-                </div>
-                <p className="text-[#B2B2B2] mt-2 text-left font-semibold">
-                  YOU HAVE {timeLeftShuffle} SECONDS TO COMPLETE THIS ACTION
                 </p>
               </div>
             </div>

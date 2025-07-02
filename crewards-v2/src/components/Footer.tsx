@@ -76,6 +76,13 @@ const Footer: React.FC = () => {
                 Rewards
               </a>
             </h4>
+            <Link
+              to="/vip"
+              onClick={() => handleAnchorClick("vip")}
+              className="hover:text-white transition-colors duration-300 mb-2 cursor-pointer text-[1.1vw]"
+            >
+              VIP
+            </Link>
             <h4 className="mb-2">
               <a
                 onClick={() => handleAnchorClick("challenges")}

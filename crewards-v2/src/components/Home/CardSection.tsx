@@ -41,7 +41,7 @@ const CardSection: React.FC = () => {
 
   const handleCopy = (event: React.MouseEvent<SVGSVGElement>) => {
     // Copiar o texto para a área de transferência
-    navigator.clipboard.writeText("CLASSY");
+    navigator.clipboard.writeText("ClassyYT");
 
     // Encontrar o container para manipular os ícones
     const label = event.currentTarget.closest("label") as HTMLElement | null;
@@ -106,19 +106,25 @@ const CardSection: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden"
           >
-            <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFD627] blur-lg opacity-20 rounded-xl z-[-1]"></div>
+            {/* NEW Badge */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="font-workSans italic font-bold text-sm bg-gradient-to-r from-[#1475E1] from-60% to-slate-950 bg-clip-text text-transparent">
+                NEW
+              </span>
+            </div>
+
             <img
-              src="clash.gif"
+              src="stake.png"
               alt="Reward 1"
-              className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
+              className="rounded-t-lg 2xl:h-32 w-32 h-24 mx-auto object-contain"
             />
             <div className="text-white text-center mb-6">
               <p className="font-extrabold font-workSans text-2xl mb-2">
-                5% DEPOSIT BONUS
+                5% RAKEBACK
               </p>
 
               <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
-                PLAY FOR FREE USING ON-SITE RAIN
+                REGISTER BY CLICKING ON THE REDEEM BUTTON
               </p>
             </div>
             <hr className="border-[#3F3F3F] mb-6" />
@@ -126,20 +132,37 @@ const CardSection: React.FC = () => {
               <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
                 COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
               </p>
-              <div className="flex text-white">
+              <div className="flex text-white mb-3">
                 <img
-                  src="/circle-check.png"
+                  src="/blue.png"
                   alt="Imagem do botão"
                   className="w-5 h-5 object-contain mr-2"
                 />
                 <span className="font-semibold font-workSans text-sm">
-                  DEPOSIT BETWEEN $100 & $1,000
+                  REGISTER USING MY CODE
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/blue.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  INSTANTLY CLAIM YOUR 5% RAKEBACK
+                </span>
+              </div>
+              {/* Span vazio para igualar altura com card 2 */}
+              <div className="flex text-white mb-3">
+                <span className="w-5 h-5 mr-2"></span>
+                <span className="font-semibold font-workSans text-sm opacity-0">
+                  PLACEHOLDER TEXT
                 </span>
               </div>
             </div>
             <hr className="border-[#3F3F3F] mb-6" />
             <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-              <span className="font-bold font-workSans ml-2">CLASSY</span>
+              <span className="font-bold font-workSans ml-2">ClassyYT</span>
               <label className="container-1 mr-4">
                 <input type="checkbox" id="checkbox" />
                 <svg
@@ -167,7 +190,7 @@ const CardSection: React.FC = () => {
               href="https://clash.gg/r/CLASSY"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#95720E] to-[#E9B10E] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#07478E] to-[#1475E1] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
             >
               <img
                 src="/icons/gift-1-1.png"
@@ -198,19 +221,25 @@ const CardSection: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden ml-[2vw]"
           >
-            <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#762CFB] blur-lg opacity-20 rounded-xl z-[-1]"></div>
+            {/* NEW Badge */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="font-workSans italic font-bold text-sm bg-gradient-to-r from-[#00CA51] from-60% to-slate-950 bg-clip-text text-transparent">
+                NEW
+              </span>
+            </div>
+
             <img
-              src="shuffle.png"
+              src="stake.png"
               alt="Reward 2"
-              className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
+              className="rounded-t-lg 2xl:h-32 w-32 h-24 mx-auto object-contain"
             />
             <div className="text-white text-center mb-6">
               <p className="font-extrabold font-workSans text-2xl mb-2">
-                REDEEM BONUSES
+                VIP REWARDS
               </p>
 
               <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
-                AND JOIN THEIR WEEKLY $20K RAFFLE
+                REGISTER BY CLICKING ON THE REDEEM BUTTON
               </p>
             </div>
             <hr className="border-[#3F3F3F] mb-6" />
@@ -218,20 +247,41 @@ const CardSection: React.FC = () => {
               <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
                 COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
               </p>
-              <div className="flex text-white">
+              <div className="flex text-white mb-3">
                 <img
-                  src="/circle-check-1.png"
+                  src="/green.png"
                   alt="Imagem do botão"
                   className="w-5 h-5 object-contain mr-2"
                 />
                 <span className="font-semibold font-workSans text-sm">
-                  DEPOSIT BETWEEN $100 & $1,000
+                  REGISTER USING MY CODE
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/green.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  CONNECT YOUR STAKE ACCOUNT
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/green.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  ENJOY YOUR VIP REWARDS
                 </span>
               </div>
             </div>
+
             <hr className="border-[#3F3F3F] mb-6" />
             <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-              <span className="font-bold font-workSans ml-2">CLASSY</span>
+              <span className="font-bold font-workSans ml-2">ClassyYT</span>
               <label className="container-1 mr-4">
                 <input type="checkbox" id="checkbox" />
                 <svg
@@ -259,7 +309,7 @@ const CardSection: React.FC = () => {
               href="https://shuffle.com?r=Classy"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#4C30C0] to-[#886CFF] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#007B31] to-[#00CA51] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
             >
               <img
                 src="/icons/gift-1-1.png"
@@ -290,19 +340,25 @@ const CardSection: React.FC = () => {
             transition={{ duration: 1.2 }}
             className="bg-gradient-to-t from-[#191919] to-[#0E0E0E] rounded-lg p-4 relative z-10 overflow-hidden ml-[2vw]"
           >
-            <div className="absolute bottom-[-2vw] left-1/2 -translate-x-1/2 h-20 w-full bg-[#FFC31A] blur-lg opacity-20 rounded-xl z-[-1]"></div>
+            {/* NEW Badge */}
+            <div className="absolute top-4 left-4 z-20">
+              <span className="font-workSans italic font-bold text-sm bg-gradient-to-r from-[#FF843B] from-60% to-slate-950 bg-clip-text text-transparent">
+                NEW
+              </span>
+            </div>
+
             <img
-              src="csgoempire.png"
+              src="stake.png"
               alt="Reward 1"
-              className="rounded-t-lg 2xl:h-32 w-72 h-24 mx-auto object-contain"
+              className="rounded-t-lg 2xl:h-32 w-32 h-24 mx-auto object-contain"
             />
             <div className="text-white text-center mb-6">
               <p className="font-extrabold font-workSans text-2xl mb-2">
-                1 FREE CASE
+                $5k LEADERBOARD
               </p>
 
               <p className="font-semibold font-workSans text-sm text-[#B2B2B2]">
-                AND 2K MONTHLY LEADERBOARD
+                REGISTER BY CLICKING ON THE REDEEM BUTTON
               </p>
             </div>
             <hr className="border-[#3F3F3F] mb-6" />
@@ -310,20 +366,37 @@ const CardSection: React.FC = () => {
               <p className="text-zinc-500 text-sm font-workSans font-semibold mb-4">
                 COMPLETE THE FOLLOWING STEPS TO CLAIM THIS REWARD:
               </p>
-              <div className="flex text-white">
+              <div className="flex text-white mb-3">
                 <img
-                  src="/circle-check-2.png"
+                  src="/orange.png"
                   alt="Imagem do botão"
                   className="w-5 h-5 object-contain mr-2"
                 />
                 <span className="font-semibold font-workSans text-sm">
-                  DEPOSIT BETWEEN $100 & $1,000
+                  REGISTER USING MY CODE
+                </span>
+              </div>
+              <div className="flex text-white mb-3">
+                <img
+                  src="/orange.png"
+                  alt="Imagem do botão"
+                  className="w-5 h-5 object-contain mr-2"
+                />
+                <span className="font-semibold font-workSans text-sm">
+                  CLIMB THE LEADERBOARD AND WIN
+                </span>
+              </div>
+              {/* Span vazio para igualar altura com card 2 */}
+              <div className="flex text-white mb-3">
+                <span className="w-5 h-5 mr-2"></span>
+                <span className="font-semibold font-workSans text-sm opacity-0">
+                  PLACEHOLDER TEXT
                 </span>
               </div>
             </div>
             <hr className="border-[#3F3F3F] mb-6" />
             <div className="flex items-center bg-[#141414] justify-between rounded-xl p-3 lg:p-2 mb-6 text-left text-white border-2 border-[#3F3F3F]">
-              <span className="font-bold font-workSans ml-2">CLASSY</span>
+              <span className="font-bold font-workSans ml-2">ClassyYT</span>
               <label className="container-1 mr-4">
                 <input type="checkbox" id="checkbox" />
                 <svg
@@ -351,7 +424,7 @@ const CardSection: React.FC = () => {
               href="https://csgoempire.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#9C6E0A] to-[#F6AF16] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
+              className="flex justify-center items-center text-center w-full bg-gradient-to-l from-[#A64D18] to-[#FF843B] py-3 rounded-xl hover:opacity-70 transition-opacity duration-300"
             >
               <img
                 src="/icons/gift-1-1.png"

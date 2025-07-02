@@ -48,7 +48,7 @@ const Challenges: React.FC = () => {
     {
       id: "originals/keno",
       title: "Keno",
-      provider: "Shuffle",
+      provider: "Stake",
       description: "First to hit 500x with minimum $0.20 bet",
       thumbnail: "keno.png",
       rewardValue: "100.00",
@@ -202,11 +202,11 @@ const Challenges: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                  <hr className="border-[#3F3F3F] mb-6" />
+                  <hr className="border-[#3F3F3F] mb-4" />
                   <img
-                    src="/logo4.png"
-                    alt="Shuffle Logo"
-                    className="w-28 object-contain mb-4"
+                    src="/stake_2.png"
+                    alt="Stake Logo"
+                    className="w-12 object-contain mb-4"
                   />
                 </div>
               </div>

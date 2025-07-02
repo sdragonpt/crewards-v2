@@ -63,7 +63,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
       height: "9px", // Altura personalizada
     },
     {
-      path: "/vip/csgoempire",
+      path: "/vip",
       label: "VIP",
       icon: "/icons/sparkles-two-2.png",
       iconActive: "/icons/sparkles-two-2-0.png",
@@ -116,8 +116,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
   useEffect(() => {
     // Feche o menu quando a URL mudar para as páginas específicas
     if (
-      location.pathname === "/vip/csgoempire" ||
-      location.pathname === "/vip/shuffle" ||
+      location.pathname === "/vip" ||
       location.pathname === "/leaderboard" ||
       location.pathname === "/profile" ||
       location.pathname === "/"
@@ -156,8 +155,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
         scrollToElement();
       }, 300); // Atraso para garantir a navegação
     } else if (
-      location.pathname === "/vip/csgoempire" ||
-      location.pathname === "/vip/shuffle"
+      location.pathname === "/vip"
     ) {
       // Se estiver em /vip/csgoempire ou /vip/shuffle, vai para a home e depois rola até a âncora
       navigate("/");
@@ -430,7 +428,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
                   },
                   {
                     label: "VIP",
-                    action: () => navigate("/vip/csgoempire"),
+                    action: () => navigate("/vip"),
                     icon: "/icons/sparkles-two-2.png",
                     color: "",
                   },
@@ -445,13 +443,8 @@ const NavBar: React.FC<NavBarProps> = ({ toggleModal }) => {
                       ) {
                         window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
                       } else if (
-                        link.label === "VIP CSGOEmpire" &&
-                        location.pathname.includes("/vip/csgoempire")
-                      ) {
-                        window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
-                      } else if (
-                        link.label === "VIP Shuffle" &&
-                        location.pathname.includes("/vip/shuffle")
+                        link.label === "VIP" &&
+                        location.pathname.includes("/vip")
                       ) {
                         window.scrollTo({ top: 0, behavior: "smooth" }); // Rola para o topo
                       } else {
